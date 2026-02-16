@@ -56,6 +56,9 @@ if (process.platform === 'win32') {
 }
 
 app.commandLine.appendSwitch('autoplay-policy', 'no-user-gesture-required');
+if (process.platform === 'linux') {
+	app.commandLine.appendSwitch('enable-features', 'WebRTCPipeWireCapturer');
+}
 if (process.platform === 'win32') {
 	app.commandLine.appendSwitch('disable-background-timer-throttling');
 	app.commandLine.appendSwitch('disable-renderer-backgrounding');

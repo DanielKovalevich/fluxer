@@ -34,6 +34,7 @@ import {
 	MIN_WINDOW_WIDTH,
 	STABLE_APP_URL,
 } from '../common/constants.js';
+import {isWaylandSession} from '../common/wayland.js';
 import {registerSpellcheck} from './spellcheck.js';
 import {refreshWindowsBadgeOverlay} from './windows-badge.js';
 
@@ -101,6 +102,15 @@ const pendingDisplayMediaRequests = new Map<string, PendingDisplayMediaRequest>(
 let displayMediaRequestCounter = 0;
 
 function setupDisplayMediaHandler(session: Electron.Session, webContents: Electron.WebContents): void {
+	if (isWaylandSession()) {
+		// On Wayland, don't set a custom handler. This lets Electron fall through
+		// to the native xdg-desktop-portal + PipeWire screen selection. Setting a
+		// custom handler and calling desktopCapturer.getSources() on Wayland triggers
+		// the portal dialog repeatedly, creating an infinite selection loop.
+		log.info('[DisplayMedia] Wayland session detected, deferring to native xdg-desktop-portal');
+		return;
+	}
+
 	session.setDisplayMediaRequestHandler((request, callback) => {
 		const requestId = `display-media-${++displayMediaRequestCounter}`;
 		const requestCallback = (streams: Electron.Streams | null) => callback(streams as Electron.Streams);
