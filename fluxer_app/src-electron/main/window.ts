@@ -103,11 +103,34 @@ let displayMediaRequestCounter = 0;
 
 function setupDisplayMediaHandler(session: Electron.Session, webContents: Electron.WebContents): void {
 	if (isWaylandSession()) {
-		// On Wayland, don't set a custom handler. This lets Electron fall through
-		// to the native xdg-desktop-portal + PipeWire screen selection. Setting a
-		// custom handler and calling desktopCapturer.getSources() on Wayland triggers
-		// the portal dialog repeatedly, creating an infinite selection loop.
-		log.info('[DisplayMedia] Wayland session detected, deferring to native xdg-desktop-portal');
+		// On Wayland, desktopCapturer.getSources() triggers the xdg-desktop-portal
+		// screen picker each time it's called. The original flow called getSources()
+		// twice (once to enumerate, once to look up the selected source), which
+		// caused an infinite portal loop. Instead, we call getSources() exactly once
+		// inside the handler — the portal acts as the picker, and we pass the result
+		// directly to the callback. No custom renderer picker needed.
+		log.info('[DisplayMedia] Wayland session detected, using xdg-desktop-portal for source selection');
+		session.setDisplayMediaRequestHandler(async (_request, callback) => {
+			try {
+				const sources = await desktopCapturer.getSources({
+					types: ['screen', 'window'],
+				});
+
+				if (sources.length > 0) {
+					log.info('[DisplayMedia] Wayland source selected via portal:', {
+						id: sources[0].id,
+						name: sources[0].name,
+					});
+					callback({video: sources[0]});
+				} else {
+					log.warn('[DisplayMedia] No sources returned from Wayland portal');
+					callback(null as unknown as Electron.Streams);
+				}
+			} catch (error) {
+				log.error('[DisplayMedia] Wayland portal capture failed:', error);
+				callback(null as unknown as Electron.Streams);
+			}
+		});
 		return;
 	}
 
