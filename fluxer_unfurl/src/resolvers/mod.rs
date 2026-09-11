@@ -5,9 +5,14 @@ mod default_helpers;
 pub mod default_resolver;
 pub mod fxtwitter;
 pub mod hacker_news;
+pub mod instagram;
 pub mod klipy;
 pub mod media;
+pub mod reddit;
+pub mod social;
 pub mod tenor;
+pub mod tiktok;
+pub mod twitch;
 pub mod wikipedia;
 pub mod xkcd;
 pub mod youtube;
@@ -66,7 +71,11 @@ pub fn build_resolver_chain() -> Vec<Box<dyn Resolver>> {
         Box::new(youtube::YouTubeResolver),
         Box::new(wikipedia::WikipediaResolver),
         Box::new(bluesky::BlueskyResolver),
-        Box::new(fxtwitter::FxTwitterResolver),
+        Box::new(fxtwitter::FxTwitterResolver::from_env()),
+        Box::new(instagram::InstagramResolver::from_env()),
+        Box::new(tiktok::TikTokResolver::from_env()),
+        Box::new(twitch::TwitchResolver::from_env()),
+        Box::new(reddit::RedditResolver::from_env()),
         Box::new(default_resolver::DefaultResolver),
     ]
 }

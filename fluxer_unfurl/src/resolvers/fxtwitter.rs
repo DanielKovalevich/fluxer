@@ -21,6 +21,7 @@ const API_TIMEOUT: Duration = Duration::from_secs(8);
 const MAX_GALLERY_IMAGES: usize = 10;
 
 const FXTWITTER_HOSTS: &[&str] = &["fxtwitter.com", "fixupx.com", "twittpr.com", "xfixup.com"];
+const X_HOSTS: &[&str] = &["x.com", "twitter.com"];
 const DIRECT_MEDIA_EXTENSIONS: &[&str] = &["mp4", "png", "jpg", "jpeg", "gif", "gifv"];
 
 const EMOJI_REPLY: &str = "\u{1F4AC}";
@@ -30,11 +31,91 @@ const EMOJI_VIEWS: &str = "\u{1F441}\u{FE0F}";
 const STAT_SEP: &str = "\u{2002}";
 const QUOTE_EMPTY_LINE: &str = "> \u{FE00}";
 
-pub struct FxTwitterResolver;
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+struct FxTwitterOptions {
+    route_x_statuses: bool,
+    show_author: bool,
+    show_stats: bool,
+    show_footer: bool,
+}
+
+impl Default for FxTwitterOptions {
+    fn default() -> Self {
+        Self {
+            route_x_statuses: false,
+            show_author: true,
+            show_stats: true,
+            show_footer: true,
+        }
+    }
+}
+
+impl FxTwitterOptions {
+    fn from_env() -> Self {
+        Self::from_reader(|name| std::env::var(name).ok())
+    }
+
+    fn from_reader<F>(get: F) -> Self
+    where
+        F: Fn(&str) -> Option<String>,
+    {
+        Self {
+            route_x_statuses: read_bool(&get, "FLUXER_UNFURL_X_VIA_FXTWITTER", false),
+            show_author: read_bool(&get, "FLUXER_UNFURL_FXTWITTER_SHOW_AUTHOR", true),
+            show_stats: read_bool(&get, "FLUXER_UNFURL_FXTWITTER_SHOW_STATS", true),
+            show_footer: read_bool(&get, "FLUXER_UNFURL_FXTWITTER_SHOW_FOOTER", true),
+        }
+    }
+}
+
+fn read_bool<F>(get: &F, name: &str, default: bool) -> bool
+where
+    F: Fn(&str) -> Option<String>,
+{
+    let Some(value) = get(name) else {
+        return default;
+    };
+    match value.trim().to_ascii_lowercase().as_str() {
+        "1" | "true" | "yes" | "on" => true,
+        "0" | "false" | "no" | "off" => false,
+        _ => {
+            tracing::warn!(
+                variable = name,
+                value,
+                default,
+                "invalid boolean environment value"
+            );
+            default
+        }
+    }
+}
+
+pub struct FxTwitterResolver {
+    options: FxTwitterOptions,
+}
+
+impl Default for FxTwitterResolver {
+    fn default() -> Self {
+        Self {
+            options: FxTwitterOptions::default(),
+        }
+    }
+}
+
+impl FxTwitterResolver {
+    pub fn from_env() -> Self {
+        Self {
+            options: FxTwitterOptions::from_env(),
+        }
+    }
+}
 
 impl Resolver for FxTwitterResolver {
     fn matches(&self, url: &Url) -> bool {
         is_fxtwitter_host(url.host_str())
+            || (self.options.route_x_statuses
+                && is_x_host(url.host_str())
+                && parse_status_request(url).is_some())
     }
 
     fn resolve<'a>(
@@ -45,13 +126,22 @@ impl Resolver for FxTwitterResolver {
             let Some(request) = parse_status_request(&ctx.original_url) else {
                 return Ok(ResolverResult { embeds: vec![] });
             };
-            resolve_status(ctx, &request).await
+            resolve_status(ctx, &request, self.options).await
         })
     }
 }
 
 fn is_fxtwitter_host(host: Option<&str>) -> bool {
     fxtwitter_host_prefixes(host).is_some()
+}
+
+fn is_x_host(host: Option<&str>) -> bool {
+    let Some(host) = host.map(str::to_ascii_lowercase) else {
+        return false;
+    };
+    X_HOSTS
+        .iter()
+        .any(|domain| host == *domain || host.ends_with(&format!(".{domain}")))
 }
 
 fn fxtwitter_host_prefixes(host: Option<&str>) -> Option<Vec<String>> {
@@ -417,6 +507,7 @@ enum MediaChoice<'a> {
 async fn resolve_status(
     ctx: &ResolveContext<'_>,
     request: &FxStatusRequest,
+    options: FxTwitterOptions,
 ) -> anyhow::Result<ResolverResult> {
     let api_url = fxtwitter_api_url(request);
     let result =
@@ -444,12 +535,16 @@ async fn resolve_status(
     embed.url = Some(posted_url.clone());
     if !request.flags.gallery {
         embed.color = Some(FXTWITTER_COLOR);
-        embed.description = Some(build_description(&tweet));
+        embed.description = Some(build_description(&tweet, options.show_stats));
         embed.timestamp = tweet.created_timestamp.and_then(format_timestamp);
-        embed.footer = Some(build_fxtwitter_footer(ctx));
+        if options.show_footer {
+            embed.footer = Some(build_fxtwitter_footer(ctx));
+        }
     }
 
-    if let Some(author) = tweet.author.as_ref() {
+    if options.show_author
+        && let Some(author) = tweet.author.as_ref()
+    {
         embed.author = Some(build_fxtwitter_author(
             ctx,
             author,
@@ -872,7 +967,7 @@ fn apply_image_name(url: &str, name: Option<&str>) -> String {
     parsed.to_string()
 }
 
-fn build_description(tweet: &FxTweet) -> String {
+fn build_description(tweet: &FxTweet, show_stats: bool) -> String {
     let mut sections: Vec<String> = Vec::new();
     let text = tweet.text.as_deref().unwrap_or("");
     if !text.is_empty() {
@@ -884,7 +979,9 @@ fn build_description(tweet: &FxTweet) -> String {
     if let Some(quote) = tweet.quote.as_deref() {
         sections.push(build_quote_block(quote));
     }
-    sections.push(build_stats(tweet));
+    if show_stats {
+        sections.push(build_stats(tweet));
+    }
     sections.join("\n\n")
 }
 
@@ -1175,7 +1272,10 @@ mod tests {
             "https://t.fxtwitter.com/a/status/1",
             "https://m.fixupx.com/a/status/1",
         ] {
-            assert!(FxTwitterResolver.matches(&u(host)), "should match {host}");
+            assert!(
+                FxTwitterResolver::default().matches(&u(host)),
+                "should match {host}"
+            );
         }
         for host in [
             "https://x.com/a/status/1",
@@ -1187,10 +1287,56 @@ mod tests {
             "https://notfxtwitter.com/a/status/1",
         ] {
             assert!(
-                !FxTwitterResolver.matches(&u(host)),
+                !FxTwitterResolver::default().matches(&u(host)),
                 "should NOT match {host}"
             );
         }
+    }
+
+    #[test]
+    fn native_x_status_matching_is_opt_in() {
+        let enabled = FxTwitterResolver {
+            options: FxTwitterOptions {
+                route_x_statuses: true,
+                ..FxTwitterOptions::default()
+            },
+        };
+
+        for url in [
+            "https://x.com/a/status/1",
+            "https://www.x.com/a/status/1",
+            "https://twitter.com/a/statuses/1",
+            "https://mobile.twitter.com/i/web/status/1",
+        ] {
+            assert!(enabled.matches(&u(url)), "should match {url}");
+        }
+        for url in [
+            "https://x.com/home",
+            "https://twitter.com/a",
+            "https://notx.com/a/status/1",
+        ] {
+            assert!(!enabled.matches(&u(url)), "should NOT match {url}");
+        }
+    }
+
+    #[test]
+    fn fxtwitter_options_read_boolean_environment_values() {
+        let options = FxTwitterOptions::from_reader(|name| match name {
+            "FLUXER_UNFURL_X_VIA_FXTWITTER" => Some("yes".to_owned()),
+            "FLUXER_UNFURL_FXTWITTER_SHOW_AUTHOR" => Some("false".to_owned()),
+            "FLUXER_UNFURL_FXTWITTER_SHOW_STATS" => Some("0".to_owned()),
+            "FLUXER_UNFURL_FXTWITTER_SHOW_FOOTER" => Some("on".to_owned()),
+            _ => None,
+        });
+        assert_eq!(
+            options,
+            FxTwitterOptions {
+                route_x_statuses: true,
+                show_author: false,
+                show_stats: false,
+                show_footer: true,
+            }
+        );
     }
 
     #[test]
@@ -1343,7 +1489,7 @@ mod tests {
         );
         assert!(select_media_source(&tweet).is_none());
         assert_eq!(
-            build_description(&tweet),
+            build_description(&tweet, true),
             "just setting up my twttr\n\n**[\u{1F4AC}](https://x.com/intent/tweet?in_reply_to=20) 17\\.9K\u{2002}[\u{1F501}](https://x.com/intent/retweet?tweet_id=20) 125\\.8K\u{2002}[\u{2764}\u{FE0F}](https://x.com/intent/like?tweet_id=20) 308\\.7K\u{2002}**"
         );
     }
@@ -1351,7 +1497,7 @@ mod tests {
     #[test]
     fn translation_fixture_adds_translation_block() {
         let tweet = fixture(TRANSLATED_JACK_ES);
-        let description = build_description(&tweet);
+        let description = build_description(&tweet, true);
         assert!(description.starts_with(
             "just setting up my twttr\n\n**Translation (en -> es)**\nsolo configurando mi twttr"
         ));
@@ -1389,7 +1535,7 @@ mod tests {
                 .as_deref(),
             Some("2017-12-20T21:15:03Z")
         );
-        let description = build_description(&tweet);
+        let description = build_description(&tweet, true);
         assert!(description.starts_with("Can\u{2019}t wait to share this\n\n**"));
         assert!(description.contains("tweet_id=943590594491772928) 8\\.4K"));
         assert!(description.contains("31\\.6K"));
@@ -1408,7 +1554,7 @@ mod tests {
             Some(206),
             Some(0.0),
         );
-        assert!(build_description(&tweet).contains("\u{1F441}\u{FE0F} 4\\.80M"));
+        assert!(build_description(&tweet, true).contains("\u{1F441}\u{FE0F} 4\\.80M"));
     }
 
     #[test]
@@ -1441,7 +1587,7 @@ mod tests {
             Some(1170),
             Some(1428),
         );
-        let description = build_description(&tweet);
+        let description = build_description(&tweet, true);
         assert!(description.contains(
             "> **[Quoting](https://x.com/ScandinavianAE/status/2050646038420045877) Scandinavian Aesthetics"
         ));
@@ -1578,8 +1724,16 @@ mod tests {
     #[test]
     fn build_description_quote_tweet_matches_reference() {
         assert_eq!(
-            build_description(&tweet_example()),
+            build_description(&tweet_example(), true),
             "No that's fine I just imagined it would be a bit bigger\n\n> **[Quoting](https://x.com/ScandinavianAE/status/2050646038420045877) Scandinavian Aesthetics \\([@ScandinavianAE](https://x.com/ScandinavianAE)\\)**\n> \u{FE00}\n> Sweden \u{1F1F8}\u{1F1EA}\n\n**[\u{1F4AC}](https://x.com/intent/tweet?in_reply_to=2050662857763688642) 538\u{2002}[\u{1F501}](https://x.com/intent/retweet?tweet_id=2050662857763688642) 9\\.1K\u{2002}[\u{2764}\u{FE0F}](https://x.com/intent/like?tweet_id=2050662857763688642) 296\\.6K\u{2002}\u{1F441}\u{FE0F} 7\\.40M\u{2002}**"
+        );
+    }
+
+    #[test]
+    fn build_description_can_omit_social_stats() {
+        assert_eq!(
+            build_description(&tweet_example(), false),
+            "No that's fine I just imagined it would be a bit bigger\n\n> **[Quoting](https://x.com/ScandinavianAE/status/2050646038420045877) Scandinavian Aesthetics \\([@ScandinavianAE](https://x.com/ScandinavianAE)\\)**\n> \u{FE00}\n> Sweden \u{1F1F8}\u{1F1EA}"
         );
     }
 
@@ -1602,7 +1756,7 @@ mod tests {
             translation: None,
         };
         assert_eq!(
-            build_description(&tweet),
+            build_description(&tweet, true),
             "\"No one is born hating another person because of the color of his skin or his background or his religion\\.\\.\\.\"\n\n**[\u{1F4AC}](https://x.com/intent/tweet?in_reply_to=896523232098078720) 58\\.5K\u{2002}[\u{1F501}](https://x.com/intent/retweet?tweet_id=896523232098078720) 1\\.23M\u{2002}[\u{2764}\u{FE0F}](https://x.com/intent/like?tweet_id=896523232098078720) 3\\.44M\u{2002}**"
         );
     }
@@ -1640,7 +1794,7 @@ mod tests {
             translation: None,
         };
         assert_eq!(
-            build_description(&tweet),
+            build_description(&tweet, true),
             "Four more years\\. [t.co/bAJE6Vom](http://t.co/bAJE6Vom)\n\n**[\u{1F4AC}](https://x.com/intent/tweet?in_reply_to=266031293945503744) 47\\.0K\u{2002}[\u{1F501}](https://x.com/intent/retweet?tweet_id=266031293945503744) 693\\.0K\u{2002}[\u{2764}\u{FE0F}](https://x.com/intent/like?tweet_id=266031293945503744) 461\\.3K\u{2002}**"
         );
     }
@@ -1654,7 +1808,7 @@ mod tests {
             source_lang: Some("ja".to_owned()),
             target_lang: Some("en".to_owned()),
         });
-        let description = build_description(&tweet);
+        let description = build_description(&tweet, true);
         assert!(description.starts_with(
             "No that's fine I just imagined it would be a bit bigger\n\n**Translation (ja -> en)**\nHello world\\."
         ));
@@ -1739,7 +1893,7 @@ mod tests {
             translation: None,
         };
         assert_eq!(
-            build_description(&tweet),
+            build_description(&tweet, true),
             "**[\u{1F4AC}](https://x.com/intent/tweet?in_reply_to=1299530165463199747) 135\\.1K\u{2002}[\u{1F501}](https://x.com/intent/retweet?tweet_id=1299530165463199747) 1\\.76M\u{2002}[\u{2764}\u{FE0F}](https://x.com/intent/like?tweet_id=1299530165463199747) 6\\.59M\u{2002}**"
         );
     }
