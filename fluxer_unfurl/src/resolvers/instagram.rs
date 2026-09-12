@@ -112,10 +112,18 @@ async fn resolve_instagram(ctx: &ResolveContext<'_>, fixers: &[Url]) -> anyhow::
         embed.thumbnail = Some(media);
     }
 
+    hide_caption_with_media(&mut embed);
+
     if embed.author.is_none() && embed.description.is_none() && embed.video.is_none() && embed.image.is_none() {
         return Ok(ResolverResult { embeds: vec![] });
     }
     Ok(ResolverResult { embeds: vec![embed] })
+}
+
+fn hide_caption_with_media(embed: &mut MessageEmbed) {
+    if embed.video.is_some() || embed.image.is_some() {
+        embed.description = None;
+    }
 }
 
 fn rewrite_to_fixer(base: &Url, source: &Url) -> Option<Url> {
@@ -156,6 +164,28 @@ fn clean_description(value: &str) -> String {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn hides_caption_only_when_attached_media_resolves() {
+        for kind in ["video", "image"] {
+            let mut embed = MessageEmbed::new("rich");
+            embed.description = Some("Long caption".to_owned());
+            embed.author = Some(EmbedAuthor { name: "@creator".to_owned(), ..Default::default() });
+            if kind == "video" {
+                embed.video = Some(Default::default());
+            } else {
+                embed.image = Some(Default::default());
+            }
+            hide_caption_with_media(&mut embed);
+            assert!(embed.description.is_none());
+            assert_eq!(embed.author.unwrap().name, "@creator");
+        }
+
+        let mut text_only = MessageEmbed::new("rich");
+        text_only.description = Some("Fallback caption".to_owned());
+        hide_caption_with_media(&mut text_only);
+        assert_eq!(text_only.description.as_deref(), Some("Fallback caption"));
+    }
 
     #[test]
     fn matches_posts_and_reels() {
