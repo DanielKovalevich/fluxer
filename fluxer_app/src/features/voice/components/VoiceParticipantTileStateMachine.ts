@@ -2,7 +2,7 @@
 
 import type {VoiceParticipantTilePresentation} from '@app/features/voice/components/voice_participant_tile/shared';
 import type {VoiceMediaGraphStreamTileState} from '@app/features/voice/engine/VoiceMediaGraphTileState';
-import {assign, getInitialSnapshot, setup, transition} from 'xstate';
+import {assign, initialTransition, setup, transition} from 'xstate';
 
 export type VoiceParticipantTileScreenShareStateValue =
 	| 'idle'
@@ -39,6 +39,14 @@ export interface VoiceParticipantTileStreamAudioSignals {
 	hasScreenShareAudio: boolean;
 	isFocusedPlaceholderTile: boolean;
 	presentation: VoiceParticipantTilePresentation;
+}
+
+export interface VoiceParticipantTileControlPillSignals {
+	isFocusedPlaceholderTile: boolean;
+	showStreamAudioControls: boolean;
+	showSpectatorPill: boolean;
+	showGroupHiddenPill: boolean;
+	showDeviceCollapseControl: boolean;
 }
 
 export interface VoiceParticipantTileCameraActiveSignals {
@@ -164,6 +172,16 @@ export function shouldShowTileStreamAudioControls(signals: VoiceParticipantTileS
 	return signals.presentation === 'grid' || signals.presentation === 'focus-main';
 }
 
+export function shouldShowTileControlPill(signals: VoiceParticipantTileControlPillSignals): boolean {
+	if (signals.isFocusedPlaceholderTile) return false;
+	return (
+		signals.showStreamAudioControls ||
+		signals.showSpectatorPill ||
+		signals.showGroupHiddenPill ||
+		signals.showDeviceCollapseControl
+	);
+}
+
 export function shouldShowCameraBuffering(signals: VoiceParticipantTileCameraBufferingSignals): boolean {
 	if (signals.isScreenShare) return false;
 	if (signals.isFocusedPlaceholderTile) return false;
@@ -221,7 +239,7 @@ export function selectVoiceParticipantTileScreenShareState(
 ): VoiceParticipantTileScreenShareStateValue {
 	const [snapshot] = transition(
 		voiceParticipantTileStateMachine,
-		getInitialSnapshot(voiceParticipantTileStateMachine),
+		initialTransition(voiceParticipantTileStateMachine)[0],
 		{
 			type: 'tile.evaluateScreenShare',
 			signals,

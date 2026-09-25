@@ -28,9 +28,7 @@ export const ErrorCodeToI18nKey = {
 	[APIErrorCodes.BAD_GATEWAY]: 'http.bad_gateway',
 	[APIErrorCodes.BAD_REQUEST]: 'http.bad_request',
 	[APIErrorCodes.BLUESKY_OAUTH_AUTHORIZATION_FAILED]: 'connections.bluesky_oauth_authorization_failed',
-	[APIErrorCodes.BLUESKY_OAUTH_CALLBACK_FAILED]: 'connections.bluesky_oauth_callback_failed',
 	[APIErrorCodes.BLUESKY_OAUTH_NOT_ENABLED]: 'connections.bluesky_oauth_not_enabled',
-	[APIErrorCodes.BLUESKY_OAUTH_STATE_INVALID]: 'connections.bluesky_oauth_state_invalid',
 	[APIErrorCodes.BOT_ALREADY_IN_GUILD]: 'auth_and_oauth.bot_already_in_guild',
 	[APIErrorCodes.BOT_IS_PRIVATE]: 'bots.bot_is_private',
 	[APIErrorCodes.BOT_USER_AUTH_ENDPOINT_ACCESS_DENIED]: 'auth_and_oauth.bot_users_cannot_use_auth_endpoints',
@@ -134,6 +132,7 @@ export const ErrorCodeToI18nKey = {
 	[ValidationErrorCodes.INVALID_OR_EXPIRED_AUTHORIZATION_TICKET]:
 		'auth_and_oauth.invalid_or_expired_authorization_ticket',
 	[ValidationErrorCodes.INVALID_OR_EXPIRED_SSO_STATE]: 'auth_and_oauth.invalid_or_expired_sso_state',
+	[APIErrorCodes.INVALID_ORIGIN_HANDOFF_NONCE]: 'auth_and_oauth.origin_handoff_nonce_invalid',
 	[APIErrorCodes.INVALID_PERMISSIONS_INTEGER]: 'misc.invalid_permissions_integer',
 	[APIErrorCodes.INVALID_PERMISSIONS_NEGATIVE]: 'misc.invalid_permissions_negative',
 	[APIErrorCodes.INVALID_PHONE_NUMBER]: 'phone.invalid_number',
@@ -297,6 +296,7 @@ export const ErrorCodeToI18nKey = {
 	[APIErrorCodes.UNKNOWN_INVITE]: 'unknown_entities.unknown_invite',
 	[APIErrorCodes.UNKNOWN_MEMBER]: 'unknown_entities.unknown_member',
 	[APIErrorCodes.UNKNOWN_MESSAGE]: 'unknown_entities.unknown_message',
+	[APIErrorCodes.UNKNOWN_ORIGIN_HANDOFF]: 'auth_and_oauth.unknown_origin_handoff',
 	[APIErrorCodes.UNKNOWN_REPORT]: 'moderation_and_reports.unknown_report',
 	[APIErrorCodes.UNKNOWN_ROLE]: 'unknown_entities.unknown_role',
 	[APIErrorCodes.UNKNOWN_STICKER]: 'stickers_and_emojis.unknown_sticker',
@@ -360,9 +360,6 @@ export const ErrorCodeToI18nKey = {
 	[ValidationErrorCodes.FAILED_TO_UPLOAD_IMAGE]: 'attachments_and_uploads.failed_to_upload_image',
 	[ValidationErrorCodes.FILE_INDEX_EXCEEDS_MAXIMUM]: 'attachments_and_uploads.file_index_exceeds_maximum',
 	[ValidationErrorCodes.FILE_NOT_FOUND]: 'attachments_and_uploads.file_not_found',
-	[ValidationErrorCodes.FILENAME_EMPTY_AFTER_NORMALIZATION]:
-		'attachments_and_uploads.filename_empty_after_normalization',
-	[ValidationErrorCodes.FILENAME_INVALID_CHARACTERS]: 'attachments_and_uploads.filename_invalid_characters',
 	[ValidationErrorCodes.FILENAME_LENGTH_INVALID]: 'attachments_and_uploads.filename_length_invalid',
 	[ValidationErrorCodes.IMAGE_SIZE_EXCEEDS_LIMIT]: 'attachments_and_uploads.image_size_exceeds_limit',
 	[ValidationErrorCodes.INVALID_FILE_FIELD_NAME]: 'attachments_and_uploads.invalid_file_field_name',
@@ -455,8 +452,6 @@ export const ErrorCodeToI18nKey = {
 	[ValidationErrorCodes.CHANNEL_ID_IS_REQUIRED]: 'channels_and_guilds.channel_id_required',
 	[ValidationErrorCodes.CHANNEL_MUST_BE_DM_OR_GROUP_DM]: 'channels_and_guilds.channel_must_be_dm_or_group_dm',
 	[ValidationErrorCodes.CHANNEL_MUST_BE_VOICE]: 'channels_and_guilds.channel_must_be_voice',
-	[ValidationErrorCodes.CHANNEL_NAME_EMPTY_AFTER_NORMALIZATION]:
-		'names_and_normalization.channel_name_empty_after_normalization',
 	[ValidationErrorCodes.CATEGORIES_CANNOT_HAVE_PARENT_CHANNEL]:
 		'channels_and_guilds.categories_cannot_have_parent_channel',
 	[ValidationErrorCodes.CATEGORIES_CANNOT_HAVE_PARENTS]: 'channels_and_guilds.categories_cannot_have_parents',

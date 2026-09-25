@@ -10,6 +10,7 @@ import type {UserPartial} from '@fluxer/schema/src/domains/user/UserResponseSche
 import {afterEach, beforeEach, describe, expect, it, vi} from 'vitest';
 
 const channels = new Map<string, Channel>();
+const guilds = new Map<string, {joinedAt: string | null}>();
 const blockedUserIds = new Set<string>();
 let pinnedToEnd = false;
 let automaticAck = false;
@@ -46,6 +47,7 @@ vi.mock('@app/features/user/state/Users', () => ({
 vi.mock('@app/features/relationship/state/Relationships', () => ({
 	default: {isBlocked: (id: string) => blockedUserIds.has(id)},
 }));
+vi.mock('@app/features/guild/state/Guilds', () => ({default: {getGuild: (id: string) => guilds.get(id)}}));
 vi.mock('@app/features/member/state/GuildMembers', () => ({default: {getMember: () => null}}));
 vi.mock('@app/features/user/state/UserGuildSettings', () => ({
 	default: {
@@ -76,7 +78,6 @@ function seedReadChannel() {
 	const channelId = `channel-${++nextChannelId}`;
 	channels.set(channelId, new Channel({id: channelId, type: ChannelTypes.GUILD_TEXT, guild_id: 'guild-1'}));
 	const state = ReadStates.get(channelId);
-	state.readStateKnown = true;
 	state.ackMessageId = ID.ack;
 	state.lastMessageId = ID.ack;
 	state.unreadCount = 0;
@@ -118,55 +119,32 @@ describe('ReadStates unread invariant', () => {
 		expect(ReadStates.hasUnread(channelId)).toBe(true);
 	});
 
-	it('still lets its own probe lower a watermark a passive update raised', () => {
+	it('never lowers the watermark when an after page comes back empty', () => {
 		const {channelId} = seedReadChannel();
 		loadedMessages.push({id: ID.ack, author: {id: 'someone'}});
 		ReadStates.handlePassiveLastMessageUpdates({[channelId]: ID.newer}, 'guild-1');
-		ReadStates.handleLoadMessages({channelId, isAfter: true, messages: [], tailProbeWatermarkId: ID.newer});
-		expect(ReadStates.lastMessageId(channelId)).toBe(ID.ack);
-		expect(ReadStates.hasUnread(channelId)).toBe(false);
+		ReadStates.handleLoadMessages({channelId, isAfter: true, messages: []});
+		expect(ReadStates.lastMessageId(channelId)).toBe(ID.newer);
+		expect(ReadStates.hasUnread(channelId)).toBe(true);
 	});
 
-	it('lowers a watermark its own probe finds nothing behind', () => {
-		const {channelId, state} = seedReadChannel();
-		state.lastMessageId = ID.newer;
-		loadedMessages.push({id: ID.ack, author: {id: 'someone'}});
-		ReadStates.handleLoadMessages({channelId, isAfter: true, messages: [], tailProbeWatermarkId: ID.newer});
-		expect(ReadStates.lastMessageId(channelId)).toBe(ID.ack);
-		expect(ReadStates.hasUnread(channelId)).toBe(false);
-	});
-
-	it('keeps a watermark that is ahead when an ordinary after page comes back empty', () => {
+	it('keeps a watermark that points at a message no longer in the channel', () => {
 		const {channelId, state} = seedReadChannel();
 		state.lastMessageId = ID.newer;
 		loadedMessages.push({id: ID.ack, author: {id: 'someone'}});
 		ReadStates.handleLoadMessages({channelId, isAfter: true, messages: []});
 		expect(ReadStates.lastMessageId(channelId)).toBe(ID.newer);
+		expect(ReadStates.hasUnread(channelId)).toBe(true);
 	});
 
-	it('keeps a watermark that advanced while its own probe was in flight', () => {
+	it('acks up to the watermark so a deleted newest message cannot keep the channel unread', () => {
 		const {channelId, state} = seedReadChannel();
 		state.lastMessageId = ID.newer;
 		loadedMessages.push({id: ID.ack, author: {id: 'someone'}});
-		ReadStates.handleLoadMessages({channelId, isAfter: true, messages: [], tailProbeWatermarkId: ID.ack});
-		expect(ReadStates.lastMessageId(channelId)).toBe(ID.newer);
-	});
-
-	it('keeps a watermark that is ahead when the page was not an after page', () => {
-		const {channelId, state} = seedReadChannel();
-		state.lastMessageId = ID.newer;
-		loadedMessages.push({id: ID.ack, author: {id: 'someone'}});
-		ReadStates.handleLoadMessages({channelId, messages: [], tailProbeWatermarkId: ID.newer});
-		expect(ReadStates.lastMessageId(channelId)).toBe(ID.newer);
-	});
-
-	it('keeps a watermark that is ahead when the window is not at the live edge', () => {
-		const {channelId, state} = seedReadChannel();
-		hasNewestMessages = false;
-		state.lastMessageId = ID.newer;
-		loadedMessages.push({id: ID.ack, author: {id: 'someone'}});
-		ReadStates.handleLoadMessages({channelId, isAfter: true, messages: [], tailProbeWatermarkId: ID.newer});
-		expect(ReadStates.lastMessageId(channelId)).toBe(ID.newer);
+		ReadStates.handleLoadMessages({channelId, isAfter: true, messages: []});
+		ReadStates.handleChannelAckWithStickyUnread({channelId});
+		expect(ReadStates.ackMessageId(channelId)).toBe(ID.newer);
+		expect(ReadStates.hasUnread(channelId)).toBe(false);
 	});
 
 	it('anchors the divider when a window is loaded whose ack sits outside it', () => {
@@ -514,19 +492,22 @@ describe('ReadStates private channel open, close and reopen', () => {
 		messageCreate(wireMessage(MESSAGE.incoming, CHANNEL.newDm, TUNA));
 		expect(unreadState(CHANNEL.newDm)).toEqual({unread: true, unreadCount: 1, mentionCount: 1, ackMessageId: null});
 		expect(ReadStates.getOldestUnreadMessageId(CHANNEL.newDm)).toBe(MESSAGE.incoming);
-		expect(ReadStates.getIfExists(CHANNEL.newDm)?.readStateKnown).toBe(true);
 		messageCreate(wireMessage(MESSAGE.next, CHANNEL.newDm, TUNA));
 		expect(unreadState(CHANNEL.newDm)).toEqual({unread: true, unreadCount: 2, mentionCount: 2, ackMessageId: null});
 	});
 
-	it('keeps a message already loaded into a DM without read state covered', () => {
+	it('guesses the ack at the newest message for a mention-free DM without read state', () => {
 		ready([], []);
 		channelCreate(dm(CHANNEL.dm, MESSAGE.last));
 		loadedMessages.push({id: MESSAGE.last, author: {id: TUNA}}, {id: MESSAGE.incoming, author: {id: TUNA}});
 		ReadStates.handleLoadMessages({channelId: CHANNEL.dm, messages: []});
 		messageCreate(wireMessage(MESSAGE.incoming, CHANNEL.dm, TUNA));
-		expect(unreadState(CHANNEL.dm)).toEqual({unread: false, unreadCount: 0, mentionCount: 0, ackMessageId: null});
-		expect(ReadStates.getIfExists(CHANNEL.dm)?.readStateKnown).toBe(false);
+		expect(unreadState(CHANNEL.dm)).toEqual({
+			unread: false,
+			unreadCount: 0,
+			mentionCount: 0,
+			ackMessageId: MESSAGE.incoming,
+		});
 	});
 
 	it('characterisation: keeps a self-opened DM read when its read state covers the last message', () => {
@@ -551,11 +532,10 @@ describe('ReadStates private channel open, close and reopen', () => {
 		});
 	});
 
-	it('leaves a self-opened DM without read state unknown', () => {
+	it('shows a self-opened DM with history and no read state as unread', () => {
 		ready([], []);
 		channelCreate(dm(CHANNEL.dm, MESSAGE.last));
-		expect(unreadState(CHANNEL.dm)).toEqual({unread: false, unreadCount: 0, mentionCount: 0, ackMessageId: null});
-		expect(ReadStates.getIfExists(CHANNEL.dm)?.readStateKnown).toBe(false);
+		expect(unreadState(CHANNEL.dm)).toEqual({unread: true, unreadCount: 0, mentionCount: 0, ackMessageId: null});
 	});
 
 	it('keeps an open unread DM unread when a duplicate CHANNEL_CREATE arrives', () => {
@@ -617,13 +597,13 @@ describe('ReadStates private channel open, close and reopen', () => {
 	it('characterisation: counts only the recipient add message when the user joins a group DM with history', () => {
 		ready([], []);
 		channelCreate(groupDm(MESSAGE.last));
-		expect(ReadStates.hasUnread(CHANNEL.groupDm)).toBe(false);
+		expect(ReadStates.hasUnread(CHANNEL.groupDm)).toBe(true);
 		messageCreate(recipientAddMessage());
 		expect(unreadState(CHANNEL.groupDm)).toEqual({
 			unread: true,
 			unreadCount: 1,
 			mentionCount: 1,
-			ackMessageId: MESSAGE.last,
+			ackMessageId: null,
 		});
 	});
 
@@ -757,20 +737,19 @@ describe('ReadStates private channel open, close and reopen', () => {
 			unread: true,
 			unreadCount: 1,
 			mentionCount: 1,
-			ackMessageId: MESSAGE.last,
+			ackMessageId: null,
 		});
 	});
 
-	it('characterisation: keeps a guild message covered when read state is unknown and the watermark already equals it', () => {
+	it('shows a guild message unread when there is no read state to cover it', () => {
 		ready([], [guildText(MESSAGE.incoming)]);
 		messageCreate(wireMessage(MESSAGE.incoming, CHANNEL.guildText, TUNA, {guild_id: 'guild-1'}));
 		expect(unreadState(CHANNEL.guildText)).toEqual({
-			unread: false,
+			unread: true,
 			unreadCount: 0,
 			mentionCount: 0,
 			ackMessageId: null,
 		});
-		expect(ReadStates.getIfExists(CHANNEL.guildText)?.readStateKnown).toBe(false);
 	});
 
 	it('characterisation: still forgets a guild channel that a visibility change hides and shows again', () => {
@@ -784,10 +763,119 @@ describe('ReadStates private channel open, close and reopen', () => {
 		channelDelete({id: CHANNEL.guildText, guild_id: 'guild-1'});
 		channelCreate(guildText(MESSAGE.last));
 		expect(unreadState(CHANNEL.guildText)).toEqual({
-			unread: false,
+			unread: true,
 			unreadCount: 0,
 			mentionCount: 0,
 			ackMessageId: null,
 		});
+	});
+});
+
+describe('ReadStates ack floor for channels with no read state', () => {
+	beforeEach(() => {
+		vi.useFakeTimers();
+	});
+
+	afterEach(() => {
+		ReadStates.clearAll();
+		guilds.clear();
+		vi.useRealTimers();
+	});
+
+	it('shows a guild channel unread when its newest message postdates the join', () => {
+		guilds.set('guild-1', {joinedAt: '2026-09-01T00:00:00.000Z'});
+		ready([], [guildText(MESSAGE.last)]);
+		expect(ReadStates.hasUnread(CHANNEL.guildText)).toBe(true);
+	});
+
+	it('leaves a guild channel read when its newest message predates the join', () => {
+		guilds.set('guild-1', {joinedAt: '2026-09-11T00:00:00.000Z'});
+		ready([], [guildText(MESSAGE.last)]);
+		expect(ReadStates.hasUnread(CHANNEL.guildText)).toBe(false);
+	});
+
+	it('falls back to the channel snowflake while its guild record is missing', () => {
+		ready([], [guildText(MESSAGE.last)]);
+		expect(ReadStates.hasUnread(CHANNEL.guildText)).toBe(true);
+	});
+
+	it('recomputes the floor once the guild record arrives instead of freezing it', () => {
+		ready([], [guildText(MESSAGE.last)]);
+		expect(ReadStates.hasUnread(CHANNEL.guildText)).toBe(true);
+		guilds.set('guild-1', {joinedAt: '2026-09-11T00:00:00.000Z'});
+		expect(ReadStates.hasUnread(CHANNEL.guildText)).toBe(false);
+	});
+
+	it('never lets the floor drift forward with the wall clock', () => {
+		guilds.set('guild-1', {joinedAt: null});
+		ready([], [guildText(MESSAGE.last)]);
+		messageCreate(wireMessage(MESSAGE.incoming, CHANNEL.guildText, TUNA, {guild_id: 'guild-1'}));
+		expect(ReadStates.hasUnread(CHANNEL.guildText)).toBe(true);
+		vi.advanceTimersByTime(60 * 60 * 1000);
+		expect(ReadStates.hasUnread(CHANNEL.guildText)).toBe(true);
+		expect(ReadStates.getUnreadCount(CHANNEL.guildText)).toBe(1);
+	});
+
+	it('counts only the messages that postdate the join', () => {
+		guilds.set('guild-1', {joinedAt: '2026-09-10T21:00:00.000Z'});
+		ready([], [guildText(MESSAGE.incoming)]);
+		loadedMessages.push(
+			{id: MESSAGE.older, author: {id: TUNA}},
+			{id: MESSAGE.last, author: {id: TUNA}},
+			{id: MESSAGE.incoming, author: {id: TUNA}},
+		);
+		ReadStates.handleLoadMessages({channelId: CHANNEL.guildText, messages: []});
+		expect(ReadStates.getUnreadCount(CHANNEL.guildText)).toBe(2);
+		expect(ReadStates.getOldestUnreadMessageId(CHANNEL.guildText)).toBe(MESSAGE.last);
+	});
+
+	it("never writes an ack for someone else's message in a channel with no read state", () => {
+		guilds.set('guild-1', {joinedAt: '2026-09-01T00:00:00.000Z'});
+		ready([], [guildText(MESSAGE.last)]);
+		messageCreate(wireMessage(MESSAGE.incoming, CHANNEL.guildText, TUNA, {guild_id: 'guild-1'}));
+		expect(ReadStates.ackMessageId(CHANNEL.guildText)).toBeNull();
+	});
+});
+
+describe('ReadStates guessed ack for private channels', () => {
+	beforeEach(() => {
+		vi.useFakeTimers();
+	});
+
+	afterEach(() => {
+		ReadStates.clearAll();
+		vi.useRealTimers();
+	});
+
+	it('takes the newest message as the ack when a DM has no mentions', () => {
+		ready([], []);
+		channelCreate(dm(CHANNEL.dm, MESSAGE.last));
+		loadedMessages.push({id: MESSAGE.older, author: {id: TUNA}}, {id: MESSAGE.last, author: {id: TUNA}});
+		ReadStates.handleLoadMessages({channelId: CHANNEL.dm, messages: []});
+		expect(ReadStates.ackMessageId(CHANNEL.dm)).toBe(MESSAGE.last);
+		expect(ReadStates.hasUnread(CHANNEL.dm)).toBe(false);
+	});
+
+	it('walks back one message per mention, skipping the current user', () => {
+		ready([], []);
+		channelCreate(dm(CHANNEL.dm, MESSAGE.incoming));
+		loadedMessages.push(
+			{id: MESSAGE.older, author: {id: TUNA}},
+			{id: MESSAGE.last, author: {id: ME}},
+			{id: MESSAGE.incoming, author: {id: TUNA}},
+		);
+		const state = ReadStates.get(CHANNEL.dm);
+		state.mentionCount = 1;
+		state.rebuild();
+		expect(ReadStates.ackMessageId(CHANNEL.dm)).toBe(MESSAGE.last);
+	});
+
+	it('leaves the ack null when the window does not reach the newest message', () => {
+		ready([], []);
+		channelCreate(dm(CHANNEL.dm, MESSAGE.last));
+		hasNewestMessages = false;
+		loadedMessages.push({id: MESSAGE.older, author: {id: TUNA}});
+		ReadStates.handleLoadMessages({channelId: CHANNEL.dm, messages: []});
+		expect(ReadStates.ackMessageId(CHANNEL.dm)).toBeNull();
 	});
 });

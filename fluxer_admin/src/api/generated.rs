@@ -1,5 +1,8 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+use progenitor_client::{ClientHooks, ClientInfo, Error, OperationInfo};
+use reqwest::header::HeaderMap;
+
 #[allow(
     clippy::all,
     unused_imports,
@@ -15,6 +18,24 @@ mod inner {
 pub use inner::types;
 
 pub use inner::Client as GeneratedClient;
+
+impl ClientHooks<HeaderMap> for GeneratedClient {
+    async fn pre<E>(
+        &self,
+        request: &mut reqwest::Request,
+        _info: &OperationInfo,
+    ) -> Result<(), Error<E>> {
+        let headers = request.headers_mut();
+        for (name, value) in self.inner() {
+            headers.entry(name.clone()).or_insert_with(|| value.clone());
+        }
+        Ok(())
+    }
+}
+
+pub(crate) fn snowflake(value: &str) -> types::SnowflakeType {
+    types::SnowflakeType::Variant0(value.to_owned())
+}
 
 pub(crate) fn number_to_u64(value: f64, field: &str) -> Result<u64, String> {
     const MAX_SAFE_INTEGER: f64 = 9_007_199_254_740_991.0;
@@ -126,10 +147,10 @@ mod tests {
         let response: SearchGuildsResponse =
             serde_json::from_value(json).expect("failed to deserialize SearchGuildsResponse");
 
-        assert_eq!(response.total as i64, 1);
+        assert_eq!(response.total, 1.0);
         assert_eq!(response.guilds.len(), 1);
         assert_eq!(response.guilds[0].name, "Test Guild");
-        assert_eq!(response.guilds[0].member_count, 42);
+        assert_eq!(*response.guilds[0].member_count, 42);
     }
 
     #[test]

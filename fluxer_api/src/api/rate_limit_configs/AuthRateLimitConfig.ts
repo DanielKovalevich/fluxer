@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+import type {RouteRateLimitConfig} from '@app/api/middleware/RateLimitMiddleware';
 import {ms} from 'itty-time';
-import type {RouteRateLimitConfig} from '../middleware/RateLimitMiddleware';
 
 export const AuthRateLimitConfigs = {
 	AUTH_REGISTER: {
@@ -100,6 +100,10 @@ export const AuthRateLimitConfigs = {
 		bucket: 'mfa:webauthn:delete',
 		config: {limit: 10, windowMs: ms('1 minute')},
 	} as RouteRateLimitConfig,
+	MFA_WEBAUTHN_TWO_FACTOR: {
+		bucket: 'mfa:webauthn:two_factor',
+		config: {limit: 10, windowMs: ms('1 minute')},
+	} as RouteRateLimitConfig,
 	PHONE_SEND_VERIFICATION: {
 		bucket: 'phone:send_verification',
 		config: {limit: 5, windowMs: ms('1 minute')},
@@ -126,6 +130,14 @@ export const AuthRateLimitConfigs = {
 	} as RouteRateLimitConfig,
 	AUTH_HANDOFF_CANCEL: {
 		bucket: 'auth:handoff:cancel',
+		config: {limit: 10, windowMs: ms('1 minute')},
+	} as RouteRateLimitConfig,
+	AUTH_ORIGIN_HANDOFF_CREATE: {
+		bucket: 'auth:origin_handoff:create',
+		config: {limit: 3, windowMs: ms('10 minutes')},
+	} as RouteRateLimitConfig,
+	AUTH_ORIGIN_HANDOFF_REDEEM: {
+		bucket: 'auth:origin_handoff:redeem',
 		config: {limit: 10, windowMs: ms('1 minute')},
 	} as RouteRateLimitConfig,
 	SUDO_WEBAUTHN_OPTIONS: {

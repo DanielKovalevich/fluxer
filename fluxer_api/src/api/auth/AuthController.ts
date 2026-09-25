@@ -1,5 +1,16 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+import {requireSudoMode} from '@app/api/auth/services/SudoVerificationService';
+import {Config} from '@app/api/Config';
+import {DefaultUserOnly, LoginRequiredAllowSuspicious} from '@app/api/middleware/AuthMiddleware';
+import {CaptchaMiddleware} from '@app/api/middleware/CaptchaMiddleware';
+import {LocalAuthMiddleware} from '@app/api/middleware/LocalAuthMiddleware';
+import {RateLimitMiddleware} from '@app/api/middleware/RateLimitMiddleware';
+import {OpenAPI} from '@app/api/middleware/ResponseTypeMiddleware';
+import {SudoModeMiddleware} from '@app/api/middleware/SudoModeMiddleware';
+import {RateLimitConfigs} from '@app/api/RateLimitConfig';
+import type {HonoApp} from '@app/api/types/HonoEnv';
+import {Validator} from '@app/api/Validator';
 import {requireClientIp} from '@fluxer/ip_utils/src/ClientIp';
 import {
 	AuthLoginResponse,
@@ -19,7 +30,7 @@ import {
 	IpAuthorizationPollQuery,
 	IpAuthorizationPollResponse,
 	LoginRequest,
-	LogoutAuthSessionsRequest,
+	LogoutAuthSessionsWithVerificationRequest,
 	MfaTicketRequest,
 	MfaTotpRequest,
 	RegisterRequest,
@@ -30,7 +41,6 @@ import {
 	SsoStartRequest,
 	SsoStartResponse,
 	SsoStatusResponse,
-	SudoVerificationSchema,
 	UsernameSuggestionsRequest,
 	UsernameSuggestionsResponse,
 	ValidateResetPasswordTokenResponse,
@@ -39,17 +49,6 @@ import {
 	WebAuthnAuthenticationOptionsResponse,
 	WebAuthnMfaRequest,
 } from '@fluxer/schema/src/domains/auth/AuthSchemas';
-import {Config} from '../Config';
-import {DefaultUserOnly, LoginRequiredAllowSuspicious} from '../middleware/AuthMiddleware';
-import {CaptchaMiddleware} from '../middleware/CaptchaMiddleware';
-import {LocalAuthMiddleware} from '../middleware/LocalAuthMiddleware';
-import {RateLimitMiddleware} from '../middleware/RateLimitMiddleware';
-import {OpenAPI} from '../middleware/ResponseTypeMiddleware';
-import {SudoModeMiddleware} from '../middleware/SudoModeMiddleware';
-import {RateLimitConfigs} from '../RateLimitConfig';
-import type {HonoApp} from '../types/HonoEnv';
-import {Validator} from '../Validator';
-import {requireSudoMode} from './services/SudoVerificationService';
 
 export function AuthController(app: HonoApp) {
 	app.get(
@@ -344,7 +343,8 @@ export function AuthController(app: HonoApp) {
 		}),
 		async (ctx) => {
 			const userId = ctx.get('user').id;
-			return ctx.json(await ctx.get('authRequestService').getAuthSessions(userId));
+			const currentSessionIdHash = ctx.get('authSession')?.sessionIdHash;
+			return ctx.json(await ctx.get('authRequestService').getAuthSessions(userId, currentSessionIdHash));
 		},
 	);
 	app.post(
@@ -353,7 +353,7 @@ export function AuthController(app: HonoApp) {
 		LoginRequiredAllowSuspicious,
 		DefaultUserOnly,
 		SudoModeMiddleware,
-		Validator('json', LogoutAuthSessionsRequest.merge(SudoVerificationSchema)),
+		Validator('json', LogoutAuthSessionsWithVerificationRequest),
 		OpenAPI({
 			operationId: 'logout_all_sessions',
 			summary: 'Logout all sessions',
@@ -602,6 +602,7 @@ export function AuthController(app: HonoApp) {
 				data: ctx.req.valid('json'),
 				clientIp,
 				authToken: ctx.get('authToken') ?? undefined,
+				approverOrigin: ctx.req.header('origin'),
 			});
 			return ctx.body(null, 204);
 		},

@@ -1,5 +1,25 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+import {
+	createChannelID,
+	createGuildID,
+	createMessageID,
+	createUserID,
+	createWebhookID,
+	createWebhookToken,
+} from '@app/api/BrandedTypes';
+import type {MessageRequest} from '@app/api/channel/MessageTypes';
+import {normalizeMessageRequestPayload} from '@app/api/channel/services/message/MessageRequestCompatibility';
+import {parseMultipartMessageData} from '@app/api/channel/services/message/MessageRequestParser';
+import {LoginRequired} from '@app/api/middleware/AuthMiddleware';
+import {BlockAppOriginMiddleware} from '@app/api/middleware/BlockAppOriginMiddleware';
+import {RateLimitMiddleware} from '@app/api/middleware/RateLimitMiddleware';
+import {OpenAPI} from '@app/api/middleware/ResponseTypeMiddleware';
+import {RateLimitConfigs} from '@app/api/RateLimitConfig';
+import type {HonoApp, HonoEnv} from '@app/api/types/HonoEnv';
+import {parseJsonPreservingLargeIntegers} from '@app/api/utils/LosslessJsonParser';
+import {Validator} from '@app/api/Validator';
+import type {WebhookExecuteMessageData} from '@app/api/webhook/WebhookService';
 import {DELETED_USER_ID} from '@fluxer/constants/src/UserConstants';
 import {ValidationErrorCodes} from '@fluxer/constants/src/ValidationErrorCodes';
 import {InputValidationError} from '@fluxer/errors/src/domains/core/InputValidationError';
@@ -25,29 +45,13 @@ import {
 	WebhookTokenUpdateRequest,
 	WebhookUpdateRequest,
 } from '@fluxer/schema/src/domains/webhook/WebhookRequestSchemas';
-import {WebhookResponse, WebhookTokenResponse} from '@fluxer/schema/src/domains/webhook/WebhookSchemas';
-import type {Context} from 'hono';
-import {z} from 'zod';
 import {
-	createChannelID,
-	createGuildID,
-	createMessageID,
-	createUserID,
-	createWebhookID,
-	createWebhookToken,
-} from '../BrandedTypes';
-import type {MessageRequest} from '../channel/MessageTypes';
-import {normalizeMessageRequestPayload} from '../channel/services/message/MessageRequestCompatibility';
-import {parseMultipartMessageData} from '../channel/services/message/MessageRequestParser';
-import {LoginRequired} from '../middleware/AuthMiddleware';
-import {BlockAppOriginMiddleware} from '../middleware/BlockAppOriginMiddleware';
-import {RateLimitMiddleware} from '../middleware/RateLimitMiddleware';
-import {OpenAPI} from '../middleware/ResponseTypeMiddleware';
-import {RateLimitConfigs} from '../RateLimitConfig';
-import type {HonoApp, HonoEnv} from '../types/HonoEnv';
-import {parseJsonPreservingLargeIntegers} from '../utils/LosslessJsonParser';
-import {Validator} from '../Validator';
-import type {WebhookExecuteMessageData} from './WebhookService';
+	SlackWebhookResponse,
+	WebhookListResponse,
+	WebhookResponse,
+	WebhookTokenResponse,
+} from '@fluxer/schema/src/domains/webhook/WebhookSchemas';
+import type {Context} from 'hono';
 
 function validateWebhookMessagePayload(data: unknown): WebhookMessageRequest {
 	const validationResult = WebhookMessageRequest.safeParse(normalizeMessageRequestPayload(data));
@@ -128,7 +132,7 @@ export function WebhookController(app: HonoApp) {
 			summary: 'List guild webhooks',
 			description:
 				'Returns a list of all webhooks configured in the specified guild. Requires the user to have appropriate permissions to view webhooks in the guild.',
-			responseSchema: z.array(WebhookResponse),
+			responseSchema: WebhookListResponse,
 			statusCode: 200,
 			security: ['botToken', 'bearerToken', 'sessionToken'],
 			tags: ['Webhooks'],
@@ -152,7 +156,7 @@ export function WebhookController(app: HonoApp) {
 			summary: 'List channel webhooks',
 			description:
 				'Returns a list of all webhooks configured in the specified channel. Requires the user to have appropriate permissions to view webhooks in the channel.',
-			responseSchema: z.array(WebhookResponse),
+			responseSchema: WebhookListResponse,
 			statusCode: 200,
 			security: ['botToken', 'bearerToken', 'sessionToken'],
 			tags: ['Webhooks'],
@@ -492,7 +496,7 @@ export function WebhookController(app: HonoApp) {
 			summary: 'Execute Slack webhook',
 			description:
 				'Receives and processes Slack-formatted webhook payloads, converting them to messages in the configured channel. Returns "ok" as plain text with a 200 status code.',
-			responseSchema: z.string(),
+			responseSchema: SlackWebhookResponse,
 			statusCode: 200,
 			tags: ['Webhooks'],
 		}),
