@@ -19,6 +19,7 @@ const FXTWITTER_API_BASE: &str = "https://api.fxtwitter.com";
 const API_MAX_BYTES: usize = 512 * 1024;
 const API_TIMEOUT: Duration = Duration::from_secs(8);
 const MAX_GALLERY_IMAGES: usize = 10;
+const MAX_VIDEO_SHORT_EDGE: u32 = 1080;
 
 const FXTWITTER_HOSTS: &[&str] = &["fxtwitter.com", "fixupx.com", "twittpr.com", "xfixup.com"];
 const X_HOSTS: &[&str] = &["x.com", "twitter.com"];
@@ -431,8 +432,10 @@ struct FxMediaItem {
     height: Option<u32>,
     duration: Option<f64>,
     transcode_url: Option<String>,
-    #[serde(default, deserialize_with = "deserialize_optional_mosaic_formats")]
-    formats: Option<FxMosaicFormats>,
+    #[serde(default, deserialize_with = "deserialize_media_formats")]
+    formats: FxMediaFormats,
+    #[serde(default)]
+    variants: Vec<FxVideoVariant>,
 }
 
 #[derive(Debug, Deserialize)]
@@ -456,17 +459,53 @@ struct FxMosaicFormats {
     webp: Option<String>,
 }
 
-fn deserialize_optional_mosaic_formats<'de, D>(
-    deserializer: D,
-) -> Result<Option<FxMosaicFormats>, D::Error>
+#[derive(Debug, Deserialize)]
+struct FxVideoFormat {
+    url: Option<String>,
+    bitrate: Option<u64>,
+    container: Option<String>,
+    codec: Option<String>,
+}
+
+#[derive(Debug, Deserialize)]
+struct FxVideoVariant {
+    url: Option<String>,
+    bitrate: Option<u64>,
+    content_type: Option<String>,
+}
+
+#[derive(Debug, Default)]
+struct FxMediaFormats {
+    image: Option<FxMosaicFormats>,
+    videos: Vec<FxVideoFormat>,
+}
+
+impl FxMediaFormats {
+    fn image_url(&self) -> Option<&str> {
+        self.image
+            .as_ref()
+            .and_then(|formats| formats.jpeg.as_deref().or(formats.webp.as_deref()))
+    }
+}
+
+fn deserialize_media_formats<'de, D>(deserializer: D) -> Result<FxMediaFormats, D::Error>
 where
     D: Deserializer<'de>,
 {
     match Option::<Value>::deserialize(deserializer)? {
         Some(Value::Object(map)) => serde_json::from_value(Value::Object(map))
-            .map(Some)
+            .map(|image| FxMediaFormats {
+                image: Some(image),
+                videos: Vec::new(),
+            })
             .map_err(serde::de::Error::custom),
-        _ => Ok(None),
+        Some(Value::Array(items)) => serde_json::from_value(Value::Array(items))
+            .map(|videos| FxMediaFormats {
+                image: None,
+                videos,
+            })
+            .map_err(serde::de::Error::custom),
+        _ => Ok(FxMediaFormats::default()),
     }
 }
 
@@ -486,6 +525,10 @@ struct FxVideo {
     width: Option<u32>,
     height: Option<u32>,
     duration: Option<f64>,
+    #[serde(default, deserialize_with = "deserialize_media_formats")]
+    formats: FxMediaFormats,
+    #[serde(default)]
+    variants: Vec<FxVideoVariant>,
 }
 
 #[derive(Debug, Clone, Copy)]
@@ -805,11 +848,18 @@ fn photo_choice(photo: &FxPhoto) -> Option<MediaChoice<'_>> {
 }
 
 fn video_choice(video: &FxVideo) -> Option<MediaChoice<'_>> {
+    let selected = preferred_video(
+        video.url.as_deref(),
+        video.width,
+        video.height,
+        &video.formats.videos,
+        &video.variants,
+    )?;
     Some(MediaChoice::Video {
-        url: video.url.as_deref()?,
+        url: selected.url,
         thumbnail_url: video.thumbnail_url.as_deref(),
-        width: video.width,
-        height: video.height,
+        width: selected.width,
+        height: selected.height,
         duration: video.duration,
     })
 }
@@ -822,24 +872,111 @@ fn media_item_choice(item: &FxMediaItem) -> Option<MediaChoice<'_>> {
         || item.duration.is_some();
 
     if is_video {
+        let selected = preferred_video(
+            item.transcode_url.as_deref().or(item.url.as_deref()),
+            item.width,
+            item.height,
+            &item.formats.videos,
+            &item.variants,
+        )?;
         return Some(MediaChoice::Video {
-            url: item.transcode_url.as_deref().or(item.url.as_deref())?,
+            url: selected.url,
             thumbnail_url: item.thumbnail_url.as_deref(),
-            width: item.width,
-            height: item.height,
+            width: selected.width,
+            height: selected.height,
             duration: item.duration,
         });
     }
 
     let image_url = item
         .formats
-        .as_ref()
-        .and_then(|formats| formats.jpeg.as_deref().or(formats.webp.as_deref()))
+        .image_url()
         .or(item.url.as_deref())?;
     Some(MediaChoice::Image {
         url: image_url,
         width: item.width,
         height: item.height,
+    })
+}
+
+#[derive(Debug, Clone, Copy)]
+struct SelectedVideo<'a> {
+    url: &'a str,
+    width: Option<u32>,
+    height: Option<u32>,
+}
+
+fn preferred_video<'a>(
+    original_url: Option<&'a str>,
+    original_width: Option<u32>,
+    original_height: Option<u32>,
+    formats: &'a [FxVideoFormat],
+    variants: &'a [FxVideoVariant],
+) -> Option<SelectedVideo<'a>> {
+    let format_candidates = formats
+        .iter()
+        .filter(|format| {
+            format
+                .container
+                .as_deref()
+                .is_none_or(|container| container.eq_ignore_ascii_case("mp4"))
+                && format
+                    .codec
+                    .as_deref()
+                    .is_none_or(|codec| codec.eq_ignore_ascii_case("h264"))
+        })
+        .filter_map(|format| {
+            let url = format.url.as_deref()?;
+            let (width, height) = video_dimensions_from_url(url)?;
+            (width.min(height) <= MAX_VIDEO_SHORT_EDGE).then_some((
+                format.bitrate.unwrap_or_default(),
+                u64::from(width) * u64::from(height),
+                url,
+                width,
+                height,
+            ))
+        });
+    let variant_candidates = variants.iter().filter_map(|variant| {
+        let url = variant.url.as_deref()?;
+        if !variant
+            .content_type
+            .as_deref()
+            .is_some_and(|content_type| content_type.eq_ignore_ascii_case("video/mp4"))
+        {
+            return None;
+        }
+        let (width, height) = video_dimensions_from_url(url)?;
+        (width.min(height) <= MAX_VIDEO_SHORT_EDGE).then_some((
+            variant.bitrate.unwrap_or_default(),
+            u64::from(width) * u64::from(height),
+            url,
+            width,
+            height,
+        ))
+    });
+    let selected = format_candidates
+        .chain(variant_candidates)
+        .max_by_key(|(bitrate, pixels, ..)| (*bitrate, *pixels));
+
+    if let Some((_, _, url, width, height)) = selected {
+        return Some(SelectedVideo {
+            url,
+            width: Some(width),
+            height: Some(height),
+        });
+    }
+
+    Some(SelectedVideo {
+        url: original_url?,
+        width: original_width,
+        height: original_height,
+    })
+}
+
+fn video_dimensions_from_url(url: &str) -> Option<(u32, u32)> {
+    Url::parse(url).ok()?.path_segments()?.find_map(|segment| {
+        let (width, height) = segment.split_once('x')?;
+        Some((width.parse().ok()?, height.parse().ok()?))
     })
 }
 
@@ -874,12 +1011,21 @@ async fn build_video_pair(
     ctx: &ResolveContext<'_>,
     video: &FxVideo,
 ) -> (Option<EmbedMedia>, Option<EmbedMedia>) {
-    build_video_pair_from_parts(
-        ctx,
-        video.url.as_deref().unwrap_or_default(),
-        video.thumbnail_url.as_deref(),
+    let Some(selected) = preferred_video(
+        video.url.as_deref(),
         video.width,
         video.height,
+        &video.formats.videos,
+        &video.variants,
+    ) else {
+        return (None, None);
+    };
+    build_video_pair_from_parts(
+        ctx,
+        selected.url,
+        video.thumbnail_url.as_deref(),
+        selected.width,
+        selected.height,
         video.duration,
     )
     .await
@@ -1453,6 +1599,74 @@ mod tests {
     }
 
     #[test]
+    fn caps_video_rendition_at_1080_short_edge() {
+        let response: FxResponse = serde_json::from_str(
+            r#"{
+                "tweet": {
+                    "media": {
+                        "all": [{
+                            "type": "video",
+                            "url": "https://video.twimg.com/vid/2160x3840/original.mp4",
+                            "thumbnail_url": "https://pbs.twimg.com/thumb.jpg",
+                            "width": 2160,
+                            "height": 3840,
+                            "duration": 177.844,
+                            "formats": [
+                                {
+                                    "url": "https://video.twimg.com/vid/720x1280/medium.mp4",
+                                    "bitrate": 4096000,
+                                    "container": "mp4",
+                                    "codec": "h264"
+                                },
+                                {
+                                    "url": "https://video.twimg.com/vid/1080x1920/preferred.mp4",
+                                    "bitrate": 10368000,
+                                    "container": "mp4",
+                                    "codec": "h264"
+                                },
+                                {
+                                    "url": "https://video.twimg.com/vid/2160x3840/too-large.mp4",
+                                    "bitrate": 25128000,
+                                    "container": "mp4",
+                                    "codec": "h264"
+                                }
+                            ],
+                            "variants": [
+                                {
+                                    "url": "https://video.twimg.com/vid/720x1280/medium.mp4",
+                                    "bitrate": 4096000,
+                                    "content_type": "video/mp4"
+                                },
+                                {
+                                    "url": "https://video.twimg.com/vid/1080x1920/preferred.mp4",
+                                    "bitrate": 10368000,
+                                    "content_type": "video/mp4"
+                                },
+                                {
+                                    "url": "https://video.twimg.com/vid/2160x3840/too-large.mp4",
+                                    "bitrate": 25128000,
+                                    "content_type": "video/mp4"
+                                }
+                            ]
+                        }]
+                    }
+                }
+            }"#,
+        )
+        .unwrap();
+        let tweet = response.tweet.unwrap();
+        let choice = first_choice_from_all(tweet.media.as_ref().unwrap()).unwrap();
+        assert_video_choice(
+            choice,
+            "https://video.twimg.com/vid/1080x1920/preferred.mp4",
+            Some("https://pbs.twimg.com/thumb.jpg"),
+            Some(1080),
+            Some(1920),
+            Some(177.844),
+        );
+    }
+
+    #[test]
     fn parses_live_fxtwitter_fixture_shapes() {
         for (name, json) in [
             ("text", TEXT_JACK),
@@ -1837,6 +2051,8 @@ mod tests {
                         width: Some(1280),
                         height: Some(720),
                         duration: None,
+                        formats: FxMediaFormats::default(),
+                        variants: Vec::new(),
                     })
                     .collect()
             }),

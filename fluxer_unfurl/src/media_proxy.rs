@@ -4,7 +4,7 @@ use serde::{Deserialize, Serialize};
 use std::time::Duration;
 use url::Url;
 
-const METADATA_TIMEOUT: Duration = Duration::from_secs(5);
+const METADATA_TIMEOUT: Duration = Duration::from_secs(10);
 
 pub struct MediaProxyClient {
     http_client: reqwest::Client,
