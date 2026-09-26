@@ -35,15 +35,17 @@ impl Resolver for FireshareResolver {
                 return Ok(ResolverResult { embeds: vec![] });
             };
             let page = social::fetch_page(ctx, &url).await?;
-            let Some(video_url) = video_url(&page, &url) else {
-                return Ok(ResolverResult { embeds: vec![] });
-            };
-            let Some(video) = social::resolve_media(ctx, &video_url, MediaKind::Video).await else {
-                return Ok(ResolverResult { embeds: vec![] });
-            };
-            Ok(ResolverResult {
-                embeds: vec![video_only_embed(&ctx.original_url, video)],
-            })
+            // Only try variants after public, same-origin metadata advertises a video.
+            // Missing/not-yet-generated variants fall back through the normal media
+            // proxy checks, including access control, size and content-type limits.
+            for video_url in video_candidates(&page, &url) {
+                if let Some(video) = social::resolve_media(ctx, &video_url, MediaKind::Video).await {
+                    return Ok(ResolverResult {
+                        embeds: vec![video_only_embed(&ctx.original_url, video)],
+                    });
+                }
+            }
+            Ok(ResolverResult { embeds: vec![] })
         })
     }
 }
@@ -83,6 +85,19 @@ fn video_url(page: &SocialPage, metadata_url: &Url) -> Option<String> {
     let resolved = social::resolve_url(&page.final_url, value)?;
     let url = Url::parse(&resolved).ok()?;
     (url.origin() == metadata_url.origin()).then_some(resolved)
+}
+
+fn video_candidates(page: &SocialPage, source: &Url) -> Vec<String> {
+    let Some(original) = video_url(page, source) else {
+        return vec![];
+    };
+    let Some(mut variant) = metadata_url(source) else {
+        return vec![original];
+    };
+    let id = variant.path().trim_start_matches("/w/").to_owned();
+    variant.set_path(&format!("/_content/derived/{id}/{id}-720p.mp4"));
+    variant.set_query(None);
+    vec![variant.to_string(), original]
 }
 
 fn video_only_embed(source: &Url, video: EmbedMedia) -> MessageEmbed {
@@ -143,6 +158,30 @@ mod tests {
         let mut redirected = public;
         redirected.final_url = Url::parse("https://other.example/w/abc").unwrap();
         assert!(video_url(&redirected, &metadata).is_none());
+    }
+
+    #[test]
+    fn prefers_720p_with_original_as_fallback() {
+        let source = Url::parse("https://clips.dkzver.com/watch/abc?start=12#video").unwrap();
+        let public = page(r#"<meta property="og:video" content="/_content/video/abc.mp4">"#);
+        assert_eq!(video_candidates(&public, &source), vec![
+            "https://clips.dkzver.com/_content/derived/abc/abc-720p.mp4",
+            "https://clips.dkzver.com/_content/video/abc.mp4",
+        ]);
+    }
+
+    #[test]
+    fn does_not_probe_variants_without_public_same_origin_metadata() {
+        let source = Url::parse("https://clips.dkzver.com/w/abc").unwrap();
+        for html in [
+            r#"<meta property="og:title" content="Protected clip">"#,
+            r#"<meta property="og:video" content="https://other.example/video.mp4">"#,
+        ] {
+            assert!(video_candidates(&page(html), &source).is_empty());
+        }
+        let mut redirected = page(r#"<meta property="og:video" content="/_content/video/abc.mp4">"#);
+        redirected.final_url = Url::parse("https://other.example/w/abc").unwrap();
+        assert!(video_candidates(&redirected, &source).is_empty());
     }
 
     #[test]
