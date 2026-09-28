@@ -13,6 +13,8 @@ import {
 import {EmbedGif} from '@app/features/channel/components/embeds/media/EmbedGifv';
 import {EmbedImage} from '@app/features/channel/components/embeds/media/EmbedImage';
 import EmbedVideo from '@app/features/channel/components/embeds/media/EmbedVideo';
+import {EmbedFireshare} from '@app/features/channel/components/embeds/media/EmbedFireshare';
+import {getFiresharePlayer} from '@app/features/channel/components/embeds/media/FireshareEmbedUtils';
 import {EmbedYouTube} from '@app/features/channel/components/embeds/media/EmbedYouTube';
 import {getInlineVideoLayoutConstraints} from '@app/features/channel/components/embeds/media/VideoDimensionUtils';
 import {getEmbedMediaDimensions} from '@app/features/messaging/utils/MediaDimensionConfig';
@@ -28,6 +30,14 @@ const EmbedMediaRendererInner: FC<EmbedMediaRendererProps> = observer(
 		const {video, image, thumbnail} = embed;
 		if (!isValidMedia(video) && !isValidMedia(image) && !isValidMedia(thumbnail)) {
 			return null;
+		}
+		const firesharePlayer = isValidMedia(video) ? getFiresharePlayer(embed) : null;
+		if (firesharePlayer) {
+			return (
+				<FocusRing within ringClassName={mediaFocusRingClass} data-flx="channel.embeds.embed.embed-media-renderer-inner.focus-ring--fireshare">
+					<EmbedFireshare embed={embed} player={firesharePlayer} data-flx="channel.embeds.embed.embed-media-renderer-inner.embed-fireshare" />
+				</FocusRing>
+			);
 		}
 		if (isValidMedia(video) && getUrlHostname(embed.provider?.url) === 'www.youtube.com') {
 			return (

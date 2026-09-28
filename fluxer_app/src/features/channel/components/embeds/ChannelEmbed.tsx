@@ -20,6 +20,8 @@ import EmbedAudio from '@app/features/channel/components/embeds/media/EmbedAudio
 import {EmbedGif, EmbedGifv} from '@app/features/channel/components/embeds/media/EmbedGifv';
 import {EmbedImage} from '@app/features/channel/components/embeds/media/EmbedImage';
 import EmbedVideo from '@app/features/channel/components/embeds/media/EmbedVideo';
+import {EmbedFireshare} from '@app/features/channel/components/embeds/media/EmbedFireshare';
+import {getFiresharePlayer} from '@app/features/channel/components/embeds/media/FireshareEmbedUtils';
 import {EmbedYouTube} from '@app/features/channel/components/embeds/media/EmbedYouTube';
 import {getInlineVideoLayoutConstraints} from '@app/features/channel/components/embeds/media/VideoDimensionUtils';
 import Channels from '@app/features/channel/state/Channels';
@@ -209,6 +211,14 @@ export const Embed: FC<EmbedProps> = observer((props: EmbedProps) => {
 			);
 		}
 		if (embed.type === MessageEmbedTypes.VIDEO && isValidMedia(embed.video)) {
+			const firesharePlayer = getFiresharePlayer(embed);
+			if (firesharePlayer) {
+				return wrapMediaOnlyEmbed(
+					<FocusRing within ringClassName={mediaFocusRingClass} data-flx="channel.embeds.embed.focus-ring--fireshare">
+						<EmbedFireshare embed={embed} player={firesharePlayer} data-flx="channel.embeds.embed.embed-fireshare" />
+					</FocusRing>,
+				);
+			}
 			if (getUrlHostname(embed.provider?.url) === 'www.youtube.com') {
 				return wrapMediaOnlyEmbed(
 					<FocusRing within ringClassName={mediaFocusRingClass} data-flx="channel.embeds.embed.focus-ring--2">
