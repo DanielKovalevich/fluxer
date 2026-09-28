@@ -323,7 +323,7 @@ No default. Legacy unprefixed aliases. Accepted only by `admin` and `app-proxy`,
 
 #### `FLUXER_API_IP_BAN_EXEMPT_IPS`
 
-Default empty. Addresses exempt from IP bans. Comma separated. Every entry must parse as an IP or the API fails at boot.
+Default empty. Addresses and CIDR ranges exempt from IP bans. Comma separated. A bare IPv4 address exempts that address, a bare IPv6 address exempts its /64, and a CIDR range such as `2001:db8:1200::/56` exempts every address in it. Every entry must parse as an IP or a CIDR range or the API fails at boot.
 
 The API returns 403 for any request whose client-IP header is missing, empty, or not a parsable address, and for every request while `FLUXER_TRUST_CLIENT_IP_HEADER` is `false`. The exceptions are `/_health`, `/webhooks/livekit`, `/test`, and the Bluesky client metadata and JWKS routes. The edge sets the header on every upstream hop, so a missing or unparsable header happens only in a layout that puts something other than the edge directly in front of `api`. A proxy in front of the edge that never sets the header passes the check, and every request then looks as though it came from the proxy.
 
@@ -811,17 +811,15 @@ For environment-based configuration, use `FLUXER_AUTH_BLUESKY_ENABLED`, `FLUXER_
 | FLUXER_VAPID_PRIVATE_KEY | `CHANGE_ME` | The VAPID private key. Base64url of the 32-byte scalar, and the matching half of the pair |
 | FLUXER_VAPID_EMAIL | unset | The VAPID contact address. Compose derives `admin@` followed by `FLUXER_DOMAIN` when it is unset |
 
-The Gateway reads the same names. A malformed pair, or a private key that does not derive the public point, does not stop it. It records the fault in its log at startup and then drops every web push notification.
-
-`FLUXER_GATEWAY_PUSH_ENABLED` is read by the Gateway alone, defaults to `true`, and skips that startup check on the VAPID pair when it is `false`.
+`FLUXER_GATEWAY_PUSH_ENABLED` is read by the Gateway alone and defaults to `true`. When it is `false`, the Gateway hands no message or clear notification to `push`.
 
 ## Mobile push
 
-`api`, `gateway`, and `push` read the APNs and FCM names. None appear in `.env.example` or in `docker-compose.yml`, so configuring mobile push means editing the Compose file. All are optional.
+`api` and `push` read the APNs and FCM names. None appear in `.env.example` or in `docker-compose.yml`, so configuring mobile push means editing the Compose file. All are optional.
 
 #### `FLUXER_PUSH_APNS_ENABLED`
 
-Default `false`. The APNs switch. Must be set on `api`, `gateway`, and `push`.
+Default `false`. The APNs switch. Must be set on `api` and `push`.
 
 #### `FLUXER_PUSH_APNS_TEAM_ID`
 
@@ -849,7 +847,7 @@ Default `[]`. Per-app APNs configuration. JSON array. An entry with no `app_id` 
 
 #### `FLUXER_PUSH_FCM_ENABLED`
 
-Default `false`. The FCM switch. Must be set on `api`, `gateway`, and `push`.
+Default `false`. The FCM switch. Must be set on `api` and `push`.
 
 #### `FLUXER_PUSH_FCM_PROJECT_ID`
 
@@ -907,13 +905,19 @@ No default. Replaces the APNs host in both environments. Set it only for a test 
 
 Default `https://fcm.googleapis.com`. The FCM host. Set it only for a proxy or a test double.
 
+#### `FLUXER_PUSH_SERVICE_RELAY_CONSENT_ACCEPTED`
+
+Default `false`. Accepts the push relay supplemental privacy notice for this `push` process. `true`, `1`, or `yes` accepts it, and `false`, `0`, or `no` leaves the decision to the [push relay configuration](/admin-api/instance/#push-relay-configuration-object). Any other value fails startup. When it is `true`, `push` sends through the Fluxer-run relay even while the stored consent is off. Compose does not forward it.
+
 ## Payments
 
-Stripe billing, which the shipped stack keeps off. All are optional.
+Stripe billing for a paid premium tier and gift purchases. All are optional. On a self-hosted instance, set billing in the admin dashboard's [Premium & billing](#runtime-settings-in-the-admin-dashboard) group instead. A value stored there wins over the matching variable below.
+
+A self-hosted instance sells premium only while its premium mode is `mirror`, billing is switched on, a Stripe secret key is set, and at least one currency has both a monthly and a yearly price. Instance discovery reports this as `stripe_enabled`. Existing subscribers can still manage, cancel and renew while the premium mode is `mirror` and a Stripe secret key is set, even after sales are switched off or the prices are removed. Instance discovery reports this as `stripe_serviceable`. Stripe sends events to `https://<FLUXER_DOMAIN>/api/stripe/webhook`, which the dashboard shows as the webhook URL to register in Stripe.
 
 #### `FLUXER_STRIPE_ENABLED`
 
-Default `false`. The Stripe switch. Compose hardcodes `false`, so a self-hosted instance cannot enable it from `.env`.
+Default `false`. The Stripe switch. Compose forwards it from `.env`.
 
 #### `FLUXER_STRIPE_SECRET_KEY`
 
@@ -925,15 +929,19 @@ Default empty. The webhook signing secret. Not forwarded by the shipped Compose 
 
 #### `FLUXER_STRIPE_PRICES`
 
-Default `{}`. Every price ID at once. JSON object. An individual price variable overrides the matching price in this object.
+Default `{}`. Every price ID at once. JSON object. An individual price variable overrides the matching price in this object. Not forwarded by the shipped Compose file.
 
-Individual price variables also exist, one per product and currency: `FLUXER_STRIPE_PRICE_MONTHLY_`, `FLUXER_STRIPE_PRICE_YEARLY_`, `FLUXER_STRIPE_PRICE_GIFT_1_MONTH_` and `FLUXER_STRIPE_PRICE_GIFT_1_YEAR_` in USD, EUR, BRL, DKK, INR, NOK, PLN, SEK, and TRY, plus `FLUXER_STRIPE_PRICE_VISIONARY_` and `FLUXER_STRIPE_PRICE_GIFT_VISIONARY_` in USD and EUR.
+Individual price variables also exist, one per product and currency: `FLUXER_STRIPE_PRICE_MONTHLY_`, `FLUXER_STRIPE_PRICE_YEARLY_`, `FLUXER_STRIPE_PRICE_GIFT_1_MONTH_` and `FLUXER_STRIPE_PRICE_GIFT_1_YEAR_` in USD, EUR, BRL, DKK, INR, NOK, PLN, SEK, and TRY.
+
+Prices saved in the dashboard replace this catalogue entirely. They take any three-letter currency code. A buyer gets the currency mapped to their country, then the default currency, then the first configured one. Fluxer's country checks for localised currencies apply only to prices set by these variables.
 
 #### `FLUXER_STRIPE_LEGACY_PRICES`
 
-Default `{}`. Retired price IDs, keyed by the same slot names `FLUXER_STRIPE_PRICES` uses, each mapped to a list: `{"monthly_brl": ["price_..."]}`. JSON object. Existing subscriptions on these prices keep renewing. The localised checkout catalogue uses `FLUXER_STRIPE_PRICES` alone.
+Default `{}`. Retired price IDs, keyed by the same slot names `FLUXER_STRIPE_PRICES` uses, each mapped to a list: `{"monthly_brl": ["price_..."]}`. JSON object. Existing subscriptions on these prices keep renewing. The localised checkout catalogue uses `FLUXER_STRIPE_PRICES` alone. Legacy prices saved in the dashboard replace this variable, and there the currency in a slot name is upper case, such as `monthly_GBP`.
 
 Repricing a slot has a fixed order. Doing the steps in another order leaves a price ID unknown to the API, and invoices on that price fail. Create the new price in Stripe, move the ID it replaces into this variable, roll the API, and only then point `FLUXER_STRIPE_PRICES` at the new price. A price ID that neither variable names is unknown to the API: a renewal invoice on it fails the webhook with `Unknown product for invoice renewal`, a checkout completing on it fails with `Unknown price ID for checkout session`, and both keep failing until the ID is registered. The API answers Stripe as soon as the signature verifies and hands the event to `worker`, so any retry comes from `worker` rerunning the `processStripeWebhook` job: the Stripe dashboard shows the delivery as succeeded and the error is in the `worker` logs. Keep a retired ID listed for as long as any subscription still bills on it, which for a yearly price is at least a year after the switch.
+
+With prices saved in the dashboard, add the retired ID to its legacy prices before you replace the price.
 
 ## Moderation and abuse
 
@@ -1149,7 +1157,7 @@ Default `development`. The runtime mode. `development`, `production`, or `test`.
 
 #### `FLUXER_SELF_HOSTED`
 
-Default `false`. The self-host switch. Compose sets `true`. It relaxes the production Postgres SSL requirement, seeds the limit tier, gates registration, billing and discovery controllers, and turns blocklist feeds off.
+Default `false`. The self-host switch. Compose sets `true`. It relaxes the production Postgres SSL requirement, seeds the limit tier, gates registration, donation and discovery controllers, keeps premium billing off until it is set up as [Payments](#payments) describes, and turns blocklist feeds off.
 
 `/_metrics` on `api`, `media-proxy`, `gateway`, and `push`, plus the Gateway's `/_health/ready`, `/_health/drain`, and `/_health/undrain`, are gated to loopback peers, so no proxy reaches them. The probes that work from outside are `/api/_health`, `/gateway/_health`, `/media/_health`, and the edge's own `/_health`.
 
@@ -1711,7 +1719,7 @@ See [Bluesky connections](#bluesky-connections) for configuration.
 
 #### `FLUXER_PUSH_APNS_` and `FLUXER_PUSH_FCM_`
 
-Mobile push cannot be configured at all from the example. `api`, `gateway`, and `push` all read these names. An override has to reach all three.
+Mobile push cannot be configured at all from the example. `api` and `push` both read these names. An override has to reach both.
 
 #### `RUST_LOG`, `LOG_LEVEL` and `LOGGER_LEVEL`
 
@@ -1748,6 +1756,10 @@ Single-community mode, direct messages and friends, the premium model, and optio
 #### Instance Config, Runtime Integrations
 
 The Klipy GIF key, the YouTube Data API key, the CAPTCHA provider and its keys, email delivery with an SMTP connection test, and Bluesky OAuth.
+
+#### Instance Config, Premium & billing
+
+The premium tier name and information link, the billing switch, the Stripe secret key and webhook secret, the webhook URL to register in Stripe, and the price catalogue with its default currency, country currencies and legacy prices. See [Payments](#payments).
 
 #### Instance Config, Media Expiry
 

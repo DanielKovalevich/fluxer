@@ -6,6 +6,7 @@ import type {UserRow} from '@app/api/database/types/UserTypes';
 import {Logger} from '@app/api/Logger';
 import {getBillingRepository} from '@app/api/middleware/ServiceRegistry';
 import type {User} from '@app/api/models/User';
+import {isBillingActive} from '@app/api/stripe/BillingConfigCache';
 import {canProvisionPremiumFromSubscriptionStatus} from '@app/api/stripe/StripeSubscriptionAccessPolicy';
 import {
 	getInvoiceLatestLinePeriodEnd,
@@ -13,7 +14,7 @@ import {
 	getSubscriptionPremiumPeriodEnd,
 	getSubscriptionStartDate,
 } from '@app/api/stripe/StripeSubscriptionPeriod';
-import {createPremiumClearPatch, getEffectivePremiumUntil} from '@app/api/user/UserHelpers';
+import {clearPerksSanitizedFlag, createPremiumClearPatch, getEffectivePremiumUntil} from '@app/api/user/UserHelpers';
 import {mapUserToPrivateResponse} from '@app/api/user/UserMappers';
 import {getWorkerDependencies} from '@app/api/worker/WorkerContext';
 import {PremiumFlags, UserPremiumTypes} from '@fluxer/constants/src/UserConstants';
@@ -72,6 +73,10 @@ function buildStripePremiumRepairPatch(user: User, subscription: Stripe.Subscrip
 	}
 	if (user.stripeSubscriptionId !== subscription.id) {
 		patch.stripe_subscription_id = subscription.id;
+	}
+	const clearedPremiumFlags = clearPerksSanitizedFlag(user.premiumFlags);
+	if (user.premiumFlags !== clearedPremiumFlags) {
+		patch.premium_flags = clearedPremiumFlags;
 	}
 	if (subscriptionCustomerId && user.stripeCustomerId !== subscriptionCustomerId) {
 		patch.stripe_customer_id = subscriptionCustomerId;
@@ -270,7 +275,8 @@ async function reconcileUserPremiumStateFromStripe(params: {userId: UserID; stri
 	);
 	if (!subscription) {
 		const hasStalePremium = user.premiumType === UserPremiumTypes.SUBSCRIPTION;
-		const hasNonStripePremium = Config.instance.selfHosted || (user.premiumFlags & PremiumFlags.ENABLED_OVERRIDE) !== 0;
+		const hasNonStripePremium =
+			(Config.instance.selfHosted && !isBillingActive()) || (user.premiumFlags & PremiumFlags.ENABLED_OVERRIDE) !== 0;
 		if (hasStalePremium && !hasNonStripePremium) {
 			const patch: Partial<UserRow> = {};
 			let effectivePremiumUntil = getEffectivePremiumUntil(user);

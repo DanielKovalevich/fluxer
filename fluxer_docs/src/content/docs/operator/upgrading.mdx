@@ -156,6 +156,7 @@ The run ends by naming the record it wrote and the command that rolls back to it
 | `--dry-run` | `-DryRun` | Print the plan. Change nothing |
 | `--backup-dir <path>` | `-BackupDir` | Where records go. Default `<dir>/backups` |
 | `--no-volume-backup` | `-NoVolumeBackup` | Take the database dump and skip the uploads copy |
+| `--no-volume-compression` | `-NoVolumeCompression` | Copy the uploads as a plain `.tar`. Less downtime, more disk |
 | `--skip-backup-accept-data-loss` | `-SkipBackupAcceptDataLoss` | Upgrade with no backup at all |
 
 `--dir` and `--ref` mean what they mean on an install, and the installer derives an omitted `--ref` from the `FLUXER_IMAGE_TAG` line in `.env`. Every failure prints a sentence on standard error and exits non-zero, and the script header lists what each code means. A Postgres major version change is exit 3.
@@ -194,6 +195,23 @@ Within minutes of the upgrade, `worker` starts deleting existing data that is pa
 
 Instances on Cassandra already behave this way.
 
+## Add the passkey columns on Cassandra
+
+An instance on the Postgres backend needs nothing here. An instance on Cassandra or Scylla adds two columns to `webauthn_credentials` before it starts the new `api` and `worker` images. Replace `fluxer` with the value of `FLUXER_CASSANDRA_KEYSPACE`.
+
+```sql
+ALTER TABLE fluxer.webauthn_credentials ADD rp_id text;
+ALTER TABLE fluxer.webauthn_credentials ADD superseded_by text;
+```
+
+Both columns start empty on every row, and existing passkeys keep working as before. Wait until every node reports the same schema version, as `nodetool describecluster` shows, then upgrade.
+
+:::danger[Upgrading without the columns breaks every connection]
+The new release reads both columns whenever it loads passkeys, and every Gateway connection loads them. Without the columns no client finishes connecting, and passkey sign-in fails.
+:::
+
+An earlier release ignores the columns, so a rollback leaves them in place.
+
 ## What the backup covers
 
 Each upgrade writes one record directory, named `record-` and a UTC stamp, under `backups` or wherever `--backup-dir` points. It holds:
@@ -201,7 +219,7 @@ Each upgrade writes one record directory, named `record-` and a UTC stamp, under
 | Artefact | What it covers |
 | --- | --- |
 | `fluxer.dump` | Every account, message, guild and configuration row, in the Postgres custom format |
-| `seaweedfs-data.tgz` | Every upload, avatar, report and harvest |
+| `seaweedfs-data.tgz` | Every upload, avatar, report and harvest, or `seaweedfs-data.tar` under `--no-volume-compression` |
 | `.env` | Every secret the instance was built with |
 
 The stack files sit in the record beside them, so a rollback puts back the exact files the instance was running. The record directory is created `0700` and the `.env` copy inside it is `0600`. Keep records wherever you already keep secrets.
@@ -289,7 +307,7 @@ docker run --rm -v fluxer_seaweedfs-data:/data \
 docker compose up -d
 ```
 
-`tar` extracts over whatever is already on the volume, so the `find` empties it first. In PowerShell write `${PWD}` instead of `$PWD`. Success is an existing attachment URL answering 200 again. The `fluxer_` prefix is the Compose project name, which `docker-compose.yml` sets to `fluxer`.
+For a `seaweedfs-data.tar`, write `tar xf` in place of `tar xzf`. `tar` extracts over whatever is already on the volume, so the `find` empties it first. In PowerShell write `${PWD}` instead of `$PWD`. Success is an existing attachment URL answering 200 again. The `fluxer_` prefix is the Compose project name, which `docker-compose.yml` sets to `fluxer`.
 
 ## Move to a new Postgres major version
 

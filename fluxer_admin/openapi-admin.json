@@ -2743,7 +2743,7 @@
 						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
 					}
 				},
-				"description": "Create one-use Plutonium gift codes with an explicit positive duration and return their complete redemption links. Lifetime gifts are not supported. Not available on self-hosted instances. Requires GIFT_CODES_GENERATE permission.",
+				"description": "Create one-use premium gift codes with an explicit positive duration and return their complete redemption links. Lifetime gifts are not supported. On self-hosted instances the premium mode must be mirror. Requires GIFT_CODES_GENERATE permission.",
 				"security": [{"adminApiKey": []}],
 				"requestBody": {
 					"required": true,
@@ -10524,8 +10524,10 @@
 					},
 					"gateway_rollout": {"$ref": "#/components/schemas/GatewayRolloutConfigResponse"},
 					"voice_noise_suppression": {"$ref": "#/components/schemas/VoiceNoiseSuppressionConfigResponse"},
-					"push_service_delivery": {"$ref": "#/components/schemas/PushServiceDeliveryConfigResponse"},
+					"push_relay": {"$ref": "#/components/schemas/PushRelayConfigResponse"},
 					"domain_migration": {"$ref": "#/components/schemas/DomainMigrationConfigResponse"},
+					"altcha_captcha": {"$ref": "#/components/schemas/AltchaCaptchaConfigResponse"},
+					"profile_timezone": {"$ref": "#/components/schemas/ProfileTimezoneConfigResponse"},
 					"experiment_delivery": {"$ref": "#/components/schemas/ExperimentDeliveryConfigResponse"},
 					"registration": {
 						"type": "object",
@@ -10637,7 +10639,9 @@
 									"favicon_url": {"nullable": true, "type": "string"},
 									"theme_color": {"nullable": true, "type": "string"},
 									"status_page_url": {"nullable": true, "type": "string"},
-									"status_page_incident_history_url": {"nullable": true, "type": "string"}
+									"status_page_incident_history_url": {"nullable": true, "type": "string"},
+									"premium_product_name": {"type": "string"},
+									"premium_info_url": {"nullable": true, "type": "string"}
 								},
 								"required": [
 									"product_name",
@@ -10648,7 +10652,9 @@
 									"favicon_url",
 									"theme_color",
 									"status_page_url",
-									"status_page_incident_history_url"
+									"status_page_incident_history_url",
+									"premium_product_name",
+									"premium_info_url"
 								],
 								"additionalProperties": false
 							},
@@ -10947,21 +10953,25 @@
 						},
 						"required": ["attachment_decay"],
 						"additionalProperties": false
-					}
+					},
+					"billing": {"$ref": "#/components/schemas/InstanceBillingResponse"}
 				},
 				"required": [
 					"sso",
 					"gateway_rollout",
 					"voice_noise_suppression",
-					"push_service_delivery",
+					"push_relay",
 					"domain_migration",
+					"altcha_captcha",
+					"profile_timezone",
 					"experiment_delivery",
 					"registration",
 					"self_hosted",
 					"app_public",
 					"policy",
 					"integrations",
-					"media"
+					"media",
+					"billing"
 				],
 				"additionalProperties": false
 			},
@@ -11089,13 +11099,18 @@
 						"nullable": true,
 						"allOf": [{"$ref": "#/components/schemas/VoiceNoiseSuppressionConfigUpdateRequest"}]
 					},
-					"push_service_delivery": {
-						"nullable": true,
-						"allOf": [{"$ref": "#/components/schemas/PushServiceDeliveryConfigUpdateRequest"}]
-					},
+					"push_relay": {"nullable": true, "allOf": [{"$ref": "#/components/schemas/PushRelayConfigUpdateRequest"}]},
 					"domain_migration": {
 						"nullable": true,
 						"allOf": [{"$ref": "#/components/schemas/DomainMigrationConfigUpdateRequest"}]
+					},
+					"altcha_captcha": {
+						"nullable": true,
+						"allOf": [{"$ref": "#/components/schemas/AltchaCaptchaConfigUpdateRequest"}]
+					},
+					"profile_timezone": {
+						"nullable": true,
+						"allOf": [{"$ref": "#/components/schemas/ProfileTimezoneConfigUpdateRequest"}]
 					},
 					"experiment_delivery": {
 						"nullable": true,
@@ -11144,7 +11159,9 @@
 									"favicon_url": {"nullable": true, "type": "string", "maxLength": 2048},
 									"theme_color": {"nullable": true, "type": "string", "maxLength": 64},
 									"status_page_url": {"nullable": true, "type": "string", "maxLength": 2048},
-									"status_page_incident_history_url": {"nullable": true, "type": "string", "maxLength": 2048}
+									"status_page_incident_history_url": {"nullable": true, "type": "string", "maxLength": 2048},
+									"premium_product_name": {"nullable": true, "type": "string", "minLength": 1, "maxLength": 40},
+									"premium_info_url": {"nullable": true, "type": "string", "maxLength": 2048}
 								}
 							},
 							"setup": {"nullable": true, "type": "object", "properties": {"configured": {"type": "boolean"}}},
@@ -11312,7 +11329,8 @@
 								}
 							}
 						}
-					}
+					},
+					"billing": {"nullable": true, "allOf": [{"$ref": "#/components/schemas/InstanceBillingUpdateRequest"}]}
 				}
 			},
 			"ListGuildStickersResponse": {
@@ -15171,6 +15189,28 @@
 					{"name": "BANNER_UNSET", "value": "2", "description": "Guild member banner is unset"}
 				]
 			},
+			"InstanceBillingUpdateRequest": {
+				"type": "object",
+				"properties": {
+					"enabled": {"nullable": true, "type": "boolean"},
+					"stripe_secret_key": {"nullable": true, "type": "string", "minLength": 1, "maxLength": 4096},
+					"stripe_webhook_secret": {"nullable": true, "type": "string", "minLength": 1, "maxLength": 4096},
+					"automatic_tax": {"nullable": true, "type": "boolean"},
+					"tax_id_collection": {"nullable": true, "type": "boolean"},
+					"terms_consent_required": {"nullable": true, "type": "boolean"},
+					"default_currency": {"nullable": true, "allOf": [{"$ref": "#/components/schemas/PremiumCurrency"}]},
+					"prices": {
+						"nullable": true,
+						"type": "object",
+						"additionalProperties": {"$ref": "#/components/schemas/BillingPriceSetUpdateRequest"}
+					},
+					"country_currencies": {
+						"nullable": true,
+						"allOf": [{"$ref": "#/components/schemas/BillingCountryCurrenciesSchema"}]
+					},
+					"legacy_prices": {"nullable": true, "allOf": [{"$ref": "#/components/schemas/BillingLegacyPricesSchema"}]}
+				}
+			},
 			"InstanceCaptchaProviderSchema": {"type": "string", "enum": ["hcaptcha", "turnstile", "none"]},
 			"InstanceRegistrationModeSchema": {
 				"description": "Registration mode",
@@ -15190,6 +15230,57 @@
 					"poll_jitter_percent": {"type": "integer", "minimum": 0, "maximum": 50}
 				}
 			},
+			"ProfileTimezoneConfigUpdateRequest": {
+				"type": "object",
+				"properties": {
+					"enabled": {"type": "boolean"},
+					"rollout_basis_points": {"type": "integer", "minimum": 0, "maximum": 10000},
+					"rollout_salt": {"type": "string", "minLength": 1, "maxLength": 64, "pattern": "^[\\x20-\\x7e]+$"},
+					"included_user_ids": {
+						"maxItems": 1000,
+						"type": "array",
+						"items": {"type": "string", "pattern": "^\\d{1,20}$"}
+					},
+					"included_guild_ids": {
+						"maxItems": 1000,
+						"type": "array",
+						"items": {"type": "string", "pattern": "^\\d{1,20}$"}
+					},
+					"include_premium_users": {"type": "boolean"},
+					"excluded_user_ids": {
+						"maxItems": 1000,
+						"type": "array",
+						"items": {"type": "string", "pattern": "^\\d{1,20}$"}
+					}
+				}
+			},
+			"AltchaCaptchaConfigUpdateRequest": {
+				"type": "object",
+				"properties": {
+					"enabled": {"type": "boolean"},
+					"rollout_basis_points": {"type": "integer", "minimum": 0, "maximum": 10000},
+					"rollout_salt": {"type": "string", "minLength": 1, "maxLength": 64, "pattern": "^[\\x20-\\x7e]+$"},
+					"included_user_ids": {
+						"maxItems": 1000,
+						"type": "array",
+						"items": {"type": "string", "pattern": "^\\d{1,20}$"}
+					},
+					"included_guild_ids": {
+						"maxItems": 1000,
+						"type": "array",
+						"items": {"type": "string", "pattern": "^\\d{1,20}$"}
+					},
+					"include_premium_users": {"type": "boolean"},
+					"excluded_user_ids": {
+						"maxItems": 1000,
+						"type": "array",
+						"items": {"type": "string", "pattern": "^\\d{1,20}$"}
+					},
+					"anonymous_enabled": {"type": "boolean"},
+					"cost": {"type": "integer", "minimum": 1000, "maximum": 100000},
+					"max_counter": {"type": "integer", "minimum": 100, "maximum": 1000000}
+				}
+			},
 			"DomainMigrationConfigUpdateRequest": {
 				"type": "object",
 				"properties": {
@@ -15201,6 +15292,12 @@
 						"type": "array",
 						"items": {"type": "string", "pattern": "^\\d{1,20}$"}
 					},
+					"included_guild_ids": {
+						"maxItems": 1000,
+						"type": "array",
+						"items": {"type": "string", "pattern": "^\\d{1,20}$"}
+					},
+					"include_premium_users": {"type": "boolean"},
 					"excluded_user_ids": {
 						"maxItems": 1000,
 						"type": "array",
@@ -15210,24 +15307,7 @@
 					"standalone_forwarding": {"type": "boolean"}
 				}
 			},
-			"PushServiceDeliveryConfigUpdateRequest": {
-				"type": "object",
-				"properties": {
-					"enabled": {"type": "boolean"},
-					"rollout_basis_points": {"type": "integer", "minimum": 0, "maximum": 10000},
-					"rollout_salt": {"type": "string", "minLength": 1, "maxLength": 64, "pattern": "^[\\x20-\\x7e]+$"},
-					"included_user_ids": {
-						"maxItems": 1000,
-						"type": "array",
-						"items": {"type": "string", "pattern": "^\\d{1,20}$"}
-					},
-					"excluded_user_ids": {
-						"maxItems": 1000,
-						"type": "array",
-						"items": {"type": "string", "pattern": "^\\d{1,20}$"}
-					}
-				}
-			},
+			"PushRelayConfigUpdateRequest": {"type": "object", "properties": {"relay_consent_accepted": {"type": "boolean"}}},
 			"VoiceNoiseSuppressionConfigUpdateRequest": {
 				"type": "object",
 				"properties": {
@@ -15246,6 +15326,12 @@
 						"type": "array",
 						"items": {"type": "string", "pattern": "^\\d{1,20}$"}
 					},
+					"included_guild_ids": {
+						"maxItems": 1000,
+						"type": "array",
+						"items": {"type": "string", "pattern": "^\\d{1,20}$"}
+					},
+					"include_premium_users": {"type": "boolean"},
 					"excluded_user_ids": {
 						"maxItems": 1000,
 						"type": "array",
@@ -15284,6 +15370,85 @@
 				"type": "string",
 				"enum": ["none", "standard", "gate", "speex", "rnnoise", "gtcrn", "deep_filter"]
 			},
+			"BillingLegacyPricesSchema": {
+				"type": "object",
+				"additionalProperties": {
+					"maxItems": 32,
+					"type": "array",
+					"items": {"$ref": "#/components/schemas/StripePriceIdSchema"}
+				}
+			},
+			"BillingCountryCurrenciesSchema": {
+				"type": "object",
+				"additionalProperties": {"$ref": "#/components/schemas/PremiumCurrency"}
+			},
+			"BillingPriceSetUpdateRequest": {
+				"type": "object",
+				"properties": {
+					"monthly": {"nullable": true, "allOf": [{"$ref": "#/components/schemas/StripePriceIdSchema"}]},
+					"yearly": {"nullable": true, "allOf": [{"$ref": "#/components/schemas/StripePriceIdSchema"}]},
+					"gift_1_month": {"nullable": true, "allOf": [{"$ref": "#/components/schemas/StripePriceIdSchema"}]},
+					"gift_1_year": {"nullable": true, "allOf": [{"$ref": "#/components/schemas/StripePriceIdSchema"}]}
+				}
+			},
+			"PremiumCurrency": {"type": "string", "pattern": "^[A-Z]{3}$"},
+			"StripePriceIdSchema": {"type": "string", "maxLength": 255, "pattern": "^price_[A-Za-z0-9]+$"},
+			"InstanceBillingResponse": {
+				"type": "object",
+				"properties": {
+					"enabled": {"nullable": true, "type": "boolean"},
+					"effective_enabled": {"type": "boolean"},
+					"stripe_secret_key_set": {"type": "boolean"},
+					"stripe_webhook_secret_set": {"type": "boolean"},
+					"stripe_secret_key_stored": {"type": "boolean"},
+					"stripe_webhook_secret_stored": {"type": "boolean"},
+					"automatic_tax": {"nullable": true, "type": "boolean"},
+					"tax_id_collection": {"nullable": true, "type": "boolean"},
+					"terms_consent_required": {"nullable": true, "type": "boolean"},
+					"effective_automatic_tax": {"type": "boolean"},
+					"effective_tax_id_collection": {"type": "boolean"},
+					"effective_terms_consent_required": {"type": "boolean"},
+					"default_currency": {"nullable": true, "allOf": [{"$ref": "#/components/schemas/PremiumCurrency"}]},
+					"prices": {
+						"nullable": true,
+						"type": "object",
+						"additionalProperties": {"$ref": "#/components/schemas/BillingPriceSetResponse"}
+					},
+					"country_currencies": {"nullable": true, "type": "object", "additionalProperties": {"type": "string"}},
+					"legacy_prices": {
+						"nullable": true,
+						"type": "object",
+						"additionalProperties": {"type": "array", "items": {"type": "string"}}
+					},
+					"billing_active": {"type": "boolean"},
+					"stripe_serviceable": {"type": "boolean"},
+					"catalog_mode": {"$ref": "#/components/schemas/BillingCatalogModeSchema"},
+					"webhook_url": {"type": "string"}
+				},
+				"required": [
+					"enabled",
+					"effective_enabled",
+					"stripe_secret_key_set",
+					"stripe_webhook_secret_set",
+					"stripe_secret_key_stored",
+					"stripe_webhook_secret_stored",
+					"automatic_tax",
+					"tax_id_collection",
+					"terms_consent_required",
+					"effective_automatic_tax",
+					"effective_tax_id_collection",
+					"effective_terms_consent_required",
+					"default_currency",
+					"prices",
+					"country_currencies",
+					"legacy_prices",
+					"billing_active",
+					"stripe_serviceable",
+					"catalog_mode",
+					"webhook_url"
+				],
+				"additionalProperties": false
+			},
 			"ExperimentDeliveryConfigResponse": {
 				"type": "object",
 				"properties": {
@@ -15291,6 +15456,102 @@
 					"poll_jitter_percent": {"default": 15, "type": "integer", "minimum": 0, "maximum": 50}
 				},
 				"required": ["poll_interval_seconds", "poll_jitter_percent"],
+				"additionalProperties": false
+			},
+			"ProfileTimezoneConfigResponse": {
+				"type": "object",
+				"properties": {
+					"enabled": {"default": false, "type": "boolean"},
+					"config_version": {"default": 0, "type": "integer", "minimum": 0, "maximum": 9007199254740991},
+					"rollout_basis_points": {"default": 0, "type": "integer", "minimum": 0, "maximum": 10000},
+					"rollout_salt": {
+						"default": "profile-timezone-v1",
+						"type": "string",
+						"minLength": 1,
+						"maxLength": 64,
+						"pattern": "^[\\x20-\\x7e]+$"
+					},
+					"included_user_ids": {
+						"default": [],
+						"maxItems": 1000,
+						"type": "array",
+						"items": {"type": "string", "pattern": "^\\d{1,20}$"}
+					},
+					"included_guild_ids": {
+						"default": [],
+						"maxItems": 1000,
+						"type": "array",
+						"items": {"type": "string", "pattern": "^\\d{1,20}$"}
+					},
+					"include_premium_users": {"default": false, "type": "boolean"},
+					"excluded_user_ids": {
+						"default": [],
+						"maxItems": 1000,
+						"type": "array",
+						"items": {"type": "string", "pattern": "^\\d{1,20}$"}
+					}
+				},
+				"required": [
+					"enabled",
+					"config_version",
+					"rollout_basis_points",
+					"rollout_salt",
+					"included_user_ids",
+					"included_guild_ids",
+					"include_premium_users",
+					"excluded_user_ids"
+				],
+				"additionalProperties": false
+			},
+			"AltchaCaptchaConfigResponse": {
+				"type": "object",
+				"properties": {
+					"enabled": {"default": false, "type": "boolean"},
+					"config_version": {"default": 0, "type": "integer", "minimum": 0, "maximum": 9007199254740991},
+					"rollout_basis_points": {"default": 0, "type": "integer", "minimum": 0, "maximum": 10000},
+					"rollout_salt": {
+						"default": "altcha-captcha-v1",
+						"type": "string",
+						"minLength": 1,
+						"maxLength": 64,
+						"pattern": "^[\\x20-\\x7e]+$"
+					},
+					"included_user_ids": {
+						"default": [],
+						"maxItems": 1000,
+						"type": "array",
+						"items": {"type": "string", "pattern": "^\\d{1,20}$"}
+					},
+					"included_guild_ids": {
+						"default": [],
+						"maxItems": 1000,
+						"type": "array",
+						"items": {"type": "string", "pattern": "^\\d{1,20}$"}
+					},
+					"include_premium_users": {"default": false, "type": "boolean"},
+					"excluded_user_ids": {
+						"default": [],
+						"maxItems": 1000,
+						"type": "array",
+						"items": {"type": "string", "pattern": "^\\d{1,20}$"}
+					},
+					"anonymous_enabled": {"default": false, "type": "boolean"},
+					"cost": {"default": 5000, "type": "integer", "minimum": 1000, "maximum": 100000},
+					"max_counter": {"default": 10000, "type": "integer", "minimum": 100, "maximum": 1000000}
+				},
+				"required": [
+					"enabled",
+					"config_version",
+					"rollout_basis_points",
+					"rollout_salt",
+					"included_user_ids",
+					"included_guild_ids",
+					"include_premium_users",
+					"excluded_user_ids",
+					"anonymous_enabled",
+					"cost",
+					"max_counter"
+				],
 				"additionalProperties": false
 			},
 			"DomainMigrationConfigResponse": {
@@ -15312,6 +15573,13 @@
 						"type": "array",
 						"items": {"type": "string", "pattern": "^\\d{1,20}$"}
 					},
+					"included_guild_ids": {
+						"default": [],
+						"maxItems": 1000,
+						"type": "array",
+						"items": {"type": "string", "pattern": "^\\d{1,20}$"}
+					},
+					"include_premium_users": {"default": false, "type": "boolean"},
 					"excluded_user_ids": {
 						"default": [],
 						"maxItems": 1000,
@@ -15327,46 +15595,28 @@
 					"rollout_basis_points",
 					"rollout_salt",
 					"included_user_ids",
+					"included_guild_ids",
+					"include_premium_users",
 					"excluded_user_ids",
 					"anonymous_rollout_basis_points",
 					"standalone_forwarding"
 				],
 				"additionalProperties": false
 			},
-			"PushServiceDeliveryConfigResponse": {
+			"PushRelayConfigResponse": {
 				"type": "object",
 				"properties": {
-					"enabled": {"default": false, "type": "boolean"},
-					"config_version": {"default": 0, "type": "integer", "minimum": 0, "maximum": 9007199254740991},
-					"rollout_basis_points": {"default": 0, "type": "integer", "minimum": 0, "maximum": 10000},
-					"rollout_salt": {
-						"default": "push-service-delivery-v1",
+					"relay_consent_accepted": {"default": false, "type": "boolean"},
+					"relay_consent_accepted_at": {
+						"default": null,
+						"nullable": true,
 						"type": "string",
-						"minLength": 1,
-						"maxLength": 64,
-						"pattern": "^[\\x20-\\x7e]+$"
+						"format": "date-time",
+						"pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z))$"
 					},
-					"included_user_ids": {
-						"default": [],
-						"maxItems": 1000,
-						"type": "array",
-						"items": {"type": "string", "pattern": "^\\d{1,20}$"}
-					},
-					"excluded_user_ids": {
-						"default": [],
-						"maxItems": 1000,
-						"type": "array",
-						"items": {"type": "string", "pattern": "^\\d{1,20}$"}
-					}
+					"relay_consent_accepted_by": {"default": null, "nullable": true, "type": "string", "pattern": "^\\d{1,20}$"}
 				},
-				"required": [
-					"enabled",
-					"config_version",
-					"rollout_basis_points",
-					"rollout_salt",
-					"included_user_ids",
-					"excluded_user_ids"
-				],
+				"required": ["relay_consent_accepted", "relay_consent_accepted_at", "relay_consent_accepted_by"],
 				"additionalProperties": false
 			},
 			"VoiceNoiseSuppressionConfigResponse": {
@@ -15393,6 +15643,13 @@
 						"type": "array",
 						"items": {"type": "string", "pattern": "^\\d{1,20}$"}
 					},
+					"included_guild_ids": {
+						"default": [],
+						"maxItems": 1000,
+						"type": "array",
+						"items": {"type": "string", "pattern": "^\\d{1,20}$"}
+					},
+					"include_premium_users": {"default": false, "type": "boolean"},
 					"excluded_user_ids": {
 						"default": [],
 						"maxItems": 1000,
@@ -15424,6 +15681,8 @@
 					"rollout_basis_points",
 					"rollout_salt",
 					"included_user_ids",
+					"included_guild_ids",
+					"include_premium_users",
 					"excluded_user_ids",
 					"guild_overrides",
 					"suppression_strength"
@@ -15458,6 +15717,18 @@
 					"gateway_dispatch_relay_max_queue",
 					"voice_e2ee_scope"
 				],
+				"additionalProperties": false
+			},
+			"BillingCatalogModeSchema": {"type": "string", "enum": ["env", "operator"]},
+			"BillingPriceSetResponse": {
+				"type": "object",
+				"properties": {
+					"monthly": {"nullable": true, "allOf": [{"$ref": "#/components/schemas/StripePriceIdSchema"}]},
+					"yearly": {"nullable": true, "allOf": [{"$ref": "#/components/schemas/StripePriceIdSchema"}]},
+					"gift_1_month": {"nullable": true, "allOf": [{"$ref": "#/components/schemas/StripePriceIdSchema"}]},
+					"gift_1_year": {"nullable": true, "allOf": [{"$ref": "#/components/schemas/StripePriceIdSchema"}]}
+				},
+				"required": ["monthly", "yearly", "gift_1_month", "gift_1_year"],
 				"additionalProperties": false
 			},
 			"JobLedgerEntrySchema": {
@@ -15711,9 +15982,10 @@
 					"id": {"type": "string", "description": "The credential ID"},
 					"name": {"type": "string", "description": "User-assigned name for the credential"},
 					"created_at": {"type": "string", "description": "When the credential was registered"},
-					"last_used_at": {"nullable": true, "description": "When the credential was last used", "type": "string"}
+					"last_used_at": {"nullable": true, "description": "When the credential was last used", "type": "string"},
+					"rp_id": {"type": "string", "description": "Relying party ID the passkey belongs to"}
 				},
-				"required": ["id", "name", "created_at", "last_used_at"],
+				"required": ["id", "name", "created_at", "last_used_at", "rp_id"],
 				"additionalProperties": false
 			},
 			"VoiceServerAdminResponse": {

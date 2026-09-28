@@ -2,7 +2,9 @@
 
 import {Config} from '@app/api/Config';
 import type {UserRow} from '@app/api/database/types/UserTypes';
+import {resolveExperimentTargeting} from '@app/api/experiment/ExperimentTargeting';
 import {getCachedInstancePremiumMode} from '@app/api/limits/InstancePremiumModeCache';
+import {getInstanceConfigRepository} from '@app/api/middleware/ServiceSingletons';
 import type {User} from '@app/api/models/User';
 import {accountPolicyContactHasCapability} from '@app/api/risk/AccountPolicyService';
 import {getCachedDeferredPhoneGateEnabled} from '@app/api/risk/DeferredPhoneGateCache';
@@ -13,6 +15,7 @@ import {
 	SuspiciousActivityFlags,
 	UserFlags,
 } from '@fluxer/constants/src/UserConstants';
+import {resolveProfileTimezoneAssignment} from '@fluxer/schema/src/domains/admin/ProfileTimezoneSchemas';
 import type {RequiredAction} from '@fluxer/schema/src/domains/user/UserResponseSchemas';
 import {ms} from 'itty-time';
 
@@ -275,6 +278,10 @@ export function createPremiumClearPatch(): Partial<UserRow> {
 	return mapExpiredPremiumFields(() => null) as Partial<UserRow>;
 }
 
+export function clearPerksSanitizedFlag(premiumFlags: number): number {
+	return premiumFlags & ~PremiumFlags.PERKS_SANITIZED;
+}
+
 const PROFILE_SUBSTRING_EXEMPT_FLAGS = UserFlags.STAFF;
 
 export function isProfileSubstringExempt(user: Pick<PremiumCheckable, 'flags'>): boolean {
@@ -285,6 +292,8 @@ export function isBugHunterBotUser(user: Pick<User, 'flags' | 'isBot'>): boolean
 	return user.isBot && (user.flags & UserFlags.BUG_HUNTER) !== 0n;
 }
 
-export function canUseProfileTimezone(user: Pick<PremiumCheckable, 'flags'>): boolean {
-	return (user.flags & UserFlags.STAFF) !== 0n;
+export async function canUseProfileTimezone(user: User): Promise<boolean> {
+	const config = await getInstanceConfigRepository().getProfileTimezoneConfig();
+	const targeting = await resolveExperimentTargeting(user, [config]);
+	return resolveProfileTimezoneAssignment(config, user.id.toString(), targeting).enabled;
 }

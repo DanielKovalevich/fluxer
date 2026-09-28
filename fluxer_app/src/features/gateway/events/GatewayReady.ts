@@ -2,6 +2,7 @@
 
 import {startDomainMigrationTrigger} from '@app/features/app/domain_migration/DomainMigrationTrigger';
 import Initialization from '@app/features/app/state/Initialization';
+import PasskeyMigration from '@app/features/auth/passkey_migration/PasskeyMigration';
 import AccountManager from '@app/features/auth/state/AccountManager';
 import accountStorage from '@app/features/auth/state/AccountStorage';
 import Authentication from '@app/features/auth/state/Authentication';
@@ -130,7 +131,7 @@ function handleReadyInternal(data: ReadyPayload, context: GatewayHandlerContext)
 	if (data.rtc_regions) {
 		RtcRegions.setRegions(data.rtc_regions);
 	}
-	ExperimentAssignments.start();
+	ExperimentAssignments.start(data.user.id);
 	Users.handleGatewayReady(data.user);
 	if (data.users && data.users.length > 0) {
 		Users.cacheUsers(data.users);
@@ -186,4 +187,5 @@ function handleReadyInternal(data: ReadyPayload, context: GatewayHandlerContext)
 	context.setReady();
 	Messages.handleGatewayReady();
 	startDomainMigrationTrigger();
+	PasskeyMigration.handleGatewayReady(data.user.id);
 }

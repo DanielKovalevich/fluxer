@@ -4,24 +4,25 @@ use crate::{
     api::{
         client::AdminApiClient,
         types::{
-            AppBrandingConfigUpdateRequest, AppLegalConfigUpdateRequest,
-            AppPublicConfigUpdateRequest, AppRegistrationConfigUpdateRequest,
-            AppSetupConfigUpdateRequest, CreateRegistrationUrlRequest,
-            DeferredPhoneGateUpdateRequest, DomainMigrationConfigUpdateRequest,
-            EXPERIMENT_MAX_TARGETED_USERS, ExperimentDeliveryConfigUpdateRequest,
-            GatewayRolloutConfigUpdateRequest, GatewayRolloutMode,
-            InstanceAttachmentDecayUpdateRequest, InstanceBlueskyIntegrationUpdateRequest,
-            InstanceBlueskyKeyIntegrationUpdateRequest, InstanceCaptchaIntegrationUpdateRequest,
-            InstanceConfigUpdateRequest, InstanceEmailIntegrationUpdateRequest,
-            InstanceEmailSmtpIntegrationUpdateRequest, InstanceEmailSmtpTestRequest,
-            InstanceGifIntegrationUpdateRequest, InstanceIntegrationsUpdateRequest,
-            InstanceMediaUpdateRequest, InstancePolicyUpdateRequest,
-            InstanceRegistrationConfigUpdateRequest, InstanceServicesUpdateRequest,
-            InstanceYoutubeIntegrationUpdateRequest, LimitConfigUpdateRequest, LimitRule,
-            LimitRuleFilters, NoiseSuppressionBackend, PremiumMode,
-            PushServiceDeliveryConfigUpdateRequest, RegistrationMode, SsoConfigUpdateRequest,
-            VOICE_NS_MAX_GUILD_OVERRIDES, VoiceE2eeScope, VoiceNoiseSuppressionConfigUpdateRequest,
-            VoiceNoiseSuppressionGuildOverride,
+            ALTCHA_CAPTCHA_COST_RANGE, ALTCHA_CAPTCHA_MAX_COUNTER_RANGE,
+            AltchaCaptchaConfigUpdateRequest, AppBrandingConfigUpdateRequest,
+            AppLegalConfigUpdateRequest, AppPublicConfigUpdateRequest,
+            AppRegistrationConfigUpdateRequest, AppSetupConfigUpdateRequest,
+            CreateRegistrationUrlRequest, DeferredPhoneGateUpdateRequest,
+            DomainMigrationConfigUpdateRequest, EXPERIMENT_MAX_TARGETED_USERS,
+            ExperimentDeliveryConfigUpdateRequest, GatewayRolloutConfigUpdateRequest,
+            GatewayRolloutMode, InstanceAttachmentDecayUpdateRequest,
+            InstanceBlueskyIntegrationUpdateRequest, InstanceBlueskyKeyIntegrationUpdateRequest,
+            InstanceCaptchaIntegrationUpdateRequest, InstanceConfigUpdateRequest,
+            InstanceEmailIntegrationUpdateRequest, InstanceEmailSmtpIntegrationUpdateRequest,
+            InstanceEmailSmtpTestRequest, InstanceGifIntegrationUpdateRequest,
+            InstanceIntegrationsUpdateRequest, InstanceMediaUpdateRequest,
+            InstancePolicyUpdateRequest, InstanceRegistrationConfigUpdateRequest,
+            InstanceServicesUpdateRequest, InstanceYoutubeIntegrationUpdateRequest,
+            LimitConfigUpdateRequest, LimitRule, LimitRuleFilters, NoiseSuppressionBackend,
+            PremiumMode, ProfileTimezoneConfigUpdateRequest, PushRelayConfigUpdateRequest,
+            RegistrationMode, SsoConfigUpdateRequest, VOICE_NS_MAX_GUILD_OVERRIDES, VoiceE2eeScope,
+            VoiceNoiseSuppressionConfigUpdateRequest, VoiceNoiseSuppressionGuildOverride,
         },
     },
     config::AdminConfig,
@@ -194,7 +195,9 @@ pub async fn instance_config_post(
         }
         "update_policy" => {
             let update = build_policy_update(&form);
-            instance_config_result(client.update_instance_config(&update).await)
+            let result = client.update_instance_config(&update).await;
+            remember_premium_branding(&state, &result);
+            instance_config_result(result)
         }
         "update_integrations" => {
             let update = build_integrations_update(&form);
@@ -208,11 +211,27 @@ pub async fn instance_config_post(
             Ok(update) => instance_config_result(client.update_instance_config(&update).await),
             Err(message) => FlashData::error(message),
         },
-        "update_push_service_delivery" => match build_push_service_delivery_update(&form) {
+        "update_billing" => match super::billing_actions::build_billing_update(&form) {
+            Ok(update) => {
+                let result = client.update_instance_config(&update).await;
+                remember_premium_branding(&state, &result);
+                super::billing_actions::billing_result(result)
+            }
+            Err(message) => FlashData::error(message),
+        },
+        "update_push_relay" => {
+            let update = build_push_relay_update(&form);
+            instance_config_result(client.update_instance_config(&update).await)
+        }
+        "update_domain_migration" => match build_domain_migration_update(&form) {
             Ok(update) => instance_config_result(client.update_instance_config(&update).await),
             Err(message) => FlashData::error(message),
         },
-        "update_domain_migration" => match build_domain_migration_update(&form) {
+        "update_altcha_captcha" => match build_altcha_captcha_update(&form) {
+            Ok(update) => instance_config_result(client.update_instance_config(&update).await),
+            Err(message) => FlashData::error(message),
+        },
+        "update_profile_timezone" => match build_profile_timezone_update(&form) {
             Ok(update) => instance_config_result(client.update_instance_config(&update).await),
             Err(message) => FlashData::error(message),
         },
@@ -341,6 +360,17 @@ pub async fn instance_config_post(
         return htmx::toast_response(&flash);
     }
     redirect_back_with_flash(base, "/instance-config", flash, config.secure_cookies())
+}
+
+fn remember_premium_branding(
+    state: &AppState,
+    result: &Result<crate::api::types::InstanceConfigResponse, crate::api::client::ApiError>,
+) {
+    if let Ok(instance_config) = result {
+        state.remember_premium_branding(crate::api::types::PremiumBranding::from_instance_config(
+            instance_config,
+        ));
+    }
 }
 
 fn render_registration_url_list_response(
@@ -634,6 +664,12 @@ fn build_voice_noise_suppression_update(
                 form.first("voice_ns_included_user_ids").unwrap_or_default(),
                 "Included user IDs",
             )?),
+            included_guild_ids: Some(parse_experiment_user_ids(
+                form.first("voice_ns_included_guild_ids")
+                    .unwrap_or_default(),
+                "Included guild IDs",
+            )?),
+            include_premium_users: Some(form.bool_value("voice_ns_include_premium_users")),
             excluded_user_ids: Some(parse_experiment_user_ids(
                 form.first("voice_ns_excluded_user_ids").unwrap_or_default(),
                 "Excluded user IDs",
@@ -653,36 +689,13 @@ fn build_voice_noise_suppression_update(
     })
 }
 
-fn build_push_service_delivery_update(
-    form: &MultiValueForm,
-) -> Result<InstanceConfigUpdateRequest, String> {
-    Ok(InstanceConfigUpdateRequest {
-        push_service_delivery: Some(PushServiceDeliveryConfigUpdateRequest {
-            enabled: Some(form.bool_value("push_service_delivery_enabled")),
-            rollout_basis_points: parse_form_number(
-                form,
-                "push_service_delivery_rollout_basis_points",
-                "Rollout basis points",
-                0,
-                EXPERIMENT_ROLLOUT_BASIS_POINTS_MAX,
-            )?,
-            rollout_salt: parse_ascii_experiment_rollout_salt(
-                form,
-                "push_service_delivery_rollout_salt",
-            )?,
-            included_user_ids: Some(parse_experiment_user_ids(
-                form.first("push_service_delivery_included_user_ids")
-                    .unwrap_or_default(),
-                "Included user IDs",
-            )?),
-            excluded_user_ids: Some(parse_experiment_user_ids(
-                form.first("push_service_delivery_excluded_user_ids")
-                    .unwrap_or_default(),
-                "Excluded user IDs",
-            )?),
+fn build_push_relay_update(form: &MultiValueForm) -> InstanceConfigUpdateRequest {
+    InstanceConfigUpdateRequest {
+        push_relay: Some(PushRelayConfigUpdateRequest {
+            relay_consent_accepted: Some(form.bool_value("push_relay_consent_accepted")),
         }),
         ..Default::default()
-    })
+    }
 }
 
 fn build_domain_migration_update(
@@ -707,6 +720,12 @@ fn build_domain_migration_update(
                     .unwrap_or_default(),
                 "Included user IDs",
             )?),
+            included_guild_ids: Some(parse_experiment_user_ids(
+                form.first("domain_migration_included_guild_ids")
+                    .unwrap_or_default(),
+                "Included guild IDs",
+            )?),
+            include_premium_users: Some(form.bool_value("domain_migration_include_premium_users")),
             excluded_user_ids: Some(parse_experiment_user_ids(
                 form.first("domain_migration_excluded_user_ids")
                     .unwrap_or_default(),
@@ -720,6 +739,94 @@ fn build_domain_migration_update(
                 EXPERIMENT_ROLLOUT_BASIS_POINTS_MAX,
             )?,
             standalone_forwarding: Some(form.bool_value("domain_migration_standalone_forwarding")),
+        }),
+        ..Default::default()
+    })
+}
+
+fn build_altcha_captcha_update(
+    form: &MultiValueForm,
+) -> Result<InstanceConfigUpdateRequest, String> {
+    Ok(InstanceConfigUpdateRequest {
+        altcha_captcha: Some(AltchaCaptchaConfigUpdateRequest {
+            enabled: Some(form.bool_value("altcha_captcha_enabled")),
+            rollout_basis_points: parse_form_number(
+                form,
+                "altcha_captcha_rollout_basis_points",
+                "Rollout basis points",
+                0,
+                EXPERIMENT_ROLLOUT_BASIS_POINTS_MAX,
+            )?,
+            rollout_salt: parse_ascii_experiment_rollout_salt(form, "altcha_captcha_rollout_salt")?,
+            included_user_ids: Some(parse_experiment_user_ids(
+                form.first("altcha_captcha_included_user_ids")
+                    .unwrap_or_default(),
+                "Included user IDs",
+            )?),
+            included_guild_ids: Some(parse_experiment_user_ids(
+                form.first("altcha_captcha_included_guild_ids")
+                    .unwrap_or_default(),
+                "Included guild IDs",
+            )?),
+            include_premium_users: Some(form.bool_value("altcha_captcha_include_premium_users")),
+            excluded_user_ids: Some(parse_experiment_user_ids(
+                form.first("altcha_captcha_excluded_user_ids")
+                    .unwrap_or_default(),
+                "Excluded user IDs",
+            )?),
+            anonymous_enabled: Some(form.bool_value("altcha_captcha_anonymous_enabled")),
+            cost: parse_form_number(
+                form,
+                "altcha_captcha_cost",
+                "Cost",
+                *ALTCHA_CAPTCHA_COST_RANGE.start(),
+                *ALTCHA_CAPTCHA_COST_RANGE.end(),
+            )?,
+            max_counter: parse_form_number(
+                form,
+                "altcha_captcha_max_counter",
+                "Maximum counter",
+                *ALTCHA_CAPTCHA_MAX_COUNTER_RANGE.start(),
+                *ALTCHA_CAPTCHA_MAX_COUNTER_RANGE.end(),
+            )?,
+        }),
+        ..Default::default()
+    })
+}
+
+fn build_profile_timezone_update(
+    form: &MultiValueForm,
+) -> Result<InstanceConfigUpdateRequest, String> {
+    Ok(InstanceConfigUpdateRequest {
+        profile_timezone: Some(ProfileTimezoneConfigUpdateRequest {
+            enabled: Some(form.bool_value("profile_timezone_enabled")),
+            rollout_basis_points: parse_form_number(
+                form,
+                "profile_timezone_rollout_basis_points",
+                "Rollout basis points",
+                0,
+                EXPERIMENT_ROLLOUT_BASIS_POINTS_MAX,
+            )?,
+            rollout_salt: parse_ascii_experiment_rollout_salt(
+                form,
+                "profile_timezone_rollout_salt",
+            )?,
+            included_user_ids: Some(parse_experiment_user_ids(
+                form.first("profile_timezone_included_user_ids")
+                    .unwrap_or_default(),
+                "Included user IDs",
+            )?),
+            included_guild_ids: Some(parse_experiment_user_ids(
+                form.first("profile_timezone_included_guild_ids")
+                    .unwrap_or_default(),
+                "Included guild IDs",
+            )?),
+            include_premium_users: Some(form.bool_value("profile_timezone_include_premium_users")),
+            excluded_user_ids: Some(parse_experiment_user_ids(
+                form.first("profile_timezone_excluded_user_ids")
+                    .unwrap_or_default(),
+                "Excluded user IDs",
+            )?),
         }),
         ..Default::default()
     })
@@ -781,6 +888,7 @@ fn build_app_public_update(form: &MultiValueForm) -> InstanceConfigUpdateRequest
                 theme_color: optional("app_theme_color"),
                 status_page_url: optional("app_status_page_url"),
                 status_page_incident_history_url: optional("app_status_page_incident_history_url"),
+                ..Default::default()
             }),
             setup: Some(AppSetupConfigUpdateRequest {
                 configured: Some(form.bool_value("app_setup_configured")),
@@ -1369,6 +1477,8 @@ mod tests {
                 "allow_user_override": false,
                 "enabled_backends": [],
                 "included_user_ids": [],
+                "included_guild_ids": [],
+                "include_premium_users": false,
                 "excluded_user_ids": [],
                 "guild_overrides": [],
             }})
@@ -1685,6 +1795,8 @@ mod tests {
             serde_json::json!({"domain_migration": {
                 "enabled": false,
                 "included_user_ids": [],
+                "included_guild_ids": [],
+                "include_premium_users": false,
                 "excluded_user_ids": [],
                 "standalone_forwarding": false,
             }})
@@ -1729,6 +1841,167 @@ mod tests {
                 message
             );
         }
+    }
+
+    #[test]
+    fn build_push_relay_update_reads_the_consent_checkbox() {
+        let unchecked = build_push_relay_update(&MultiValueForm::parse(b"_csrf=token"));
+        assert_eq!(
+            serde_json::to_value(&unchecked).expect("serialize update"),
+            serde_json::json!({"push_relay": {"relay_consent_accepted": false}})
+        );
+
+        let checked = build_push_relay_update(&MultiValueForm::parse(
+            b"_csrf=token&push_relay_consent_accepted=true",
+        ));
+        assert_eq!(
+            serde_json::to_value(&checked).expect("serialize update"),
+            serde_json::json!({"push_relay": {"relay_consent_accepted": true}})
+        );
+    }
+
+    #[test]
+    fn build_altcha_captcha_update_reads_the_rollout_and_difficulty_fields() {
+        let form = MultiValueForm::parse(
+            b"altcha_captcha_enabled=true&altcha_captcha_rollout_basis_points=%20500%20&altcha_captcha_rollout_salt=%20altcha-captcha-v2%20&altcha_captcha_included_user_ids=1500000000000000001&altcha_captcha_excluded_user_ids=1500000000000000002&altcha_captcha_anonymous_enabled=true&altcha_captcha_cost=2000&altcha_captcha_max_counter=%20400%20",
+        );
+        let update = build_altcha_captcha_update(&form)
+            .expect("valid form")
+            .altcha_captcha
+            .expect("altcha captcha update");
+        assert_eq!(update.enabled, Some(true));
+        assert_eq!(update.rollout_basis_points, Some(500));
+        assert_eq!(update.rollout_salt, Some("altcha-captcha-v2".to_owned()));
+        assert_eq!(
+            update.included_user_ids,
+            Some(vec!["1500000000000000001".to_owned()])
+        );
+        assert_eq!(
+            update.excluded_user_ids,
+            Some(vec!["1500000000000000002".to_owned()])
+        );
+        assert_eq!(update.anonymous_enabled, Some(true));
+        assert_eq!(update.cost, Some(2000));
+        assert_eq!(update.max_counter, Some(400));
+    }
+
+    #[test]
+    fn build_altcha_captcha_update_leaves_the_feature_inert_when_nothing_is_submitted() {
+        let form = MultiValueForm::parse(b"_csrf=token");
+        let request = build_altcha_captcha_update(&form).expect("valid form");
+        assert_eq!(
+            serde_json::to_value(request).expect("serializable update"),
+            serde_json::json!({"altcha_captcha": {
+                "enabled": false,
+                "included_user_ids": [],
+                "included_guild_ids": [],
+                "include_premium_users": false,
+                "excluded_user_ids": [],
+                "anonymous_enabled": false,
+            }})
+        );
+    }
+
+    #[test]
+    fn build_altcha_captcha_update_rejects_difficulty_outside_the_supported_range() {
+        for (form, message) in [
+            (
+                "altcha_captcha_cost=999",
+                "Cost must be a whole number between 1000 and 100000",
+            ),
+            (
+                "altcha_captcha_max_counter=1000001",
+                "Maximum counter must be a whole number between 100 and 1000000",
+            ),
+            (
+                "altcha_captcha_rollout_basis_points=10001",
+                "Rollout basis points must be a whole number between 0 and 10000",
+            ),
+        ] {
+            let form = MultiValueForm::parse(form.as_bytes());
+            assert_eq!(
+                build_altcha_captcha_update(&form).expect_err("invalid field"),
+                message
+            );
+        }
+    }
+
+    #[test]
+    fn build_profile_timezone_update_reads_the_rollout_fields() {
+        let form = MultiValueForm::parse(
+            b"profile_timezone_enabled=true&profile_timezone_rollout_basis_points=%20500%20&profile_timezone_rollout_salt=%20profile-timezone-v2%20&profile_timezone_included_user_ids=1500000000000000001&profile_timezone_excluded_user_ids=1500000000000000002&profile_timezone_included_guild_ids=1500000000000000005%0A1500000000000000006%2C1500000000000000005&profile_timezone_include_premium_users=true",
+        );
+        let update = build_profile_timezone_update(&form)
+            .expect("valid form")
+            .profile_timezone
+            .expect("profile timezone update");
+        assert_eq!(update.enabled, Some(true));
+        assert_eq!(update.rollout_basis_points, Some(500));
+        assert_eq!(update.rollout_salt, Some("profile-timezone-v2".to_owned()));
+        assert_eq!(update.include_premium_users, Some(true));
+        assert_eq!(
+            update.included_guild_ids,
+            Some(vec![
+                "1500000000000000005".to_owned(),
+                "1500000000000000006".to_owned()
+            ])
+        );
+        assert_eq!(
+            update.included_user_ids,
+            Some(vec!["1500000000000000001".to_owned()])
+        );
+        assert_eq!(
+            update.excluded_user_ids,
+            Some(vec!["1500000000000000002".to_owned()])
+        );
+    }
+
+    #[test]
+    fn build_profile_timezone_update_leaves_the_feature_inert_when_nothing_is_submitted() {
+        let form = MultiValueForm::parse(b"_csrf=token");
+        let request = build_profile_timezone_update(&form).expect("valid form");
+        assert_eq!(
+            serde_json::to_value(request).expect("serializable update"),
+            serde_json::json!({"profile_timezone": {
+                "enabled": false,
+                "included_user_ids": [],
+                "included_guild_ids": [],
+                "include_premium_users": false,
+                "excluded_user_ids": [],
+            }})
+        );
+    }
+
+    #[test]
+    fn every_experiment_update_rejects_an_invalid_included_guild_id() {
+        for (prefix, build) in [
+            (
+                "voice_ns",
+                build_voice_noise_suppression_update
+                    as fn(&MultiValueForm) -> Result<InstanceConfigUpdateRequest, String>,
+            ),
+            ("domain_migration", build_domain_migration_update),
+            ("altcha_captcha", build_altcha_captcha_update),
+            ("profile_timezone", build_profile_timezone_update),
+        ] {
+            let form = MultiValueForm::parse(
+                format!("{prefix}_included_guild_ids=1500000000000000005%0Anot-a-guild").as_bytes(),
+            );
+            assert_eq!(
+                build(&form).expect_err("invalid guild id"),
+                "Included guild IDs entry 2 must contain 1 to 20 decimal digits",
+                "{prefix}"
+            );
+        }
+    }
+
+    #[test]
+    fn build_profile_timezone_update_rejects_a_rollout_above_everybody() {
+        let form = MultiValueForm::parse(b"profile_timezone_rollout_basis_points=10001");
+        assert_eq!(
+            build_profile_timezone_update(&form).expect_err("invalid field"),
+            "Rollout basis points must be a whole number between 0 and 10000"
+        );
     }
 
     #[test]
