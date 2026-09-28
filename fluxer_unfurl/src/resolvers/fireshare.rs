@@ -75,34 +75,57 @@ fn metadata_url(source: &Url) -> Option<Url> {
     Some(url)
 }
 
+fn same_origin_or_https_upgrade(from: &Url, to: &Url) -> bool {
+    from.origin() == to.origin()
+        || (from.scheme() == "http"
+            && to.scheme() == "https"
+            && from.host_str() == to.host_str()
+            && from.port().is_none()
+            && to.port().is_none())
+}
+
 fn video_url(page: &SocialPage, metadata_url: &Url) -> Option<String> {
-    // Never construct media URLs for protected/missing posts, or follow
-    // metadata into another site. Public metadata must advertise the video.
-    if page.final_url.origin() != metadata_url.origin() {
+    // Fireshare can advertise HTTPS media on an HTTP watch page. Permit only
+    // that same-host upgrade; redirects and media on other sites stay rejected.
+    if !same_origin_or_https_upgrade(metadata_url, &page.final_url) {
         return None;
     }
     let value = page.og.video_primary.as_deref()?;
     let resolved = social::resolve_url(&page.final_url, value)?;
     let url = Url::parse(&resolved).ok()?;
-    (url.origin() == metadata_url.origin()).then_some(resolved)
+    same_origin_or_https_upgrade(&page.final_url, &url).then_some(resolved)
 }
 
 fn video_candidates(page: &SocialPage, source: &Url) -> Vec<String> {
     let Some(original) = video_url(page, source) else {
         return vec![];
     };
-    let Some(mut variant) = metadata_url(source) else {
+    let Some(watch) = metadata_url(source) else {
         return vec![original];
     };
-    let id = variant.path().trim_start_matches("/w/").to_owned();
+    let id = watch.path().trim_start_matches("/w/");
+    let mut variant = Url::parse(&original).expect("validated media URL");
     variant.set_path(&format!("/_content/derived/{id}/{id}-720p.mp4"));
     variant.set_query(None);
     vec![variant.to_string(), original]
 }
 
 fn video_only_embed(source: &Url, video: EmbedMedia) -> MessageEmbed {
+    let mut watch = source.clone();
+    let upgraded_media = video
+        .url
+        .as_deref()
+        .and_then(|value| Url::parse(value).ok())
+        .is_some_and(|media| {
+            source.scheme() == "http"
+                && media.scheme() == "https"
+                && same_origin_or_https_upgrade(source, &media)
+        });
+    if upgraded_media {
+        watch.set_scheme("https").expect("HTTP URL can upgrade to HTTPS");
+    }
     let mut embed = MessageEmbed::new("video");
-    embed.url = Some(source.to_string());
+    embed.url = Some(watch.to_string());
     embed.video = Some(video);
     embed
 }
@@ -158,6 +181,43 @@ mod tests {
         let mut redirected = public;
         redirected.final_url = Url::parse("https://other.example/w/abc").unwrap();
         assert!(video_url(&redirected, &metadata).is_none());
+    }
+
+    #[test]
+    fn upgrades_http_watch_links_with_same_host_https_video() {
+        let source = Url::parse("http://clips.dkzver.com/w/abc").unwrap();
+        let mut public = page(r#"<meta property="og:video" content="https://clips.dkzver.com/_content/video/abc.mp4">"#);
+        public.final_url = source.clone();
+        assert_eq!(video_candidates(&public, &source), vec![
+            "https://clips.dkzver.com/_content/derived/abc/abc-720p.mp4",
+            "https://clips.dkzver.com/_content/video/abc.mp4",
+        ]);
+        let video = EmbedMedia {
+            url: Some("https://clips.dkzver.com/_content/derived/abc/abc-720p.mp4".to_owned()),
+            ..Default::default()
+        };
+        assert_eq!(video_only_embed(&source, video).url.as_deref(), Some("https://clips.dkzver.com/w/abc"));
+
+        public.final_url = Url::parse("https://clips.dkzver.com/w/abc").unwrap();
+        assert!(video_url(&public, &source).is_some());
+    }
+
+    #[test]
+    fn rejects_downgrades_other_hosts_and_nonstandard_ports() {
+        let https_source = Url::parse("https://clips.dkzver.com/w/abc").unwrap();
+        let http_source = Url::parse("http://clips.dkzver.com/w/abc").unwrap();
+        let mut public = page(r#"<meta property="og:video" content="http://clips.dkzver.com/_content/video/abc.mp4">"#);
+        assert!(video_url(&public, &https_source).is_none());
+        public.final_url = http_source.clone();
+        public.og = crate::html_parser::parse_opengraph(
+            r#"<meta property="og:video" content="https://other.example/video.mp4">"#,
+        );
+        assert!(video_url(&public, &http_source).is_none());
+        public.og = crate::html_parser::parse_opengraph(
+            r#"<meta property="og:video" content="https://clips.dkzver.com/_content/video/abc.mp4">"#,
+        );
+        let custom_port = Url::parse("http://clips.dkzver.com:8080/w/abc").unwrap();
+        assert!(video_url(&public, &custom_port).is_none());
     }
 
     #[test]

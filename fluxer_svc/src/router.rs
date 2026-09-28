@@ -16,12 +16,21 @@ use tokio::task::JoinSet;
 use tracing::{debug, info, warn};
 
 pub(crate) const SHARD_REQUEST_TIMEOUT: Duration = Duration::from_secs(5);
+const UNFURL_SHARD_REQUEST_TIMEOUT: Duration = Duration::from_secs(10);
 const INFLIGHT_TTL: Duration = Duration::from_millis(200);
 const INFLIGHT_MAX_ENTRIES: u64 = 10_000;
 const MAX_BROADCAST_CONCURRENCY: usize = 32;
 const MAX_ROUTER_REQUEST_BYTES: usize = 2 * 1024 * 1024;
 const LEGACY_SHARD_DECODE_ERROR: &[u8] = br#"{"error":"shard_request_decode_error"}"#;
 type InflightKey = (String, String);
+
+fn shard_request_timeout(service_name: &str) -> Duration {
+    if service_name == "unfurl" {
+        UNFURL_SHARD_REQUEST_TIMEOUT
+    } else {
+        SHARD_REQUEST_TIMEOUT
+    }
+}
 
 pub trait RouterService: Send + Sync + 'static {
     type Request: serde::Serialize + serde::de::DeserializeOwned + Send + Sync + 'static;
@@ -67,7 +76,7 @@ async fn forward_to_shard<S: RouterService>(
         .map_err(|e| anyhow::anyhow!("failed to encode request as msgpack: {e}"))?;
 
     transport
-        .request(&shard_subject, &msgpack_payload, SHARD_REQUEST_TIMEOUT)
+        .request(&shard_subject, &msgpack_payload, shard_request_timeout(service.service_name()))
         .await
 }
 
@@ -81,7 +90,7 @@ async fn forward_to_shard_verbatim<S: RouterService>(
 ) -> anyhow::Result<Vec<u8>> {
     let shard_subject = shard_subject(service, ring, route_key);
     let response_bytes = transport
-        .request(&shard_subject, payload, SHARD_REQUEST_TIMEOUT)
+        .request(&shard_subject, payload, shard_request_timeout(service.service_name()))
         .await?;
     if response_bytes != LEGACY_SHARD_DECODE_ERROR {
         return Ok(response_bytes);
@@ -133,7 +142,7 @@ async fn forward_to_all_shards<S: RouterService>(
         .context("failed to encode broadcast request as msgpack")?;
     let payload = payload.as_slice();
     let service_name = service.service_name();
-    let deadline = tokio::time::Instant::now() + SHARD_REQUEST_TIMEOUT;
+    let deadline = tokio::time::Instant::now() + shard_request_timeout(service_name);
     let request_shard = |shard_id| async move {
         let timeout = deadline.saturating_duration_since(tokio::time::Instant::now());
         if timeout.is_zero() {
@@ -482,6 +491,12 @@ mod tests {
     use std::sync::Mutex;
     use std::sync::atomic::{AtomicBool, AtomicUsize, Ordering};
     use tokio::sync::Notify;
+
+    #[test]
+    fn unfurl_has_time_for_cold_media_metadata() {
+        assert_eq!(shard_request_timeout("unfurl"), Duration::from_secs(10));
+        assert_eq!(shard_request_timeout("messages"), SHARD_REQUEST_TIMEOUT);
+    }
 
     #[derive(Serialize, Deserialize)]
     struct MockRequest {
