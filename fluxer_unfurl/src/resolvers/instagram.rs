@@ -7,10 +7,12 @@ use crate::text_limits;
 use crate::types::{EmbedAuthor, EmbedProvider, MessageEmbed};
 use std::future::Future;
 use std::pin::Pin;
+use std::time::{Duration, Instant};
 use url::Url;
 
 const INSTAGRAM_FIXERS: &[&str] = &["https://www.uuinstagram.com", "https://www.eeinstagram.com"];
 const INSTAGRAM_COLOR: u32 = 0xE1306C;
+const PRIMARY_FIXER_TIMEOUT: Duration = Duration::from_secs(8);
 
 pub struct InstagramResolver {
     enabled: bool,
@@ -59,26 +61,56 @@ fn is_supported_path(url: &Url) -> bool {
 }
 
 async fn resolve_instagram(ctx: &ResolveContext<'_>, fixers: &[Url]) -> anyhow::Result<ResolverResult> {
-    let native = social::fetch_page(ctx, &ctx.url).await.ok().filter(|page| !is_post_not_found(page));
+    let started = Instant::now();
+    // Standard post/reel paths already contain the shortcode. Start the primary
+    // provider immediately so its internal retries fit inside the router budget.
+    // Account-prefixed paths still use Instagram's canonical redirect first.
+    let prefetch_url = if has_canonical_post_path(&ctx.url) {
+        fixers.first().and_then(|fixer| rewrite_to_fixer(fixer, &ctx.url))
+    } else {
+        None
+    };
+    let (native, mut primary_page) = tokio::join!(
+        fetch_instagram_page(ctx, &ctx.url, social::SOCIAL_TIMEOUT),
+        async {
+            match prefetch_url.as_ref() {
+                Some(url) => fetch_instagram_page(ctx, url, PRIMARY_FIXER_TIMEOUT).await,
+                None => None,
+            }
+        }
+    );
     let source = native.as_ref().map(|page| &page.final_url).unwrap_or(&ctx.url);
 
     let mut fixer_page = None;
     let mut video = None;
-    for fixer in fixers {
+    for (index, fixer) in fixers.iter().enumerate() {
         let Some(fixer_url) = rewrite_to_fixer(fixer, source) else { continue };
-        let Ok(page) = social::fetch_page(ctx, &fixer_url).await else { continue };
-        if is_post_not_found(&page) {
-            tracing::info!(url = %fixer_url, "Instagram fixer reported post not found; trying next provider");
-            continue;
-        }
+        let page = if index == 0 && prefetch_url.is_some() {
+            primary_page.take()
+        } else {
+            let timeout = if index == 0 { PRIMARY_FIXER_TIMEOUT } else { social::SOCIAL_TIMEOUT };
+            fetch_instagram_page(ctx, &fixer_url, timeout).await
+        };
+        let Some(page) = page else { continue };
         let candidate = page.og.video_primary.as_deref().or(page.twitter.player.as_deref())
             .and_then(|value| social::resolve_url(&page.final_url, value));
-        if let Some(candidate) = candidate
-            && let Some(media) = social::resolve_media(ctx, &candidate, MediaKind::Video).await
-        {
-            video = Some(media);
-            fixer_page = Some(page);
-            break;
+        if let Some(candidate) = candidate {
+            match social::resolve_media_result(ctx, &candidate, MediaKind::Video).await {
+                Ok(media) => {
+                    tracing::info!(provider = fixer.host_str(), path = ctx.url.path(), elapsed_ms = started.elapsed().as_millis() as u64,
+                        "Instagram provider supplied a verified video");
+                    video = Some(media);
+                    fixer_page = Some(page);
+                    break;
+                }
+                Err(err) => {
+                    tracing::warn!(provider = fixer.host_str(), path = ctx.url.path(), error = %err,
+                        "Instagram provider video validation failed; trying next provider");
+                }
+            }
+        } else {
+            tracing::info!(provider = fixer.host_str(), path = ctx.url.path(),
+                "Instagram provider had no video metadata; trying next provider");
         }
         if fixer_page.is_none() {
             fixer_page = Some(page);
@@ -86,7 +118,11 @@ async fn resolve_instagram(ctx: &ResolveContext<'_>, fixers: &[Url]) -> anyhow::
     }
 
     let metadata = fixer_page.as_ref().or(native.as_ref());
-    let Some(metadata) = metadata else { return Ok(ResolverResult { embeds: vec![] }) };
+    let Some(metadata) = metadata else {
+        tracing::info!(path = ctx.url.path(), elapsed_ms = started.elapsed().as_millis() as u64,
+            "Instagram providers unavailable; using default resolver");
+        return Ok(ResolverResult { embeds: vec![] });
+    };
     let author_name = author_name(metadata).or_else(|| native.as_ref().and_then(author_name));
     let description = metadata.og.description.as_deref().or(metadata.twitter.description.as_deref())
         .or_else(|| native.as_ref().and_then(|page| page.og.description.as_deref()))
@@ -114,10 +150,39 @@ async fn resolve_instagram(ctx: &ResolveContext<'_>, fixers: &[Url]) -> anyhow::
 
     hide_caption_with_media(&mut embed);
 
+    tracing::info!(path = ctx.url.path(), video = embed.video.is_some(), image = embed.image.is_some(),
+        elapsed_ms = started.elapsed().as_millis() as u64, "Instagram embed resolved");
+
     if embed.author.is_none() && embed.description.is_none() && embed.video.is_none() && embed.image.is_none() {
         return Ok(ResolverResult { embeds: vec![] });
     }
     Ok(ResolverResult { embeds: vec![embed] })
+}
+
+async fn fetch_instagram_page(ctx: &ResolveContext<'_>, url: &Url, timeout: Duration) -> Option<SocialPage> {
+    let started = Instant::now();
+    let page = match social::fetch_page_with_timeout(ctx, url, timeout).await {
+        Ok(page) => page,
+        Err(err) => {
+            tracing::warn!(provider = url.host_str(), path = url.path(), error = %err,
+                elapsed_ms = started.elapsed().as_millis() as u64, timeout_ms = timeout.as_millis() as u64,
+                "Instagram page fetch failed; continuing with other providers");
+            return None;
+        }
+    };
+    if is_post_not_found(&page) {
+        tracing::info!(provider = url.host_str(), path = url.path(), elapsed_ms = started.elapsed().as_millis() as u64,
+            "Instagram provider reported post not found; continuing with other providers");
+        return None;
+    }
+    tracing::info!(provider = url.host_str(), final_provider = page.final_url.host_str(), path = url.path(),
+        elapsed_ms = started.elapsed().as_millis() as u64, timeout_ms = timeout.as_millis() as u64,
+        "Instagram page fetched");
+    Some(page)
+}
+
+fn has_canonical_post_path(url: &Url) -> bool {
+    matches!(url.path_segments().and_then(|mut segments| segments.next()), Some("p" | "reel" | "reels"))
 }
 
 fn hide_caption_with_media(embed: &mut MessageEmbed) {

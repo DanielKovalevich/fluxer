@@ -28,10 +28,33 @@ pub async fn fetch_page(ctx: &ResolveContext<'_>, url: &Url) -> anyhow::Result<S
     fetch_page_with_headers(ctx, url, HeaderMap::new()).await
 }
 
+pub async fn fetch_page_with_timeout(
+    ctx: &ResolveContext<'_>,
+    url: &Url,
+    request_timeout: Duration,
+) -> anyhow::Result<SocialPage> {
+    // Bound the complete fetch, including redirects and the HTML body.
+    tokio::time::timeout(
+        request_timeout,
+        fetch_page_with_headers_and_timeout(ctx, url, HeaderMap::new(), request_timeout),
+    )
+    .await
+    .map_err(|_| anyhow::anyhow!("social page fetch timed out after {} ms", request_timeout.as_millis()))?
+}
+
 pub async fn fetch_page_with_headers(
     ctx: &ResolveContext<'_>,
     url: &Url,
     headers: HeaderMap,
+) -> anyhow::Result<SocialPage> {
+    fetch_page_with_headers_and_timeout(ctx, url, headers, SOCIAL_TIMEOUT).await
+}
+
+async fn fetch_page_with_headers_and_timeout(
+    ctx: &ResolveContext<'_>,
+    url: &Url,
+    headers: HeaderMap,
+    request_timeout: Duration,
 ) -> anyhow::Result<SocialPage> {
     // A fixer can answer directly with a video. Read HTML only; downloading a
     // multi-megabyte media body here both wastes bandwidth and prevents us from
@@ -41,7 +64,7 @@ pub async fn fetch_page_with_headers(
         url.as_str(),
         headers,
         SOCIAL_HTML_MAX_BYTES,
-        SOCIAL_TIMEOUT,
+        request_timeout,
         |head| {
             head.content_type.as_deref().is_none_or(|content_type| {
                 content_type.starts_with("text/")
@@ -79,19 +102,26 @@ pub async fn resolve_media(
     url: &str,
     expected_kind: MediaKind,
 ) -> Option<EmbedMedia> {
-    let nsfw = MediaProxyClient::nsfw_mode_str(ctx.nsfw_mode);
-    let meta = match ctx.media_proxy.get_metadata(url, nsfw).await {
-        Ok(meta) => meta,
+    match resolve_media_result(ctx, url, expected_kind).await {
+        Ok(media) => Some(media),
         Err(err) => {
             tracing::debug!(error = %err, url, "social media metadata lookup failed");
-            return None;
+            None
         }
-    };
-    if media_kind_from_content_type(&meta.content_type) != Some(expected_kind) {
-        tracing::debug!(url, content_type = %meta.content_type, "social media had unexpected content type");
-        return None;
     }
-    Some(EmbedMedia {
+}
+
+pub async fn resolve_media_result(
+    ctx: &ResolveContext<'_>,
+    url: &str,
+    expected_kind: MediaKind,
+) -> anyhow::Result<EmbedMedia> {
+    let nsfw = MediaProxyClient::nsfw_mode_str(ctx.nsfw_mode);
+    let meta = ctx.media_proxy.get_metadata(url, nsfw).await?;
+    if media_kind_from_content_type(&meta.content_type) != Some(expected_kind) {
+        anyhow::bail!("social media had unexpected content type: {}", meta.content_type);
+    }
+    Ok(EmbedMedia {
         url: Some(url.to_owned()),
         proxy_url: ctx.media_proxy.external_proxy_url(url),
         content_type: Some(meta.content_type.clone()),
