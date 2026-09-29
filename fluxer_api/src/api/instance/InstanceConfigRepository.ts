@@ -14,7 +14,6 @@ import {InstanceConfigCache} from '@app/api/instance/InstanceConfigCache';
 import {normalizeSsoAllowedEmailDomains} from '@app/api/instance/SsoConfigValidation';
 import {Logger} from '@app/api/Logger';
 import {isLimitConfigSnapshot} from '@app/api/limits/LimitConfigValidation';
-import {resolveDeferredPhoneGateEnabled, setCachedDeferredPhoneGateEnabled} from '@app/api/risk/DeferredPhoneGateCache';
 import {
 	getEffectiveBillingConfig,
 	isBillingActive,
@@ -35,9 +34,10 @@ import {
 	type RegistrationUrlResponse,
 } from '@fluxer/schema/src/domains/admin/AdminSchemas';
 import {
-	type AltchaCaptchaConfig,
-	AltchaCaptchaConfigSchema,
-} from '@fluxer/schema/src/domains/admin/AltchaCaptchaSchemas';
+	type CaptchaConfig,
+	CaptchaConfigSchema,
+	type CaptchaConfigUpdateRequest,
+} from '@fluxer/schema/src/domains/admin/CaptchaSchemas';
 import {
 	type DomainMigrationConfig,
 	DomainMigrationConfigSchema,
@@ -52,19 +52,11 @@ import {
 	StoredBillingConfigSchema,
 } from '@fluxer/schema/src/domains/admin/InstanceBillingSchemas';
 import {
-	type ProfileTimezoneConfig,
-	ProfileTimezoneConfigSchema,
-} from '@fluxer/schema/src/domains/admin/ProfileTimezoneSchemas';
-import {
 	type LegacyPushServiceDeliveryWire,
 	type PushRelayConfig,
 	PushRelayConfigSchema,
 	toLegacyPushServiceDeliveryWire,
 } from '@fluxer/schema/src/domains/admin/PushRelaySchemas';
-import {
-	type VoiceNoiseSuppressionConfig,
-	VoiceNoiseSuppressionConfigSchema,
-} from '@fluxer/schema/src/domains/admin/VoiceNoiseSuppressionSchemas';
 import {
 	type ExperimentDeliveryConfig,
 	ExperimentDeliveryConfigSchema,
@@ -73,8 +65,6 @@ import {
 	type InstanceAppPublic,
 	InstanceAppPublicSchema,
 	type InstanceBranding,
-	type InstanceCaptchaProvider,
-	InstanceCaptchaProviderSchema,
 	type InstanceCommunity,
 	type InstanceRegistration,
 	InstanceRegistrationSchema,
@@ -86,11 +76,9 @@ import type {IKVProvider} from '@pkgs/kv_client/src/IKVProvider';
 import {z} from 'zod';
 
 const GATEWAY_ROLLOUT_CONFIG_KEY = 'gateway_rollout_config';
-const VOICE_NOISE_SUPPRESSION_CONFIG_KEY = 'voice_noise_suppression_config';
 const PUSH_RELAY_CONFIG_KEY = 'push_service_delivery_config';
 const DOMAIN_MIGRATION_CONFIG_KEY = 'domain_migration_config';
-const ALTCHA_CAPTCHA_CONFIG_KEY = 'altcha_captcha_config';
-const PROFILE_TIMEZONE_CONFIG_KEY = 'profile_timezone_config';
+const CAPTCHA_CONFIG_KEY = 'captcha_config';
 const EXPERIMENT_DELIVERY_CONFIG_KEY = 'experiment_delivery_config';
 const REGISTRATION_CONFIG_KEY = 'registration_config';
 const REGISTRATION_URLS_KEY = 'registration_urls';
@@ -188,9 +176,6 @@ export interface InstancePolicyConfig {
 	gif_enabled: boolean | null;
 	youtube_enabled: boolean | null;
 	bluesky_enabled: boolean | null;
-	deferred_phone_gate_enabled: boolean;
-	deferred_phone_gate_window_hours: number;
-	deferred_phone_gate_member_threshold: number;
 }
 
 type InstanceEmailProvider = 'smtp' | 'none';
@@ -201,14 +186,6 @@ interface InstanceGifIntegrationConfig {
 
 interface InstanceYoutubeIntegrationConfig {
 	api_key: string | null;
-}
-
-interface InstanceCaptchaIntegrationConfig {
-	provider: InstanceCaptchaProvider | null;
-	hcaptcha_site_key: string | null;
-	hcaptcha_secret_key: string | null;
-	turnstile_site_key: string | null;
-	turnstile_secret_key: string | null;
 }
 
 interface InstanceEmailSmtpIntegrationConfig {
@@ -246,7 +223,6 @@ interface InstanceBlueskyIntegrationConfig {
 interface InstanceIntegrationsConfig {
 	gif: InstanceGifIntegrationConfig;
 	youtube: InstanceYoutubeIntegrationConfig;
-	captcha: InstanceCaptchaIntegrationConfig;
 	email: InstanceEmailIntegrationConfig;
 	bluesky: InstanceBlueskyIntegrationConfig;
 }
@@ -257,15 +233,6 @@ interface InstanceGifEffectiveConfig {
 	available: boolean;
 }
 
-export interface InstanceCaptchaEffectiveConfig {
-	enabled: boolean;
-	provider: InstanceCaptchaProvider;
-	hcaptcha_site_key: string | null;
-	hcaptcha_secret_key: string | null;
-	turnstile_site_key: string | null;
-	turnstile_secret_key: string | null;
-}
-
 interface InstanceIntegrationsAdminConfig {
 	gif: {
 		klipy_api_key_set: boolean;
@@ -274,15 +241,6 @@ interface InstanceIntegrationsAdminConfig {
 	youtube: {
 		api_key_set: boolean;
 		effective_available: boolean;
-	};
-	captcha: {
-		provider: InstanceCaptchaProvider | null;
-		effective_provider: InstanceCaptchaProvider;
-		hcaptcha_site_key: string | null;
-		hcaptcha_secret_key_set: boolean;
-		turnstile_site_key: string | null;
-		turnstile_secret_key_set: boolean;
-		effective_enabled: boolean;
 	};
 	email: {
 		enabled: boolean | null;
@@ -350,7 +308,6 @@ interface InstanceMediaAdminConfig {
 interface InstanceIntegrationsConfigPatch {
 	gif?: Partial<InstanceGifIntegrationConfig>;
 	youtube?: Partial<InstanceYoutubeIntegrationConfig>;
-	captcha?: Partial<InstanceCaptchaIntegrationConfig>;
 	email?: Partial<Omit<InstanceEmailIntegrationConfig, 'smtp'>> & {
 		smtp?: Partial<InstanceEmailSmtpIntegrationConfig>;
 	};
@@ -447,11 +404,9 @@ function getDefaultAppPublicConfig(): InstanceAppPublicConfig {
 type StoredConfigSection =
 	| 'app public'
 	| 'gateway rollout'
-	| 'voice noise suppression'
 	| 'push relay'
 	| 'domain migration'
-	| 'altcha captcha'
-	| 'profile timezone'
+	| 'captcha'
 	| 'experiment delivery'
 	| 'instance policy'
 	| 'integrations'
@@ -587,10 +542,6 @@ function parseStoredGatewayRolloutConfig(raw: string | null): GatewayRolloutConf
 	return decodeGatewayRolloutConfig(parseStoredConfigValue(raw, 'gateway rollout'));
 }
 
-function parseStoredVoiceNoiseSuppressionConfig(raw: string | null): VoiceNoiseSuppressionConfig {
-	return parseStoredConfigOrDefault(VoiceNoiseSuppressionConfigSchema, raw, 'voice noise suppression');
-}
-
 const StoredPushRelayConfigSchema = PushRelayConfigSchema.extend({
 	config_version: z.number().int().min(0).default(0),
 });
@@ -616,12 +567,8 @@ function parseStoredDomainMigrationConfig(raw: string | null): DomainMigrationCo
 	return parseStoredConfigOrDefault(DomainMigrationConfigSchema, raw, 'domain migration');
 }
 
-function parseStoredAltchaCaptchaConfig(raw: string | null): AltchaCaptchaConfig {
-	return parseStoredConfigOrDefault(AltchaCaptchaConfigSchema, raw, 'altcha captcha');
-}
-
-function parseStoredProfileTimezoneConfig(raw: string | null): ProfileTimezoneConfig {
-	return parseStoredConfigOrDefault(ProfileTimezoneConfigSchema, raw, 'profile timezone');
+function parseStoredCaptchaConfig(raw: string | null): CaptchaConfig {
+	return parseStoredConfigOrDefault(CaptchaConfigSchema, raw, 'captcha');
 }
 
 function parseStoredExperimentDeliveryConfig(raw: string | null): ExperimentDeliveryConfig {
@@ -691,7 +638,6 @@ function buildAppPublicConfig(config: z.infer<typeof StoredInstanceAppPublicSche
 
 const InstancePolicyUpdateSchema = InstanceConfigUpdateRequest.shape.policy.unwrap().unwrap();
 const InstancePolicyServiceUpdateSchema = InstancePolicyUpdateSchema.shape.services.unwrap().unwrap();
-const InstancePolicyPhoneGateUpdateSchema = InstancePolicyUpdateSchema.shape.deferred_phone_gate.unwrap().unwrap();
 const StoredSnowflakeStringSchema = z
 	.string()
 	.refine((value) => value.length <= 19 && !/\D/.test(value) && SnowflakeType.safeParse(value).success);
@@ -704,9 +650,6 @@ const StoredInstancePolicySchema = z.object({
 	gif_enabled: InstancePolicyServiceUpdateSchema.shape.gif_enabled.default(null),
 	youtube_enabled: InstancePolicyServiceUpdateSchema.shape.youtube_enabled.default(null),
 	bluesky_enabled: InstancePolicyServiceUpdateSchema.shape.bluesky_enabled.default(null),
-	deferred_phone_gate_enabled: InstancePolicyPhoneGateUpdateSchema.shape.enabled.default(false),
-	deferred_phone_gate_window_hours: InstancePolicyPhoneGateUpdateSchema.shape.window_hours.default(6),
-	deferred_phone_gate_member_threshold: InstancePolicyPhoneGateUpdateSchema.shape.member_threshold.default(50),
 }) satisfies z.ZodType<InstancePolicyConfig>;
 
 function decodeInstancePolicyConfig(value: unknown): InstancePolicyConfig {
@@ -746,15 +689,6 @@ const StoredBlueskyKeysSchema = z
 const StoredInstanceIntegrationsSchema = z.object({
 	gif: z.object({klipy_api_key: StoredIntegrationStringSchema}).prefault({}),
 	youtube: z.object({api_key: StoredIntegrationStringSchema}).prefault({}),
-	captcha: z
-		.object({
-			provider: InstanceCaptchaProviderSchema.nullable().default(null),
-			hcaptcha_site_key: StoredIntegrationStringSchema,
-			hcaptcha_secret_key: StoredIntegrationStringSchema,
-			turnstile_site_key: StoredIntegrationStringSchema,
-			turnstile_secret_key: StoredIntegrationStringSchema,
-		})
-		.prefault({}),
 	email: z
 		.object({
 			enabled: StoredNullableBooleanSchema,
@@ -1296,13 +1230,11 @@ export class InstanceConfigRepository {
 		checkStoredConfig('gateway rollout', () =>
 			parseStoredGatewayRolloutConfig(snapshot.get(GATEWAY_ROLLOUT_CONFIG_KEY) ?? null),
 		);
-		parseStoredVoiceNoiseSuppressionConfig(snapshot.get(VOICE_NOISE_SUPPRESSION_CONFIG_KEY) ?? null);
 		parseStoredPushRelayConfig(snapshot.get(PUSH_RELAY_CONFIG_KEY) ?? null);
 		parseStoredDomainMigrationConfig(snapshot.get(DOMAIN_MIGRATION_CONFIG_KEY) ?? null);
-		parseStoredAltchaCaptchaConfig(snapshot.get(ALTCHA_CAPTCHA_CONFIG_KEY) ?? null);
-		parseStoredProfileTimezoneConfig(snapshot.get(PROFILE_TIMEZONE_CONFIG_KEY) ?? null);
+		parseStoredCaptchaConfig(snapshot.get(CAPTCHA_CONFIG_KEY) ?? null);
 		parseStoredExperimentDeliveryConfig(snapshot.get(EXPERIMENT_DELIVERY_CONFIG_KEY) ?? null);
-		const policy = parseStoredInstancePolicyConfig(snapshot.get(INSTANCE_POLICY_CONFIG_KEY) ?? null);
+		parseStoredInstancePolicyConfig(snapshot.get(INSTANCE_POLICY_CONFIG_KEY) ?? null);
 		checkStoredConfig('registration', () =>
 			parseStoredRegistrationConfig(snapshot.get(REGISTRATION_CONFIG_KEY) ?? null),
 		);
@@ -1330,7 +1262,6 @@ export class InstanceConfigRepository {
 		checkStoredConfig('media', () => parseStoredInstanceMediaConfig(snapshot.get(INSTANCE_MEDIA_CONFIG_KEY) ?? null));
 		setStoredBillingConfig(parseStoredInstanceBillingConfig(snapshot.get(INSTANCE_BILLING_CONFIG_KEY) ?? null));
 		const appPublic = parseStoredAppPublicConfig(snapshot.get(APP_PUBLIC_CONFIG_KEY) ?? null);
-		setCachedDeferredPhoneGateEnabled(resolveDeferredPhoneGateEnabled(policy));
 		setCachedDateOfBirthCollection(appPublic.registration.collect_date_of_birth);
 	}
 
@@ -1377,27 +1308,6 @@ export class InstanceConfigRepository {
 		);
 	}
 
-	async getVoiceNoiseSuppressionConfig(): Promise<VoiceNoiseSuppressionConfig> {
-		const raw = await this.getConfig(VOICE_NOISE_SUPPRESSION_CONFIG_KEY);
-		return parseStoredVoiceNoiseSuppressionConfig(raw);
-	}
-
-	async setVoiceNoiseSuppressionConfig(config: VoiceNoiseSuppressionConfig): Promise<void> {
-		await this.updateVoiceNoiseSuppressionConfig(() => config);
-	}
-
-	updateVoiceNoiseSuppressionConfig(
-		update: (current: VoiceNoiseSuppressionConfig) => VoiceNoiseSuppressionConfig,
-	): Promise<VoiceNoiseSuppressionConfig> {
-		return this.updateStoredConfig(VOICE_NOISE_SUPPRESSION_CONFIG_KEY, (raw) =>
-			validateStoredConfig(
-				VoiceNoiseSuppressionConfigSchema,
-				update(parseStoredVoiceNoiseSuppressionConfig(raw)),
-				'voice noise suppression',
-			),
-		);
-	}
-
 	async getLegacyPushServiceDeliveryWire(): Promise<LegacyPushServiceDeliveryWire> {
 		const raw = await this.getConfig(PUSH_RELAY_CONFIG_KEY);
 		return parseStoredPushRelayConfig(raw);
@@ -1436,41 +1346,14 @@ export class InstanceConfigRepository {
 		);
 	}
 
-	async getAltchaCaptchaConfig(): Promise<AltchaCaptchaConfig> {
-		const raw = await this.getConfig(ALTCHA_CAPTCHA_CONFIG_KEY);
-		return parseStoredAltchaCaptchaConfig(raw);
+	async getCaptchaConfig(): Promise<CaptchaConfig> {
+		const raw = await this.getConfig(CAPTCHA_CONFIG_KEY);
+		return parseStoredCaptchaConfig(raw);
 	}
 
-	async setAltchaCaptchaConfig(config: AltchaCaptchaConfig): Promise<void> {
-		await this.updateAltchaCaptchaConfig(() => config);
-	}
-
-	updateAltchaCaptchaConfig(
-		update: (current: AltchaCaptchaConfig) => AltchaCaptchaConfig,
-	): Promise<AltchaCaptchaConfig> {
-		return this.updateStoredConfig(ALTCHA_CAPTCHA_CONFIG_KEY, (raw) =>
-			validateStoredConfig(AltchaCaptchaConfigSchema, update(parseStoredAltchaCaptchaConfig(raw)), 'altcha captcha'),
-		);
-	}
-
-	async getProfileTimezoneConfig(): Promise<ProfileTimezoneConfig> {
-		const raw = await this.getConfig(PROFILE_TIMEZONE_CONFIG_KEY);
-		return parseStoredProfileTimezoneConfig(raw);
-	}
-
-	async setProfileTimezoneConfig(config: ProfileTimezoneConfig): Promise<void> {
-		await this.updateProfileTimezoneConfig(() => config);
-	}
-
-	updateProfileTimezoneConfig(
-		update: (current: ProfileTimezoneConfig) => ProfileTimezoneConfig,
-	): Promise<ProfileTimezoneConfig> {
-		return this.updateStoredConfig(PROFILE_TIMEZONE_CONFIG_KEY, (raw) =>
-			validateStoredConfig(
-				ProfileTimezoneConfigSchema,
-				update(parseStoredProfileTimezoneConfig(raw)),
-				'profile timezone',
-			),
+	updateCaptchaConfig(patch: CaptchaConfigUpdateRequest): Promise<CaptchaConfig> {
+		return this.updateStoredConfig(CAPTCHA_CONFIG_KEY, (raw) =>
+			validateStoredConfig(CaptchaConfigSchema, {...parseStoredCaptchaConfig(raw), ...patch}, 'captcha'),
 		);
 	}
 
@@ -1572,9 +1455,7 @@ export class InstanceConfigRepository {
 
 	async getInstancePolicyConfig(): Promise<InstancePolicyConfig> {
 		const raw = await this.getConfig(INSTANCE_POLICY_CONFIG_KEY);
-		const policy = parseStoredInstancePolicyConfig(raw);
-		setCachedDeferredPhoneGateEnabled(resolveDeferredPhoneGateEnabled(policy));
-		return policy;
+		return parseStoredInstancePolicyConfig(raw);
 	}
 
 	async readStoredInstancePolicyConfig(): Promise<InstancePolicyConfig> {
@@ -1600,7 +1481,6 @@ export class InstanceConfigRepository {
 			return {value: Object.keys(patch).length === 0 ? null : JSON.stringify(config), result: config};
 		});
 		if (written) await this.publishRefresh(cache.sourceId);
-		setCachedDeferredPhoneGateEnabled(resolveDeferredPhoneGateEnabled(next));
 		return next;
 	}
 
@@ -1620,10 +1500,6 @@ export class InstanceConfigRepository {
 				youtube: {
 					...current.youtube,
 					...(config.youtube ?? {}),
-				},
-				captcha: {
-					...current.captcha,
-					...(config.captcha ?? {}),
 				},
 				email: {
 					...current.email,
@@ -1718,33 +1594,6 @@ export class InstanceConfigRepository {
 		return integrations.youtube.api_key ?? normalizeOptionalString(Config.youtube.apiKey);
 	}
 
-	async getEffectiveCaptchaConfig(): Promise<InstanceCaptchaEffectiveConfig> {
-		const integrations = await this.getInstanceIntegrationsConfig();
-		const provider = integrations.captcha.provider ?? (Config.captcha.enabled ? Config.captcha.provider : 'none');
-		const hcaptchaSiteKey =
-			integrations.captcha.hcaptcha_site_key ?? normalizeOptionalString(Config.captcha.hcaptcha?.siteKey);
-		const hcaptchaSecretKey =
-			integrations.captcha.hcaptcha_secret_key ?? normalizeOptionalString(Config.captcha.hcaptcha?.secretKey);
-		const turnstileSiteKey =
-			integrations.captcha.turnstile_site_key ?? normalizeOptionalString(Config.captcha.turnstile?.siteKey);
-		const turnstileSecretKey =
-			integrations.captcha.turnstile_secret_key ?? normalizeOptionalString(Config.captcha.turnstile?.secretKey);
-		const providerReady =
-			provider === 'hcaptcha'
-				? Boolean(hcaptchaSiteKey && hcaptchaSecretKey)
-				: provider === 'turnstile'
-					? Boolean(turnstileSiteKey && turnstileSecretKey)
-					: false;
-		return {
-			enabled: providerReady,
-			provider: providerReady ? provider : 'none',
-			hcaptcha_site_key: hcaptchaSiteKey,
-			hcaptcha_secret_key: hcaptchaSecretKey,
-			turnstile_site_key: turnstileSiteKey,
-			turnstile_secret_key: turnstileSecretKey,
-		};
-	}
-
 	async getEffectiveEmailConfig(): Promise<APIConfig['email']> {
 		const integrations = await this.getInstanceIntegrationsConfig();
 		const provider = integrations.email.provider ?? Config.email.provider;
@@ -1807,11 +1656,10 @@ export class InstanceConfigRepository {
 	}
 
 	async getInstanceIntegrationsAdminConfig(): Promise<InstanceIntegrationsAdminConfig> {
-		const [integrations, gif, youtubeApiKey, captcha, email, bluesky] = await Promise.all([
+		const [integrations, gif, youtubeApiKey, email, bluesky] = await Promise.all([
 			this.getInstanceIntegrationsConfig(),
 			this.getEffectiveGifConfig(),
 			this.getEffectiveYoutubeApiKey(),
-			this.getEffectiveCaptchaConfig(),
 			this.getEffectiveEmailConfig(),
 			this.getEffectiveBlueskyConfig(),
 		]);
@@ -1823,17 +1671,6 @@ export class InstanceConfigRepository {
 			youtube: {
 				api_key_set: secretIsSet(integrations.youtube.api_key) || secretIsSet(Config.youtube.apiKey),
 				effective_available: Boolean(youtubeApiKey),
-			},
-			captcha: {
-				provider: integrations.captcha.provider,
-				effective_provider: captcha.provider,
-				hcaptcha_site_key: captcha.hcaptcha_site_key,
-				hcaptcha_secret_key_set:
-					secretIsSet(integrations.captcha.hcaptcha_secret_key) || secretIsSet(Config.captcha.hcaptcha?.secretKey),
-				turnstile_site_key: captcha.turnstile_site_key,
-				turnstile_secret_key_set:
-					secretIsSet(integrations.captcha.turnstile_secret_key) || secretIsSet(Config.captcha.turnstile?.secretKey),
-				effective_enabled: captcha.enabled,
 			},
 			email: {
 				enabled: integrations.email.enabled,

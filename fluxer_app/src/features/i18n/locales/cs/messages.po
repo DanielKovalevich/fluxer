@@ -2395,11 +2395,6 @@ msgstr "60 sekund"
 msgid "7 days"
 msgstr "7 dní"
 
-#. Required-action error when the API requires a captcha for phone verification.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:581
-msgid "A browser check is required before phone verification. Try again from the sign-in page or contact support."
-msgstr "Před ověřením telefonu je vyžadována kontrola prohlížeče. Zkuste to znovu z přihlašovací stránky nebo kontaktujte podporu."
-
 #. Hint shown beside in:. Sentence case, no trailing punctuation.
 #: src/features/search/utils/SearchUtils.ts:77
 msgid "a channel"
@@ -2874,7 +2869,7 @@ msgid "Activity sharing"
 msgstr "Sdílení aktivit"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:478
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:473
 #: src/features/user/components/settings_utils/section_registry/VoiceVideoSections.ts:102
 msgid "Activity threshold"
 msgstr "Práh aktivity"
@@ -2928,7 +2923,7 @@ msgid "Add a friend to get started."
 msgstr "Přidejte si přítele a začněte."
 
 #. Setup wizard body for GIF integration credentials.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:973
+#: src/features/app/components/setup/SetupWizardSteps.tsx:966
 msgid "Add a Klipy API key to enable GIF search at runtime."
 msgstr "Přidejte klíč API Klipy, aby bylo možné za běhu aplikace vyhledávat GIFy."
 
@@ -2965,7 +2960,7 @@ msgid "Add a working email"
 msgstr "Přidat funkční e-mailovou adresu"
 
 #. Setup wizard body for YouTube integration credentials.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:981
+#: src/features/app/components/setup/SetupWizardSteps.tsx:974
 msgid "Add a YouTube Data API key to enrich YouTube links."
 msgstr "Přidejte klíč YouTube Data API pro doplnění informací k odkazům na YouTube."
 
@@ -3011,7 +3006,7 @@ msgid "Add another reaction"
 msgstr "Přidat další reakci"
 
 #. Setup wizard body for Bluesky integration credentials.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1005
+#: src/features/app/components/setup/SetupWizardSteps.tsx:990
 msgid "Add Bluesky OAuth client metadata and a signing key."
 msgstr "Přidejte metadata klienta OAuth pro Bluesky a podepisovací klíč."
 
@@ -3120,7 +3115,7 @@ msgstr "Přidat přístupový klíč"
 #. Generic action label that opens the reaction picker for a message.
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:527
-#: src/features/input/state/input_keybind/shared.ts:17
+#: src/features/input/state/input_keybind/shared.ts:21
 msgid "Add reaction"
 msgstr "Přidat reakci"
 
@@ -3161,7 +3156,7 @@ msgid "Add shortcut"
 msgstr "Přidat zkratku"
 
 #. Setup wizard body for SMTP integration credentials.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:997
+#: src/features/app/components/setup/SetupWizardSteps.tsx:982
 msgid "Add SMTP credentials so the instance can send verification and notification email."
 msgstr "Přidejte přihlašovací údaje SMTP, aby instance mohla odesílat ověřovací e-maily a e-mailová oznámení."
 
@@ -3188,7 +3183,7 @@ msgid "Add stream"
 msgstr "Přidat stream"
 
 #. Description for configuring an optional setup wizard integration now.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:965
+#: src/features/app/components/setup/SetupWizardSteps.tsx:958
 msgid "Add the credentials during setup."
 msgstr "Při nastavení přidejte přihlašovací údaje."
 
@@ -3611,11 +3606,11 @@ msgstr "Povolit zmínky {everyoneMention} a {hereMention}"
 msgid "Allow {PRODUCT_NAME} to access your camera in {MACOS_SYSTEM_SETTINGS_NAME} → {MACOS_PRIVACY_AND_SECURITY_SETTINGS_NAME} → {MACOS_CAMERA_PERMISSION_NAME}."
 msgstr "Povolte aplikaci {PRODUCT_NAME} přístup k vaší kameře v {MACOS_SYSTEM_SETTINGS_NAME} → {MACOS_PRIVACY_AND_SECURITY_SETTINGS_NAME} → {MACOS_CAMERA_PERMISSION_NAME}."
 
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:535
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:530
 msgid "Allow {PRODUCT_NAME} to access your microphone in {MACOS_SYSTEM_SETTINGS_NAME} → {MACOS_PRIVACY_AND_SECURITY_SETTINGS_NAME} → {MACOS_MICROPHONE_PERMISSION_NAME}."
 msgstr "Povolte aplikaci {PRODUCT_NAME} přístup k mikrofonu v: {MACOS_SYSTEM_SETTINGS_NAME} → {MACOS_PRIVACY_AND_SECURITY_SETTINGS_NAME} → {MACOS_MICROPHONE_PERMISSION_NAME}."
 
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:540
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:535
 msgid "Allow {PRODUCT_NAME} to access your microphone. Check your browser's address bar or settings."
 msgstr "Povolte aplikaci {PRODUCT_NAME} přístup k mikrofonu. Zkontrolujte adresní řádek nebo nastavení prohlížeče."
 
@@ -3718,7 +3713,7 @@ msgstr "Povolit členům bez oprávnění {readMessageHistoryPermissionLabel} zo
 msgid "Allow mentions for this role"
 msgstr "Povolit zmínky pro tuto roli"
 
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:560
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:555
 msgid "Allow microphone"
 msgstr "Povolit mikrofon"
 
@@ -3954,7 +3949,7 @@ msgid "An invalid status was provided. You can now close this tab and return to 
 msgstr "Byl poskytnut neplatný stav. Nyní můžete tuto kartu zavřít a vrátit se do aplikace."
 
 #. Short label in the authentication auth form. Keep the tone plain and specific.
-#: src/features/auth/hooks/useAuthForm.ts:13
+#: src/features/auth/hooks/useAuthForm.ts:12
 msgid "An unexpected error occurred"
 msgstr "Došlo k neočekávané chybě"
 
@@ -4203,7 +4198,7 @@ msgid "Another round checkbox"
 msgstr "Další kulaté zaškrtávací políčko"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:213
+#: src/features/input/state/input_keybind/shared.ts:221
 msgid "Answer the incoming call"
 msgstr "Přijmout příchozí hovor"
 
@@ -4262,7 +4257,7 @@ msgid "Anyone can request an account, but an administrator must approve it."
 msgstr "O účet může požádat kdokoli, ale správce ho musí schválit."
 
 #. Label for an integration API key input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1018
+#: src/features/app/components/setup/SetupWizardSteps.tsx:994
 msgid "API key"
 msgstr "Klíč API"
 
@@ -4767,7 +4762,7 @@ msgid "Audio output"
 msgstr "Zvukový výstup"
 
 #. Field label in the voice connection status popout. Shows received audio packet loss percentage.
-#: src/features/voice/components/voice_connection_status/shared.ts:107
+#: src/features/voice/components/voice_connection_status/shared.ts:108
 msgid "Audio packet loss:"
 msgstr "Ztráta zvukových paketů:"
 
@@ -4782,32 +4777,32 @@ msgid "Audio preview"
 msgstr "Náhled zvuku"
 
 #. Voice settings modal title for microphone processing options.
-#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:51
+#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:48
 msgid "Audio processing"
 msgstr "Zpracování zvuku"
 
 #. Tooltip in the voice status popout. Describes the custom mic processing profile with enhanced (DeepFilterNet3) noise suppression.
-#: src/features/voice/components/voice_connection_status/shared.ts:19
+#: src/features/voice/components/voice_connection_status/shared.ts:20
 msgid "Audio processing (custom, enhanced)"
 msgstr "Zpracování zvuku (vlastní, vylepšené)"
 
 #. Tooltip in the voice status popout. Describes the custom mic processing profile with no noise suppression.
-#: src/features/voice/components/voice_connection_status/shared.ts:29
+#: src/features/voice/components/voice_connection_status/shared.ts:30
 msgid "Audio processing (custom, no suppression)"
 msgstr "Zpracování zvuku (vlastní, bez potlačení)"
 
 #. Tooltip in the voice status popout. Describes the custom mic processing profile with browser-built-in noise suppression.
-#: src/features/voice/components/voice_connection_status/shared.ts:24
+#: src/features/voice/components/voice_connection_status/shared.ts:25
 msgid "Audio processing (custom)"
 msgstr "Zpracování zvuku (vlastní)"
 
 #. Tooltip in the voice status popout. Describes the studio / direct-input mic processing profile.
-#: src/features/voice/components/voice_connection_status/shared.ts:11
+#: src/features/voice/components/voice_connection_status/shared.ts:12
 msgid "Audio processing (direct input, raw)"
 msgstr "Zpracování zvuku (přímý vstup, nezpracováno)"
 
 #. Tooltip in the voice status popout. Describes the focused-voice mic processing profile.
-#: src/features/voice/components/voice_connection_status/shared.ts:15
+#: src/features/voice/components/voice_connection_status/shared.ts:16
 msgid "Audio processing (focused voice)"
 msgstr "Zpracování zvuku (hlas v popředí)"
 
@@ -4817,12 +4812,12 @@ msgid "Audio progress"
 msgstr "Průběh přehrávání zvuku"
 
 #. Field label in the voice connection status popout. Shows current inbound audio bitrate.
-#: src/features/voice/components/voice_connection_status/shared.ts:95
+#: src/features/voice/components/voice_connection_status/shared.ts:96
 msgid "Audio receive:"
 msgstr "Příjem zvuku:"
 
 #. Field label in the voice connection status popout. Shows current outbound audio bitrate.
-#: src/features/voice/components/voice_connection_status/shared.ts:91
+#: src/features/voice/components/voice_connection_status/shared.ts:92
 msgid "Audio send:"
 msgstr "Odesílání zvuku:"
 
@@ -4958,7 +4953,7 @@ msgid "Authorized apps"
 msgstr "Autorizované aplikace"
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:38
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:37
 msgid "Authorized IPs cleared. New logins will require email verification."
 msgstr "Autorizované IP adresy vymazány. Nová přihlášení budou vyžadovat ověření e-mailem."
 
@@ -4993,7 +4988,7 @@ msgstr "Automaticky rozpoznat jazyk"
 
 #. Short label in the voice tab. Keep it concise.
 #: src/features/user/components/modals/tabs/UserVoiceTab.tsx:116
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:465
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:460
 msgid "Auto-set activity threshold"
 msgstr "Automaticky nastavit práh aktivity"
 
@@ -5210,7 +5205,7 @@ msgid "Avatars"
 msgstr "Avatary"
 
 #. Field label in the voice connection status popout. Shows the average RTT in ms over the recent window.
-#: src/features/voice/components/voice_connection_status/shared.ts:50
+#: src/features/voice/components/voice_connection_status/shared.ts:51
 msgid "Average ping:"
 msgstr "Průměrný ping:"
 
@@ -5240,8 +5235,8 @@ msgstr "Momentálně pryč"
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:396
 #: src/features/moderation/components/report_modal/IARModal.tsx:86
 #: src/features/moderation/components/report/ReportStepDetails.tsx:312
-#: src/features/user/components/modals/PhoneAddModal.tsx:420
-#: src/features/user/components/modals/PhoneAddModal.tsx:439
+#: src/features/user/components/modals/PhoneAddModal.tsx:417
+#: src/features/user/components/modals/PhoneAddModal.tsx:436
 msgid "Back"
 msgstr "Zpět"
 
@@ -5450,7 +5445,7 @@ msgid "Ban this user"
 msgstr "Zabanovat tohoto uživatele"
 
 #. Section heading in the voice connection status popout for current media bitrate usage.
-#: src/features/voice/components/voice_connection_status/shared.ts:66
+#: src/features/voice/components/voice_connection_status/shared.ts:67
 msgid "Bandwidth"
 msgstr "Šířka pásma"
 
@@ -5730,7 +5725,7 @@ msgid "Bluesky connections"
 msgstr "Propojení s Bluesky"
 
 #. Setup wizard title for Bluesky integration credentials.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1001
+#: src/features/app/components/setup/SetupWizardSteps.tsx:986
 msgid "Bluesky OAuth"
 msgstr "OAuth pro Bluesky"
 
@@ -5775,7 +5770,7 @@ msgstr "Dosažen limit záložek"
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:531
-#: src/features/input/state/input_keybind/shared.ts:265
+#: src/features/input/state/input_keybind/shared.ts:273
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:66
 msgid "Bookmark message"
 msgstr "Uložit zprávu do záložek"
@@ -5896,11 +5891,6 @@ msgstr "Oprávnění bota nemohou být záporná."
 #: src/features/user/components/settings_utils/search_index/ApplicationsIndex.ts:64
 msgid "Bot profile"
 msgstr "Profil bota"
-
-#. Setup wizard title for CAPTCHA integration credentials.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:985
-msgid "Bot protection"
-msgstr "Ochrana proti botům"
 
 #. Short label in the authentication OAUTH scopes step. Keep the tone plain and specific.
 #: src/features/auth/components/pages/oauth_authorize_page/OAuthScopesStep.tsx:20
@@ -6431,7 +6421,7 @@ msgstr "Sem nelze nahrávat soubory"
 #: src/features/expressions/components/modals/EditGuildStickerModal.tsx:116
 #: src/features/guild/components/modals/TransferOwnershipModal.tsx:91
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:103
-#: src/features/input/state/input_keybind/shared.ts:137
+#: src/features/input/state/input_keybind/shared.ts:145
 #: src/features/invite/components/modals/InviteModal.tsx:552
 #: src/features/messaging/components/modals/AttachmentEditModal.tsx:133
 #: src/features/messaging/components/modals/EditAltTextModal.tsx:190
@@ -6451,7 +6441,7 @@ msgstr "Sem nelze nahrávat soubory"
 #: src/features/user/components/modals/PasswordChangeModal.tsx:226
 #: src/features/user/components/modals/PasswordChangeModal.tsx:237
 #: src/features/user/components/modals/PasswordChangeModal.tsx:255
-#: src/features/user/components/modals/PhoneAddModal.tsx:401
+#: src/features/user/components/modals/PhoneAddModal.tsx:398
 #: src/features/user/components/modals/tabs/AuthorizedAppsTab.tsx:174
 #: src/features/voice/components/EntranceSoundTrimmerModal.tsx:33
 #: src/features/voice/components/modals/CameraPreviewModal.tsx:846
@@ -6501,12 +6491,12 @@ msgstr "Zrušit plánovanou změnu"
 #. Billing button that starts subscription cancellation.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:844
-#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:140
+#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:142
 #: src/features/user/components/settings_utils/search_index/PlutoniumIndex.ts:31
 msgid "Cancel subscription"
 msgstr "Zrušit předplatné"
 
-#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:133
+#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:135
 msgid "Cancel subscription?"
 msgstr "Zrušit předplatné?"
 
@@ -6553,11 +6543,6 @@ msgstr "Nelze upravit"
 #: src/features/guild/components/modals/GuildOwnershipWarningModal.tsx:12
 msgid "Cannot delete account"
 msgstr "Účet nelze smazat"
-
-#. Toast error shown when captcha verification fails inside the auth captcha interceptor.
-#: src/features/auth/components/CaptchaInterceptor.tsx:15
-msgid "Captcha verification failed. Try again."
-msgstr "Ověření CAPTCHA se nezdařilo. Zkuste to znovu."
 
 #. Section header in the Linux audio source picker. Lists capture-target options (entire system / specific apps).
 #: src/features/voice/components/AudioSourcePickerLinux.tsx:50
@@ -7398,10 +7383,6 @@ msgstr "Kontrola přístupu..."
 msgid "Checking screen recording permission..."
 msgstr "Kontrola oprávnění k nahrávání obrazovky..."
 
-#: src/features/auth/components/AltchaVerification.tsx:62
-msgid "Checking your browser. This takes a few seconds."
-msgstr "Kontrolujeme váš prohlížeč. Zabere to pár sekund."
-
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/search_index/PlutoniumIndex.ts:67
 msgid "Checkout"
@@ -7570,11 +7551,6 @@ msgstr "Vyberte Soubor a poté Přidat do Docku."
 #: src/features/channel/utils/CreateDMModalUtils.tsx:39
 msgid "Choose friends to message."
 msgstr "Vyberte přátele, kterým chcete poslat zprávu."
-
-#. Setup wizard body for CAPTCHA integration credentials.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:989
-msgid "Choose hCaptcha or Cloudflare Turnstile for signup challenges."
-msgstr "Pro ověřování při registraci vyberte hCaptcha nebo Cloudflare Turnstile."
 
 #. Settings search entry description. One-line summary of what the settings search entry controls.
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:455
@@ -7865,7 +7841,7 @@ msgid "Clean link"
 msgstr "Vyčistit odkaz"
 
 #. Description for the focused-voice option in the voice processing settings radio group.
-#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:34
+#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:31
 msgid "Cleans up your mic for clear speech."
 msgstr "Vyčistí zvuk mikrofonu, aby vám bylo dobře rozumět."
 
@@ -7924,7 +7900,7 @@ msgid "Clear custom status"
 msgstr "Vymazat vlastní stav"
 
 #. Body of the confirmation alert shown when clearing every reaction on a message.
-#: src/features/channel/components/MessageActionUtils.tsx:71
+#: src/features/channel/components/MessageActionUtils.tsx:74
 msgid "Clear every reaction from this message?"
 msgstr "Smazat všechny reakce z této zprávy?"
 
@@ -7982,17 +7958,17 @@ msgid "Clear selection"
 msgstr "Zrušit výběr"
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:88
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:87
 msgid "Clear trust all setting"
 msgstr "Zrušit nastavení „Důvěřovat všem“"
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:63
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:62
 msgid "Clear trusted domains"
 msgstr "Vymazat důvěryhodné domény"
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:96
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:95
 msgid "Clear trusted domains ({trustedDomainsCount})"
 msgstr "Vymazat důvěryhodné domény ({trustedDomainsCount})"
 
@@ -8002,7 +7978,7 @@ msgid "Clearer text"
 msgstr "Zřetelnější text"
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:108
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:107
 msgid "Clearing trusted domains..."
 msgstr "Mazání důvěryhodných domén..."
 
@@ -8100,7 +8076,7 @@ msgid "Client"
 msgstr "Klient"
 
 #. Label for Bluesky OAuth client name input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1057
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1031
 msgid "Client name"
 msgstr "Název klienta"
 
@@ -8117,7 +8093,7 @@ msgid "Client secret regenerated. Update any code that uses the old secret."
 msgstr "Klientský tajný klíč byl vygenerován znovu. Aktualizujte veškerý kód, který používá starý klíč."
 
 #. Label for Bluesky OAuth client URL input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1061
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1035
 msgid "Client URL"
 msgstr "URL klienta"
 
@@ -8269,11 +8245,6 @@ msgstr "Zavřené soukromé konverzace"
 msgid "Cloud upload"
 msgstr "Nahrát na cloud"
 
-#. Cloudflare Turnstile provider option.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1014
-msgid "Cloudflare Turnstile"
-msgstr "Cloudflare Turnstile"
-
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/section_registry/AppearanceSections.ts:58
 msgid "Coal"
@@ -8294,7 +8265,7 @@ msgstr "Uhelný motiv"
 #. Label for an inbound phone verification code shown in the required-action modal.
 #: src/features/auth/components/modals/MfaTotpDisableModal.tsx:26
 #: src/features/auth/components/modals/MfaTotpEnableModal.tsx:36
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:466
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:462
 #: src/features/invite/components/InviteListItem.tsx:77
 #: src/features/moderation/components/report/ReportBreadcrumbs.tsx:29
 msgid "Code"
@@ -8669,7 +8640,7 @@ msgstr "Název komunity"
 
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:126
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:125
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:113
 msgid "Community nickname"
 msgstr "Přezdívka v komunitě"
@@ -8722,7 +8693,7 @@ msgid "Community profile"
 msgstr "Profil v komunitě"
 
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:73
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:72
 msgid "Community profile updated"
 msgstr "Profil v komunitě aktualizován"
 
@@ -8880,7 +8851,7 @@ msgid "Configure keyboard shortcuts"
 msgstr "Nastavit klávesové zkratky"
 
 #. Option for configuring an optional setup wizard integration.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:961
+#: src/features/app/components/setup/SetupWizardSteps.tsx:954
 msgid "Configure now"
 msgstr "Nastavit nyní"
 
@@ -9013,7 +8984,7 @@ msgstr "Připojte kameru nebo virtuální záznamové zařízení a zkuste to zn
 msgid "Connect a display, then try again."
 msgstr "Připojte displej a zkuste to znovu."
 
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:545
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:540
 msgid "Connect a microphone and try again."
 msgstr "Připojte mikrofon a zkuste to znovu."
 
@@ -9058,7 +9029,7 @@ msgid "Connecting..."
 msgstr "Připojování..."
 
 #. Voice connection status while joining or reconnecting.
-#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:46
+#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:47
 msgctxt "voice-connection-status"
 msgid "Connecting..."
 msgstr "Připojování..."
@@ -9077,7 +9048,7 @@ msgid "Connection failed"
 msgstr "Připojení se nezdařilo"
 
 #. Voice connection status when the most recent attempt to join the channel failed.
-#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:56
+#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:57
 msgctxt "voice-connection-status"
 msgid "Connection failed"
 msgstr "Připojení se nezdařilo"
@@ -9464,7 +9435,7 @@ msgstr "Kopírovat ID kanálu"
 
 #. Action that copies a deep link to the selected channel.
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:205
+#: src/features/input/state/input_keybind/shared.ts:213
 #: src/features/ui/action_menu/items/ChannelMenuData.tsx:132
 msgid "Copy channel link"
 msgstr "Kopírovat odkaz na kanál"
@@ -9503,7 +9474,7 @@ msgid "Copy emoji URL"
 msgstr "Kopírovat URL emoji"
 
 #. Tooltip / button label that copies the voice endpoint hostname to the clipboard.
-#: src/features/voice/components/voice_connection_status/shared.ts:58
+#: src/features/voice/components/voice_connection_status/shared.ts:59
 msgid "Copy endpoint"
 msgstr "Kopírovat koncový bod"
 
@@ -9613,7 +9584,7 @@ msgstr "Kopírovat zprávu"
 #. Developer-mode action that copies a message snowflake/ID to the clipboard.
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:737
-#: src/features/input/state/input_keybind/shared.ts:277
+#: src/features/input/state/input_keybind/shared.ts:285
 msgid "Copy message ID"
 msgstr "Kopírovat ID zprávy"
 
@@ -9621,7 +9592,7 @@ msgstr "Kopírovat ID zprávy"
 #. IAR modal: quick-action card title.
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:523
-#: src/features/input/state/input_keybind/shared.ts:273
+#: src/features/input/state/input_keybind/shared.ts:281
 #: src/features/moderation/components/report_modal/IARModalCopy.ts:389
 msgid "Copy message link"
 msgstr "Kopírovat odkaz na zprávu"
@@ -10299,7 +10270,7 @@ msgstr "Odpočítávání"
 #. Form field label for the country selector in the phone verification step.
 #. Short label in the phone add modal. Keep it concise.
 #: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:92
-#: src/features/user/components/modals/PhoneAddModal.tsx:59
+#: src/features/user/components/modals/PhoneAddModal.tsx:57
 msgid "Country"
 msgstr "Země"
 
@@ -10460,7 +10431,7 @@ msgstr "Vytvořit nový odkaz"
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Short label in the sidebar navigation add guild button.
 #: src/features/app/components/layout/sidebar_nav/AddGuildButton.tsx:32
-#: src/features/input/state/input_keybind/shared.ts:121
+#: src/features/input/state/input_keybind/shared.ts:129
 msgid "Create or join a community"
 msgstr "Vytvořit komunitu nebo se k nějaké připojit"
 
@@ -10653,7 +10624,7 @@ msgid "Current DM"
 msgstr "Aktuální soukromá konverzace"
 
 #. Field label in the voice connection status popout. Shows the latest RTT in ms.
-#: src/features/voice/components/voice_connection_status/shared.ts:41
+#: src/features/voice/components/voice_connection_status/shared.ts:42
 msgid "Current ping:"
 msgstr "Aktuální odezva:"
 
@@ -10701,7 +10672,7 @@ msgstr "Vlastní zdroj"
 #. Voice input processing profile where the user configures processing manually.
 #. Voice input processing profile where the user configures processing manually.
 #: src/features/user/components/modals/tabs/UserVoiceTab.tsx:91
-#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:42
+#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:39
 #: src/features/voice/components/VoiceSettingsMenus.tsx:70
 msgctxt "voice-processing-profile"
 msgid "Custom"
@@ -11229,7 +11200,7 @@ msgid "Decide whether replies @mention you by default"
 msgstr "Určete, zda vás odpovědi ve výchozím nastavení @zmiňují"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:217
+#: src/features/input/state/input_keybind/shared.ts:225
 msgid "Decline the incoming call"
 msgstr "Odmítnout příchozí hovor"
 
@@ -12007,7 +11978,7 @@ msgid "Device volume"
 msgstr "Hlasitost zařízení"
 
 #. Field label in the voice connection status popout. Shows the connected voice region / device.
-#: src/features/voice/components/voice_connection_status/shared.ts:37
+#: src/features/voice/components/voice_connection_status/shared.ts:38
 msgid "Device:"
 msgstr "Zařízení:"
 
@@ -12336,12 +12307,12 @@ msgstr "Odpojit od {channel}"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Tray menu item. Leaves the current voice call when the channel name is unavailable.
-#: src/features/input/state/input_keybind/shared.ts:317
+#: src/features/input/state/input_keybind/shared.ts:325
 #: src/features/platform/utils/DesktopLocaleBridge.ts:221
 msgid "Disconnect from voice"
 msgstr "Odpojit se od hlasového hovoru"
 
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:261
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:243
 msgid "Disconnect socket"
 msgstr "Odpojit socket"
 
@@ -12353,7 +12324,7 @@ msgid "Disconnected"
 msgstr "Odpojeno"
 
 #. Voice connection status when not connected.
-#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:51
+#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:52
 msgctxt "voice-connection-status"
 msgid "Disconnected"
 msgstr "Odpojeno"
@@ -12418,7 +12389,7 @@ msgid "Dismiss"
 msgstr "Zavřít"
 
 #. Button that dismisses the failed voice connection status banner.
-#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:66
+#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:67
 msgctxt "voice-connection-status"
 msgid "Dismiss"
 msgstr "Zavřít"
@@ -12479,7 +12450,7 @@ msgstr "Režim zobrazení"
 #. Short label in the inputs tab. Keep it concise.
 #. Short label in the my profile tab. Keep it concise.
 #: src/features/user/components/modals/tabs/component_gallery_tab/ComponentGalleryTabInputsTab.tsx:22
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:138
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:137
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:61
 msgid "Display name"
 msgstr "Zobrazované jméno"
@@ -12625,7 +12596,7 @@ msgstr "Chceš se připojit do komunity {communityName}?"
 #. Label in the accessibility tab.
 #. Label in the my profile tab.
 #: src/features/user/components/modals/tabs/AccessibilityTab.tsx:54
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:146
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:145
 msgid "Doc, I'm from the future. I came here in a time machine that you invented. Now, I need your help to get back to the year 1985."
 msgstr "Doktore, jsem z budoucnosti. Přicestoval jsem sem ve stroji času, který jste vynalezl. Teď potřebuji vaši pomoc, abych se dostal zpět do roku 1985."
 
@@ -12966,7 +12937,7 @@ msgid "Drop images, fonts, or other files here to use them inside your custom CS
 msgstr "Přetáhněte sem obrázky, písma nebo jiné soubory, které chcete použít ve svém vlastním CSS."
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:133
+#: src/features/input/state/input_keybind/shared.ts:141
 msgid "Drop item"
 msgstr "Pustit položku"
 
@@ -13014,7 +12985,7 @@ msgid "Duplicate role"
 msgstr "Duplikovat roli"
 
 #. Field label in the voice connection status popout. Shows how long the current voice session has been connected.
-#: src/features/voice/components/voice_connection_status/shared.ts:74
+#: src/features/voice/components/voice_connection_status/shared.ts:75
 msgid "Duration:"
 msgstr "Doba trvání:"
 
@@ -13256,8 +13227,13 @@ msgstr "Upravit avatar, uživatelský tag, popis, banner a přijímání žádos
 msgid "Edit translation provider"
 msgstr "Upravit poskytovatele překladu"
 
+#. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
+#: src/features/input/state/input_keybind/shared.ts:13
+msgid "Edit your messages above or below"
+msgstr "Upravit své zprávy výše nebo níže"
+
 #. Button or menu action label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:93
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:92
 msgid "Edit your profile appearance and see a live preview"
 msgstr "Upravte si vzhled profilu a podívejte se na živý náhled"
 
@@ -13325,7 +13301,7 @@ msgid "Email changed"
 msgstr "E-mail změněn"
 
 #. Setup wizard title for SMTP integration credentials.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:993
+#: src/features/app/components/setup/SetupWizardSteps.tsx:978
 msgid "Email delivery"
 msgstr "Doručování e-mailů"
 
@@ -13350,7 +13326,7 @@ msgid "Email unavailable"
 msgstr "E-mail není k dispozici"
 
 #. Required-action error shown when email update cannot continue.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:522
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:518
 msgid "Email update is unavailable right now. Try again later or contact support."
 msgstr "Aktualizace e-mailu momentálně není k dispozici. Zkuste to prosím později nebo kontaktujte podporu."
 
@@ -13441,12 +13417,12 @@ msgid "Embeds"
 msgstr "Vložený obsah"
 
 #. Toast confirmation after hiding link previews and embeds on a message.
-#: src/features/channel/components/MessageActionUtils.tsx:83
+#: src/features/channel/components/MessageActionUtils.tsx:86
 msgid "Embeds suppressed"
 msgstr "Vložený obsah skryt"
 
 #. Toast confirmation after re-enabling link previews and embeds on a message.
-#: src/features/channel/components/MessageActionUtils.tsx:79
+#: src/features/channel/components/MessageActionUtils.tsx:82
 msgid "Embeds unsuppressed"
 msgstr "Vložený obsah znovu zobrazen"
 
@@ -13630,7 +13606,7 @@ msgid "Enable beta feature"
 msgstr "Zapnout beta funkci"
 
 #. Label for enabling Bluesky OAuth in setup.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1053
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1027
 msgid "Enable Bluesky OAuth"
 msgstr "Povolit OAuth pro Bluesky"
 
@@ -13663,7 +13639,7 @@ msgid "Enable developer mode"
 msgstr "Zapnout režim pro vývojáře"
 
 #. Label for enabling SMTP email delivery in setup.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1021
+#: src/features/app/components/setup/SetupWizardSteps.tsx:995
 msgid "Enable email delivery"
 msgstr "Povolit doručování e-mailů"
 
@@ -13894,11 +13870,11 @@ msgstr "Datum konce"
 msgid "End grace now"
 msgstr "Ukončit dodatečnou lhůtu hned"
 
-#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:162
+#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:164
 msgid "End grace period"
 msgstr "Ukončit dodatečnou lhůtu"
 
-#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:155
+#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:157
 msgid "End grace period now?"
 msgstr "Ukončit dodatečnou lhůtu hned?"
 
@@ -13930,7 +13906,7 @@ msgid "Endpoint"
 msgstr "Koncový bod"
 
 #. Field label in the voice connection status popout. Shows the voice server endpoint hostname.
-#: src/features/voice/components/voice_connection_status/shared.ts:54
+#: src/features/voice/components/voice_connection_status/shared.ts:55
 msgid "Endpoint:"
 msgstr "Koncový bod:"
 
@@ -13999,7 +13975,7 @@ msgstr "Zadejte platnou URL nebo kód šablony platformy {theOtherPlatform}."
 
 #. Inline validation error on the email step of the DSA report flow when the email is malformed.
 #. Required-action form error for an invalid email address.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:510
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:506
 #: src/features/moderation/components/pages/ReportPage.tsx:59
 msgid "Enter a valid email address."
 msgstr "Zadejte platnou e-mailovou adresu."
@@ -14010,14 +13986,14 @@ msgid "Enter a valid message link."
 msgstr "Zadejte platný odkaz na zprávu."
 
 #. Required-action form error for an invalid phone number.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:526
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:522
 msgid "Enter a valid mobile phone number."
 msgstr "Zadejte platné číslo mobilního telefonu."
 
 #. Form validation error shown when the entered phone number cannot be parsed.
 #. Label in the phone add modal.
 #: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:108
-#: src/features/user/components/modals/PhoneAddModal.tsx:47
+#: src/features/user/components/modals/PhoneAddModal.tsx:45
 msgid "Enter a valid phone number"
 msgstr "Zadejte platné telefonní číslo"
 
@@ -14101,7 +14077,7 @@ msgid "Enter the {digitCount}-digit code sent to {phoneNumber}."
 msgstr "Zadejte {digitCount}místný kód odeslaný na číslo {phoneNumber}."
 
 #. placeholder {0}: getE164PhoneNumber(phoneNumber, selectedCountry) ?? formattedPhone
-#: src/features/user/components/modals/PhoneAddModal.tsx:376
+#: src/features/user/components/modals/PhoneAddModal.tsx:373
 msgid "Enter the {MFA_CODE_DIGIT_COUNT}-digit code sent to {0}."
 msgstr "Zadejte {MFA_CODE_DIGIT_COUNT}místný kód odeslaný na {0}."
 
@@ -14344,7 +14320,7 @@ msgstr "Večer"
 #. Description for the automatic gain control toggle in the voice processing settings.
 #. Description for the automatic gain control toggle in the voice processing settings.
 #: src/features/user/components/modals/tabs/UserVoiceTab.tsx:173
-#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:63
+#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:60
 msgid "Evens out your mic volume so you are not too quiet."
 msgstr "Vyrovnává hlasitost mikrofonu, abyste nebyli příliš potichu."
 
@@ -14463,7 +14439,7 @@ msgid "Expand channel topic"
 msgstr "Rozbalit téma kanálu"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:229
+#: src/features/input/state/input_keybind/shared.ts:237
 msgid "Expand or collapse compact call view"
 msgstr "Rozbalit nebo sbalit kompaktní zobrazení hovoru"
 
@@ -14700,7 +14676,7 @@ msgid "Failed to ban member. Try again."
 msgstr "Člena se nepodařilo zabanovat. Zkuste to znovu."
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:59
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:58
 msgid "Failed to clear trusted domains."
 msgstr "Nepodařilo se vymazat důvěryhodné domény."
 
@@ -14757,7 +14733,7 @@ msgid "Failed to enable camera."
 msgstr "Nepodařilo se zapnout kameru."
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:42
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:41
 msgid "Failed to forget authorized IPs. Try again."
 msgstr "Nepodařilo se vymazat autorizované IP adresy. Zkuste to znovu."
 
@@ -14902,7 +14878,7 @@ msgid "Failed to resend verification code. Try again later."
 msgstr "Nepodařilo se znovu odeslat ověřovací kód. Zkuste to prosím později."
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:75
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:74
 msgid "Failed to reset premium state."
 msgstr "Nepodařilo se resetovat stav prémiového účtu."
 
@@ -15385,12 +15361,12 @@ msgid "Focus ring"
 msgstr "Obrys fokusu"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:37
+#: src/features/input/state/input_keybind/shared.ts:45
 msgid "Focus text area"
 msgstr "Přesunout fokus do textového pole"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:197
+#: src/features/input/state/input_keybind/shared.ts:205
 msgid "Focus the text area"
 msgstr "Přesunout fokus do textového pole"
 
@@ -15576,7 +15552,7 @@ msgstr "Vynutit zástupný náhled načítání"
 msgid "Force mature media"
 msgstr "Vynutit označení médií jako určených pro dospělé"
 
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:276
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:258
 msgid "Force move to AFK channel"
 msgstr "Vynutit přesun do AFK kanálu"
 
@@ -15635,7 +15611,7 @@ msgid "Forced off"
 msgstr "Vynuceně vypnuto"
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:46
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:45
 msgid "Forget authorized IPs"
 msgstr "Vymazat autorizované IP adresy"
 
@@ -15645,7 +15621,7 @@ msgid "Forget subscriptions"
 msgstr "Zrušit odběry oznámení"
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:104
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:103
 msgid "Forgetting authorized IPs..."
 msgstr "Mazání autorizovaných IP adres..."
 
@@ -15686,7 +15662,7 @@ msgstr "Přeposlat médium"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Title of the forward message modal.
-#: src/features/input/state/input_keybind/shared.ts:25
+#: src/features/input/state/input_keybind/shared.ts:33
 #: src/features/messaging/components/modals/ForwardModal.tsx:83
 msgid "Forward message"
 msgstr "Přeposlat zprávu"
@@ -15902,12 +15878,12 @@ msgid "from <0>{0}</0>"
 msgstr "z <0>{0}</0>"
 
 #. Label for SMTP from email input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1025
+#: src/features/app/components/setup/SetupWizardSteps.tsx:999
 msgid "From email"
 msgstr "Odesílatel (e-mail)"
 
 #. Label for SMTP from name input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1029
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1003
 msgid "From name"
 msgstr "Odesílatel (jméno)"
 
@@ -16137,7 +16113,7 @@ msgstr "Pořiďte si {premiumProductName} a přizpůsobte si čtyřmístný iden
 
 #. Button in the required-action modal. Requests a new inbound SMS challenge code.
 #: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:202
-#: src/features/user/components/modals/PhoneAddModal.tsx:427
+#: src/features/user/components/modals/PhoneAddModal.tsx:424
 msgid "Get new code"
 msgstr "Získat nový kód"
 
@@ -16199,7 +16175,7 @@ msgid "GIF preview"
 msgstr "Náhled GIFu"
 
 #. Setup wizard title for GIF integration credentials.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:969
+#: src/features/app/components/setup/SetupWizardSteps.tsx:962
 msgid "GIF search"
 msgstr "Vyhledávání GIFů"
 
@@ -16447,27 +16423,27 @@ msgid "Go to community"
 msgstr "Přejít do komunity"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:81
+#: src/features/input/state/input_keybind/shared.ts:89
 msgid "Go to direct messages"
 msgstr "Přejít na přímé zprávy"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:113
+#: src/features/input/state/input_keybind/shared.ts:121
 msgid "Go to eighth community"
 msgstr "Přejít na osmou komunitu"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:101
+#: src/features/input/state/input_keybind/shared.ts:109
 msgid "Go to fifth community"
 msgstr "Přejít na pátou komunitu"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:85
+#: src/features/input/state/input_keybind/shared.ts:93
 msgid "Go to first community"
 msgstr "Přejít na první komunitu"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:97
+#: src/features/input/state/input_keybind/shared.ts:105
 msgid "Go to fourth community"
 msgstr "Přejít na čtvrtou komunitu"
 
@@ -16498,12 +16474,12 @@ msgid "Go to page {pageItem}"
 msgstr "Přejít na stránku {pageItem}"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:89
+#: src/features/input/state/input_keybind/shared.ts:97
 msgid "Go to second community"
 msgstr "Přejít na druhou komunitu"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:109
+#: src/features/input/state/input_keybind/shared.ts:117
 msgid "Go to seventh community"
 msgstr "Přejít na sedmou komunitu"
 
@@ -16514,12 +16490,12 @@ msgid "Go to sign-in"
 msgstr "Přejít k přihlášení"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:105
+#: src/features/input/state/input_keybind/shared.ts:113
 msgid "Go to sixth community"
 msgstr "Přejít na šestou komunitu"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:93
+#: src/features/input/state/input_keybind/shared.ts:101
 msgid "Go to third community"
 msgstr "Přejít na třetí komunitu"
 
@@ -16839,7 +16815,7 @@ msgid "Hate speech"
 msgstr "Nenávistné projevy"
 
 #. Premium page text shown on an instance where the premium tier cannot be bought, only redeemed. {PREMIUM_PRODUCT_NAME} is the premium tier name.
-#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:295
+#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:297
 msgid "Have a gift code? Redeem it to unlock {PREMIUM_PRODUCT_NAME}."
 msgstr "Máte dárkový kód? Uplatněte ho a odemkněte {PREMIUM_PRODUCT_NAME}."
 
@@ -16848,20 +16824,11 @@ msgstr "Máte dárkový kód? Uplatněte ho a odemkněte {PREMIUM_PRODUCT_NAME}.
 msgid "Having fun?"
 msgstr "Bavíte se?"
 
-#: src/features/auth/components/modals/CaptchaModal.tsx:175
-msgid "Having issues? Try hCaptcha instead"
-msgstr "Máte potíže? Zkuste místo toho hCaptcha"
-
 #. US state name, shown next to the country name in the mature content gate.
 #: src/features/user/utils/UserGeo.ts:63
 msgctxt "us-state"
 msgid "Hawaii"
 msgstr "Havaj"
-
-#. hCaptcha provider option.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1013
-msgid "hCaptcha"
-msgstr "hCaptcha"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/section_registry/VoiceVideoSections.ts:238
@@ -17183,11 +17150,6 @@ msgstr "Vysoký dynamický rozsah"
 #: src/features/user/components/modals/tabs/appearance_tab/AppearanceTabHdrTab.tsx:29
 msgid "High dynamic range display mode"
 msgstr "Režim zobrazení s vysokým dynamickým rozsahem"
-
-#. Description for the DeepFilterNet3 noise suppression strength slider.
-#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:71
-msgid "Higher values remove more noise but can affect speech texture."
-msgstr "Vyšší hodnoty odstraní více šumu, ale mohou změnit zabarvení hlasu."
 
 #. Short label in the language and locale names. Keep it concise.
 #: src/features/user/utils/LocaleUtils.ts:64
@@ -17809,7 +17771,7 @@ msgstr "V"
 msgid "In \"Operating system\" mode, dictionaries listed above are advisory. {PRODUCT_NAME} will pass these language tags to your OS spellchecker when supported. Tags it doesn't recognize are ignored."
 msgstr "V režimu „Operační systém“ slouží výše uvedené slovníky pouze jako doporučení. Aplikace {PRODUCT_NAME} předá tyto jazykové značky systémové kontrole pravopisu, pokud to podporuje. Značky, které nerozpozná, ignoruje."
 
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:310
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:307
 msgid "In a browser, push-to-talk only works while the {PRODUCT_NAME} tab is focused. Install the desktop app for system-wide push-to-talk."
 msgstr "V prohlížeči funguje funkce Stisknutím mluvit pouze tehdy, když je karta {PRODUCT_NAME} aktivní. Pro použití této funkce v celém systému si nainstalujte desktopovou aplikaci."
 
@@ -17955,7 +17917,7 @@ msgid "Incoming calls: nobody"
 msgstr "Příchozí hovory: nikdo"
 
 #. Field label in the voice connection status popout. Shows WebRTC estimated available incoming bandwidth.
-#: src/features/voice/components/voice_connection_status/shared.ts:123
+#: src/features/voice/components/voice_connection_status/shared.ts:124
 msgid "Incoming capacity:"
 msgstr "Příchozí kapacita:"
 
@@ -18664,7 +18626,7 @@ msgid "Jitter"
 msgstr "Kolísání"
 
 #. Field label in the voice connection status popout. Shows audio jitter in milliseconds.
-#: src/features/voice/components/voice_connection_status/shared.ts:115
+#: src/features/voice/components/voice_connection_status/shared.ts:116
 msgid "Jitter:"
 msgstr "Kolísání:"
 
@@ -18793,12 +18755,12 @@ msgid "Jump"
 msgstr "Přejít"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:57
+#: src/features/input/state/input_keybind/shared.ts:65
 msgid "Jump between unread channels"
 msgstr "Přejít na nepřečtené kanály"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:61
+#: src/features/input/state/input_keybind/shared.ts:69
 msgid "Jump between unread channels with mentions"
 msgstr "Přejít mezi nepřečtenými kanály se zmínkami"
 
@@ -18807,7 +18769,7 @@ msgid "Jump straight to the app to continue."
 msgstr "Pokračujte přímo v aplikaci."
 
 #. Tooltip / aria label on a button that jumps to the channel. {channelSourceLabel} is the channel or DM name.
-#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:87
+#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:88
 msgid "Jump to {channelSourceLabel}"
 msgstr "Přejít na {channelSourceLabel}"
 
@@ -18869,7 +18831,7 @@ msgid "Jump to previous unread channel with mentions"
 msgstr "Přejít na předchozí nepřečtený kanál se zmínkami"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:65
+#: src/features/input/state/input_keybind/shared.ts:73
 msgid "Jump to the current call"
 msgstr "Přejít na aktuální hovor"
 
@@ -18894,7 +18856,7 @@ msgid "Jump to the message in {labelText}"
 msgstr "Přejít na zprávu v {labelText}"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:193
+#: src/features/input/state/input_keybind/shared.ts:201
 msgid "Jump to the oldest unread message"
 msgstr "Přejít na nejstarší nepřečtenou zprávu"
 
@@ -18942,7 +18904,7 @@ msgstr "Ponechat přílohy při vymazání textu během úprav"
 msgid "Keep free and premium tiers. You can customize the tiers, sell premium through Stripe, or hand out gift codes later from the admin panel."
 msgstr "Ponechte bezplatnou i prémiovou úroveň. Úrovně můžete přizpůsobit, prodávat prémiové členství přes Stripe nebo později rozdávat dárkové kódy z administračního panelu."
 
-#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:164
+#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:166
 msgid "Keep grace period"
 msgstr "Ponechat dodatečnou lhůtu"
 
@@ -18956,7 +18918,7 @@ msgstr "Ponechat Neko na místě"
 msgid "Keep running"
 msgstr "Pokračovat v běhu"
 
-#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:142
+#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:144
 msgid "Keep subscription"
 msgstr "Ponechat předplatné"
 
@@ -19129,7 +19091,7 @@ msgid "Latency {latency} milliseconds"
 msgstr "Latence {latency} milisekund"
 
 #. Aria label for the latency graph chart in the voice connection status popout.
-#: src/features/voice/components/voice_connection_status/shared.ts:33
+#: src/features/voice/components/voice_connection_status/shared.ts:34
 msgid "Latency graph"
 msgstr "Graf latence"
 
@@ -19768,7 +19730,7 @@ msgid "Logo"
 msgstr "Logo"
 
 #. Label for Bluesky OAuth logo URL input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1065
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1039
 msgid "Logo URL"
 msgstr "URL loga"
 
@@ -19798,7 +19760,7 @@ msgid "Look and feel"
 msgstr "Vzhled a ovládání"
 
 #. placeholder {0}: externalProcessor.name
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:654
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:649
 msgid "Looks like you're using {0}. Stacking {PRODUCT_NAME}'s processing on top can cause pumping or distortion. Direct input passes your audio through untouched."
 msgstr "Zdá se, že používáte {0}. Přidání dalšího zpracování zvuku v aplikaci {PRODUCT_NAME} může způsobit kolísání hlasitosti nebo zkreslení. Přímý vstup propouští zvuk beze změn."
 
@@ -20055,7 +20017,7 @@ msgstr "Označit všechny soukromé konverzace jako přečtené"
 
 #. Accessible label and tooltip for the mark-all-as-read button in the inbox popout.
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:165
+#: src/features/input/state/input_keybind/shared.ts:173
 #: src/features/messaging/components/popouts/InboxPopout.tsx:46
 msgid "Mark all inbox channels as read"
 msgstr "Označit všechny kanály v doručených zprávách jako přečtené"
@@ -20087,19 +20049,19 @@ msgstr "Označit jako spoiler"
 #. Generic action label that flips a channel back to unread.
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:668
-#: src/features/input/state/input_keybind/shared.ts:33
+#: src/features/input/state/input_keybind/shared.ts:41
 msgid "Mark as unread"
 msgstr "Označit jako nepřečtené"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/input/state/input_keybind/shared.ts:145
+#: src/features/input/state/input_keybind/shared.ts:153
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:58
 msgid "Mark channel as read"
 msgstr "Označit kanál jako přečtený"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:141
+#: src/features/input/state/input_keybind/shared.ts:149
 msgid "Mark community as read"
 msgstr "Označit komunitu jako přečtenou"
 
@@ -20126,7 +20088,7 @@ msgid "Mark read"
 msgstr "Označit jako přečtené"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:161
+#: src/features/input/state/input_keybind/shared.ts:169
 msgid "Mark top inbox channel as read"
 msgstr "Označit první kanál v doručených zprávách jako přečtený"
 
@@ -20367,12 +20329,12 @@ msgid "Maybe later"
 msgstr "Možná později"
 
 #. Tooltip on the latency badge while voice latency is still being sampled.
-#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:83
+#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:84
 msgid "Measuring latency..."
 msgstr "Měření latence..."
 
 #. Placeholder shown while voice latency is still being sampled. Trailing ellipsis indicates ongoing measurement.
-#: src/features/voice/components/voice_connection_status/shared.ts:45
+#: src/features/voice/components/voice_connection_status/shared.ts:46
 msgid "Measuring…"
 msgstr "Měření…"
 
@@ -21475,7 +21437,7 @@ msgid "Mouse forward button"
 msgstr "Tlačítko myši Vpřed"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:129
+#: src/features/input/state/input_keybind/shared.ts:137
 msgid "Move"
 msgstr "Přesunout"
 
@@ -21490,7 +21452,7 @@ msgid "Move back through page history"
 msgstr "Přejít zpět v historii stránek"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:49
+#: src/features/input/state/input_keybind/shared.ts:57
 msgid "Move back through viewed channel history"
 msgstr "Přejít zpět v historii zobrazených kanálů"
 
@@ -21507,7 +21469,7 @@ msgid "Move forward through page history"
 msgstr "Přejít vpřed v historii stránek"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:53
+#: src/features/input/state/input_keybind/shared.ts:61
 msgid "Move forward through viewed channel history"
 msgstr "Přejít vpřed v historii zobrazených kanálů"
 
@@ -22115,7 +22077,7 @@ msgid "Netherlands"
 msgstr "Nizozemsko"
 
 #. Section heading in the voice connection status popout for WebRTC network quality stats.
-#: src/features/voice/components/voice_connection_status/shared.ts:70
+#: src/features/voice/components/voice_connection_status/shared.ts:71
 msgid "Network"
 msgstr "Síť"
 
@@ -22706,7 +22668,7 @@ msgstr "Nic nebylo nalezeno"
 msgid "No mentions yet"
 msgstr "Zatím žádné zmínky"
 
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:530
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:525
 msgid "No microphone found"
 msgstr "Mikrofon nenalezen"
 
@@ -22941,7 +22903,7 @@ msgid "No tokens match \"{searchQuery}\"."
 msgstr "Žádné tokeny neodpovídají hledání „{searchQuery}“."
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:92
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:91
 msgid "No trusted domains"
 msgstr "Žádné důvěryhodné domény"
 
@@ -23696,10 +23658,6 @@ msgstr "Otevřít výběr prohlížeče"
 msgid "Open call view"
 msgstr "Otevřít zobrazení hovoru"
 
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:288
-msgid "Open captcha modal"
-msgstr "Otevřít dialog CAPTCHA"
-
 #. Accessible label for the channel header title button in a community channel.
 #: src/features/channel/components/channel_header/shared.ts:14
 msgid "Open channel details for {channelName}"
@@ -23712,7 +23670,7 @@ msgstr "Otevřít podrobnosti kanálu {channelName}"
 msgid "Open chat"
 msgstr "Otevřít chat"
 
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:314
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:290
 msgid "Open claim account modal"
 msgstr "Otevřít dialog pro dokončení registrace účtu"
 
@@ -23814,7 +23772,7 @@ msgid "Open group details for {groupDMName}"
 msgstr "Otevřít podrobnosti skupiny {groupDMName}"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:233
+#: src/features/input/state/input_keybind/shared.ts:241
 msgid "Open help"
 msgstr "Otevřít nápovědu"
 
@@ -23944,11 +23902,11 @@ msgstr "Otevřít samolepku v prohlížeči"
 msgid "Open streaming privacy settings"
 msgstr "Otevřít nastavení ochrany soukromí při streamování"
 
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:327
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:303
 msgid "Open sudo verification modal"
 msgstr "Otevřít modální okno pro ověření sudo"
 
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:342
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:318
 msgid "Open system DM"
 msgstr "Otevřít systémovou soukromou konverzaci"
 
@@ -23967,7 +23925,7 @@ msgid "Open the ban dialog for this community."
 msgstr "Otevřít dialog pro zabanování v této komunitě."
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:241
+#: src/features/input/state/input_keybind/shared.ts:249
 msgid "Open the context menu"
 msgstr "Otevřít kontextovou nabídku"
 
@@ -24000,7 +23958,7 @@ msgid "Open the verification email and use the link inside. This window updates 
 msgstr "Otevřete ověřovací e-mail a použijte odkaz uvnitř. Toto okno se aktualizuje po otevření odkazu."
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:249
+#: src/features/input/state/input_keybind/shared.ts:257
 msgid "Open theme studio popout"
 msgstr "Otevřít studio motivů v samostatném okně"
 
@@ -24044,7 +24002,7 @@ msgid "Open your browser, sign in, then enter the code below to link your accoun
 msgstr "Otevřete prohlížeč, přihlaste se a poté zadejte níže uvedený kód pro propojení účtu."
 
 #. Required-action modal carousel step title for the first inbound phone verification instruction.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:450
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:446
 msgid "Open your messages"
 msgstr "Otevřete si zprávy"
 
@@ -24052,17 +24010,17 @@ msgstr "Otevřete si zprávy"
 msgid "Open your old {PRODUCT_NAME} app and choose Link a new device, then enter the code below."
 msgstr "Otevřete svou starou aplikaci {PRODUCT_NAME} a vyberte „Propojit nové zařízení“, poté zadejte níže uvedený kód."
 
-#: src/features/user/components/modals/PhoneAddModal.tsx:327
+#: src/features/user/components/modals/PhoneAddModal.tsx:324
 msgid "Open your phone's messaging app and create a new text message."
 msgstr "Otevřete v telefonu aplikaci pro zprávy a vytvořte novou SMS."
 
 #. Required-action modal body for the first inbound phone verification instruction.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:454
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:450
 msgid "Open your phone's messaging app and start a new text message."
 msgstr "Otevřete v telefonu aplikaci pro zprávy a začněte psát novou SMS."
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:245
+#: src/features/input/state/input_keybind/shared.ts:253
 msgid "Open your settings"
 msgstr "Otevřít nastavení"
 
@@ -24228,7 +24186,7 @@ msgid "OTP"
 msgstr "OTP"
 
 #. Required-action form error when our own phone lookup provider is unavailable and we fail closed. Must blame us, not the number, and must invite retrying the same number.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:558
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:554
 msgid "Our phone number check is down right now. This is on us, not your number. Wait a few minutes and try the same number again."
 msgstr "Naše služba ověřování telefonních čísel má teď výpadek. Problém je u nás, nikoli ve vašem čísle. Počkejte pár minut a zkuste stejné číslo znovu."
 
@@ -24238,7 +24196,7 @@ msgid "Our safety team is reviewing it. We'll send you a DM and email once we've
 msgstr "Náš bezpečnostní tým nahlášení prověřuje. Jakmile rozhodneme, pošleme vám přímou zprávu a e-mail."
 
 #. Field label in the voice connection status popout. Shows WebRTC estimated available outgoing bandwidth.
-#: src/features/voice/components/voice_connection_status/shared.ts:119
+#: src/features/voice/components/voice_connection_status/shared.ts:120
 msgid "Outgoing capacity:"
 msgstr "Odchozí kapacita:"
 
@@ -24384,7 +24342,7 @@ msgid "Participants"
 msgstr "Účastníci"
 
 #. Field label in the voice connection status popout. Shows the current LiveKit participant count.
-#: src/features/voice/components/voice_connection_status/shared.ts:79
+#: src/features/voice/components/voice_connection_status/shared.ts:80
 msgid "Participants:"
 msgstr "Účastníci:"
 
@@ -24430,7 +24388,7 @@ msgstr "Přístupové klíče vyžadují podepsaný balíček macOS s platným i
 
 #. Generic form-field label for a password.
 #. Label for SMTP password input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1036
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1010
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:215
 #: src/features/user/components/modals/tabs/account_security_tab/AccountTab.tsx:146
 #: src/features/user/components/modals/tabs/account_security_tab/AccountTab.tsx:183
@@ -24815,21 +24773,21 @@ msgstr "Telefon"
 #. Form field label for the phone number input.
 #. Short label in the phone add modal. Keep it concise.
 #: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:100
-#: src/features/user/components/modals/PhoneAddModal.tsx:67
+#: src/features/user/components/modals/PhoneAddModal.tsx:65
 msgid "Phone number"
 msgstr "Telefonní číslo"
 
 #. Form validation error shown when the phone number field is empty.
 #. Label in the phone add modal.
 #: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:116
-#: src/features/user/components/modals/PhoneAddModal.tsx:43
+#: src/features/user/components/modals/PhoneAddModal.tsx:41
 msgid "Phone number is required"
 msgstr "Je vyžadováno telefonní číslo"
 
 #. Toast shown after phone verification succeeds.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:486
-#: src/features/user/components/modals/PhoneAddModal.tsx:180
-#: src/features/user/components/modals/PhoneAddModal.tsx:185
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:482
+#: src/features/user/components/modals/PhoneAddModal.tsx:178
+#: src/features/user/components/modals/PhoneAddModal.tsx:183
 msgid "Phone number verified"
 msgstr "Telefonní číslo ověřeno"
 
@@ -24844,7 +24802,7 @@ msgid "Phone step"
 msgstr "Krok ověření telefonu"
 
 #. Required-action error when the account is not eligible to add phone verification.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:542
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:538
 msgid "Phone verification is not available for this account. Use another method or contact support."
 msgstr "Ověření telefonního čísla není pro tento účet k dispozici. Použijte jinou metodu nebo kontaktujte podporu."
 
@@ -24935,7 +24893,7 @@ msgstr "Obraz v obraze"
 
 #. Confirm button label on the pin message alert.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/channel/components/MessageActionUtils.tsx:63
+#: src/features/channel/components/MessageActionUtils.tsx:66
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:70
 msgid "Pin"
 msgstr "Připnout"
@@ -24953,9 +24911,9 @@ msgstr "Připnout skupinovou konverzaci"
 #. Generic action label that pins a message to the channel pins.
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Title of the confirmation alert shown when pinning a message.
-#: src/features/channel/components/MessageActionUtils.tsx:55
+#: src/features/channel/components/MessageActionUtils.tsx:58
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:539
-#: src/features/input/state/input_keybind/shared.ts:13
+#: src/features/input/state/input_keybind/shared.ts:17
 msgid "Pin message"
 msgstr "Připnout zprávu"
 
@@ -24980,7 +24938,7 @@ msgid "Pin or unpin any message."
 msgstr "Připínat nebo odepínat libovolné zprávy."
 
 #. Body of the confirmation alert shown when pinning a message.
-#: src/features/channel/components/MessageActionUtils.tsx:59
+#: src/features/channel/components/MessageActionUtils.tsx:62
 msgid "Pin this message to the channel for everyone to see."
 msgstr "Připnout tuto zprávu do kanálu, aby ji všichni viděli."
 
@@ -24999,12 +24957,12 @@ msgid "Ping on reply"
 msgstr "Upozornit na odpověď"
 
 #. Compact latency badge on the voice control bar. {currentLatency} is an integer millisecond count.
-#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:79
+#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:80
 msgid "Ping: {currentLatency}ms"
 msgstr "Ping: {currentLatency} ms"
 
 #. Compact latency badge variant used in another voice surface. {latency} is an integer millisecond count.
-#: src/features/voice/components/voice_connection_status/MockedVoiceConnectionStatus.tsx:43
+#: src/features/voice/components/voice_connection_status/MockedVoiceConnectionStatus.tsx:44
 msgid "Ping: {latency}ms"
 msgstr "Ping: {latency} ms"
 
@@ -25212,7 +25170,7 @@ msgid "Popup"
 msgstr "Vyskakovací okno"
 
 #. Label for SMTP port input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1034
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1008
 msgid "Port"
 msgstr "Port"
 
@@ -25338,7 +25296,7 @@ msgid "Premium since date"
 msgstr "Datum začátku předplatného"
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:71
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:70
 msgid "Premium state reset on the backend."
 msgstr "Stav Premium byl resetován na backendu."
 
@@ -25608,7 +25566,7 @@ msgid "Privacy settings"
 msgstr "Nastavení soukromí"
 
 #. Label for Bluesky OAuth privacy URL input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1073
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1047
 msgid "Privacy URL"
 msgstr "URL zásad ochrany osobních údajů"
 
@@ -25633,7 +25591,7 @@ msgid "Private details"
 msgstr "Soukromé údaje"
 
 #. Label for Bluesky OAuth private key input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1081
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1055
 msgid "Private key"
 msgstr "Soukromý klíč"
 
@@ -25699,18 +25657,18 @@ msgstr "Barva profilu"
 
 #. Settings section label for editing profile appearance and identity.
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:105
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:104
 #: src/features/user/components/settings_utils/section_registry/GeneralSettingsSections.ts:6
 msgid "Profile customization"
 msgstr "Přizpůsobení profilu"
 
 #. Label in the my profile tab. Preserve {selectedGuildName}; it is inserted by code.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:101
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:100
 msgid "Profile customization for {selectedGuildName}"
 msgstr "Přizpůsobení profilu pro {selectedGuildName}"
 
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:97
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:96
 msgid "Profile customization form"
 msgstr "Formulář pro úpravu profilu"
 
@@ -25775,7 +25733,7 @@ msgid "Profile type"
 msgstr "Typ profilu"
 
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:77
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:76
 msgid "Profile updated"
 msgstr "Profil aktualizován"
 
@@ -25812,7 +25770,7 @@ msgstr "Nabídnout přepnutí při připojení nového zvukového zařízení"
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:142
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:141
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:177
 #: src/features/user/components/settings_utils/section_registry/PrivacySafetySections.ts:160
 msgid "Pronouns"
@@ -25842,11 +25800,6 @@ msgstr "Zadejte ID uživatele nebo uživatelské jméno osoby, kterou nahlašuje
 msgid "Provide your full legal name for the declaration."
 msgstr "Uveďte své celé jméno, které je uvedeno v úředních dokumentech."
 
-#. Label for an integration provider choice.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1009
-msgid "Provider"
-msgstr "Poskytovatel"
-
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/section_registry/VoiceVideoSections.ts:90
 msgid "PTT"
@@ -25870,7 +25823,7 @@ msgid "Public registration is closed."
 msgstr "Veřejná registrace je uzavřena."
 
 #. Field label in the voice connection status popout. Shows technical WebRTC publisher ICE transport details.
-#: src/features/voice/components/voice_connection_status/shared.ts:127
+#: src/features/voice/components/voice_connection_status/shared.ts:128
 msgid "Publisher transport:"
 msgstr "Transport odesílatele:"
 
@@ -25984,21 +25937,21 @@ msgid "Push timeout"
 msgstr "Prodleva oznámení push"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:297
+#: src/features/input/state/input_keybind/shared.ts:305
 msgid "Push to mute"
 msgstr "Stisknutím ztlumit"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/input/state/input_keybind/shared.ts:289
+#: src/features/input/state/input_keybind/shared.ts:297
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:162
 #: src/features/user/components/settings_utils/section_registry/VoiceVideoSections.ts:86
 msgid "Push to talk"
 msgstr "Stisknutím mluvit"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:293
+#: src/features/input/state/input_keybind/shared.ts:301
 msgid "Push to talk (priority)"
 msgstr "Stisknutím mluvit (priorita)"
 
@@ -26014,7 +25967,7 @@ msgstr "Klávesa pro režim Stisknutím mluvit"
 
 #. Switch label in the voice tab toggling push-to-talk mode. Keep it concise.
 #: src/features/user/components/modals/tabs/UserVoiceTab.tsx:112
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:349
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:346
 #: src/features/voice/components/VoiceSettingsMenus.tsx:419
 msgid "Push-to-talk"
 msgstr "Stisknutím mluvit"
@@ -26024,7 +25977,7 @@ msgstr "Stisknutím mluvit"
 msgid "Push-to-talk (limited)"
 msgstr "Stisknutím mluvit (omezená funkčnost)"
 
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:681
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:676
 msgid "Push-to-talk is ignored in direct input. Switch to focused voice or custom to use it."
 msgstr "V režimu Přímý vstup se nastavení Stisknutím mluvit ignoruje. Chcete-li ho použít, přepněte na režim Hlas v popředí nebo Vlastní."
 
@@ -26191,7 +26144,7 @@ msgid "Read aloud"
 msgstr "Číst nahlas"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:29
+#: src/features/input/state/input_keybind/shared.ts:37
 msgid "Read message aloud"
 msgstr "Přečíst zprávu nahlas"
 
@@ -26280,7 +26233,7 @@ msgid "Receive notifications when someone mentions you"
 msgstr "Dostávat oznámení, když vás někdo zmíní"
 
 #. Field label in the voice connection status popout. Shows total current inbound media bitrate.
-#: src/features/voice/components/voice_connection_status/shared.ts:87
+#: src/features/voice/components/voice_connection_status/shared.ts:88
 msgid "Receive:"
 msgstr "Příjem:"
 
@@ -26399,7 +26352,7 @@ msgstr "Uplatnit pro sebe"
 #. Billing button for entering a premium gift code.
 #. Billing button for entering a premium gift code.
 #: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:719
-#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:305
+#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:307
 msgid "Redeem gift code"
 msgstr "Uplatnit dárkový kód"
 
@@ -26716,7 +26669,7 @@ msgid "Remove {userName} from your friends?"
 msgstr "Odebrat uživatele {userName} z přátel?"
 
 #. Confirm button label on the remove-all-reactions alert. Destructive.
-#: src/features/channel/components/MessageActionUtils.tsx:75
+#: src/features/channel/components/MessageActionUtils.tsx:78
 msgid "Remove all"
 msgstr "Odebrat vše"
 
@@ -26729,7 +26682,7 @@ msgstr "Odstranit všechny reakce {emojiNameWithColons} z této zprávy?"
 #. Message action that removes every reaction from the selected message.
 #. Title of the confirmation alert shown when clearing every reaction on a message.
 #: src/features/channel/components/MessageActionMenu.tsx:78
-#: src/features/channel/components/MessageActionUtils.tsx:67
+#: src/features/channel/components/MessageActionUtils.tsx:70
 #: src/features/ui/action_menu/items/MessageMenuItems.tsx:70
 msgid "Remove all reactions"
 msgstr "Odebrat všechny reakce"
@@ -27237,10 +27190,15 @@ msgstr "Předvolby zmínek v odpovědích pro tuto komunitu"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Tooltip on the media viewer button that closes the viewer and replies to the message containing the media.
-#: src/features/input/state/input_keybind/shared.ts:21
+#: src/features/input/state/input_keybind/shared.ts:25
 #: src/features/messaging/components/modals/media_modal/shared.ts:105
 msgid "Reply to message"
 msgstr "Odpovědět na zprávu"
+
+#. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
+#: src/features/input/state/input_keybind/shared.ts:29
+msgid "Reply to messages above or below"
+msgstr "Odpovědět na zprávy výše nebo níže"
 
 #. TTS sentence spoken for a reply message. {replyAuthorName} is the original author, {authorName} is the replier, {formatted} is the speakable message body.
 #: src/features/voice/utils/TtsTextFormatter.ts:47
@@ -27324,7 +27282,7 @@ msgid "Reposts: <0>{countLabel}</0>"
 msgstr "Znovuzveřejnění: <0>{countLabel}</0>"
 
 #. Required-action form error when the user submits before a code exists.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:498
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:494
 msgid "Request a new code first."
 msgstr "Nejprve si vyžádejte nový kód."
 
@@ -27621,7 +27579,7 @@ msgid "Reset password"
 msgstr "Obnovit heslo"
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:79
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:78
 msgid "Reset premium state"
 msgstr "Resetovat stav prémiového účtu"
 
@@ -27630,7 +27588,7 @@ msgstr "Resetovat stav prémiového účtu"
 msgid "Reset slider to default value"
 msgstr "Obnovit výchozí hodnotu posuvníku"
 
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:247
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:229
 msgid "Reset socket"
 msgstr "Resetovat socket"
 
@@ -27673,13 +27631,13 @@ msgstr "Obnovit výchozí"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Label for controls that reset app zoom to 100%, including the app zoom slider button.
-#: src/features/input/state/input_keybind/shared.ts:261
+#: src/features/input/state/input_keybind/shared.ts:269
 #: src/features/user/components/modals/tabs/appearance_tab/ScalingTab.tsx:38
 msgid "Reset zoom"
 msgstr "Obnovit přiblížení"
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:112
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:111
 msgid "Resetting premium state..."
 msgstr "Resetování prémiového stavu..."
 
@@ -28310,7 +28268,7 @@ msgid "Run the instance as one community instead of many. This can only be enabl
 msgstr "Spusťte instanci jako jednu komunitu místo mnoha. Toto lze povolit pouze nyní, během nastavení."
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:100
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:99
 msgid "Runtime utilities"
 msgstr "Nástroje za běhu"
 
@@ -28689,12 +28647,12 @@ msgid "Scroll animation"
 msgstr "Animace posouvání"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:189
+#: src/features/input/state/input_keybind/shared.ts:197
 msgid "Scroll chat down"
 msgstr "Posunout chat dolů"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:185
+#: src/features/input/state/input_keybind/shared.ts:193
 msgid "Scroll chat up"
 msgstr "Posunout chat nahoru"
 
@@ -28798,7 +28756,7 @@ msgid "Search communities"
 msgstr "Hledat komunity"
 
 #. Button or menu action label in the phone add modal. Keep it concise.
-#: src/features/user/components/modals/PhoneAddModal.tsx:63
+#: src/features/user/components/modals/PhoneAddModal.tsx:61
 msgid "Search countries..."
 msgstr "Hledat země..."
 
@@ -28881,7 +28839,7 @@ msgstr "Hledat jazyky…"
 #: src/features/channel/components/bottomsheets/ChannelSearchBottomSheet.tsx:137
 #: src/features/channel/components/bottomsheets/ChannelSearchBottomSheet.tsx:480
 #: src/features/channel/components/message_search_bar/MessageSearchBar.tsx:56
-#: src/features/input/state/input_keybind/shared.ts:237
+#: src/features/input/state/input_keybind/shared.ts:245
 msgid "Search messages"
 msgstr "Hledat zprávy"
 
@@ -29097,11 +29055,6 @@ msgstr "Bylo kliknuto na sekundární tlačítko."
 #: src/features/user/components/settings_utils/search_index/ApplicationsIndex.ts:136
 msgid "Secret"
 msgstr "Tajné"
-
-#. Label for a CAPTCHA secret key input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1020
-msgid "Secret key"
-msgstr "Tajný klíč"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label in the secrets section. Keep it concise. Keep the tone plain and specific.
@@ -29564,17 +29517,17 @@ msgstr "Odesílat zprávy s převodem textu na řeč pomocí /tts. Členům, kte
 
 #. placeholder {0}: inboundChallenge.challenge_code
 #. placeholder {1}: inboundChallenge.our_number
-#: src/features/user/components/modals/PhoneAddModal.tsx:335
+#: src/features/user/components/modals/PhoneAddModal.tsx:332
 msgid "Send the code <0>{0}</0> to <1>{1}</1>"
 msgstr "Odeslat kód <0>{0}</0> na <1>{1}</1>"
 
 #. Required-action modal body for the second inbound phone verification instruction.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:462
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:458
 msgid "Send the code to the phone number below."
 msgstr "Pošlete kód na níže uvedené telefonní číslo."
 
 #. Required-action modal carousel step title for the second inbound phone verification instruction.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:458
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:454
 msgid "Send this code"
 msgstr "Odeslat tento kód"
 
@@ -29584,7 +29537,7 @@ msgid "Send this pin back in time?"
 msgstr "Poslat tento připnutý příspěvek zpět v čase?"
 
 #. Label for the destination phone number in an inbound phone verification challenge.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:470
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:466
 msgid "Send to"
 msgstr "Odeslat na"
 
@@ -29602,25 +29555,20 @@ msgstr "Odeslat ověřovací kód"
 #. Plus menu item that opens the desktop voice message composer to record and send a voice clip.
 #: src/features/channel/components/textarea/TextareaPlusMenu.tsx:35
 #: src/features/channel/components/VoiceMessageRecorder.tsx:69
-#: src/features/input/state/input_keybind/shared.ts:285
+#: src/features/input/state/input_keybind/shared.ts:293
 msgid "Send voice message"
 msgstr "Odeslat hlasovou zprávu"
 
 #. Field label in the voice connection status popout. Shows total current outbound media bitrate.
-#: src/features/voice/components/voice_connection_status/shared.ts:83
+#: src/features/voice/components/voice_connection_status/shared.ts:84
 msgid "Send:"
 msgstr "Odesílání:"
 
-#. Required-action modal explanation for an inbound phone verification challenge due to SMS cost.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:442
-msgid "Sending an SMS to this number is expensive, so we need you to text us instead."
-msgstr "Odeslání SMS na toto číslo je drahé, proto nám místo toho musíte poslat zprávu."
-
-#: src/features/user/components/modals/PhoneAddModal.tsx:304
+#: src/features/user/components/modals/PhoneAddModal.tsx:301
 msgid "Sending an SMS to this phone number is too expensive for {PRODUCT_NAME}, so we need you to send us an SMS instead. We know this isn't ideal. You can also ask the administrators of this instance to lift this requirement from your account."
 msgstr "Odesílání SMS na toto telefonní číslo je pro {PRODUCT_NAME} příliš drahé, takže nám ji musíte poslat vy. Víme, že to není ideální. Můžete také požádat správce této instance o zrušení tohoto požadavku pro váš účet."
 
-#: src/features/user/components/modals/PhoneAddModal.tsx:310
+#: src/features/user/components/modals/PhoneAddModal.tsx:307
 msgid "Sending an SMS to this phone number is too expensive for {PRODUCT_NAME}, so we need you to send us an SMS instead. We know this isn't ideal. You can also contact <0>{SUPPORT_EMAIL}</0> to have us lift this requirement from your account."
 msgstr "Odesílání SMS na toto telefonní číslo je pro {PRODUCT_NAME} příliš drahé, takže nám ji musíte poslat vy. Víme, že to není ideální. Můžete také kontaktovat <0>{SUPPORT_EMAIL}</0> a požádat o zrušení tohoto požadavku pro váš účet."
 
@@ -29640,7 +29588,7 @@ msgid "Sends both channels of a stereo microphone. Needs all processing off and 
 msgstr "Odesílá oba kanály stereofonního mikrofonu. Vyžaduje vypnuté veškeré zpracování a kanál s rychlostí 128 kb/s nebo vyšší."
 
 #. Description for the studio / direct-input option in the voice processing settings radio group.
-#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:38
+#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:35
 msgid "Sends raw mic audio with no processing."
 msgstr "Odesílá nezpracovaný zvuk z mikrofonu bez úprav."
 
@@ -29714,7 +29662,7 @@ msgid "Service incident nagbar"
 msgstr "Upozornění na incident služby"
 
 #. Section heading in the voice connection status popout for current call/session debug stats.
-#: src/features/voice/components/voice_connection_status/shared.ts:62
+#: src/features/voice/components/voice_connection_status/shared.ts:63
 msgid "Session"
 msgstr "Relace"
 
@@ -29925,7 +29873,7 @@ msgid "Set up authenticator app"
 msgstr "Nastavit ověřovací aplikaci"
 
 #. Option for deferring an optional setup wizard integration.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:953
+#: src/features/app/components/setup/SetupWizardSteps.tsx:946
 msgid "Set up later"
 msgstr "Nastavit později"
 
@@ -30164,7 +30112,7 @@ msgstr "Zkratky"
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/modals/tabs/keybinds_tab/CustomKeybindRow.tsx:121
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:364
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:361
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:38
 #: src/features/user/components/settings_utils/section_registry/VoiceVideoSections.ts:110
 msgid "Shortcut"
@@ -30266,7 +30214,7 @@ msgid "Show attachment expiration indicator"
 msgstr "Zobrazit indikátor vypršení přílohy"
 
 #. Developer voice status menu option for displaying participant avatars.
-#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:71
+#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:72
 msgid "Show call avatars"
 msgstr "Zobrazit avatary hovoru"
 
@@ -30291,7 +30239,7 @@ msgid "Show chat with {count, plural, one {# unread message} other {# unread mes
 msgstr "Zobrazit chat s {count, plural, one {# nepřečtenou zprávou} other {# nepřečtenými zprávami}}"
 
 #. Developer voice status menu option for displaying the voice connection identifier.
-#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:75
+#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:76
 msgid "Show connection ID"
 msgstr "Zobrazit ID připojení"
 
@@ -30427,7 +30375,7 @@ msgstr "Zobrazit seznam soukromých konverzací v postranním panelu"
 msgid "Show just the typing indicator without avatars"
 msgstr "Zobrazit jen indikátor psaní bez avatarů"
 
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:308
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:284
 msgid "Show keyboard mode intro"
 msgstr "Zobrazit úvod do režimu klávesnice"
 
@@ -30538,7 +30486,7 @@ msgstr "Zobrazit Neko"
 msgid "Show new device alerts"
 msgstr "Zobrazovat upozornění na nová zařízení"
 
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:282
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:264
 msgid "Show new device modal"
 msgstr "Zobrazit modální okno nového zařízení"
 
@@ -30820,7 +30768,7 @@ msgid "Signed-in devices"
 msgstr "Přihlášená zařízení"
 
 #. Label for Bluesky OAuth signing key ID input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1077
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1051
 msgid "Signing key ID"
 msgstr "ID podepisovacího klíče"
 
@@ -30910,11 +30858,6 @@ msgstr "Jeden řádek"
 msgid "Single user (all statuses)"
 msgstr "Jeden uživatel (všechny stavy)"
 
-#. Label for a CAPTCHA site key input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1019
-msgid "Site key"
-msgstr "Klíč webu"
-
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/search_index/DesktopSettingsIndex.ts:98
@@ -30964,7 +30907,7 @@ msgid "Skip the system leave notice — nobody gets pinged."
 msgstr "Přeskočit systémové oznámení o odchodu – nikdo nedostane upozornění."
 
 #. Description for deferring an optional setup wizard integration.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:957
+#: src/features/app/components/setup/SetupWizardSteps.tsx:950
 msgid "Skip this now and configure it from the admin panel."
 msgstr "Přeskočit teď a nakonfigurovat z administračního panelu."
 
@@ -31207,22 +31150,22 @@ msgid "Smoother video"
 msgstr "Plynulejší video"
 
 #. Required-action error when the SMS provider cannot send or verify a code.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:538
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:534
 msgid "SMS verification is unavailable right now. Try again later or contact support."
 msgstr "Ověření SMS zprávou momentálně není k dispozici. Zkuste to prosím později, nebo kontaktujte podporu."
 
 #. Success message after validating SMTP credentials.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1045
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1019
 msgid "SMTP connection verified."
 msgstr "Spojení SMTP ověřeno."
 
 #. Label for SMTP host input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1033
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1007
 msgid "SMTP host"
 msgstr "Hostitel SMTP"
 
 #. Failure message after validating SMTP credentials when the server returns no error detail.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1049
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1023
 msgid "SMTP validation failed."
 msgstr "Ověření SMTP se nezdařilo."
 
@@ -31402,7 +31345,7 @@ msgstr "Něco se pokazilo. Zkuste to prosím později."
 #. Inline error in the web deep-link prompt when opening the desktop app fails.
 #. Toast error shown when the mature content check request fails unexpectedly.
 #: src/features/auth/components/modals/MatureContentCheckModal.tsx:18
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:585
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:576
 #: src/features/auth/flow/DesktopDeepLinkPrompt.tsx:31
 msgid "Something went wrong. Try again."
 msgstr "Něco se pokazilo. Zkuste to znovu."
@@ -31742,7 +31685,7 @@ msgid "Staff controls"
 msgstr "Ovládací prvky pro zaměstnance"
 
 #. Required-action modal notice for inbound phone verification.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:482
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:478
 msgid "Standard messaging rates from your carrier may apply."
 msgstr "Mohou být účtovány standardní poplatky za zprávy od vašeho operátora."
 
@@ -31788,12 +31731,12 @@ msgid "Start {appName} automatically when you sign in."
 msgstr "Spustit aplikaci {appName} automaticky po přihlášení."
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:221
+#: src/features/input/state/input_keybind/shared.ts:229
 msgid "Start a call in a DM or group"
 msgstr "Zahájit hovor v soukromé nebo skupinové konverzaci"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:149
+#: src/features/input/state/input_keybind/shared.ts:157
 msgid "Start a group DM"
 msgstr "Založit skupinovou konverzaci"
 
@@ -31829,7 +31772,7 @@ msgid "Start date must be earlier than end date."
 msgstr "Počáteční datum musí být dřívější než koncové datum."
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:125
+#: src/features/input/state/input_keybind/shared.ts:133
 msgid "Start drag and drop"
 msgstr "Spustit přetažení"
 
@@ -32099,6 +32042,11 @@ msgstr "Indexování stále probíhá – zkuste to za chvíli znovu"
 msgid "Still Neko"
 msgstr "Nehybná Neko"
 
+#. Small toast shown only when an automatic background check before sign-in, sign-up or a similar request takes more than a couple of seconds. No user action needed. Keep it short and calm.
+#: src/features/auth/altcha/CaptchaInterceptor.ts:13
+msgid "Still working on it…"
+msgstr "Ještě pracujeme…"
+
 #. Stop-recording button label in the desktop voice message composer.
 #: src/features/voice/components/VoiceMessageComposerModal.tsx:65
 msgid "Stop"
@@ -32225,7 +32173,7 @@ msgid "Stopped the member from hearing others in this community"
 msgstr "Členovi bylo znemožněno slyšet ostatní v této komunitě"
 
 #. Description for the echo cancellation toggle in the custom voice processing settings.
-#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:59
+#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:56
 msgid "Stops your speakers from looping back into your mic."
 msgstr "Zabrání tomu, aby se zvuk z reproduktorů vracel do mikrofonu."
 
@@ -32378,7 +32326,7 @@ msgid "Submitting"
 msgstr "Odesílání"
 
 #. Field label in the voice connection status popout. Shows technical WebRTC subscriber ICE transport details.
-#: src/features/voice/components/voice_connection_status/shared.ts:131
+#: src/features/voice/components/voice_connection_status/shared.ts:132
 msgid "Subscriber transport:"
 msgstr "Transport příjemce:"
 
@@ -32472,11 +32420,6 @@ msgstr "Potlačit zmínky o sobě bez oprávnění"
 msgid "Suppression"
 msgstr "Potlačení"
 
-#. Label for the DeepFilterNet3 noise suppression strength slider in the custom voice processing settings.
-#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:67
-msgid "Suppression strength"
-msgstr "Síla potlačení"
-
 #. Collapsible group heading in the Theme Studio tokens list, for background surface tokens.
 #: src/features/theme_studio/sections/TokenGroups.ts:46
 msgid "Surfaces"
@@ -32522,12 +32465,12 @@ msgid "Switch accounts"
 msgstr "Přepnout účty"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:45
+#: src/features/input/state/input_keybind/shared.ts:53
 msgid "Switch between channels"
 msgstr "Přepínat mezi kanály"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:41
+#: src/features/input/state/input_keybind/shared.ts:49
 msgid "Switch between communities"
 msgstr "Přepínat mezi komunitami"
 
@@ -32565,7 +32508,7 @@ msgstr "Přepnout na pohodlné rozvržení"
 msgid "Switch to dense layout"
 msgstr "Přepnout na zhuštěné rozvržení"
 
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:649
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:644
 msgid "Switch to direct input"
 msgstr "Přepnout na přímý vstup"
 
@@ -32592,7 +32535,7 @@ msgid "Switch to next community"
 msgstr "Přepnout na další komunitu"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:77
+#: src/features/input/state/input_keybind/shared.ts:85
 msgid "Switch to next community or DMs"
 msgstr "Přepnout na další komunitu nebo Přímé zprávy"
 
@@ -32607,7 +32550,7 @@ msgid "Switch to previous community"
 msgstr "Přepnout na předchozí komunitu"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:73
+#: src/features/input/state/input_keybind/shared.ts:81
 msgid "Switch to previous community or DMs"
 msgstr "Přepnout na předchozí komunitu nebo Přímé zprávy"
 
@@ -32656,7 +32599,7 @@ msgid "Switch to…"
 msgstr "Přepnout na…"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:313
+#: src/features/input/state/input_keybind/shared.ts:321
 msgid "Switch voice channel"
 msgstr "Přepnout hlasový kanál"
 
@@ -33018,7 +32961,7 @@ msgid "Terms of service"
 msgstr "Podmínky služby"
 
 #. Label for Bluesky OAuth terms URL input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1069
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1043
 msgid "Terms URL"
 msgstr "URL podmínek"
 
@@ -33028,7 +32971,7 @@ msgid "Terrorism or violent extremism"
 msgstr "Terorismus nebo násilný extremismus"
 
 #. Button that validates SMTP credentials.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1041
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1015
 msgid "Test SMTP"
 msgstr "Otestovat SMTP"
 
@@ -33175,12 +33118,12 @@ msgid "Thank you for helping keep {productName} safe. We'll review your report a
 msgstr "Děkujeme, že pomáháte udržovat {productName} v bezpečí. Vaše nahlášení posoudíme co nejdříve."
 
 #. Required-action form error for an invalid verification code.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:490
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:486
 msgid "That code didn't work. Check it and try again."
 msgstr "Tento kód nefungoval. Zkontrolujte ho a zkuste to znovu."
 
 #. Required-action form error for an expired verification code.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:494
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:490
 msgid "That code expired. Request a new code."
 msgstr "Platnost kódu vypršela. Vyžádejte si nový kód."
 
@@ -33208,7 +33151,7 @@ msgid "That doesn't look like a valid URL."
 msgstr "Nevypadá to jako platná adresa URL."
 
 #. Required-action form error when a new email is already used by another account.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:514
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:510
 msgid "That email is already in use."
 msgstr "Tento e-mail se již používá."
 
@@ -33805,7 +33748,7 @@ msgid "This clears quick CSS, imported themes, uploaded assets, and local file r
 msgstr "Tím se z tohoto zařízení vymaže rychlé CSS, importované motivy, nahrané podklady a odkazy na místní soubory."
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:83
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:82
 msgid "This clears your backend premium state entirely, including premium type, billing metadata, and override flags."
 msgstr "Tím se zcela vymaže váš prémiový stav na backendu, včetně typu prémia, fakturačních metadat a příznaků přepsání."
 
@@ -34128,8 +34071,8 @@ msgstr "Toto je váš poslední přístupový klíč a přístupové klíče jso
 msgid "This is your last passkey. Once it's gone you won't be able to use a passkey as your second factor."
 msgstr "Toto je váš poslední přístupový klíč. Jakmile o něj přijdete, nebudete moci používat přístupový klíč jako druhý faktor."
 
-#. Required-action form error for landline, toll-free, premium, shared-cost, UAN, voicemail and pager lines. Do not name which line type the provider returned.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:570
+#. Required-action form error when the number is not a mobile line. Do not name the line type.
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:566
 msgid "This isn't a mobile number, so it can't receive our text. Try a mobile number, or contact support if you think that's wrong."
 msgstr "Toto není mobilní číslo, takže nemůže přijímat naše SMS. Zkuste mobilní číslo nebo kontaktujte podporu, pokud si myslíte, že je to chyba."
 
@@ -34205,17 +34148,17 @@ msgid "This message no longer exists."
 msgstr "Tato zpráva již neexistuje."
 
 #. Label in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:130
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:129
 msgid "This nickname will only be visible in this community"
 msgstr "Tato přezdívka bude viditelná pouze v této komunitě"
 
 #. Required-action form error when a number must use the inbound text-in challenge and the current step cannot start one. Do not say why the number was routed there.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:552
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:548
 msgid "This number is verified by texting us instead. Go back and start phone verification again to get the code and the number to text."
 msgstr "Toto číslo se ověřuje tak, že nám sami pošlete SMS. Vraťte se a znovu spusťte ověření telefonu, abyste získali kód a číslo, na které ho poslat."
 
 #. Required-action modal explanation for an inbound phone verification challenge.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:446
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:442
 msgid "This number needs text-in verification instead of an SMS from us."
 msgstr "Toto číslo vyžaduje ověření odesláním SMS nám místo přijetí SMS od nás."
 
@@ -34240,12 +34183,12 @@ msgid "This participant was deafened by moderators"
 msgstr "Moderátoři tomuto účastníkovi vypnuli zvuk"
 
 #. Required-action form error when the backend rejects a phone number.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:530
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:526
 msgid "This phone number cannot be used. Try another mobile number or contact support."
 msgstr "Toto telefonní číslo nelze použít. Zkuste jiné mobilní číslo nebo kontaktujte podporu."
 
 #. Required-action form error when the backend rejects a reused phone number.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:534
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:530
 msgid "This phone number has already been used. Try another number or contact support."
 msgstr "Toto telefonní číslo již bylo použito. Zkuste jiné číslo nebo kontaktujte podporu."
 
@@ -34282,12 +34225,12 @@ msgid "This removes all custom CSS overrides. Theme files in your library are no
 msgstr "Tím se odstraní všechna vlastní přepsání CSS. Soubory motivů ve vaší knihovně to neovlivní."
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:50
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:49
 msgid "This removes all previously authorized IP addresses on your account. The next login from any IP will require email verification."
 msgstr "Tímto odeberete všechny dříve autorizované IP adresy z vašeho účtu. Příští přihlášení z jakékoli IP adresy bude vyžadovat ověření e-mailem."
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:67
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:66
 msgid "This removes all trusted domains. You will see the external link warning for all domains again."
 msgstr "Tím se odstraní všechny důvěryhodné domény. Znovu se vám bude zobrazovat upozornění na externí odkazy pro všechny domény."
 
@@ -34397,7 +34340,7 @@ msgid "This verification session expired. Return to {productName} and start chec
 msgstr "Platnost ověřovací relace vypršela. Vraťte se do aplikace {productName} a spusťte platbu znovu."
 
 #. Required-action form error when an email-change ticket or proof is invalid or expired.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:502
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:498
 msgid "This verification session expired. Start again."
 msgstr "Ověřovací relace vypršela. Začněte znovu."
 
@@ -34495,7 +34438,7 @@ msgid "This will trust all external links and skip the warning for every domain.
 msgstr "Tímto se budou důvěryhodně otevírat všechny externí odkazy a přeskočí se upozornění pro každou doménu. Vaše stávající důvěryhodné domény budou nahrazeny. Toto je méně bezpečné."
 
 #. Required-action modal body after the user sends an inbound phone verification text.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:478
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:474
 msgid "This window updates automatically after we receive your message."
 msgstr "Toto okno se automaticky aktualizuje, jakmile obdržíme vaši zprávu."
 
@@ -34669,12 +34612,12 @@ msgid "Today at {timeString}"
 msgstr "Dnes v {timeString}"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:69
+#: src/features/input/state/input_keybind/shared.ts:77
 msgid "Toggle between last community and DMs"
 msgstr "Přepínat mezi poslední komunitou a Přímými zprávami"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:309
+#: src/features/input/state/input_keybind/shared.ts:317
 msgid "Toggle camera"
 msgstr "Přepnout kameru"
 
@@ -34694,7 +34637,7 @@ msgid "Toggle developer tools"
 msgstr "Přepnout nástroje pro vývojáře"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:269
+#: src/features/input/state/input_keybind/shared.ts:277
 msgid "Toggle embed suppression"
 msgstr "Zobrazit nebo skrýt vložený obsah"
 
@@ -34710,23 +34653,23 @@ msgstr "Přepnout hardwarovou akceleraci"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/input/state/input_keybind/shared.ts:209
+#: src/features/input/state/input_keybind/shared.ts:217
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:183
 msgid "Toggle mute"
 msgstr "Ztlumit nebo zapnout mikrofon"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:153
+#: src/features/input/state/input_keybind/shared.ts:161
 msgid "Toggle pinned messages"
 msgstr "Zobrazit nebo skrýt připnuté zprávy"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:117
+#: src/features/input/state/input_keybind/shared.ts:125
 msgid "Toggle quick switcher"
 msgstr "Zobrazit nebo skrýt rychlé přepínání"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:281
+#: src/features/input/state/input_keybind/shared.ts:289
 msgid "Toggle saved media"
 msgstr "Zobrazit nebo skrýt uložená média"
 
@@ -34735,17 +34678,17 @@ msgid "Toggle switches on and off to see state changes."
 msgstr "Zapínejte a vypínejte přepínače a sledujte změny jejich stavu."
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:173
+#: src/features/input/state/input_keybind/shared.ts:181
 msgid "Toggle the emoji picker"
 msgstr "Zobrazit nebo skrýt výběr emoji"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:177
+#: src/features/input/state/input_keybind/shared.ts:185
 msgid "Toggle the GIF picker"
 msgstr "Zobrazit nebo skrýt výběr GIFů"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:157
+#: src/features/input/state/input_keybind/shared.ts:165
 msgid "Toggle the inbox"
 msgstr "Zobrazit nebo skrýt panel Doručené"
 
@@ -34755,22 +34698,22 @@ msgid "Toggle the kinds of conversations you want included."
 msgstr "Přepněte typy konverzací, které chcete zahrnout."
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:169
+#: src/features/input/state/input_keybind/shared.ts:177
 msgid "Toggle the member list or voice chat"
 msgstr "Přepnout seznam členů nebo hlasový chat"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:225
+#: src/features/input/state/input_keybind/shared.ts:233
 msgid "Toggle the soundboard"
 msgstr "Zobrazit nebo skrýt zvukový panel"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:181
+#: src/features/input/state/input_keybind/shared.ts:189
 msgid "Toggle the sticker picker"
 msgstr "Zobrazit nebo skrýt výběr samolepek"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:305
+#: src/features/input/state/input_keybind/shared.ts:313
 msgid "Toggle voice activity"
 msgstr "Přepnout hlasovou aktivitu"
 
@@ -34802,7 +34745,7 @@ msgid "Tone-map HDR images to standard range, reducing peak brightness."
 msgstr "Převést HDR snímky do standardního rozsahu, čímž se sníží maximální jas."
 
 #. Required-action error shown for rate limits.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:506
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:502
 msgid "Too many attempts. Wait a bit, then try again."
 msgstr "Příliš mnoho pokusů. Chvíli počkejte a zkuste to znovu."
 
@@ -34954,7 +34897,7 @@ msgstr "V Linuxu se změny ikony v oznamovací oblasti projeví až po restartu,
 msgid "Trending GIFs"
 msgstr "Populární GIFy"
 
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:383
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:359
 msgid "Trigger React crash"
 msgstr "Spustit pád Reactu"
 
@@ -35013,7 +34956,7 @@ msgid "Trusted domains"
 msgstr "Důvěryhodné domény"
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:55
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:54
 msgid "Trusted domains cleared."
 msgstr "Důvěryhodné domény vymazány."
 
@@ -35059,14 +35002,13 @@ msgid "Try a different variable name or clear the search."
 msgstr "Zkuste jiný název proměnné nebo vymažte hledání."
 
 #. Generic action label for retrying a failed or interrupted operation.
-#: src/features/auth/components/AltchaVerification.tsx:53
 #: src/features/auth/flow/AuthRouteLoadError.tsx:22
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:75
 msgid "Try again"
 msgstr "Zkusit znovu"
 
 #. Button that retries connecting to the voice channel after a failed attempt.
-#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:61
+#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:62
 msgctxt "voice-connection-status"
 msgid "Try again"
 msgstr "Zkusit znovu"
@@ -35137,10 +35079,6 @@ msgstr "Zkusit místo toho bezpečnostní klíč / přístupový klíč"
 msgid "Try sending your message again."
 msgstr "Zkuste zprávu odeslat znovu."
 
-#: src/features/auth/components/modals/CaptchaModal.tsx:177
-msgid "Try Turnstile instead"
-msgstr "Zkusit místo toho Turnstile"
-
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:135
 msgid "TTS"
@@ -35157,7 +35095,7 @@ msgid "TTS speed"
 msgstr "Rychlost převodu textu na řeč"
 
 #. Description for the custom option in the voice processing settings radio group.
-#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:47
+#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:44
 msgid "Tune the processing yourself."
 msgstr "Upravte si zpracování podle sebe."
 
@@ -35896,7 +35834,7 @@ msgstr "Odemkněte vlastní emoji v soukromých konverzacích s {premiumProductN
 msgid "Unlock HD screen share with {premiumProductName}"
 msgstr "Odemkněte sdílení obrazovky v HD rozlišení s {premiumProductName}"
 
-#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:215
+#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:217
 msgid "Unlock higher limits and exclusive features while supporting an independent communication platform."
 msgstr "Odemkněte vyšší limity a exkluzivní funkce a zároveň podpořte nezávislou komunikační platformu."
 
@@ -36042,7 +35980,7 @@ msgid "Unordered"
 msgstr "Nečíslovaný seznam"
 
 #. Confirm button label on the unpin message alert.
-#: src/features/channel/components/MessageActionUtils.tsx:51
+#: src/features/channel/components/MessageActionUtils.tsx:54
 msgid "Unpin"
 msgstr "Odepnout"
 
@@ -36067,7 +36005,7 @@ msgid "Unpin message"
 msgstr "Odepnout zprávu"
 
 #. Body of the confirmation alert shown when unpinning a message.
-#: src/features/channel/components/MessageActionUtils.tsx:47
+#: src/features/channel/components/MessageActionUtils.tsx:50
 msgid "Unpin this message?"
 msgstr "Odepnout tuto zprávu?"
 
@@ -36373,7 +36311,7 @@ msgstr "Nahrajte vlastní zvuk, který se automaticky přehraje při připojení
 #. Card label in the asset source modal for uploading an image from the device. Keep it concise.
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #: src/features/expressions/components/modals/AssetSourceModal.tsx:19
-#: src/features/input/state/input_keybind/shared.ts:201
+#: src/features/input/state/input_keybind/shared.ts:209
 msgid "Upload a file"
 msgstr "Nahrát soubor"
 
@@ -36642,7 +36580,7 @@ msgid "Use an email address you can access. We will send a code there."
 msgstr "Použijte e-mailovou adresu, ke které máte přístup. Pošleme vám na ni kód."
 
 #. Required-action form error when the new email matches the current account email.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:518
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:514
 msgid "Use an email that is different from your current one."
 msgstr "Použijte e-mail, který se liší od vašeho současného."
 
@@ -36895,7 +36833,7 @@ msgid "Use this when troubleshooting the client or collecting logs. It may add v
 msgstr "Použijte to při řešení problémů s klientem nebo sběru protokolů. Může to přidat podrobné zprávy do konzole prohlížeče pro aktuálního klienta."
 
 #. Label for SMTP TLS toggle.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1037
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1011
 msgid "Use TLS"
 msgstr "Použít TLS"
 
@@ -37061,7 +36999,7 @@ msgstr "Hlasitost uživatele"
 #. Generic form-field label for a username.
 #. Label for SMTP username input.
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1035
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1009
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:572
 #: src/features/user/components/modals/FluxerTagChangeModal.tsx:218
 #: src/features/user/components/modals/tabs/my_profile_tab/MyProfileTabUsernameSection.tsx:56
@@ -37328,24 +37266,19 @@ msgstr "Ověřte, že jste to vy"
 #. Primary button in the required-action modal. Sends or submits phone verification.
 #: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:178
 #: src/features/channel/components/barriers/BarrierComponents.tsx:269
-#: src/features/user/components/modals/PhoneAddModal.tsx:408
+#: src/features/user/components/modals/PhoneAddModal.tsx:405
 msgid "Verify phone"
 msgstr "Ověřit telefon"
 
 #. Short label in the phone add modal. Keep it concise.
-#: src/features/user/components/modals/PhoneAddModal.tsx:55
+#: src/features/user/components/modals/PhoneAddModal.tsx:53
 msgid "Verify phone number"
 msgstr "Ověřit telefonní číslo"
 
 #. Label in the phone add modal.
-#: src/features/user/components/modals/PhoneAddModal.tsx:51
+#: src/features/user/components/modals/PhoneAddModal.tsx:49
 msgid "Verify phone number form"
 msgstr "Formulář pro ověření telefonního čísla"
-
-#. Short label in the authentication captcha modal. Keep the tone plain and specific.
-#: src/features/auth/components/modals/CaptchaModal.tsx:17
-msgid "Verify you're human"
-msgstr "Ověřte, že jste člověk"
 
 #. Title of the error modal shown when an unverified account tries to start a DM.
 #. Title shown when an unverified account cannot start a DM or group DM.
@@ -37374,22 +37307,22 @@ msgid "Verify your email before adding an authenticator app."
 msgstr "Před přidáním ověřovací aplikace si ověřte svůj e-mail."
 
 #. Description text in the my profile tab. Keep the tone plain and specific.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:117
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:116
 msgid "Verify your email before changing your community nickname, avatar, banner, bio, pronouns, or accent color."
 msgstr "Před změnou přezdívky, avataru, banneru, popisu profilu, zájmen nebo barvy zvýraznění pro tuto komunitu ověřte svůj e-mail."
 
 #. Label in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:121
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:120
 msgid "Verify your email before changing your username, display name, avatar, banner, bio, pronouns, time zone, or {premiumProductName} badge privacy."
 msgstr "Před změnou uživatelského jména, zobrazovaného jména, avataru, banneru, popisu profilu, zájmen, časového pásma nebo soukromí odznaku {premiumProductName} ověřte svůj e-mail."
 
 #. Description text in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:85
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:84
 msgid "Verify your email before editing this community profile. You can still preview it here."
 msgstr "Před úpravou tohoto komunitního profilu si ověřte svůj e-mail. Stále si ho můžete prohlédnout zde."
 
 #. Description text in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:89
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:88
 msgid "Verify your email before editing your profile. You can still preview it here."
 msgstr "Před úpravou profilu si ověřte svůj e-mail. Stále si ho zde můžete prohlédnout."
 
@@ -37421,12 +37354,12 @@ msgid "Verify your email to continue using {productName}."
 msgstr "Ověřte svůj e-mail, abyste mohli nadále používat {productName}."
 
 #. Label in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:109
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:108
 msgid "Verify your email to edit this community profile"
 msgstr "Ověřte svůj e-mail, abyste mohli upravit tento komunitní profil"
 
 #. Label in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:113
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:112
 msgid "Verify your email to edit your profile"
 msgstr "Ověřte svůj e-mail pro úpravu profilu"
 
@@ -37534,7 +37467,7 @@ msgid "Video options"
 msgstr "Možnosti videa"
 
 #. Field label in the voice connection status popout. Shows received video packet loss percentage.
-#: src/features/voice/components/voice_connection_status/shared.ts:111
+#: src/features/voice/components/voice_connection_status/shared.ts:112
 msgid "Video packet loss:"
 msgstr "Ztráta video paketů:"
 
@@ -37558,7 +37491,7 @@ msgid "Video quality"
 msgstr "Kvalita videa"
 
 #. Field label in the voice connection status popout. Shows current inbound video bitrate.
-#: src/features/voice/components/voice_connection_status/shared.ts:103
+#: src/features/voice/components/voice_connection_status/shared.ts:104
 msgid "Video receive:"
 msgstr "Příjem videa:"
 
@@ -37568,7 +37501,7 @@ msgid "Video scrubbing"
 msgstr "Posouvání ve videu"
 
 #. Field label in the voice connection status popout. Shows current outbound video bitrate.
-#: src/features/voice/components/voice_connection_status/shared.ts:99
+#: src/features/voice/components/voice_connection_status/shared.ts:100
 msgid "Video send:"
 msgstr "Odesílání videa:"
 
@@ -37977,7 +37910,7 @@ msgid "Voice activity on active now"
 msgstr "Hlasová aktivita v sekci Právě aktivní"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:301
+#: src/features/input/state/input_keybind/shared.ts:309
 msgid "Voice activity priority"
 msgstr "Priorita hlasové aktivity"
 
@@ -38050,7 +37983,7 @@ msgstr "Hlasové kanály"
 
 #. Voice status popout title (secondary call site for the same surface as VOICE_CONNECTION_DESCRIPTOR).
 #. Voice status popout title.
-#: src/features/voice/components/voice_connection_status/MockedVoiceConnectionStatus.tsx:47
+#: src/features/voice/components/voice_connection_status/MockedVoiceConnectionStatus.tsx:48
 #: src/features/voice/components/voice_connection_status/VoiceDetailsPopout.tsx:56
 msgid "Voice connection"
 msgstr "Hlasové připojení"
@@ -38108,8 +38041,8 @@ msgid "Voice participants"
 msgstr "Účastníci hlasového chatu"
 
 #. Voice settings radio group label for microphone processing profile.
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:644
-#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:55
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:639
+#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:52
 msgid "Voice processing"
 msgstr "Zpracování hlasu"
 
@@ -38202,7 +38135,7 @@ msgstr "Zvýšit hlasitost"
 msgid "Wait a moment before deleting more messages."
 msgstr "Před smazáním dalších zpráv chvíli počkejte."
 
-#: src/features/user/components/modals/PhoneAddModal.tsx:352
+#: src/features/user/components/modals/PhoneAddModal.tsx:349
 msgid "Wait a moment. This window will close automatically once we receive your message."
 msgstr "Moment. Toto okno se automaticky zavře, jakmile obdržíme vaši zprávu."
 
@@ -38212,7 +38145,7 @@ msgid "Wait between messages. Members with \"{bypassSlowmodePermissionLabel}\" c
 msgstr "Doba čekání mezi zprávami. Členové s oprávněním „{bypassSlowmodePermissionLabel}“ nemusí čekat."
 
 #. Required-action modal carousel step title after the user sends an inbound phone verification text.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:474
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:470
 msgid "Wait here"
 msgstr "Počkejte zde"
 
@@ -38378,13 +38311,13 @@ msgstr "Tento motiv se nepodařilo načíst. Může být poškozený nebo neplat
 msgid "We couldn't remove that account. Try again."
 msgstr "Tento účet se nám nepodařilo odebrat. Zkuste to znovu."
 
-#. Required-action form error for phone attempts blocked by a fraud signal. Deliberately non-specific. Never name the signal, the score or the threshold.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:576
+#. Required-action form error when a phone attempt cannot be verified automatically and needs a support review. Keep it non-specific.
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:571
 msgid "We couldn't verify this number automatically. Contact support and a person will review your account."
 msgstr "Toto telefonní číslo se nepodařilo automaticky ověřit. Kontaktujte podporu a váš účet posoudí její pracovník."
 
 #. Required-action form error when the phone number's country is on the SMS send ban list. Must not imply the number itself is invalid.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:546
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:542
 msgid "We don't send verification texts to this country. Try a mobile number from another country, or contact support."
 msgstr "Do této země neposíláme ověřovací SMS. Zkuste mobilní číslo z jiné země nebo kontaktujte podporu."
 
@@ -38402,10 +38335,6 @@ msgstr "V Brazílii jsme snížili cenu {premiumProductName}. Nyní je to {month
 #: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:210
 msgid "We need one verification step before you continue. This helps protect accounts and keep spam off {productName}."
 msgstr "Než budete pokračovat, potřebujeme jeden ověřovací krok. Pomáhá to chránit účty a udržet spam mimo {productName}."
-
-#: src/features/auth/components/modals/CaptchaModal.tsx:128
-msgid "We need to make sure you're not a bot. Complete the verification below."
-msgstr "Musíme se ujistit, že nejste robot. Dokončete ověření níže."
 
 #. Required-action modal intro text when both email and phone verification are required.
 #: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:216
@@ -38479,9 +38408,9 @@ msgstr "Než si budete moct změnit heslo, pošleme vám na e-mail ověřovací 
 msgid "We'll send a verification code to your email before you can view your backup codes."
 msgstr "Před zobrazením záložních kódů vám na e-mail pošleme ověřovací kód."
 
-#: src/features/user/components/modals/PhoneAddModal.tsx:286
-msgid "We'll send an SMS code when available. Your number is not linked to your account. We keep only an encrypted marker, with no user ID, to allow at most {PHONE_VERIFICATION_LIMIT} verifications in about {PHONE_VERIFICATION_WINDOW_DAYS} days."
-msgstr "Až to bude možné, pošleme vám SMS kód. Vaše číslo není propojeno s vaším účtem. Uchováváme pouze zašifrovanou značku bez ID uživatele, abychom umožnili maximálně {PHONE_VERIFICATION_LIMIT} ověření přibližně za {PHONE_VERIFICATION_WINDOW_DAYS} dní."
+#: src/features/user/components/modals/PhoneAddModal.tsx:284
+msgid "We'll send an SMS code when available. Your number is not linked to your account. We keep only an encrypted marker, with no user ID, for a limited time."
+msgstr "Pošleme SMS kód, jakmile bude dostupný. Vaše číslo nebude propojeno s vaším účtem. Uchováváme pouze šifrovaný identifikátor bez ID uživatele po omezenou dobu."
 
 #: src/features/user/components/modals/EmailChangeModal.tsx:189
 msgid "We'll verify your current email and then your new email with one-time codes."
@@ -38841,7 +38770,7 @@ msgstr "Které konverzace"
 msgid "Which rule was broken?"
 msgstr "Které pravidlo bylo porušeno?"
 
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:358
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:355
 msgid "While push-to-talk is on, your shortcut controls your microphone, so the mute button is disabled."
 msgstr "Když je zapnutý režim Stisknutím mluvit, mikrofon ovládá klávesová zkratka, takže tlačítko ztlumení není dostupné."
 
@@ -39261,7 +39190,7 @@ msgid "You can't befriend yourself"
 msgstr "Nemůžete si přidat sami sebe do přátel"
 
 #. Label in the my profile tab. Keep the tone plain and specific.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:134
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:133
 msgid "You can't change your nickname here"
 msgstr "Zde si nemůžete změnit přezdívku"
 
@@ -39511,7 +39440,7 @@ msgid "You have unsaved changes."
 msgstr "Máte neuložené změny."
 
 #. Warning text in the my profile tab. Keep the tone plain and specific.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:81
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:80
 msgid "You have unsaved changes. Save or reset before leaving."
 msgstr "Máte neuložené změny. Před odchodem je uložte nebo resetujte."
 
@@ -39532,11 +39461,11 @@ msgstr "Ještě jste nikoho nezablokovali."
 msgid "You just pressed Tab. Keyboard mode is now on so you can navigate {productName} without a mouse."
 msgstr "Právě jste stiskli klávesu Tab. Režim klávesnice je nyní zapnutý, takže můžete procházet aplikaci {productName} bez myši."
 
-#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:135
+#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:137
 msgid "You keep your perks until your next renewal date, then have a 3-day grace period to resubscribe and keep your subscriber history."
 msgstr "Výhody si ponecháte do data příštího obnovení. Poté máte dodatečnou lhůtu 3 dnů na obnovení předplatného a zachování jeho historie."
 
-#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:157
+#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:159
 msgid "You lose all {PREMIUM_PRODUCT_NAME} perks immediately and your subscriber history resets. This cannot be undone."
 msgstr "Okamžitě ztratíte všechny výhody {PREMIUM_PRODUCT_NAME} a historie vašeho předplatného se resetuje. Tuto akci nelze vrátit zpět."
 
@@ -39986,10 +39915,10 @@ msgstr "Vaše relace {productName} vypršela. Přihlaste se znovu a pokračujte 
 msgid "Your account"
 msgstr "Váš účet"
 
-#. First line of the set-aside confirmation in the required-action modal. Always shown. Says can rather than will, because whether the check returns depends on account age and instance settings the user cannot see.
+#. First line of the set-aside confirmation in the required-action modal. Always shown. Says can rather than will, because the check may or may not come back.
 #: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:316
-msgid "Your account goes back to normal right away and you will not need a phone number now. This is not a permanent exemption. Joining a large or public community can bring this check back."
-msgstr "Váš účet se okamžitě vrátí do normálu a telefonní číslo nyní nebudete potřebovat. Toto není trvalá výjimka. Připojení k velké nebo veřejné komunitě může tuto kontrolu znovu vyvolat."
+msgid "Your account goes back to normal right away and you will not need a phone number now. This is not a permanent exemption, and we can ask for this check again later."
+msgstr "Váš účet se okamžitě vrátí do normálu a telefonní číslo nyní nebudete potřebovat. Toto není trvalá výjimka a můžeme o tuto kontrolu požádat později."
 
 #: src/features/connection/components/pages/ConnectionCallbackPage.tsx:29
 msgid "Your account has been linked successfully. You can now close this tab and return to the app."
@@ -40036,10 +39965,6 @@ msgstr "Vaši akci se nepodařilo dokončit, protože byla označena našimi bez
 msgid "Your application is pending review. You can still update your listing details or withdraw the application."
 msgstr "Vaše žádost čeká na posouzení. Stále můžete upravovat údaje v záznamu nebo žádost stáhnout."
 
-#: src/features/auth/components/AltchaVerification.tsx:50
-msgid "Your browser couldn't finish the check."
-msgstr "Prohlížeč nemohl dokončit kontrolu."
-
 #. Body of the browser-audio-required modal explaining why the user must click before audio can play.
 #: src/features/voice/components/modals/AudioPlaybackPermissionModal.tsx:12
 msgid "Your browser requires user interaction before audio can be played. Click the button below to enable voice chat."
@@ -40054,7 +39979,7 @@ msgid "Your card is eligible. Redirecting you to the payment page now."
 msgstr "Vaše karta je způsobilá. Nyní vás přesměrujeme na platební stránku."
 
 #. Required-action form error when the carrier lookup says the number does not exist. Leaves room for the lookup to be wrong.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:564
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:560
 msgid "Your carrier says this number isn't in service. Check it and try again, or contact support if it's correct."
 msgstr "Váš operátor uvádí, že toto číslo není v provozu. Zkontrolujte ho a zkuste to znovu. Pokud je správné, kontaktujte podporu."
 
@@ -40226,10 +40151,10 @@ msgstr "váš nový e-mail"
 msgid "Your new nickname, or leave blank to reset it."
 msgstr "Vaše nová přezdívka. Chcete-li ji zrušit, nechte pole prázdné."
 
-#. Required-action modal privacy note for phone verification. limit and duration are inserted by code.
+#. Required-action modal privacy note for phone verification.
 #: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:421
-msgid "Your number is not linked to your account. We keep only an encrypted marker, with no user ID, for at most {limit} verifications in about {duration} days."
-msgstr "Vaše číslo není propojeno s vaším účtem. Uchováváme pouze zašifrovanou značku bez ID uživatele, a to maximálně pro {limit} ověření přibližně za {duration} dní."
+msgid "Your number is not linked to your account. We keep only an encrypted marker, with no user ID, for a limited time."
+msgstr "Vaše číslo není propojeno s vaším účtem. Uchováváme pouze šifrovaný identifikátor bez ID uživatele po omezenou dobu."
 
 #: src/features/premium/components/pages/PremiumCallbackPage.tsx:152
 msgid "Your payment was canceled. You can now close this tab and return to the app."
@@ -40391,7 +40316,7 @@ msgid "YouTube enrichment"
 msgstr "Rozšířené náhledy YouTube"
 
 #. Setup wizard title for YouTube integration credentials.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:977
+#: src/features/app/components/setup/SetupWizardSteps.tsx:970
 msgid "YouTube previews"
 msgstr "Náhledy YouTube"
 
@@ -40417,7 +40342,7 @@ msgstr "Zvětšit"
 #. Native View menu item that increases UI zoom level.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:628
-#: src/features/input/state/input_keybind/shared.ts:253
+#: src/features/input/state/input_keybind/shared.ts:261
 #: src/features/platform/utils/DesktopLocaleBridge.ts:113
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:82
 msgid "Zoom in"
@@ -40428,7 +40353,7 @@ msgstr "Přiblížit"
 #. Native View menu item that decreases UI zoom level.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:624
-#: src/features/input/state/input_keybind/shared.ts:257
+#: src/features/input/state/input_keybind/shared.ts:265
 #: src/features/platform/utils/DesktopLocaleBridge.ts:117
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:86
 msgid "Zoom out"

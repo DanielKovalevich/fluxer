@@ -295,7 +295,7 @@
 						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
 					}
 				},
-				"description": "Initiate password reset process by email. A password reset link will be sent to the user's email address. Requires CAPTCHA verification.",
+				"description": "Initiate password reset process by email. A password reset link will be sent to the user's email address. Requires a solved captcha challenge (X-Captcha-Token).",
 				"requestBody": {
 					"required": true,
 					"content": {"application/json": {"schema": {"$ref": "#/components/schemas/ForgotPasswordRequest"}}}
@@ -745,7 +745,7 @@
 						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
 					}
 				},
-				"description": "Authenticate with email and password. Returns authentication token if credentials are valid and MFA is not required. If MFA is enabled, returns a ticket for MFA verification.",
+				"description": "Authenticate with email and password. Returns authentication token if credentials are valid and MFA is not required. If MFA is enabled, returns a ticket for MFA verification. Requires a solved captcha challenge (X-Captcha-Token).",
 				"requestBody": {
 					"required": true,
 					"content": {"application/json": {"schema": {"$ref": "#/components/schemas/LoginRequest"}}}
@@ -1380,7 +1380,7 @@
 						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
 					}
 				},
-				"description": "Create a new user account with email and password. Requires CAPTCHA verification. User account is created but must verify email before logging in.",
+				"description": "Create a new user account with email and password. Requires a solved captcha challenge (X-Captcha-Token). User account is created but must verify email before logging in.",
 				"requestBody": {
 					"required": false,
 					"content": {"application/json": {"schema": {"$ref": "#/components/schemas/RegisterRequest"}}}
@@ -4683,7 +4683,7 @@
 						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
 					}
 				},
-				"description": "Adds a user to a group direct message channel. The requesting user must be a member of the group DM. Requires CAPTCHA verification.",
+				"description": "Adds a user to a group direct message channel. The requesting user must be a member of the group DM. Requires a solved captcha challenge (X-Captcha-Token).",
 				"security": [{"botToken": []}, {"sessionToken": []}],
 				"parameters": [
 					{
@@ -10238,7 +10238,7 @@
 						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
 					}
 				},
-				"description": "Creates a new bot-backed OAuth2 application (client). Requires CAPTCHA verification. Returns client credentials including ID and secret. Application can be used for authorization flows and API access.",
+				"description": "Creates a new bot-backed OAuth2 application (client). Requires a solved captcha challenge (X-Captcha-Token). Returns client credentials including ID and secret. Application can be used for authorization flows and API access.",
 				"security": [{"sessionToken": []}],
 				"requestBody": {
 					"required": true,
@@ -13674,7 +13674,7 @@
 						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
 					}
 				},
-				"description": "Creates a new private channel (direct message) between the current user and one or more recipients. Group DM creation requires CAPTCHA verification. Returns the newly created channel object.",
+				"description": "Creates a new private channel (direct message) between the current user and one or more recipients. Group DM creation requires a solved captcha challenge (X-Captcha-Token). Returns the newly created channel object.",
 				"security": [{"botToken": []}, {"sessionToken": []}],
 				"requestBody": {
 					"required": true,
@@ -18339,7 +18339,7 @@
 						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
 					}
 				},
-				"description": "For very-high-risk registrations the platform requires the user to text a one-time code to the platform's number, instead of receiving a code from the platform. This endpoint generates the code and the destination number to display.",
+				"description": "When an account must verify its phone number inbound, the user texts a one-time code to the platform's number instead of receiving one. This endpoint generates the code and the destination number to display.",
 				"security": [{"sessionToken": []}]
 			}
 		},
@@ -18392,7 +18392,7 @@
 						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
 					}
 				},
-				"description": "Send a one-time code on the requested channel. Defaults to the first available channel from server policy. Pass channel=\"sms\" to request SMS (only honoured for SMS-allowlisted destinations) or channel=\"inbound_challenge\" to receive challenge details to text in. Expensive outbound destinations always downgrade to an inbound challenge.",
+				"description": "Send a one-time code on the requested channel. Defaults to the first available channel from server policy. Pass channel=\"sms\" to request SMS (only honoured for SMS-allowlisted destinations) or channel=\"inbound_challenge\" to receive challenge details to text in. Expensive outbound destinations always downgrade to an inbound challenge. Requires a solved captcha challenge (X-Captcha-Token) when the phone verification service asks for one.",
 				"security": [{"sessionToken": []}],
 				"requestBody": {
 					"required": true,
@@ -19262,7 +19262,7 @@
 						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
 					}
 				},
-				"description": "Reports whether this account can set a deferred phone verification requirement aside, and which communities would be left if it did. Returns available false with empty lists for any account outside that state.",
+				"description": "Reports whether this account can set a due phone verification requirement aside. The community lists are always empty.",
 				"security": [{"sessionToken": []}]
 			},
 			"post": {
@@ -19313,7 +19313,7 @@
 						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
 					}
 				},
-				"description": "Leaves the communities that trigger the deferred phone verification check and restores the deferral, so the account works normally again. Communities the user owns are kept, and a run that hits the per-call community limit leaves what it can and can be repeated. Returns the updated private user object.",
+				"description": "Defers a due phone verification requirement again, so the account works normally without leaving any community. Returns the updated private user object.",
 				"security": [{"sessionToken": []}],
 				"requestBody": {
 					"required": false,
@@ -22482,7 +22482,7 @@
 						"description": "Whether premium perks are temporarily disabled for this account"
 					},
 					"force_inbound_phone_verification": {
-						"description": "Whether this account is forced through the inbound (expensive-destination) phone verification flow regardless of prefix, for debugging",
+						"description": "Whether this account is forced through the inbound phone verification flow, for debugging",
 						"type": "boolean"
 					},
 					"password_last_changed_at": {
@@ -23001,7 +23001,7 @@
 				"properties": {
 					"available": {
 						"type": "boolean",
-						"description": "Whether this account can set the deferred phone verification check aside right now"
+						"description": "Whether this account can set a due phone verification requirement aside right now"
 					},
 					"guilds": {
 						"type": "array",
@@ -23017,7 +23017,7 @@
 							"required": ["id", "name"],
 							"additionalProperties": false
 						},
-						"description": "Communities that trigger the phone check and will be left when the escape runs"
+						"description": "Always empty, the escape leaves no community"
 					},
 					"owned_guilds": {
 						"type": "array",
@@ -23033,7 +23033,7 @@
 							"required": ["id", "name"],
 							"additionalProperties": false
 						},
-						"description": "Communities that trigger the phone check but are owned by this user, so they are kept"
+						"description": "Always empty, the escape leaves no community"
 					}
 				},
 				"required": ["available", "guilds", "owned_guilds"],
@@ -23298,15 +23298,8 @@
 							},
 							"reason": {
 								"type": "string",
-								"enum": [
-									"voip",
-									"canadian",
-									"unknown_line_type",
-									"expensive_destination",
-									"account_forced",
-									"behavioural_risk"
-								],
-								"description": "Why inbound verification is required"
+								"enum": ["verification_required"],
+								"description": "Always verification_required"
 							}
 						},
 						"required": ["channel", "challenge_code", "our_number", "expires_at", "reason"],
@@ -25116,13 +25109,10 @@
 						"anyOf": [{"$ref": "#/components/schemas/ColorType"}, {"type": "null"}]
 					},
 					"timezone": {
-						"description": "IANA timezone identifier saved for profile local time. Ignored unless the profile_timezone experiment serves the user.",
+						"description": "IANA timezone identifier saved for profile local time",
 						"type": ["string", "null"]
 					},
-					"timezone_privacy_flags": {
-						"description": "Bitfield controlling who can see the profile timezone. Ignored unless the profile_timezone experiment serves the user.",
-						"$ref": "#/components/schemas/ProfileFieldPrivacyFlags"
-					},
+					"timezone_privacy_flags": {"$ref": "#/components/schemas/ProfileFieldPrivacyFlags"},
 					"premium_badge_hidden": {"type": "boolean", "description": "Whether to hide the premium badge"},
 					"premium_badge_masked": {"type": "boolean", "description": "Whether to mask the premium badge"},
 					"premium_badge_timestamp_hidden": {
@@ -27949,12 +27939,7 @@
 					"poll_jitter_percent": {"type": "integer", "minimum": 0, "maximum": 50},
 					"assignments": {
 						"type": "object",
-						"properties": {
-							"voice_noise_suppression": {"$ref": "#/components/schemas/VoiceNoiseSuppressionAssignmentResponse"},
-							"domain_migration": {"$ref": "#/components/schemas/DomainMigrationAssignmentResponse"},
-							"altcha_captcha": {"$ref": "#/components/schemas/AltchaCaptchaAssignmentResponse"},
-							"profile_timezone": {"$ref": "#/components/schemas/ProfileTimezoneAssignmentResponse"}
-						},
+						"properties": {"domain_migration": {"$ref": "#/components/schemas/DomainMigrationAssignmentResponse"}},
 						"additionalProperties": false
 					}
 				},
@@ -29917,16 +29902,11 @@
 				"type": "object",
 				"properties": {
 					"provider": {
-						"description": "Captcha provider name (hcaptcha, turnstile, none)",
+						"description": "Captcha provider (altcha or none)",
 						"$ref": "#/components/schemas/InstanceCaptchaProviderSchema"
-					},
-					"hcaptcha_site_key": {"description": "hCaptcha site key if using hCaptcha", "type": ["string", "null"]},
-					"turnstile_site_key": {
-						"description": "Cloudflare Turnstile site key if using Turnstile",
-						"type": ["string", "null"]
 					}
 				},
-				"required": ["provider", "hcaptcha_site_key", "turnstile_site_key"],
+				"required": ["provider"],
 				"additionalProperties": false,
 				"description": "Captcha configuration"
 			},
@@ -29961,7 +29941,7 @@
 				"additionalProperties": false,
 				"description": "Endpoint URLs for various services"
 			},
-			"InstanceCaptchaProviderSchema": {"type": "string", "enum": ["hcaptcha", "turnstile", "none"]},
+			"InstanceCaptchaProviderSchema": {"type": "string", "enum": ["altcha", "none"]},
 			"InstanceRegistrationModeSchema": {
 				"description": "Registration mode",
 				"x-enumNames": ["open", "approval", "closed"],
@@ -31652,67 +31632,11 @@
 				"additionalProperties": false
 			},
 			"DonationCurrency": {"type": "string", "enum": ["usd", "eur", "brl", "inr", "pln", "try", "sek", "dkk", "nok"]},
-			"ProfileTimezoneAssignmentResponse": {
-				"type": "object",
-				"properties": {"enabled": {"type": "boolean"}},
-				"required": ["enabled"],
-				"additionalProperties": false
-			},
-			"AltchaCaptchaAssignmentResponse": {
-				"type": "object",
-				"properties": {"enabled": {"type": "boolean"}},
-				"required": ["enabled"],
-				"additionalProperties": false
-			},
 			"DomainMigrationAssignmentResponse": {
 				"type": "object",
 				"properties": {"enabled": {"type": "boolean"}},
 				"required": ["enabled"],
 				"additionalProperties": false
-			},
-			"VoiceNoiseSuppressionAssignmentResponse": {
-				"type": "object",
-				"properties": {
-					"enabled": {"type": "boolean"},
-					"config_version": {"type": "integer", "minimum": -9007199254740991, "maximum": 9007199254740991},
-					"user_targeted": {"type": "boolean"},
-					"backend": {"anyOf": [{"$ref": "#/components/schemas/VoiceNoiseSuppressionBackendSchema"}, {"type": "null"}]},
-					"source": {"anyOf": [{"type": "string", "enum": ["user_rule", "canary"]}, {"type": "null"}]},
-					"guild_overrides": {
-						"type": "array",
-						"items": {
-							"type": "object",
-							"properties": {
-								"guild_id": {"type": "string", "pattern": "^\\d{1,20}$"},
-								"backend": {"$ref": "#/components/schemas/VoiceNoiseSuppressionBackendSchema"}
-							},
-							"required": ["guild_id", "backend"],
-							"additionalProperties": false
-						}
-					},
-					"enabled_backends": {
-						"type": "array",
-						"items": {"$ref": "#/components/schemas/VoiceNoiseSuppressionBackendSchema"}
-					},
-					"allow_user_override": {"type": "boolean"},
-					"suppression_strength": {"type": "integer", "minimum": 0, "maximum": 100}
-				},
-				"required": [
-					"enabled",
-					"config_version",
-					"user_targeted",
-					"backend",
-					"source",
-					"guild_overrides",
-					"enabled_backends",
-					"allow_user_override",
-					"suppression_strength"
-				],
-				"additionalProperties": false
-			},
-			"VoiceNoiseSuppressionBackendSchema": {
-				"type": "string",
-				"enum": ["none", "standard", "gate", "speex", "rnnoise", "gtcrn", "deep_filter"]
 			},
 			"GiftCodeDurationTypeSchema": {
 				"description": "Gift code duration unit",

@@ -2395,11 +2395,6 @@ msgstr "60 giây"
 msgid "7 days"
 msgstr "7 ngày"
 
-#. Required-action error when the API requires a captcha for phone verification.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:581
-msgid "A browser check is required before phone verification. Try again from the sign-in page or contact support."
-msgstr "Cần xác minh trình duyệt trước khi xác minh số điện thoại. Hãy thử lại từ trang đăng nhập hoặc liên hệ bộ phận hỗ trợ."
-
 #. Hint shown beside in:. Sentence case, no trailing punctuation.
 #: src/features/search/utils/SearchUtils.ts:77
 msgid "a channel"
@@ -2874,7 +2869,7 @@ msgid "Activity sharing"
 msgstr "Chia sẻ hoạt động"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:478
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:473
 #: src/features/user/components/settings_utils/section_registry/VoiceVideoSections.ts:102
 msgid "Activity threshold"
 msgstr "Ngưỡng hoạt động"
@@ -2928,7 +2923,7 @@ msgid "Add a friend to get started."
 msgstr "Thêm bạn bè để bắt đầu."
 
 #. Setup wizard body for GIF integration credentials.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:973
+#: src/features/app/components/setup/SetupWizardSteps.tsx:966
 msgid "Add a Klipy API key to enable GIF search at runtime."
 msgstr "Thêm khóa API Klipy để cho phép tìm kiếm GIF trong thời gian chạy."
 
@@ -2965,7 +2960,7 @@ msgid "Add a working email"
 msgstr "Thêm email còn hoạt động"
 
 #. Setup wizard body for YouTube integration credentials.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:981
+#: src/features/app/components/setup/SetupWizardSteps.tsx:974
 msgid "Add a YouTube Data API key to enrich YouTube links."
 msgstr "Thêm khóa YouTube Data API để bổ sung thông tin cho các liên kết YouTube."
 
@@ -3011,7 +3006,7 @@ msgid "Add another reaction"
 msgstr "Thêm cảm xúc khác"
 
 #. Setup wizard body for Bluesky integration credentials.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1005
+#: src/features/app/components/setup/SetupWizardSteps.tsx:990
 msgid "Add Bluesky OAuth client metadata and a signing key."
 msgstr "Thêm siêu dữ liệu ứng dụng OAuth Bluesky và khóa ký."
 
@@ -3120,7 +3115,7 @@ msgstr "Thêm khóa truy cập"
 #. Generic action label that opens the reaction picker for a message.
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:527
-#: src/features/input/state/input_keybind/shared.ts:17
+#: src/features/input/state/input_keybind/shared.ts:21
 msgid "Add reaction"
 msgstr "Thêm cảm xúc"
 
@@ -3161,7 +3156,7 @@ msgid "Add shortcut"
 msgstr "Thêm phím tắt"
 
 #. Setup wizard body for SMTP integration credentials.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:997
+#: src/features/app/components/setup/SetupWizardSteps.tsx:982
 msgid "Add SMTP credentials so the instance can send verification and notification email."
 msgstr "Thêm thông tin xác thực SMTP để máy chủ có thể gửi email xác minh và thông báo."
 
@@ -3188,7 +3183,7 @@ msgid "Add stream"
 msgstr "Thêm luồng phát"
 
 #. Description for configuring an optional setup wizard integration now.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:965
+#: src/features/app/components/setup/SetupWizardSteps.tsx:958
 msgid "Add the credentials during setup."
 msgstr "Thêm thông tin xác thực trong quá trình thiết lập."
 
@@ -3611,11 +3606,11 @@ msgstr "Cho phép {everyoneMention} và {hereMention}"
 msgid "Allow {PRODUCT_NAME} to access your camera in {MACOS_SYSTEM_SETTINGS_NAME} → {MACOS_PRIVACY_AND_SECURITY_SETTINGS_NAME} → {MACOS_CAMERA_PERMISSION_NAME}."
 msgstr "Cho phép {PRODUCT_NAME} truy cập camera của bạn trong {MACOS_SYSTEM_SETTINGS_NAME} → {MACOS_PRIVACY_AND_SECURITY_SETTINGS_NAME} → {MACOS_CAMERA_PERMISSION_NAME}."
 
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:535
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:530
 msgid "Allow {PRODUCT_NAME} to access your microphone in {MACOS_SYSTEM_SETTINGS_NAME} → {MACOS_PRIVACY_AND_SECURITY_SETTINGS_NAME} → {MACOS_MICROPHONE_PERMISSION_NAME}."
 msgstr "Cho phép {PRODUCT_NAME} truy cập micrô của bạn trong {MACOS_SYSTEM_SETTINGS_NAME} → {MACOS_PRIVACY_AND_SECURITY_SETTINGS_NAME} → {MACOS_MICROPHONE_PERMISSION_NAME}."
 
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:540
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:535
 msgid "Allow {PRODUCT_NAME} to access your microphone. Check your browser's address bar or settings."
 msgstr "Cho phép {PRODUCT_NAME} truy cập micrô của bạn. Kiểm tra thanh địa chỉ hoặc cài đặt trình duyệt của bạn."
 
@@ -3718,7 +3713,7 @@ msgstr "Cho phép thành viên không có quyền {readMessageHistoryPermissionL
 msgid "Allow mentions for this role"
 msgstr "Cho phép nhắc đến vai trò này"
 
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:560
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:555
 msgid "Allow microphone"
 msgstr "Cho phép truy cập micro"
 
@@ -3954,7 +3949,7 @@ msgid "An invalid status was provided. You can now close this tab and return to 
 msgstr "Trạng thái không hợp lệ. Giờ bạn có thể đóng tab này và quay lại ứng dụng."
 
 #. Short label in the authentication auth form. Keep the tone plain and specific.
-#: src/features/auth/hooks/useAuthForm.ts:13
+#: src/features/auth/hooks/useAuthForm.ts:12
 msgid "An unexpected error occurred"
 msgstr "Đã xảy ra lỗi không mong muốn"
 
@@ -4203,7 +4198,7 @@ msgid "Another round checkbox"
 msgstr "Ô đánh dấu tròn khác"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:213
+#: src/features/input/state/input_keybind/shared.ts:221
 msgid "Answer the incoming call"
 msgstr "Trả lời cuộc gọi đến"
 
@@ -4262,7 +4257,7 @@ msgid "Anyone can request an account, but an administrator must approve it."
 msgstr "Bất kỳ ai cũng có thể yêu cầu tài khoản, nhưng quản trị viên phải phê duyệt."
 
 #. Label for an integration API key input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1018
+#: src/features/app/components/setup/SetupWizardSteps.tsx:994
 msgid "API key"
 msgstr "Khóa API"
 
@@ -4767,7 +4762,7 @@ msgid "Audio output"
 msgstr "Đầu ra âm thanh"
 
 #. Field label in the voice connection status popout. Shows received audio packet loss percentage.
-#: src/features/voice/components/voice_connection_status/shared.ts:107
+#: src/features/voice/components/voice_connection_status/shared.ts:108
 msgid "Audio packet loss:"
 msgstr "Mất gói âm thanh:"
 
@@ -4782,32 +4777,32 @@ msgid "Audio preview"
 msgstr "Xem trước âm thanh"
 
 #. Voice settings modal title for microphone processing options.
-#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:51
+#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:48
 msgid "Audio processing"
 msgstr "Xử lý âm thanh"
 
 #. Tooltip in the voice status popout. Describes the custom mic processing profile with enhanced (DeepFilterNet3) noise suppression.
-#: src/features/voice/components/voice_connection_status/shared.ts:19
+#: src/features/voice/components/voice_connection_status/shared.ts:20
 msgid "Audio processing (custom, enhanced)"
 msgstr "Xử lý âm thanh (tùy chỉnh, nâng cao)"
 
 #. Tooltip in the voice status popout. Describes the custom mic processing profile with no noise suppression.
-#: src/features/voice/components/voice_connection_status/shared.ts:29
+#: src/features/voice/components/voice_connection_status/shared.ts:30
 msgid "Audio processing (custom, no suppression)"
 msgstr "Xử lý âm thanh (tùy chỉnh, không triệt tiêu)"
 
 #. Tooltip in the voice status popout. Describes the custom mic processing profile with browser-built-in noise suppression.
-#: src/features/voice/components/voice_connection_status/shared.ts:24
+#: src/features/voice/components/voice_connection_status/shared.ts:25
 msgid "Audio processing (custom)"
 msgstr "Xử lý âm thanh (tùy chỉnh)"
 
 #. Tooltip in the voice status popout. Describes the studio / direct-input mic processing profile.
-#: src/features/voice/components/voice_connection_status/shared.ts:11
+#: src/features/voice/components/voice_connection_status/shared.ts:12
 msgid "Audio processing (direct input, raw)"
 msgstr "Xử lý âm thanh (đầu vào trực tiếp, thô)"
 
 #. Tooltip in the voice status popout. Describes the focused-voice mic processing profile.
-#: src/features/voice/components/voice_connection_status/shared.ts:15
+#: src/features/voice/components/voice_connection_status/shared.ts:16
 msgid "Audio processing (focused voice)"
 msgstr "Xử lý âm thanh (giọng nói tập trung)"
 
@@ -4817,12 +4812,12 @@ msgid "Audio progress"
 msgstr "Tiến độ âm thanh"
 
 #. Field label in the voice connection status popout. Shows current inbound audio bitrate.
-#: src/features/voice/components/voice_connection_status/shared.ts:95
+#: src/features/voice/components/voice_connection_status/shared.ts:96
 msgid "Audio receive:"
 msgstr "Nhận âm thanh:"
 
 #. Field label in the voice connection status popout. Shows current outbound audio bitrate.
-#: src/features/voice/components/voice_connection_status/shared.ts:91
+#: src/features/voice/components/voice_connection_status/shared.ts:92
 msgid "Audio send:"
 msgstr "Gửi âm thanh:"
 
@@ -4958,7 +4953,7 @@ msgid "Authorized apps"
 msgstr "Ứng dụng được ủy quyền"
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:38
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:37
 msgid "Authorized IPs cleared. New logins will require email verification."
 msgstr "Đã xóa IP được ủy quyền. Đăng nhập mới sẽ yêu cầu xác minh email."
 
@@ -4993,7 +4988,7 @@ msgstr "Tự động phát hiện ngôn ngữ"
 
 #. Short label in the voice tab. Keep it concise.
 #: src/features/user/components/modals/tabs/UserVoiceTab.tsx:116
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:465
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:460
 msgid "Auto-set activity threshold"
 msgstr "Tự động đặt ngưỡng hoạt động"
 
@@ -5210,7 +5205,7 @@ msgid "Avatars"
 msgstr "Ảnh đại diện"
 
 #. Field label in the voice connection status popout. Shows the average RTT in ms over the recent window.
-#: src/features/voice/components/voice_connection_status/shared.ts:50
+#: src/features/voice/components/voice_connection_status/shared.ts:51
 msgid "Average ping:"
 msgstr "Độ trễ trung bình:"
 
@@ -5240,8 +5235,8 @@ msgstr "Đang vắng mặt"
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:396
 #: src/features/moderation/components/report_modal/IARModal.tsx:86
 #: src/features/moderation/components/report/ReportStepDetails.tsx:312
-#: src/features/user/components/modals/PhoneAddModal.tsx:420
-#: src/features/user/components/modals/PhoneAddModal.tsx:439
+#: src/features/user/components/modals/PhoneAddModal.tsx:417
+#: src/features/user/components/modals/PhoneAddModal.tsx:436
 msgid "Back"
 msgstr "Quay lại"
 
@@ -5450,7 +5445,7 @@ msgid "Ban this user"
 msgstr "Cấm người dùng này"
 
 #. Section heading in the voice connection status popout for current media bitrate usage.
-#: src/features/voice/components/voice_connection_status/shared.ts:66
+#: src/features/voice/components/voice_connection_status/shared.ts:67
 msgid "Bandwidth"
 msgstr "Băng thông"
 
@@ -5730,7 +5725,7 @@ msgid "Bluesky connections"
 msgstr "Kết nối Bluesky"
 
 #. Setup wizard title for Bluesky integration credentials.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1001
+#: src/features/app/components/setup/SetupWizardSteps.tsx:986
 msgid "Bluesky OAuth"
 msgstr "OAuth Bluesky"
 
@@ -5775,7 +5770,7 @@ msgstr "Đã đạt giới hạn tin nhắn đã lưu"
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:531
-#: src/features/input/state/input_keybind/shared.ts:265
+#: src/features/input/state/input_keybind/shared.ts:273
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:66
 msgid "Bookmark message"
 msgstr "Lưu tin nhắn"
@@ -5896,11 +5891,6 @@ msgstr "Quyền của bot không thể là số âm."
 #: src/features/user/components/settings_utils/search_index/ApplicationsIndex.ts:64
 msgid "Bot profile"
 msgstr "Hồ sơ bot"
-
-#. Setup wizard title for CAPTCHA integration credentials.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:985
-msgid "Bot protection"
-msgstr "Chống bot"
 
 #. Short label in the authentication OAUTH scopes step. Keep the tone plain and specific.
 #: src/features/auth/components/pages/oauth_authorize_page/OAuthScopesStep.tsx:20
@@ -6431,7 +6421,7 @@ msgstr "Không thể tải tệp lên ở đây"
 #: src/features/expressions/components/modals/EditGuildStickerModal.tsx:116
 #: src/features/guild/components/modals/TransferOwnershipModal.tsx:91
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:103
-#: src/features/input/state/input_keybind/shared.ts:137
+#: src/features/input/state/input_keybind/shared.ts:145
 #: src/features/invite/components/modals/InviteModal.tsx:552
 #: src/features/messaging/components/modals/AttachmentEditModal.tsx:133
 #: src/features/messaging/components/modals/EditAltTextModal.tsx:190
@@ -6451,7 +6441,7 @@ msgstr "Không thể tải tệp lên ở đây"
 #: src/features/user/components/modals/PasswordChangeModal.tsx:226
 #: src/features/user/components/modals/PasswordChangeModal.tsx:237
 #: src/features/user/components/modals/PasswordChangeModal.tsx:255
-#: src/features/user/components/modals/PhoneAddModal.tsx:401
+#: src/features/user/components/modals/PhoneAddModal.tsx:398
 #: src/features/user/components/modals/tabs/AuthorizedAppsTab.tsx:174
 #: src/features/voice/components/EntranceSoundTrimmerModal.tsx:33
 #: src/features/voice/components/modals/CameraPreviewModal.tsx:846
@@ -6501,12 +6491,12 @@ msgstr "Hủy chuyển đổi đã lên lịch"
 #. Billing button that starts subscription cancellation.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:844
-#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:140
+#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:142
 #: src/features/user/components/settings_utils/search_index/PlutoniumIndex.ts:31
 msgid "Cancel subscription"
 msgstr "Hủy gói đăng ký"
 
-#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:133
+#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:135
 msgid "Cancel subscription?"
 msgstr "Hủy gói đăng ký?"
 
@@ -6553,11 +6543,6 @@ msgstr "Không thể chỉnh sửa"
 #: src/features/guild/components/modals/GuildOwnershipWarningModal.tsx:12
 msgid "Cannot delete account"
 msgstr "Không thể xóa tài khoản"
-
-#. Toast error shown when captcha verification fails inside the auth captcha interceptor.
-#: src/features/auth/components/CaptchaInterceptor.tsx:15
-msgid "Captcha verification failed. Try again."
-msgstr "Xác minh CAPTCHA không thành công. Hãy thử lại."
 
 #. Section header in the Linux audio source picker. Lists capture-target options (entire system / specific apps).
 #: src/features/voice/components/AudioSourcePickerLinux.tsx:50
@@ -7398,10 +7383,6 @@ msgstr "Đang kiểm tra quyền truy cập..."
 msgid "Checking screen recording permission..."
 msgstr "Đang kiểm tra quyền ghi màn hình..."
 
-#: src/features/auth/components/AltchaVerification.tsx:62
-msgid "Checking your browser. This takes a few seconds."
-msgstr "Đang kiểm tra trình duyệt của bạn. Việc này sẽ mất vài giây."
-
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/search_index/PlutoniumIndex.ts:67
 msgid "Checkout"
@@ -7570,11 +7551,6 @@ msgstr "Chọn Tệp, sau đó chọn Thêm vào Dock."
 #: src/features/channel/utils/CreateDMModalUtils.tsx:39
 msgid "Choose friends to message."
 msgstr "Chọn bạn bè để nhắn tin."
-
-#. Setup wizard body for CAPTCHA integration credentials.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:989
-msgid "Choose hCaptcha or Cloudflare Turnstile for signup challenges."
-msgstr "Chọn hCaptcha hoặc Cloudflare Turnstile cho các thử thách đăng ký."
 
 #. Settings search entry description. One-line summary of what the settings search entry controls.
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:455
@@ -7865,7 +7841,7 @@ msgid "Clean link"
 msgstr "Dọn dẹp liên kết"
 
 #. Description for the focused-voice option in the voice processing settings radio group.
-#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:34
+#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:31
 msgid "Cleans up your mic for clear speech."
 msgstr "Xử lý âm thanh micrô để giọng nói rõ ràng hơn."
 
@@ -7924,7 +7900,7 @@ msgid "Clear custom status"
 msgstr "Xóa trạng thái tùy chỉnh"
 
 #. Body of the confirmation alert shown when clearing every reaction on a message.
-#: src/features/channel/components/MessageActionUtils.tsx:71
+#: src/features/channel/components/MessageActionUtils.tsx:74
 msgid "Clear every reaction from this message?"
 msgstr "Xóa tất cả cảm xúc khỏi tin nhắn này?"
 
@@ -7982,17 +7958,17 @@ msgid "Clear selection"
 msgstr "Bỏ chọn"
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:88
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:87
 msgid "Clear trust all setting"
 msgstr "Xóa cài đặt tin cậy tất cả"
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:63
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:62
 msgid "Clear trusted domains"
 msgstr "Xóa miền đáng tin cậy"
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:96
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:95
 msgid "Clear trusted domains ({trustedDomainsCount})"
 msgstr "Xóa miền đáng tin cậy ({trustedDomainsCount})"
 
@@ -8002,7 +7978,7 @@ msgid "Clearer text"
 msgstr "Văn bản rõ ràng hơn"
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:108
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:107
 msgid "Clearing trusted domains..."
 msgstr "Đang xóa các miền đáng tin cậy..."
 
@@ -8100,7 +8076,7 @@ msgid "Client"
 msgstr "Ứng dụng khách"
 
 #. Label for Bluesky OAuth client name input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1057
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1031
 msgid "Client name"
 msgstr "Tên ứng dụng khách"
 
@@ -8117,7 +8093,7 @@ msgid "Client secret regenerated. Update any code that uses the old secret."
 msgstr "Đã tạo lại mã bí mật của máy khách. Hãy cập nhật bất kỳ mã nào đang sử dụng mã bí mật cũ."
 
 #. Label for Bluesky OAuth client URL input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1061
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1035
 msgid "Client URL"
 msgstr "URL ứng dụng khách"
 
@@ -8269,11 +8245,6 @@ msgstr "Tin nhắn trực tiếp đã đóng"
 msgid "Cloud upload"
 msgstr "Tải lên đám mây"
 
-#. Cloudflare Turnstile provider option.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1014
-msgid "Cloudflare Turnstile"
-msgstr "Cloudflare Turnstile"
-
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/section_registry/AppearanceSections.ts:58
 msgid "Coal"
@@ -8294,7 +8265,7 @@ msgstr "Giao diện Than"
 #. Label for an inbound phone verification code shown in the required-action modal.
 #: src/features/auth/components/modals/MfaTotpDisableModal.tsx:26
 #: src/features/auth/components/modals/MfaTotpEnableModal.tsx:36
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:466
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:462
 #: src/features/invite/components/InviteListItem.tsx:77
 #: src/features/moderation/components/report/ReportBreadcrumbs.tsx:29
 msgid "Code"
@@ -8669,7 +8640,7 @@ msgstr "Tên cộng đồng"
 
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:126
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:125
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:113
 msgid "Community nickname"
 msgstr "Biệt danh cộng đồng"
@@ -8722,7 +8693,7 @@ msgid "Community profile"
 msgstr "Hồ sơ cộng đồng"
 
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:73
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:72
 msgid "Community profile updated"
 msgstr "Đã cập nhật hồ sơ cộng đồng"
 
@@ -8880,7 +8851,7 @@ msgid "Configure keyboard shortcuts"
 msgstr "Cấu hình phím tắt"
 
 #. Option for configuring an optional setup wizard integration.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:961
+#: src/features/app/components/setup/SetupWizardSteps.tsx:954
 msgid "Configure now"
 msgstr "Cấu hình ngay"
 
@@ -9013,7 +8984,7 @@ msgstr "Kết nối camera hoặc thiết bị ghi hình ảo, rồi thử lại
 msgid "Connect a display, then try again."
 msgstr "Kết nối một màn hình, rồi thử lại."
 
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:545
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:540
 msgid "Connect a microphone and try again."
 msgstr "Kết nối micrô và thử lại."
 
@@ -9058,7 +9029,7 @@ msgid "Connecting..."
 msgstr "Đang kết nối..."
 
 #. Voice connection status while joining or reconnecting.
-#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:46
+#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:47
 msgctxt "voice-connection-status"
 msgid "Connecting..."
 msgstr "Đang kết nối..."
@@ -9077,7 +9048,7 @@ msgid "Connection failed"
 msgstr "Kết nối thất bại"
 
 #. Voice connection status when the most recent attempt to join the channel failed.
-#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:56
+#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:57
 msgctxt "voice-connection-status"
 msgid "Connection failed"
 msgstr "Kết nối thất bại"
@@ -9464,7 +9435,7 @@ msgstr "Sao chép ID kênh"
 
 #. Action that copies a deep link to the selected channel.
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:205
+#: src/features/input/state/input_keybind/shared.ts:213
 #: src/features/ui/action_menu/items/ChannelMenuData.tsx:132
 msgid "Copy channel link"
 msgstr "Sao chép liên kết kênh"
@@ -9503,7 +9474,7 @@ msgid "Copy emoji URL"
 msgstr "Sao chép URL biểu tượng cảm xúc"
 
 #. Tooltip / button label that copies the voice endpoint hostname to the clipboard.
-#: src/features/voice/components/voice_connection_status/shared.ts:58
+#: src/features/voice/components/voice_connection_status/shared.ts:59
 msgid "Copy endpoint"
 msgstr "Sao chép điểm cuối"
 
@@ -9613,7 +9584,7 @@ msgstr "Sao chép tin nhắn"
 #. Developer-mode action that copies a message snowflake/ID to the clipboard.
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:737
-#: src/features/input/state/input_keybind/shared.ts:277
+#: src/features/input/state/input_keybind/shared.ts:285
 msgid "Copy message ID"
 msgstr "Sao chép ID tin nhắn"
 
@@ -9621,7 +9592,7 @@ msgstr "Sao chép ID tin nhắn"
 #. IAR modal: quick-action card title.
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:523
-#: src/features/input/state/input_keybind/shared.ts:273
+#: src/features/input/state/input_keybind/shared.ts:281
 #: src/features/moderation/components/report_modal/IARModalCopy.ts:389
 msgid "Copy message link"
 msgstr "Sao chép liên kết tin nhắn"
@@ -10299,7 +10270,7 @@ msgstr "Đồng hồ đếm ngược"
 #. Form field label for the country selector in the phone verification step.
 #. Short label in the phone add modal. Keep it concise.
 #: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:92
-#: src/features/user/components/modals/PhoneAddModal.tsx:59
+#: src/features/user/components/modals/PhoneAddModal.tsx:57
 msgid "Country"
 msgstr "Quốc gia"
 
@@ -10460,7 +10431,7 @@ msgstr "Tạo liên kết mới"
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Short label in the sidebar navigation add guild button.
 #: src/features/app/components/layout/sidebar_nav/AddGuildButton.tsx:32
-#: src/features/input/state/input_keybind/shared.ts:121
+#: src/features/input/state/input_keybind/shared.ts:129
 msgid "Create or join a community"
 msgstr "Tạo hoặc tham gia cộng đồng"
 
@@ -10653,7 +10624,7 @@ msgid "Current DM"
 msgstr "Tin nhắn trực tiếp hiện tại"
 
 #. Field label in the voice connection status popout. Shows the latest RTT in ms.
-#: src/features/voice/components/voice_connection_status/shared.ts:41
+#: src/features/voice/components/voice_connection_status/shared.ts:42
 msgid "Current ping:"
 msgstr "Độ trễ hiện tại:"
 
@@ -10701,7 +10672,7 @@ msgstr "Tùy chỉnh"
 #. Voice input processing profile where the user configures processing manually.
 #. Voice input processing profile where the user configures processing manually.
 #: src/features/user/components/modals/tabs/UserVoiceTab.tsx:91
-#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:42
+#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:39
 #: src/features/voice/components/VoiceSettingsMenus.tsx:70
 msgctxt "voice-processing-profile"
 msgid "Custom"
@@ -11229,7 +11200,7 @@ msgid "Decide whether replies @mention you by default"
 msgstr "Quyết định xem các trả lời có @nhắc đến bạn theo mặc định hay không"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:217
+#: src/features/input/state/input_keybind/shared.ts:225
 msgid "Decline the incoming call"
 msgstr "Từ chối cuộc gọi đến"
 
@@ -12007,7 +11978,7 @@ msgid "Device volume"
 msgstr "Âm lượng thiết bị"
 
 #. Field label in the voice connection status popout. Shows the connected voice region / device.
-#: src/features/voice/components/voice_connection_status/shared.ts:37
+#: src/features/voice/components/voice_connection_status/shared.ts:38
 msgid "Device:"
 msgstr "Thiết bị:"
 
@@ -12336,12 +12307,12 @@ msgstr "Ngắt kết nối khỏi {channel}"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Tray menu item. Leaves the current voice call when the channel name is unavailable.
-#: src/features/input/state/input_keybind/shared.ts:317
+#: src/features/input/state/input_keybind/shared.ts:325
 #: src/features/platform/utils/DesktopLocaleBridge.ts:221
 msgid "Disconnect from voice"
 msgstr "Ngắt kết nối thoại"
 
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:261
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:243
 msgid "Disconnect socket"
 msgstr "Ngắt kết nối socket"
 
@@ -12353,7 +12324,7 @@ msgid "Disconnected"
 msgstr "Đã ngắt kết nối"
 
 #. Voice connection status when not connected.
-#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:51
+#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:52
 msgctxt "voice-connection-status"
 msgid "Disconnected"
 msgstr "Đã ngắt kết nối"
@@ -12418,7 +12389,7 @@ msgid "Dismiss"
 msgstr "Bỏ qua"
 
 #. Button that dismisses the failed voice connection status banner.
-#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:66
+#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:67
 msgctxt "voice-connection-status"
 msgid "Dismiss"
 msgstr "Bỏ qua"
@@ -12479,7 +12450,7 @@ msgstr "Chế độ hiển thị"
 #. Short label in the inputs tab. Keep it concise.
 #. Short label in the my profile tab. Keep it concise.
 #: src/features/user/components/modals/tabs/component_gallery_tab/ComponentGalleryTabInputsTab.tsx:22
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:138
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:137
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:61
 msgid "Display name"
 msgstr "Tên hiển thị"
@@ -12625,7 +12596,7 @@ msgstr "Bạn có muốn tham gia {communityName} không?"
 #. Label in the accessibility tab.
 #. Label in the my profile tab.
 #: src/features/user/components/modals/tabs/AccessibilityTab.tsx:54
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:146
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:145
 msgid "Doc, I'm from the future. I came here in a time machine that you invented. Now, I need your help to get back to the year 1985."
 msgstr "Bác sĩ, tôi đến từ tương lai. Tôi đến đây bằng cỗ máy thời gian do chính bác sĩ phát minh. Giờ thì tôi cần bác sĩ giúp để quay về năm 1985."
 
@@ -12966,7 +12937,7 @@ msgid "Drop images, fonts, or other files here to use them inside your custom CS
 msgstr "Kéo và thả hình ảnh, phông chữ hoặc các tệp khác vào đây để sử dụng trong CSS tùy chỉnh của bạn."
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:133
+#: src/features/input/state/input_keybind/shared.ts:141
 msgid "Drop item"
 msgstr "Thả mục"
 
@@ -13014,7 +12985,7 @@ msgid "Duplicate role"
 msgstr "Tạo bản sao vai trò"
 
 #. Field label in the voice connection status popout. Shows how long the current voice session has been connected.
-#: src/features/voice/components/voice_connection_status/shared.ts:74
+#: src/features/voice/components/voice_connection_status/shared.ts:75
 msgid "Duration:"
 msgstr "Thời lượng:"
 
@@ -13256,8 +13227,13 @@ msgstr "Chỉnh sửa ảnh đại diện, thẻ, tiểu sử, ảnh bìa và h�
 msgid "Edit translation provider"
 msgstr "Chỉnh sửa nhà cung cấp dịch thuật"
 
+#. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
+#: src/features/input/state/input_keybind/shared.ts:13
+msgid "Edit your messages above or below"
+msgstr "Chỉnh sửa tin nhắn của bạn ở trên hoặc dưới"
+
 #. Button or menu action label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:93
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:92
 msgid "Edit your profile appearance and see a live preview"
 msgstr "Chỉnh sửa giao diện hồ sơ và xem trước trực tiếp"
 
@@ -13325,7 +13301,7 @@ msgid "Email changed"
 msgstr "Đã đổi email"
 
 #. Setup wizard title for SMTP integration credentials.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:993
+#: src/features/app/components/setup/SetupWizardSteps.tsx:978
 msgid "Email delivery"
 msgstr "Gửi email"
 
@@ -13350,7 +13326,7 @@ msgid "Email unavailable"
 msgstr "Email không khả dụng"
 
 #. Required-action error shown when email update cannot continue.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:522
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:518
 msgid "Email update is unavailable right now. Try again later or contact support."
 msgstr "Hiện không thể cập nhật email. Vui lòng thử lại sau hoặc liên hệ bộ phận hỗ trợ."
 
@@ -13441,12 +13417,12 @@ msgid "Embeds"
 msgstr "Nội dung nhúng"
 
 #. Toast confirmation after hiding link previews and embeds on a message.
-#: src/features/channel/components/MessageActionUtils.tsx:83
+#: src/features/channel/components/MessageActionUtils.tsx:86
 msgid "Embeds suppressed"
 msgstr "Đã ẩn nội dung nhúng"
 
 #. Toast confirmation after re-enabling link previews and embeds on a message.
-#: src/features/channel/components/MessageActionUtils.tsx:79
+#: src/features/channel/components/MessageActionUtils.tsx:82
 msgid "Embeds unsuppressed"
 msgstr "Đã hiện lại nội dung nhúng"
 
@@ -13630,7 +13606,7 @@ msgid "Enable beta feature"
 msgstr "Bật tính năng thử nghiệm"
 
 #. Label for enabling Bluesky OAuth in setup.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1053
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1027
 msgid "Enable Bluesky OAuth"
 msgstr "Bật OAuth của Bluesky"
 
@@ -13663,7 +13639,7 @@ msgid "Enable developer mode"
 msgstr "Bật chế độ nhà phát triển"
 
 #. Label for enabling SMTP email delivery in setup.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1021
+#: src/features/app/components/setup/SetupWizardSteps.tsx:995
 msgid "Enable email delivery"
 msgstr "Bật gửi email"
 
@@ -13894,11 +13870,11 @@ msgstr "Ngày kết thúc"
 msgid "End grace now"
 msgstr "Kết thúc thời gian ân hạn ngay"
 
-#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:162
+#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:164
 msgid "End grace period"
 msgstr "Kết thúc thời gian ân hạn"
 
-#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:155
+#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:157
 msgid "End grace period now?"
 msgstr "Kết thúc thời gian ân hạn ngay bây giờ?"
 
@@ -13930,7 +13906,7 @@ msgid "Endpoint"
 msgstr "Điểm cuối"
 
 #. Field label in the voice connection status popout. Shows the voice server endpoint hostname.
-#: src/features/voice/components/voice_connection_status/shared.ts:54
+#: src/features/voice/components/voice_connection_status/shared.ts:55
 msgid "Endpoint:"
 msgstr "Điểm cuối:"
 
@@ -13999,7 +13975,7 @@ msgstr "Nhập URL mẫu hoặc mã mẫu hợp lệ của {theOtherPlatform}."
 
 #. Inline validation error on the email step of the DSA report flow when the email is malformed.
 #. Required-action form error for an invalid email address.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:510
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:506
 #: src/features/moderation/components/pages/ReportPage.tsx:59
 msgid "Enter a valid email address."
 msgstr "Nhập địa chỉ email hợp lệ."
@@ -14010,14 +13986,14 @@ msgid "Enter a valid message link."
 msgstr "Nhập liên kết tin nhắn hợp lệ."
 
 #. Required-action form error for an invalid phone number.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:526
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:522
 msgid "Enter a valid mobile phone number."
 msgstr "Nhập số điện thoại di động hợp lệ."
 
 #. Form validation error shown when the entered phone number cannot be parsed.
 #. Label in the phone add modal.
 #: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:108
-#: src/features/user/components/modals/PhoneAddModal.tsx:47
+#: src/features/user/components/modals/PhoneAddModal.tsx:45
 msgid "Enter a valid phone number"
 msgstr "Nhập số điện thoại hợp lệ"
 
@@ -14101,7 +14077,7 @@ msgid "Enter the {digitCount}-digit code sent to {phoneNumber}."
 msgstr "Nhập mã gồm {digitCount} chữ số đã gửi đến {phoneNumber}."
 
 #. placeholder {0}: getE164PhoneNumber(phoneNumber, selectedCountry) ?? formattedPhone
-#: src/features/user/components/modals/PhoneAddModal.tsx:376
+#: src/features/user/components/modals/PhoneAddModal.tsx:373
 msgid "Enter the {MFA_CODE_DIGIT_COUNT}-digit code sent to {0}."
 msgstr "Nhập mã gồm {MFA_CODE_DIGIT_COUNT} chữ số đã gửi đến {0}."
 
@@ -14344,7 +14320,7 @@ msgstr "Buổi tối"
 #. Description for the automatic gain control toggle in the voice processing settings.
 #. Description for the automatic gain control toggle in the voice processing settings.
 #: src/features/user/components/modals/tabs/UserVoiceTab.tsx:173
-#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:63
+#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:60
 msgid "Evens out your mic volume so you are not too quiet."
 msgstr "Làm đều âm lượng mic của bạn để không bị quá nhỏ."
 
@@ -14463,7 +14439,7 @@ msgid "Expand channel topic"
 msgstr "Mở rộng chủ đề kênh"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:229
+#: src/features/input/state/input_keybind/shared.ts:237
 msgid "Expand or collapse compact call view"
 msgstr "Mở rộng hoặc thu gọn chế độ xem cuộc gọi nhỏ gọn"
 
@@ -14700,7 +14676,7 @@ msgid "Failed to ban member. Try again."
 msgstr "Không thể cấm thành viên. Vui lòng thử lại."
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:59
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:58
 msgid "Failed to clear trusted domains."
 msgstr "Không thể xóa các miền đáng tin cậy."
 
@@ -14757,7 +14733,7 @@ msgid "Failed to enable camera."
 msgstr "Không thể bật camera."
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:42
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:41
 msgid "Failed to forget authorized IPs. Try again."
 msgstr "Không thể quên các IP được ủy quyền. Thử lại."
 
@@ -14902,7 +14878,7 @@ msgid "Failed to resend verification code. Try again later."
 msgstr "Không gửi lại được mã xác minh. Vui lòng thử lại sau."
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:75
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:74
 msgid "Failed to reset premium state."
 msgstr "Không thể đặt lại trạng thái premium."
 
@@ -15385,12 +15361,12 @@ msgid "Focus ring"
 msgstr "Vòng tiêu điểm"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:37
+#: src/features/input/state/input_keybind/shared.ts:45
 msgid "Focus text area"
 msgstr "Chuyển tiêu điểm vào vùng nhập văn bản"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:197
+#: src/features/input/state/input_keybind/shared.ts:205
 msgid "Focus the text area"
 msgstr "Chuyển tiêu điểm vào vùng nhập văn bản"
 
@@ -15576,7 +15552,7 @@ msgstr "Buộc hiển thị khung tải"
 msgid "Force mature media"
 msgstr "Buộc hiển thị nội dung người lớn"
 
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:276
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:258
 msgid "Force move to AFK channel"
 msgstr "Buộc chuyển sang kênh AFK"
 
@@ -15635,7 +15611,7 @@ msgid "Forced off"
 msgstr "Buộc tắt"
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:46
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:45
 msgid "Forget authorized IPs"
 msgstr "Quên các IP được ủy quyền"
 
@@ -15645,7 +15621,7 @@ msgid "Forget subscriptions"
 msgstr "Xóa đăng ký thông báo đẩy"
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:104
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:103
 msgid "Forgetting authorized IPs..."
 msgstr "Đang quên các IP được ủy quyền..."
 
@@ -15686,7 +15662,7 @@ msgstr "Chuyển tiếp phương tiện"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Title of the forward message modal.
-#: src/features/input/state/input_keybind/shared.ts:25
+#: src/features/input/state/input_keybind/shared.ts:33
 #: src/features/messaging/components/modals/ForwardModal.tsx:83
 msgid "Forward message"
 msgstr "Chuyển tiếp tin nhắn"
@@ -15902,12 +15878,12 @@ msgid "from <0>{0}</0>"
 msgstr "từ <0>{0}</0>"
 
 #. Label for SMTP from email input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1025
+#: src/features/app/components/setup/SetupWizardSteps.tsx:999
 msgid "From email"
 msgstr "Địa chỉ email người gửi"
 
 #. Label for SMTP from name input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1029
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1003
 msgid "From name"
 msgstr "Tên người gửi"
 
@@ -16137,7 +16113,7 @@ msgstr "Nâng cấp lên {premiumProductName} để tùy chỉnh thẻ hoặc gi
 
 #. Button in the required-action modal. Requests a new inbound SMS challenge code.
 #: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:202
-#: src/features/user/components/modals/PhoneAddModal.tsx:427
+#: src/features/user/components/modals/PhoneAddModal.tsx:424
 msgid "Get new code"
 msgstr "Lấy mã mới"
 
@@ -16199,7 +16175,7 @@ msgid "GIF preview"
 msgstr "Xem trước GIF"
 
 #. Setup wizard title for GIF integration credentials.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:969
+#: src/features/app/components/setup/SetupWizardSteps.tsx:962
 msgid "GIF search"
 msgstr "Tìm kiếm GIF"
 
@@ -16447,27 +16423,27 @@ msgid "Go to community"
 msgstr "Đi đến cộng đồng"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:81
+#: src/features/input/state/input_keybind/shared.ts:89
 msgid "Go to direct messages"
 msgstr "Đi đến tin nhắn trực tiếp"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:113
+#: src/features/input/state/input_keybind/shared.ts:121
 msgid "Go to eighth community"
 msgstr "Đi đến cộng đồng thứ tám"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:101
+#: src/features/input/state/input_keybind/shared.ts:109
 msgid "Go to fifth community"
 msgstr "Đi đến cộng đồng thứ năm"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:85
+#: src/features/input/state/input_keybind/shared.ts:93
 msgid "Go to first community"
 msgstr "Đi đến cộng đồng đầu tiên"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:97
+#: src/features/input/state/input_keybind/shared.ts:105
 msgid "Go to fourth community"
 msgstr "Đi đến cộng đồng thứ tư"
 
@@ -16498,12 +16474,12 @@ msgid "Go to page {pageItem}"
 msgstr "Đi đến trang {pageItem}"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:89
+#: src/features/input/state/input_keybind/shared.ts:97
 msgid "Go to second community"
 msgstr "Đi đến cộng đồng thứ hai"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:109
+#: src/features/input/state/input_keybind/shared.ts:117
 msgid "Go to seventh community"
 msgstr "Đi đến cộng đồng thứ bảy"
 
@@ -16514,12 +16490,12 @@ msgid "Go to sign-in"
 msgstr "Đi đến đăng nhập"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:105
+#: src/features/input/state/input_keybind/shared.ts:113
 msgid "Go to sixth community"
 msgstr "Đi đến cộng đồng thứ sáu"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:93
+#: src/features/input/state/input_keybind/shared.ts:101
 msgid "Go to third community"
 msgstr "Đi đến cộng đồng thứ ba"
 
@@ -16839,7 +16815,7 @@ msgid "Hate speech"
 msgstr "Ngôn từ gây thù ghét"
 
 #. Premium page text shown on an instance where the premium tier cannot be bought, only redeemed. {PREMIUM_PRODUCT_NAME} is the premium tier name.
-#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:295
+#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:297
 msgid "Have a gift code? Redeem it to unlock {PREMIUM_PRODUCT_NAME}."
 msgstr "Có mã quà tặng? Hãy đổi mã để mở khóa {PREMIUM_PRODUCT_NAME}."
 
@@ -16848,20 +16824,11 @@ msgstr "Có mã quà tặng? Hãy đổi mã để mở khóa {PREMIUM_PRODUCT_N
 msgid "Having fun?"
 msgstr "Đang vui chứ?"
 
-#: src/features/auth/components/modals/CaptchaModal.tsx:175
-msgid "Having issues? Try hCaptcha instead"
-msgstr "Gặp sự cố? Thử dùng hCaptcha"
-
 #. US state name, shown next to the country name in the mature content gate.
 #: src/features/user/utils/UserGeo.ts:63
 msgctxt "us-state"
 msgid "Hawaii"
 msgstr "Hawaii"
-
-#. hCaptcha provider option.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1013
-msgid "hCaptcha"
-msgstr "hCaptcha"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/section_registry/VoiceVideoSections.ts:238
@@ -17183,11 +17150,6 @@ msgstr "Dải tương phản động cao"
 #: src/features/user/components/modals/tabs/appearance_tab/AppearanceTabHdrTab.tsx:29
 msgid "High dynamic range display mode"
 msgstr "Chế độ hiển thị dải tương phản động cao"
-
-#. Description for the DeepFilterNet3 noise suppression strength slider.
-#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:71
-msgid "Higher values remove more noise but can affect speech texture."
-msgstr "Giá trị cao hơn sẽ loại bỏ nhiều tiếng ồn hơn nhưng có thể ảnh hưởng đến chất lượng giọng nói."
 
 #. Short label in the language and locale names. Keep it concise.
 #: src/features/user/utils/LocaleUtils.ts:64
@@ -17809,7 +17771,7 @@ msgstr "Trong"
 msgid "In \"Operating system\" mode, dictionaries listed above are advisory. {PRODUCT_NAME} will pass these language tags to your OS spellchecker when supported. Tags it doesn't recognize are ignored."
 msgstr "Ở chế độ \"Hệ điều hành\", các từ điển được liệt kê ở trên chỉ mang tính chất gợi ý. {PRODUCT_NAME} sẽ chuyển các thẻ ngôn ngữ này đến trình kiểm tra chính tả của hệ điều hành nếu được hỗ trợ. Các thẻ không được nhận dạng sẽ bị bỏ qua."
 
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:310
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:307
 msgid "In a browser, push-to-talk only works while the {PRODUCT_NAME} tab is focused. Install the desktop app for system-wide push-to-talk."
 msgstr "Trong trình duyệt, tính năng nhấn để nói chỉ hoạt động khi tab {PRODUCT_NAME} đang hoạt động. Hãy cài đặt ứng dụng máy tính để dùng nhấn để nói trên toàn hệ thống."
 
@@ -17955,7 +17917,7 @@ msgid "Incoming calls: nobody"
 msgstr "Cuộc gọi đến: không ai"
 
 #. Field label in the voice connection status popout. Shows WebRTC estimated available incoming bandwidth.
-#: src/features/voice/components/voice_connection_status/shared.ts:123
+#: src/features/voice/components/voice_connection_status/shared.ts:124
 msgid "Incoming capacity:"
 msgstr "Dung lượng đến:"
 
@@ -18664,7 +18626,7 @@ msgid "Jitter"
 msgstr "Độ trễ biến động"
 
 #. Field label in the voice connection status popout. Shows audio jitter in milliseconds.
-#: src/features/voice/components/voice_connection_status/shared.ts:115
+#: src/features/voice/components/voice_connection_status/shared.ts:116
 msgid "Jitter:"
 msgstr "Độ trễ biến động:"
 
@@ -18793,12 +18755,12 @@ msgid "Jump"
 msgstr "Chuyển đến"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:57
+#: src/features/input/state/input_keybind/shared.ts:65
 msgid "Jump between unread channels"
 msgstr "Chuyển nhanh giữa các kênh chưa đọc"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:61
+#: src/features/input/state/input_keybind/shared.ts:69
 msgid "Jump between unread channels with mentions"
 msgstr "Chuyển nhanh giữa các kênh chưa đọc có nhắc đến bạn"
 
@@ -18807,7 +18769,7 @@ msgid "Jump straight to the app to continue."
 msgstr "Chuyển đến ứng dụng để tiếp tục."
 
 #. Tooltip / aria label on a button that jumps to the channel. {channelSourceLabel} is the channel or DM name.
-#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:87
+#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:88
 msgid "Jump to {channelSourceLabel}"
 msgstr "Chuyển đến {channelSourceLabel}"
 
@@ -18869,7 +18831,7 @@ msgid "Jump to previous unread channel with mentions"
 msgstr "Chuyển đến kênh chưa đọc trước đó có nhắc đến bạn"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:65
+#: src/features/input/state/input_keybind/shared.ts:73
 msgid "Jump to the current call"
 msgstr "Chuyển đến cuộc gọi hiện tại"
 
@@ -18894,7 +18856,7 @@ msgid "Jump to the message in {labelText}"
 msgstr "Chuyển đến tin nhắn trong {labelText}"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:193
+#: src/features/input/state/input_keybind/shared.ts:201
 msgid "Jump to the oldest unread message"
 msgstr "Chuyển đến tin nhắn chưa đọc cũ nhất"
 
@@ -18942,7 +18904,7 @@ msgstr "Giữ tệp đính kèm khi xóa hết nội dung chỉnh sửa"
 msgid "Keep free and premium tiers. You can customize the tiers, sell premium through Stripe, or hand out gift codes later from the admin panel."
 msgstr "Giữ nguyên các gói miễn phí và cao cấp. Bạn có thể tùy chỉnh các gói, bán gói cao cấp qua Stripe hoặc phát mã quà tặng sau từ bảng quản trị."
 
-#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:164
+#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:166
 msgid "Keep grace period"
 msgstr "Giữ thời gian ân hạn"
 
@@ -18956,7 +18918,7 @@ msgstr "Giữ Neko đứng yên"
 msgid "Keep running"
 msgstr "Tiếp tục chạy"
 
-#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:142
+#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:144
 msgid "Keep subscription"
 msgstr "Giữ gói đăng ký"
 
@@ -19129,7 +19091,7 @@ msgid "Latency {latency} milliseconds"
 msgstr "Độ trễ {latency} mili giây"
 
 #. Aria label for the latency graph chart in the voice connection status popout.
-#: src/features/voice/components/voice_connection_status/shared.ts:33
+#: src/features/voice/components/voice_connection_status/shared.ts:34
 msgid "Latency graph"
 msgstr "Biểu đồ độ trễ"
 
@@ -19768,7 +19730,7 @@ msgid "Logo"
 msgstr "Logo"
 
 #. Label for Bluesky OAuth logo URL input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1065
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1039
 msgid "Logo URL"
 msgstr "URL logo"
 
@@ -19798,7 +19760,7 @@ msgid "Look and feel"
 msgstr "Giao diện người dùng"
 
 #. placeholder {0}: externalProcessor.name
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:654
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:649
 msgid "Looks like you're using {0}. Stacking {PRODUCT_NAME}'s processing on top can cause pumping or distortion. Direct input passes your audio through untouched."
 msgstr "Có vẻ như bạn đang dùng {0}. Việc xếp chồng xử lý của {PRODUCT_NAME} lên trên có thể gây ra hiện tượng bơm tiếng hoặc méo tiếng. Đầu vào trực tiếp sẽ truyền âm thanh của bạn mà không bị thay đổi."
 
@@ -20055,7 +20017,7 @@ msgstr "Đánh dấu tất cả tin nhắn trực tiếp là đã đọc"
 
 #. Accessible label and tooltip for the mark-all-as-read button in the inbox popout.
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:165
+#: src/features/input/state/input_keybind/shared.ts:173
 #: src/features/messaging/components/popouts/InboxPopout.tsx:46
 msgid "Mark all inbox channels as read"
 msgstr "Đánh dấu tất cả kênh hộp thư đến là đã đọc"
@@ -20087,19 +20049,19 @@ msgstr "Đánh dấu là spoiler"
 #. Generic action label that flips a channel back to unread.
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:668
-#: src/features/input/state/input_keybind/shared.ts:33
+#: src/features/input/state/input_keybind/shared.ts:41
 msgid "Mark as unread"
 msgstr "Đánh dấu là chưa đọc"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/input/state/input_keybind/shared.ts:145
+#: src/features/input/state/input_keybind/shared.ts:153
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:58
 msgid "Mark channel as read"
 msgstr "Đánh dấu kênh đã đọc"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:141
+#: src/features/input/state/input_keybind/shared.ts:149
 msgid "Mark community as read"
 msgstr "Đánh dấu cộng đồng là đã đọc"
 
@@ -20126,7 +20088,7 @@ msgid "Mark read"
 msgstr "Đánh dấu đã đọc"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:161
+#: src/features/input/state/input_keybind/shared.ts:169
 msgid "Mark top inbox channel as read"
 msgstr "Đánh dấu kênh hộp thư đến trên cùng là đã đọc"
 
@@ -20367,12 +20329,12 @@ msgid "Maybe later"
 msgstr "Để sau"
 
 #. Tooltip on the latency badge while voice latency is still being sampled.
-#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:83
+#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:84
 msgid "Measuring latency..."
 msgstr "Đang đo độ trễ..."
 
 #. Placeholder shown while voice latency is still being sampled. Trailing ellipsis indicates ongoing measurement.
-#: src/features/voice/components/voice_connection_status/shared.ts:45
+#: src/features/voice/components/voice_connection_status/shared.ts:46
 msgid "Measuring…"
 msgstr "Đang đo…"
 
@@ -21475,7 +21437,7 @@ msgid "Mouse forward button"
 msgstr "Nút tiến trên chuột"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:129
+#: src/features/input/state/input_keybind/shared.ts:137
 msgid "Move"
 msgstr "Di chuyển"
 
@@ -21490,7 +21452,7 @@ msgid "Move back through page history"
 msgstr "Quay lại trang trước"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:49
+#: src/features/input/state/input_keybind/shared.ts:57
 msgid "Move back through viewed channel history"
 msgstr "Quay lại lịch sử kênh đã xem"
 
@@ -21507,7 +21469,7 @@ msgid "Move forward through page history"
 msgstr "Đi tới trang kế tiếp trong lịch sử"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:53
+#: src/features/input/state/input_keybind/shared.ts:61
 msgid "Move forward through viewed channel history"
 msgstr "Đi tới kênh kế tiếp trong lịch sử đã xem"
 
@@ -22115,7 +22077,7 @@ msgid "Netherlands"
 msgstr "Hà Lan"
 
 #. Section heading in the voice connection status popout for WebRTC network quality stats.
-#: src/features/voice/components/voice_connection_status/shared.ts:70
+#: src/features/voice/components/voice_connection_status/shared.ts:71
 msgid "Network"
 msgstr "Mạng"
 
@@ -22706,7 +22668,7 @@ msgstr "Không tìm thấy kết quả nào"
 msgid "No mentions yet"
 msgstr "Chưa có lượt nhắc đến nào"
 
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:530
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:525
 msgid "No microphone found"
 msgstr "Không tìm thấy micrô"
 
@@ -22941,7 +22903,7 @@ msgid "No tokens match \"{searchQuery}\"."
 msgstr "Không có token nào khớp với \"{searchQuery}\"."
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:92
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:91
 msgid "No trusted domains"
 msgstr "Không có miền đáng tin cậy"
 
@@ -23696,10 +23658,6 @@ msgstr "Mở trình chọn của trình duyệt"
 msgid "Open call view"
 msgstr "Mở màn hình cuộc gọi"
 
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:288
-msgid "Open captcha modal"
-msgstr "Mở hộp thoại CAPTCHA"
-
 #. Accessible label for the channel header title button in a community channel.
 #: src/features/channel/components/channel_header/shared.ts:14
 msgid "Open channel details for {channelName}"
@@ -23712,7 +23670,7 @@ msgstr "Mở chi tiết kênh {channelName}"
 msgid "Open chat"
 msgstr "Mở trò chuyện"
 
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:314
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:290
 msgid "Open claim account modal"
 msgstr "Mở hộp thoại xác nhận tài khoản"
 
@@ -23814,7 +23772,7 @@ msgid "Open group details for {groupDMName}"
 msgstr "Mở chi tiết nhóm cho {groupDMName}"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:233
+#: src/features/input/state/input_keybind/shared.ts:241
 msgid "Open help"
 msgstr "Mở trợ giúp"
 
@@ -23944,11 +23902,11 @@ msgstr "Mở nhãn dán trong trình duyệt"
 msgid "Open streaming privacy settings"
 msgstr "Mở cài đặt quyền riêng tư phát trực tuyến"
 
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:327
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:303
 msgid "Open sudo verification modal"
 msgstr "Mở hộp thoại xác minh sudo"
 
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:342
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:318
 msgid "Open system DM"
 msgstr "Mở tin nhắn trực tiếp của hệ thống"
 
@@ -23967,7 +23925,7 @@ msgid "Open the ban dialog for this community."
 msgstr "Mở hộp thoại cấm cho cộng đồng này."
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:241
+#: src/features/input/state/input_keybind/shared.ts:249
 msgid "Open the context menu"
 msgstr "Mở menu ngữ cảnh"
 
@@ -24000,7 +23958,7 @@ msgid "Open the verification email and use the link inside. This window updates 
 msgstr "Mở email xác minh và dùng liên kết bên trong. Cửa sổ này sẽ cập nhật sau khi liên kết mở ra."
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:249
+#: src/features/input/state/input_keybind/shared.ts:257
 msgid "Open theme studio popout"
 msgstr "Mở cửa sổ bật lên studio chủ đề"
 
@@ -24044,7 +24002,7 @@ msgid "Open your browser, sign in, then enter the code below to link your accoun
 msgstr "Mở trình duyệt, đăng nhập, sau đó nhập mã bên dưới để liên kết tài khoản của bạn."
 
 #. Required-action modal carousel step title for the first inbound phone verification instruction.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:450
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:446
 msgid "Open your messages"
 msgstr "Mở tin nhắn của bạn"
 
@@ -24052,17 +24010,17 @@ msgstr "Mở tin nhắn của bạn"
 msgid "Open your old {PRODUCT_NAME} app and choose Link a new device, then enter the code below."
 msgstr "Mở ứng dụng {PRODUCT_NAME} cũ của bạn và chọn Liên kết thiết bị mới, sau đó nhập mã bên dưới."
 
-#: src/features/user/components/modals/PhoneAddModal.tsx:327
+#: src/features/user/components/modals/PhoneAddModal.tsx:324
 msgid "Open your phone's messaging app and create a new text message."
 msgstr "Mở ứng dụng nhắn tin trên điện thoại của bạn và tạo tin nhắn văn bản mới."
 
 #. Required-action modal body for the first inbound phone verification instruction.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:454
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:450
 msgid "Open your phone's messaging app and start a new text message."
 msgstr "Mở ứng dụng nhắn tin trên điện thoại và bắt đầu một tin nhắn văn bản mới."
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:245
+#: src/features/input/state/input_keybind/shared.ts:253
 msgid "Open your settings"
 msgstr "Mở cài đặt của bạn"
 
@@ -24228,7 +24186,7 @@ msgid "OTP"
 msgstr "OTP"
 
 #. Required-action form error when our own phone lookup provider is unavailable and we fail closed. Must blame us, not the number, and must invite retrying the same number.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:558
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:554
 msgid "Our phone number check is down right now. This is on us, not your number. Wait a few minutes and try the same number again."
 msgstr "Hệ thống kiểm tra số điện thoại của chúng tôi hiện đang gặp sự cố. Lỗi này là do chúng tôi, không phải do số của bạn. Hãy đợi vài phút rồi thử lại chính số đó."
 
@@ -24238,7 +24196,7 @@ msgid "Our safety team is reviewing it. We'll send you a DM and email once we've
 msgstr "Đội ngũ an toàn của chúng tôi đang xem xét báo cáo. Chúng tôi sẽ gửi cho bạn tin nhắn trực tiếp và email sau khi có kết quả."
 
 #. Field label in the voice connection status popout. Shows WebRTC estimated available outgoing bandwidth.
-#: src/features/voice/components/voice_connection_status/shared.ts:119
+#: src/features/voice/components/voice_connection_status/shared.ts:120
 msgid "Outgoing capacity:"
 msgstr "Dung lượng gửi đi:"
 
@@ -24384,7 +24342,7 @@ msgid "Participants"
 msgstr "Người tham gia"
 
 #. Field label in the voice connection status popout. Shows the current LiveKit participant count.
-#: src/features/voice/components/voice_connection_status/shared.ts:79
+#: src/features/voice/components/voice_connection_status/shared.ts:80
 msgid "Participants:"
 msgstr "Người tham gia:"
 
@@ -24430,7 +24388,7 @@ msgstr "Khóa truy cập yêu cầu gói macOS đã ký có mã định danh ứ
 
 #. Generic form-field label for a password.
 #. Label for SMTP password input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1036
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1010
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:215
 #: src/features/user/components/modals/tabs/account_security_tab/AccountTab.tsx:146
 #: src/features/user/components/modals/tabs/account_security_tab/AccountTab.tsx:183
@@ -24815,21 +24773,21 @@ msgstr "Điện thoại"
 #. Form field label for the phone number input.
 #. Short label in the phone add modal. Keep it concise.
 #: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:100
-#: src/features/user/components/modals/PhoneAddModal.tsx:67
+#: src/features/user/components/modals/PhoneAddModal.tsx:65
 msgid "Phone number"
 msgstr "Số điện thoại"
 
 #. Form validation error shown when the phone number field is empty.
 #. Label in the phone add modal.
 #: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:116
-#: src/features/user/components/modals/PhoneAddModal.tsx:43
+#: src/features/user/components/modals/PhoneAddModal.tsx:41
 msgid "Phone number is required"
 msgstr "Cần có số điện thoại"
 
 #. Toast shown after phone verification succeeds.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:486
-#: src/features/user/components/modals/PhoneAddModal.tsx:180
-#: src/features/user/components/modals/PhoneAddModal.tsx:185
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:482
+#: src/features/user/components/modals/PhoneAddModal.tsx:178
+#: src/features/user/components/modals/PhoneAddModal.tsx:183
 msgid "Phone number verified"
 msgstr "Đã xác minh số điện thoại"
 
@@ -24844,7 +24802,7 @@ msgid "Phone step"
 msgstr "Bước điện thoại"
 
 #. Required-action error when the account is not eligible to add phone verification.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:542
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:538
 msgid "Phone verification is not available for this account. Use another method or contact support."
 msgstr "Xác minh số điện thoại không khả dụng cho tài khoản này. Hãy dùng phương thức khác hoặc liên hệ bộ phận hỗ trợ."
 
@@ -24935,7 +24893,7 @@ msgstr "Ảnh trong ảnh"
 
 #. Confirm button label on the pin message alert.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/channel/components/MessageActionUtils.tsx:63
+#: src/features/channel/components/MessageActionUtils.tsx:66
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:70
 msgid "Pin"
 msgstr "Ghim"
@@ -24953,9 +24911,9 @@ msgstr "Ghim tin nhắn nhóm"
 #. Generic action label that pins a message to the channel pins.
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Title of the confirmation alert shown when pinning a message.
-#: src/features/channel/components/MessageActionUtils.tsx:55
+#: src/features/channel/components/MessageActionUtils.tsx:58
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:539
-#: src/features/input/state/input_keybind/shared.ts:13
+#: src/features/input/state/input_keybind/shared.ts:17
 msgid "Pin message"
 msgstr "Ghim tin nhắn"
 
@@ -24980,7 +24938,7 @@ msgid "Pin or unpin any message."
 msgstr "Ghim hoặc bỏ ghim bất kỳ tin nhắn nào."
 
 #. Body of the confirmation alert shown when pinning a message.
-#: src/features/channel/components/MessageActionUtils.tsx:59
+#: src/features/channel/components/MessageActionUtils.tsx:62
 msgid "Pin this message to the channel for everyone to see."
 msgstr "Ghim tin nhắn này lên kênh để mọi người cùng xem."
 
@@ -24999,12 +24957,12 @@ msgid "Ping on reply"
 msgstr "Báo khi có trả lời"
 
 #. Compact latency badge on the voice control bar. {currentLatency} is an integer millisecond count.
-#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:79
+#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:80
 msgid "Ping: {currentLatency}ms"
 msgstr "Độ trễ: {currentLatency}ms"
 
 #. Compact latency badge variant used in another voice surface. {latency} is an integer millisecond count.
-#: src/features/voice/components/voice_connection_status/MockedVoiceConnectionStatus.tsx:43
+#: src/features/voice/components/voice_connection_status/MockedVoiceConnectionStatus.tsx:44
 msgid "Ping: {latency}ms"
 msgstr "Độ trễ: {latency}ms"
 
@@ -25212,7 +25170,7 @@ msgid "Popup"
 msgstr "Cửa sổ bật lên"
 
 #. Label for SMTP port input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1034
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1008
 msgid "Port"
 msgstr "Cổng"
 
@@ -25338,7 +25296,7 @@ msgid "Premium since date"
 msgstr "Premium từ ngày"
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:71
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:70
 msgid "Premium state reset on the backend."
 msgstr "Đã đặt lại trạng thái Premium ở backend."
 
@@ -25608,7 +25566,7 @@ msgid "Privacy settings"
 msgstr "Cài đặt quyền riêng tư"
 
 #. Label for Bluesky OAuth privacy URL input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1073
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1047
 msgid "Privacy URL"
 msgstr "URL quyền riêng tư"
 
@@ -25633,7 +25591,7 @@ msgid "Private details"
 msgstr "Thông tin riêng tư"
 
 #. Label for Bluesky OAuth private key input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1081
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1055
 msgid "Private key"
 msgstr "Khóa riêng"
 
@@ -25699,18 +25657,18 @@ msgstr "Màu sắc hồ sơ"
 
 #. Settings section label for editing profile appearance and identity.
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:105
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:104
 #: src/features/user/components/settings_utils/section_registry/GeneralSettingsSections.ts:6
 msgid "Profile customization"
 msgstr "Tùy chỉnh hồ sơ"
 
 #. Label in the my profile tab. Preserve {selectedGuildName}; it is inserted by code.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:101
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:100
 msgid "Profile customization for {selectedGuildName}"
 msgstr "Tùy chỉnh hồ sơ cho {selectedGuildName}"
 
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:97
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:96
 msgid "Profile customization form"
 msgstr "Biểu mẫu tùy chỉnh hồ sơ"
 
@@ -25775,7 +25733,7 @@ msgid "Profile type"
 msgstr "Loại hồ sơ"
 
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:77
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:76
 msgid "Profile updated"
 msgstr "Đã cập nhật hồ sơ"
 
@@ -25812,7 +25770,7 @@ msgstr "Hỏi khi phát hiện thiết bị âm thanh mới"
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:142
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:141
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:177
 #: src/features/user/components/settings_utils/section_registry/PrivacySafetySections.ts:160
 msgid "Pronouns"
@@ -25842,11 +25800,6 @@ msgstr "Cung cấp ID người dùng hoặc tên người dùng của người b
 msgid "Provide your full legal name for the declaration."
 msgstr "Cung cấp họ tên đầy đủ của bạn để khai báo."
 
-#. Label for an integration provider choice.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1009
-msgid "Provider"
-msgstr "Nhà cung cấp"
-
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/section_registry/VoiceVideoSections.ts:90
 msgid "PTT"
@@ -25870,7 +25823,7 @@ msgid "Public registration is closed."
 msgstr "Đăng ký công khai đã đóng."
 
 #. Field label in the voice connection status popout. Shows technical WebRTC publisher ICE transport details.
-#: src/features/voice/components/voice_connection_status/shared.ts:127
+#: src/features/voice/components/voice_connection_status/shared.ts:128
 msgid "Publisher transport:"
 msgstr "Phương tiện truyền tải của người đăng:"
 
@@ -25984,21 +25937,21 @@ msgid "Push timeout"
 msgstr "Thời gian chờ thông báo đẩy"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:297
+#: src/features/input/state/input_keybind/shared.ts:305
 msgid "Push to mute"
 msgstr "Nhấn để tắt tiếng"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/input/state/input_keybind/shared.ts:289
+#: src/features/input/state/input_keybind/shared.ts:297
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:162
 #: src/features/user/components/settings_utils/section_registry/VoiceVideoSections.ts:86
 msgid "Push to talk"
 msgstr "Nhấn để nói"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:293
+#: src/features/input/state/input_keybind/shared.ts:301
 msgid "Push to talk (priority)"
 msgstr "Nhấn để nói (ưu tiên)"
 
@@ -26014,7 +25967,7 @@ msgstr "Phím nhấn để nói"
 
 #. Switch label in the voice tab toggling push-to-talk mode. Keep it concise.
 #: src/features/user/components/modals/tabs/UserVoiceTab.tsx:112
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:349
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:346
 #: src/features/voice/components/VoiceSettingsMenus.tsx:419
 msgid "Push-to-talk"
 msgstr "Nhấn để nói"
@@ -26024,7 +25977,7 @@ msgstr "Nhấn để nói"
 msgid "Push-to-talk (limited)"
 msgstr "Nhấn để nói (giới hạn)"
 
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:681
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:676
 msgid "Push-to-talk is ignored in direct input. Switch to focused voice or custom to use it."
 msgstr "Nhấn để nói sẽ bị bỏ qua ở chế độ đầu vào trực tiếp. Chuyển sang giọng nói tập trung hoặc tùy chỉnh để sử dụng."
 
@@ -26191,7 +26144,7 @@ msgid "Read aloud"
 msgstr "Đọc to"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:29
+#: src/features/input/state/input_keybind/shared.ts:37
 msgid "Read message aloud"
 msgstr "Đọc tin nhắn thành tiếng"
 
@@ -26280,7 +26233,7 @@ msgid "Receive notifications when someone mentions you"
 msgstr "Nhận thông báo khi có người nhắc đến bạn"
 
 #. Field label in the voice connection status popout. Shows total current inbound media bitrate.
-#: src/features/voice/components/voice_connection_status/shared.ts:87
+#: src/features/voice/components/voice_connection_status/shared.ts:88
 msgid "Receive:"
 msgstr "Nhận:"
 
@@ -26399,7 +26352,7 @@ msgstr "Đổi cho bản thân"
 #. Billing button for entering a premium gift code.
 #. Billing button for entering a premium gift code.
 #: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:719
-#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:305
+#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:307
 msgid "Redeem gift code"
 msgstr "Đổi mã quà tặng"
 
@@ -26716,7 +26669,7 @@ msgid "Remove {userName} from your friends?"
 msgstr "Xóa {userName} khỏi danh sách bạn bè?"
 
 #. Confirm button label on the remove-all-reactions alert. Destructive.
-#: src/features/channel/components/MessageActionUtils.tsx:75
+#: src/features/channel/components/MessageActionUtils.tsx:78
 msgid "Remove all"
 msgstr "Xóa tất cả"
 
@@ -26729,7 +26682,7 @@ msgstr "Xóa tất cả cảm xúc {emojiNameWithColons} khỏi tin nhắn này?
 #. Message action that removes every reaction from the selected message.
 #. Title of the confirmation alert shown when clearing every reaction on a message.
 #: src/features/channel/components/MessageActionMenu.tsx:78
-#: src/features/channel/components/MessageActionUtils.tsx:67
+#: src/features/channel/components/MessageActionUtils.tsx:70
 #: src/features/ui/action_menu/items/MessageMenuItems.tsx:70
 msgid "Remove all reactions"
 msgstr "Xóa tất cả cảm xúc"
@@ -27237,10 +27190,15 @@ msgstr "Tùy chọn nhắc đến khi trả lời cho cộng đồng này"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Tooltip on the media viewer button that closes the viewer and replies to the message containing the media.
-#: src/features/input/state/input_keybind/shared.ts:21
+#: src/features/input/state/input_keybind/shared.ts:25
 #: src/features/messaging/components/modals/media_modal/shared.ts:105
 msgid "Reply to message"
 msgstr "Trả lời tin nhắn"
+
+#. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
+#: src/features/input/state/input_keybind/shared.ts:29
+msgid "Reply to messages above or below"
+msgstr "Trả lời tin nhắn bên trên hoặc bên dưới"
 
 #. TTS sentence spoken for a reply message. {replyAuthorName} is the original author, {authorName} is the replier, {formatted} is the speakable message body.
 #: src/features/voice/utils/TtsTextFormatter.ts:47
@@ -27324,7 +27282,7 @@ msgid "Reposts: <0>{countLabel}</0>"
 msgstr "Lượt đăng lại: <0>{countLabel}</0>"
 
 #. Required-action form error when the user submits before a code exists.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:498
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:494
 msgid "Request a new code first."
 msgstr "Yêu cầu mã mới trước."
 
@@ -27621,7 +27579,7 @@ msgid "Reset password"
 msgstr "Đặt lại mật khẩu"
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:79
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:78
 msgid "Reset premium state"
 msgstr "Đặt lại trạng thái premium"
 
@@ -27630,7 +27588,7 @@ msgstr "Đặt lại trạng thái premium"
 msgid "Reset slider to default value"
 msgstr "Đặt lại thanh trượt về giá trị mặc định"
 
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:247
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:229
 msgid "Reset socket"
 msgstr "Đặt lại socket"
 
@@ -27673,13 +27631,13 @@ msgstr "Đặt lại về mặc định"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Label for controls that reset app zoom to 100%, including the app zoom slider button.
-#: src/features/input/state/input_keybind/shared.ts:261
+#: src/features/input/state/input_keybind/shared.ts:269
 #: src/features/user/components/modals/tabs/appearance_tab/ScalingTab.tsx:38
 msgid "Reset zoom"
 msgstr "Đặt lại thu phóng"
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:112
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:111
 msgid "Resetting premium state..."
 msgstr "Đang đặt lại trạng thái premium..."
 
@@ -28310,7 +28268,7 @@ msgid "Run the instance as one community instead of many. This can only be enabl
 msgstr "Chạy máy chủ dưới dạng một cộng đồng thay vì nhiều cộng đồng. Tùy chọn này chỉ có thể bật bây giờ, trong quá trình thiết lập."
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:100
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:99
 msgid "Runtime utilities"
 msgstr "Tiện ích thời gian chạy"
 
@@ -28689,12 +28647,12 @@ msgid "Scroll animation"
 msgstr "Hoạt ảnh cuộn"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:189
+#: src/features/input/state/input_keybind/shared.ts:197
 msgid "Scroll chat down"
 msgstr "Cuộn trò chuyện xuống"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:185
+#: src/features/input/state/input_keybind/shared.ts:193
 msgid "Scroll chat up"
 msgstr "Cuộn trò chuyện lên"
 
@@ -28798,7 +28756,7 @@ msgid "Search communities"
 msgstr "Tìm cộng đồng"
 
 #. Button or menu action label in the phone add modal. Keep it concise.
-#: src/features/user/components/modals/PhoneAddModal.tsx:63
+#: src/features/user/components/modals/PhoneAddModal.tsx:61
 msgid "Search countries..."
 msgstr "Tìm kiếm quốc gia..."
 
@@ -28881,7 +28839,7 @@ msgstr "Tìm ngôn ngữ…"
 #: src/features/channel/components/bottomsheets/ChannelSearchBottomSheet.tsx:137
 #: src/features/channel/components/bottomsheets/ChannelSearchBottomSheet.tsx:480
 #: src/features/channel/components/message_search_bar/MessageSearchBar.tsx:56
-#: src/features/input/state/input_keybind/shared.ts:237
+#: src/features/input/state/input_keybind/shared.ts:245
 msgid "Search messages"
 msgstr "Tìm tin nhắn"
 
@@ -29097,11 +29055,6 @@ msgstr "Đã nhấp vào nút phụ."
 #: src/features/user/components/settings_utils/search_index/ApplicationsIndex.ts:136
 msgid "Secret"
 msgstr "Bí mật"
-
-#. Label for a CAPTCHA secret key input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1020
-msgid "Secret key"
-msgstr "Khóa bí mật"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label in the secrets section. Keep it concise. Keep the tone plain and specific.
@@ -29564,17 +29517,17 @@ msgstr "Gửi tin nhắn chuyển văn bản thành giọng nói bằng lệnh /
 
 #. placeholder {0}: inboundChallenge.challenge_code
 #. placeholder {1}: inboundChallenge.our_number
-#: src/features/user/components/modals/PhoneAddModal.tsx:335
+#: src/features/user/components/modals/PhoneAddModal.tsx:332
 msgid "Send the code <0>{0}</0> to <1>{1}</1>"
 msgstr "Gửi mã <0>{0}</0> đến <1>{1}</1>"
 
 #. Required-action modal body for the second inbound phone verification instruction.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:462
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:458
 msgid "Send the code to the phone number below."
 msgstr "Gửi mã đến số điện thoại bên dưới."
 
 #. Required-action modal carousel step title for the second inbound phone verification instruction.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:458
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:454
 msgid "Send this code"
 msgstr "Gửi mã này"
 
@@ -29584,7 +29537,7 @@ msgid "Send this pin back in time?"
 msgstr "Gửi ghim này về quá khứ?"
 
 #. Label for the destination phone number in an inbound phone verification challenge.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:470
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:466
 msgid "Send to"
 msgstr "Gửi đến"
 
@@ -29602,25 +29555,20 @@ msgstr "Gửi mã xác minh"
 #. Plus menu item that opens the desktop voice message composer to record and send a voice clip.
 #: src/features/channel/components/textarea/TextareaPlusMenu.tsx:35
 #: src/features/channel/components/VoiceMessageRecorder.tsx:69
-#: src/features/input/state/input_keybind/shared.ts:285
+#: src/features/input/state/input_keybind/shared.ts:293
 msgid "Send voice message"
 msgstr "Gửi tin nhắn thoại"
 
 #. Field label in the voice connection status popout. Shows total current outbound media bitrate.
-#: src/features/voice/components/voice_connection_status/shared.ts:83
+#: src/features/voice/components/voice_connection_status/shared.ts:84
 msgid "Send:"
 msgstr "Gửi:"
 
-#. Required-action modal explanation for an inbound phone verification challenge due to SMS cost.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:442
-msgid "Sending an SMS to this number is expensive, so we need you to text us instead."
-msgstr "Gửi SMS đến số này rất tốn kém, vì vậy thay vào đó bạn cần nhắn tin cho chúng tôi."
-
-#: src/features/user/components/modals/PhoneAddModal.tsx:304
+#: src/features/user/components/modals/PhoneAddModal.tsx:301
 msgid "Sending an SMS to this phone number is too expensive for {PRODUCT_NAME}, so we need you to send us an SMS instead. We know this isn't ideal. You can also ask the administrators of this instance to lift this requirement from your account."
 msgstr "Việc gửi SMS đến số điện thoại này quá tốn kém đối với {PRODUCT_NAME}, vì vậy bạn cần gửi SMS cho chúng tôi. Chúng tôi biết điều này không lý tưởng. Bạn cũng có thể nhờ quản trị viên của máy chủ này gỡ bỏ yêu cầu này khỏi tài khoản của bạn."
 
-#: src/features/user/components/modals/PhoneAddModal.tsx:310
+#: src/features/user/components/modals/PhoneAddModal.tsx:307
 msgid "Sending an SMS to this phone number is too expensive for {PRODUCT_NAME}, so we need you to send us an SMS instead. We know this isn't ideal. You can also contact <0>{SUPPORT_EMAIL}</0> to have us lift this requirement from your account."
 msgstr "Việc gửi SMS đến số điện thoại này quá tốn kém đối với {PRODUCT_NAME}, vì vậy bạn cần gửi SMS cho chúng tôi. Chúng tôi biết điều này không lý tưởng. Bạn cũng có thể liên hệ <0>{SUPPORT_EMAIL}</0> để chúng tôi gỡ bỏ yêu cầu này khỏi tài khoản của bạn."
 
@@ -29640,7 +29588,7 @@ msgid "Sends both channels of a stereo microphone. Needs all processing off and 
 msgstr "Gửi cả hai kênh của micrô stereo. Yêu cầu tắt mọi xử lý và kênh có tốc độ 128 kbps trở lên."
 
 #. Description for the studio / direct-input option in the voice processing settings radio group.
-#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:38
+#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:35
 msgid "Sends raw mic audio with no processing."
 msgstr "Gửi âm thanh mic thô không qua xử lý."
 
@@ -29714,7 +29662,7 @@ msgid "Service incident nagbar"
 msgstr "Thông báo sự cố dịch vụ"
 
 #. Section heading in the voice connection status popout for current call/session debug stats.
-#: src/features/voice/components/voice_connection_status/shared.ts:62
+#: src/features/voice/components/voice_connection_status/shared.ts:63
 msgid "Session"
 msgstr "Phiên"
 
@@ -29925,7 +29873,7 @@ msgid "Set up authenticator app"
 msgstr "Thiết lập ứng dụng xác thực"
 
 #. Option for deferring an optional setup wizard integration.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:953
+#: src/features/app/components/setup/SetupWizardSteps.tsx:946
 msgid "Set up later"
 msgstr "Thiết lập sau"
 
@@ -30164,7 +30112,7 @@ msgstr "Mã ngắn"
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/modals/tabs/keybinds_tab/CustomKeybindRow.tsx:121
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:364
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:361
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:38
 #: src/features/user/components/settings_utils/section_registry/VoiceVideoSections.ts:110
 msgid "Shortcut"
@@ -30266,7 +30214,7 @@ msgid "Show attachment expiration indicator"
 msgstr "Hiển thị chỉ báo hết hạn tệp đính kèm"
 
 #. Developer voice status menu option for displaying participant avatars.
-#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:71
+#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:72
 msgid "Show call avatars"
 msgstr "Hiện ảnh đại diện cuộc gọi"
 
@@ -30291,7 +30239,7 @@ msgid "Show chat with {count, plural, one {# unread message} other {# unread mes
 msgstr "Hiện trò chuyện có {count, plural, one {# tin nhắn chưa đọc} other {# tin nhắn chưa đọc}}"
 
 #. Developer voice status menu option for displaying the voice connection identifier.
-#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:75
+#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:76
 msgid "Show connection ID"
 msgstr "Hiện ID kết nối"
 
@@ -30427,7 +30375,7 @@ msgstr "Hiện danh sách tin nhắn trực tiếp"
 msgid "Show just the typing indicator without avatars"
 msgstr "Chỉ hiển thị trạng thái đang nhập, không hiển thị ảnh đại diện"
 
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:308
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:284
 msgid "Show keyboard mode intro"
 msgstr "Hiện giới thiệu chế độ bàn phím"
 
@@ -30538,7 +30486,7 @@ msgstr "Hiện Neko"
 msgid "Show new device alerts"
 msgstr "Hiển thị cảnh báo thiết bị mới"
 
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:282
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:264
 msgid "Show new device modal"
 msgstr "Hiện cửa sổ bật lên thiết bị mới"
 
@@ -30820,7 +30768,7 @@ msgid "Signed-in devices"
 msgstr "Thiết bị đã đăng nhập"
 
 #. Label for Bluesky OAuth signing key ID input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1077
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1051
 msgid "Signing key ID"
 msgstr "ID khóa ký"
 
@@ -30910,11 +30858,6 @@ msgstr "Một dòng"
 msgid "Single user (all statuses)"
 msgstr "Một người dùng (tất cả trạng thái)"
 
-#. Label for a CAPTCHA site key input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1019
-msgid "Site key"
-msgstr "Khóa trang"
-
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/search_index/DesktopSettingsIndex.ts:98
@@ -30964,7 +30907,7 @@ msgid "Skip the system leave notice — nobody gets pinged."
 msgstr "Bỏ qua thông báo rời nhóm của hệ thống, không ai bị làm phiền."
 
 #. Description for deferring an optional setup wizard integration.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:957
+#: src/features/app/components/setup/SetupWizardSteps.tsx:950
 msgid "Skip this now and configure it from the admin panel."
 msgstr "Bỏ qua bây giờ và cấu hình từ bảng quản trị."
 
@@ -31207,22 +31150,22 @@ msgid "Smoother video"
 msgstr "Video mượt hơn"
 
 #. Required-action error when the SMS provider cannot send or verify a code.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:538
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:534
 msgid "SMS verification is unavailable right now. Try again later or contact support."
 msgstr "Xác minh SMS hiện không khả dụng. Vui lòng thử lại sau hoặc liên hệ với bộ phận hỗ trợ."
 
 #. Success message after validating SMTP credentials.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1045
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1019
 msgid "SMTP connection verified."
 msgstr "Đã xác minh kết nối SMTP."
 
 #. Label for SMTP host input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1033
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1007
 msgid "SMTP host"
 msgstr "Máy chủ SMTP"
 
 #. Failure message after validating SMTP credentials when the server returns no error detail.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1049
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1023
 msgid "SMTP validation failed."
 msgstr "Xác minh SMTP không thành công."
 
@@ -31402,7 +31345,7 @@ msgstr "Đã xảy ra lỗi. Vui lòng thử lại sau."
 #. Inline error in the web deep-link prompt when opening the desktop app fails.
 #. Toast error shown when the mature content check request fails unexpectedly.
 #: src/features/auth/components/modals/MatureContentCheckModal.tsx:18
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:585
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:576
 #: src/features/auth/flow/DesktopDeepLinkPrompt.tsx:31
 msgid "Something went wrong. Try again."
 msgstr "Đã xảy ra lỗi. Vui lòng thử lại."
@@ -31742,7 +31685,7 @@ msgid "Staff controls"
 msgstr "Điều khiển dành cho nhân viên"
 
 #. Required-action modal notice for inbound phone verification.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:482
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:478
 msgid "Standard messaging rates from your carrier may apply."
 msgstr "Có thể áp dụng cước phí nhắn tin tiêu chuẩn từ nhà mạng của bạn."
 
@@ -31788,12 +31731,12 @@ msgid "Start {appName} automatically when you sign in."
 msgstr "Tự động khởi chạy {appName} khi bạn đăng nhập."
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:221
+#: src/features/input/state/input_keybind/shared.ts:229
 msgid "Start a call in a DM or group"
 msgstr "Bắt đầu cuộc gọi trong tin nhắn trực tiếp hoặc nhóm"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:149
+#: src/features/input/state/input_keybind/shared.ts:157
 msgid "Start a group DM"
 msgstr "Tạo tin nhắn nhóm"
 
@@ -31829,7 +31772,7 @@ msgid "Start date must be earlier than end date."
 msgstr "Ngày bắt đầu phải sớm hơn ngày kết thúc."
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:125
+#: src/features/input/state/input_keybind/shared.ts:133
 msgid "Start drag and drop"
 msgstr "Bắt đầu kéo và thả"
 
@@ -32099,6 +32042,11 @@ msgstr "Đang lập chỉ mục — vui lòng thử lại sau giây lát"
 msgid "Still Neko"
 msgstr "Neko đứng yên"
 
+#. Small toast shown only when an automatic background check before sign-in, sign-up or a similar request takes more than a couple of seconds. No user action needed. Keep it short and calm.
+#: src/features/auth/altcha/CaptchaInterceptor.ts:13
+msgid "Still working on it…"
+msgstr "Vẫn đang xử lý…"
+
 #. Stop-recording button label in the desktop voice message composer.
 #: src/features/voice/components/VoiceMessageComposerModal.tsx:65
 msgid "Stop"
@@ -32225,7 +32173,7 @@ msgid "Stopped the member from hearing others in this community"
 msgstr "Đã ngăn thành viên nghe người khác trong cộng đồng này"
 
 #. Description for the echo cancellation toggle in the custom voice processing settings.
-#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:59
+#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:56
 msgid "Stops your speakers from looping back into your mic."
 msgstr "Ngăn âm thanh từ loa vọng ngược vào micrô."
 
@@ -32378,7 +32326,7 @@ msgid "Submitting"
 msgstr "Đang gửi"
 
 #. Field label in the voice connection status popout. Shows technical WebRTC subscriber ICE transport details.
-#: src/features/voice/components/voice_connection_status/shared.ts:131
+#: src/features/voice/components/voice_connection_status/shared.ts:132
 msgid "Subscriber transport:"
 msgstr "Phương tiện truyền tải của người đăng ký:"
 
@@ -32472,11 +32420,6 @@ msgstr "Ẩn nhắc đến bản thân không có quyền"
 msgid "Suppression"
 msgstr "Khử nhiễu"
 
-#. Label for the DeepFilterNet3 noise suppression strength slider in the custom voice processing settings.
-#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:67
-msgid "Suppression strength"
-msgstr "Cường độ khử nhiễu"
-
 #. Collapsible group heading in the Theme Studio tokens list, for background surface tokens.
 #: src/features/theme_studio/sections/TokenGroups.ts:46
 msgid "Surfaces"
@@ -32522,12 +32465,12 @@ msgid "Switch accounts"
 msgstr "Chuyển tài khoản"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:45
+#: src/features/input/state/input_keybind/shared.ts:53
 msgid "Switch between channels"
 msgstr "Chuyển đổi giữa các kênh"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:41
+#: src/features/input/state/input_keybind/shared.ts:49
 msgid "Switch between communities"
 msgstr "Chuyển đổi giữa các cộng đồng"
 
@@ -32565,7 +32508,7 @@ msgstr "Chuyển sang bố cục thoải mái"
 msgid "Switch to dense layout"
 msgstr "Chuyển sang bố cục dày đặc"
 
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:649
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:644
 msgid "Switch to direct input"
 msgstr "Chuyển sang nhập trực tiếp"
 
@@ -32592,7 +32535,7 @@ msgid "Switch to next community"
 msgstr "Chuyển sang cộng đồng tiếp theo"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:77
+#: src/features/input/state/input_keybind/shared.ts:85
 msgid "Switch to next community or DMs"
 msgstr "Chuyển sang cộng đồng hoặc tin nhắn trực tiếp tiếp theo"
 
@@ -32607,7 +32550,7 @@ msgid "Switch to previous community"
 msgstr "Chuyển sang cộng đồng trước"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:73
+#: src/features/input/state/input_keybind/shared.ts:81
 msgid "Switch to previous community or DMs"
 msgstr "Chuyển sang cộng đồng hoặc tin nhắn trực tiếp trước đó"
 
@@ -32656,7 +32599,7 @@ msgid "Switch to…"
 msgstr "Chuyển đến…"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:313
+#: src/features/input/state/input_keybind/shared.ts:321
 msgid "Switch voice channel"
 msgstr "Chuyển kênh thoại"
 
@@ -33018,7 +32961,7 @@ msgid "Terms of service"
 msgstr "Điều khoản dịch vụ"
 
 #. Label for Bluesky OAuth terms URL input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1069
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1043
 msgid "Terms URL"
 msgstr "URL điều khoản"
 
@@ -33028,7 +32971,7 @@ msgid "Terrorism or violent extremism"
 msgstr "Khủng bố hoặc chủ nghĩa cực đoan bạo lực"
 
 #. Button that validates SMTP credentials.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1041
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1015
 msgid "Test SMTP"
 msgstr "Kiểm tra SMTP"
 
@@ -33175,12 +33118,12 @@ msgid "Thank you for helping keep {productName} safe. We'll review your report a
 msgstr "Cảm ơn bạn đã giúp giữ cho {productName} an toàn. Chúng tôi sẽ xem xét báo cáo của bạn sớm nhất có thể."
 
 #. Required-action form error for an invalid verification code.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:490
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:486
 msgid "That code didn't work. Check it and try again."
 msgstr "Mã đó không đúng. Hãy kiểm tra lại và thử lại."
 
 #. Required-action form error for an expired verification code.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:494
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:490
 msgid "That code expired. Request a new code."
 msgstr "Mã đó đã hết hạn. Hãy yêu cầu mã mới."
 
@@ -33208,7 +33151,7 @@ msgid "That doesn't look like a valid URL."
 msgstr "Đây không phải là một URL hợp lệ."
 
 #. Required-action form error when a new email is already used by another account.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:514
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:510
 msgid "That email is already in use."
 msgstr "Email này đã được sử dụng."
 
@@ -33805,7 +33748,7 @@ msgid "This clears quick CSS, imported themes, uploaded assets, and local file r
 msgstr "Thao tác này sẽ xóa CSS nhanh, chủ đề đã nhập, nội dung đã tải lên và tham chiếu tệp cục bộ trên thiết bị này."
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:83
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:82
 msgid "This clears your backend premium state entirely, including premium type, billing metadata, and override flags."
 msgstr "Thao tác này sẽ xóa hoàn toàn trạng thái premium của bạn trên backend, bao gồm loại premium, siêu dữ liệu thanh toán và cờ ghi đè."
 
@@ -34128,8 +34071,8 @@ msgstr "Đây là khóa truy cập cuối cùng của bạn và khóa truy cập
 msgid "This is your last passkey. Once it's gone you won't be able to use a passkey as your second factor."
 msgstr "Đây là khóa truy cập cuối cùng của bạn. Khi khóa này bị xóa, bạn sẽ không thể sử dụng khóa truy cập làm yếu tố thứ hai nữa."
 
-#. Required-action form error for landline, toll-free, premium, shared-cost, UAN, voicemail and pager lines. Do not name which line type the provider returned.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:570
+#. Required-action form error when the number is not a mobile line. Do not name the line type.
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:566
 msgid "This isn't a mobile number, so it can't receive our text. Try a mobile number, or contact support if you think that's wrong."
 msgstr "Đây không phải là số di động nên không nhận được tin nhắn của chúng tôi. Hãy thử một số di động, hoặc liên hệ bộ phận hỗ trợ nếu bạn cho rằng có nhầm lẫn."
 
@@ -34205,17 +34148,17 @@ msgid "This message no longer exists."
 msgstr "Tin nhắn này không còn tồn tại."
 
 #. Label in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:130
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:129
 msgid "This nickname will only be visible in this community"
 msgstr "Biệt danh này sẽ chỉ hiển thị trong cộng đồng này"
 
 #. Required-action form error when a number must use the inbound text-in challenge and the current step cannot start one. Do not say why the number was routed there.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:552
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:548
 msgid "This number is verified by texting us instead. Go back and start phone verification again to get the code and the number to text."
 msgstr "Số này phải được xác minh bằng cách nhắn tin cho chúng tôi. Hãy quay lại và bắt đầu lại phần xác minh số điện thoại để nhận mã và số cần nhắn tin đến."
 
 #. Required-action modal explanation for an inbound phone verification challenge.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:446
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:442
 msgid "This number needs text-in verification instead of an SMS from us."
 msgstr "Số này cần được xác minh bằng cách bạn nhắn tin đến cho chúng tôi, thay vì nhận SMS từ chúng tôi."
 
@@ -34240,12 +34183,12 @@ msgid "This participant was deafened by moderators"
 msgstr "Người tham gia này đã bị người điều hành tắt tiếng nghe"
 
 #. Required-action form error when the backend rejects a phone number.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:530
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:526
 msgid "This phone number cannot be used. Try another mobile number or contact support."
 msgstr "Không thể sử dụng số điện thoại này. Hãy thử số di động khác hoặc liên hệ bộ phận hỗ trợ."
 
 #. Required-action form error when the backend rejects a reused phone number.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:534
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:530
 msgid "This phone number has already been used. Try another number or contact support."
 msgstr "Số điện thoại này đã được sử dụng. Hãy thử số khác hoặc liên hệ bộ phận hỗ trợ."
 
@@ -34282,12 +34225,12 @@ msgid "This removes all custom CSS overrides. Theme files in your library are no
 msgstr "Thao tác này sẽ xóa tất cả các tùy chỉnh CSS. Các tệp chủ đề trong thư viện của bạn sẽ không bị ảnh hưởng."
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:50
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:49
 msgid "This removes all previously authorized IP addresses on your account. The next login from any IP will require email verification."
 msgstr "Thao tác này sẽ xóa tất cả địa chỉ IP đã được ủy quyền trước đó trên tài khoản của bạn. Lần đăng nhập tiếp theo từ bất kỳ IP nào cũng sẽ yêu cầu xác minh email."
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:67
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:66
 msgid "This removes all trusted domains. You will see the external link warning for all domains again."
 msgstr "Thao tác này sẽ xóa tất cả các miền đáng tin cậy. Bạn sẽ thấy lại cảnh báo liên kết ngoài cho tất cả các miền."
 
@@ -34397,7 +34340,7 @@ msgid "This verification session expired. Return to {productName} and start chec
 msgstr "Phiên xác minh này đã hết hạn. Quay lại {productName} và bắt đầu thanh toán lại."
 
 #. Required-action form error when an email-change ticket or proof is invalid or expired.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:502
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:498
 msgid "This verification session expired. Start again."
 msgstr "Phiên xác minh này đã hết hạn. Vui lòng thử lại."
 
@@ -34495,7 +34438,7 @@ msgid "This will trust all external links and skip the warning for every domain.
 msgstr "Thao tác này sẽ tin cậy tất cả các liên kết bên ngoài và bỏ qua cảnh báo cho mọi miền. Các miền đáng tin cậy hiện có của bạn sẽ bị thay thế. Điều này kém an toàn hơn."
 
 #. Required-action modal body after the user sends an inbound phone verification text.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:478
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:474
 msgid "This window updates automatically after we receive your message."
 msgstr "Cửa sổ này sẽ tự động cập nhật sau khi chúng tôi nhận được tin nhắn của bạn."
 
@@ -34669,12 +34612,12 @@ msgid "Today at {timeString}"
 msgstr "Hôm nay lúc {timeString}"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:69
+#: src/features/input/state/input_keybind/shared.ts:77
 msgid "Toggle between last community and DMs"
 msgstr "Chuyển qua lại giữa cộng đồng gần nhất và tin nhắn trực tiếp"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:309
+#: src/features/input/state/input_keybind/shared.ts:317
 msgid "Toggle camera"
 msgstr "Bật/tắt camera"
 
@@ -34694,7 +34637,7 @@ msgid "Toggle developer tools"
 msgstr "Bật/tắt công cụ dành cho nhà phát triển"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:269
+#: src/features/input/state/input_keybind/shared.ts:277
 msgid "Toggle embed suppression"
 msgstr "Bật/tắt ẩn nhúng"
 
@@ -34710,23 +34653,23 @@ msgstr "Bật/tắt tăng tốc phần cứng"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/input/state/input_keybind/shared.ts:209
+#: src/features/input/state/input_keybind/shared.ts:217
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:183
 msgid "Toggle mute"
 msgstr "Bật/tắt tiếng"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:153
+#: src/features/input/state/input_keybind/shared.ts:161
 msgid "Toggle pinned messages"
 msgstr "Bật/tắt tin nhắn đã ghim"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:117
+#: src/features/input/state/input_keybind/shared.ts:125
 msgid "Toggle quick switcher"
 msgstr "Bật/tắt bộ chuyển đổi nhanh"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:281
+#: src/features/input/state/input_keybind/shared.ts:289
 msgid "Toggle saved media"
 msgstr "Bật/tắt media đã lưu"
 
@@ -34735,17 +34678,17 @@ msgid "Toggle switches on and off to see state changes."
 msgstr "Bật/tắt các nút chuyển để xem thay đổi trạng thái."
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:173
+#: src/features/input/state/input_keybind/shared.ts:181
 msgid "Toggle the emoji picker"
 msgstr "Mở/đóng bảng chọn biểu tượng cảm xúc"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:177
+#: src/features/input/state/input_keybind/shared.ts:185
 msgid "Toggle the GIF picker"
 msgstr "Mở/đóng bảng chọn GIF"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:157
+#: src/features/input/state/input_keybind/shared.ts:165
 msgid "Toggle the inbox"
 msgstr "Bật/tắt hộp thư đến"
 
@@ -34755,22 +34698,22 @@ msgid "Toggle the kinds of conversations you want included."
 msgstr "Bật/tắt các loại cuộc trò chuyện bạn muốn đưa vào."
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:169
+#: src/features/input/state/input_keybind/shared.ts:177
 msgid "Toggle the member list or voice chat"
 msgstr "Bật/tắt danh sách thành viên hoặc trò chuyện thoại"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:225
+#: src/features/input/state/input_keybind/shared.ts:233
 msgid "Toggle the soundboard"
 msgstr "Bật/tắt bảng âm thanh"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:181
+#: src/features/input/state/input_keybind/shared.ts:189
 msgid "Toggle the sticker picker"
 msgstr "Mở/đóng bảng chọn nhãn dán"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:305
+#: src/features/input/state/input_keybind/shared.ts:313
 msgid "Toggle voice activity"
 msgstr "Bật/tắt kích hoạt bằng giọng nói"
 
@@ -34802,7 +34745,7 @@ msgid "Tone-map HDR images to standard range, reducing peak brightness."
 msgstr "Ánh xạ tông màu ảnh HDR về dải tiêu chuẩn, giảm độ sáng tối đa."
 
 #. Required-action error shown for rate limits.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:506
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:502
 msgid "Too many attempts. Wait a bit, then try again."
 msgstr "Đã thử quá nhiều lần. Vui lòng đợi một lát rồi thử lại."
 
@@ -34954,7 +34897,7 @@ msgstr "Các thay đổi đối với biểu tượng khay chỉ áp dụng sau 
 msgid "Trending GIFs"
 msgstr "GIF thịnh hành"
 
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:383
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:359
 msgid "Trigger React crash"
 msgstr "Kích hoạt lỗi React"
 
@@ -35013,7 +34956,7 @@ msgid "Trusted domains"
 msgstr "Miền tin cậy"
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:55
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:54
 msgid "Trusted domains cleared."
 msgstr "Đã xóa các miền tin cậy."
 
@@ -35059,14 +35002,13 @@ msgid "Try a different variable name or clear the search."
 msgstr "Thử một tên biến khác hoặc xóa tìm kiếm."
 
 #. Generic action label for retrying a failed or interrupted operation.
-#: src/features/auth/components/AltchaVerification.tsx:53
 #: src/features/auth/flow/AuthRouteLoadError.tsx:22
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:75
 msgid "Try again"
 msgstr "Thử lại"
 
 #. Button that retries connecting to the voice channel after a failed attempt.
-#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:61
+#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:62
 msgctxt "voice-connection-status"
 msgid "Try again"
 msgstr "Thử lại"
@@ -35137,10 +35079,6 @@ msgstr "Thử dùng khóa bảo mật / khóa truy cập"
 msgid "Try sending your message again."
 msgstr "Thử gửi lại tin nhắn của bạn."
 
-#: src/features/auth/components/modals/CaptchaModal.tsx:177
-msgid "Try Turnstile instead"
-msgstr "Thử dùng Turnstile"
-
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:135
 msgid "TTS"
@@ -35157,7 +35095,7 @@ msgid "TTS speed"
 msgstr "Tốc độ TTS"
 
 #. Description for the custom option in the voice processing settings radio group.
-#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:47
+#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:44
 msgid "Tune the processing yourself."
 msgstr "Tự điều chỉnh quá trình xử lý."
 
@@ -35896,7 +35834,7 @@ msgstr "Mở khóa biểu tượng cảm xúc tùy chỉnh trong tin nhắn tr�
 msgid "Unlock HD screen share with {premiumProductName}"
 msgstr "Mở khóa chia sẻ màn hình HD với {premiumProductName}"
 
-#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:215
+#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:217
 msgid "Unlock higher limits and exclusive features while supporting an independent communication platform."
 msgstr "Mở khóa giới hạn cao hơn và các tính năng độc quyền, đồng thời ủng hộ một nền tảng liên lạc độc lập."
 
@@ -36042,7 +35980,7 @@ msgid "Unordered"
 msgstr "Danh sách không thứ tự"
 
 #. Confirm button label on the unpin message alert.
-#: src/features/channel/components/MessageActionUtils.tsx:51
+#: src/features/channel/components/MessageActionUtils.tsx:54
 msgid "Unpin"
 msgstr "Bỏ ghim"
 
@@ -36067,7 +36005,7 @@ msgid "Unpin message"
 msgstr "Bỏ ghim tin nhắn"
 
 #. Body of the confirmation alert shown when unpinning a message.
-#: src/features/channel/components/MessageActionUtils.tsx:47
+#: src/features/channel/components/MessageActionUtils.tsx:50
 msgid "Unpin this message?"
 msgstr "Bỏ ghim tin nhắn này?"
 
@@ -36373,7 +36311,7 @@ msgstr "Tải lên âm thanh tùy chỉnh phát tự động khi bạn tham gia 
 #. Card label in the asset source modal for uploading an image from the device. Keep it concise.
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #: src/features/expressions/components/modals/AssetSourceModal.tsx:19
-#: src/features/input/state/input_keybind/shared.ts:201
+#: src/features/input/state/input_keybind/shared.ts:209
 msgid "Upload a file"
 msgstr "Tải tệp lên"
 
@@ -36642,7 +36580,7 @@ msgid "Use an email address you can access. We will send a code there."
 msgstr "Dùng địa chỉ email mà bạn truy cập được. Chúng tôi sẽ gửi mã đến đó."
 
 #. Required-action form error when the new email matches the current account email.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:518
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:514
 msgid "Use an email that is different from your current one."
 msgstr "Sử dụng email khác với email hiện tại của bạn."
 
@@ -36895,7 +36833,7 @@ msgid "Use this when troubleshooting the client or collecting logs. It may add v
 msgstr "Dùng khi khắc phục sự cố ứng dụng hoặc thu thập nhật ký. Thao tác này có thể thêm các thông báo chi tiết vào bảng điều khiển của trình duyệt cho ứng dụng hiện tại."
 
 #. Label for SMTP TLS toggle.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1037
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1011
 msgid "Use TLS"
 msgstr "Sử dụng TLS"
 
@@ -37061,7 +36999,7 @@ msgstr "Âm lượng người dùng"
 #. Generic form-field label for a username.
 #. Label for SMTP username input.
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1035
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1009
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:572
 #: src/features/user/components/modals/FluxerTagChangeModal.tsx:218
 #: src/features/user/components/modals/tabs/my_profile_tab/MyProfileTabUsernameSection.tsx:56
@@ -37328,24 +37266,19 @@ msgstr "Xác minh đó là bạn"
 #. Primary button in the required-action modal. Sends or submits phone verification.
 #: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:178
 #: src/features/channel/components/barriers/BarrierComponents.tsx:269
-#: src/features/user/components/modals/PhoneAddModal.tsx:408
+#: src/features/user/components/modals/PhoneAddModal.tsx:405
 msgid "Verify phone"
 msgstr "Xác minh số điện thoại"
 
 #. Short label in the phone add modal. Keep it concise.
-#: src/features/user/components/modals/PhoneAddModal.tsx:55
+#: src/features/user/components/modals/PhoneAddModal.tsx:53
 msgid "Verify phone number"
 msgstr "Xác minh số điện thoại"
 
 #. Label in the phone add modal.
-#: src/features/user/components/modals/PhoneAddModal.tsx:51
+#: src/features/user/components/modals/PhoneAddModal.tsx:49
 msgid "Verify phone number form"
 msgstr "Biểu mẫu xác minh số điện thoại"
-
-#. Short label in the authentication captcha modal. Keep the tone plain and specific.
-#: src/features/auth/components/modals/CaptchaModal.tsx:17
-msgid "Verify you're human"
-msgstr "Xác minh bạn không phải robot"
 
 #. Title of the error modal shown when an unverified account tries to start a DM.
 #. Title shown when an unverified account cannot start a DM or group DM.
@@ -37374,22 +37307,22 @@ msgid "Verify your email before adding an authenticator app."
 msgstr "Xác minh email của bạn trước khi thêm ứng dụng xác thực."
 
 #. Description text in the my profile tab. Keep the tone plain and specific.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:117
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:116
 msgid "Verify your email before changing your community nickname, avatar, banner, bio, pronouns, or accent color."
 msgstr "Xác minh email của bạn trước khi thay đổi biệt danh cộng đồng, ảnh đại diện, ảnh bìa, tiểu sử, đại từ hoặc màu nhấn."
 
 #. Label in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:121
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:120
 msgid "Verify your email before changing your username, display name, avatar, banner, bio, pronouns, time zone, or {premiumProductName} badge privacy."
 msgstr "Xác minh email của bạn trước khi thay đổi tên người dùng, tên hiển thị, ảnh đại diện, ảnh bìa, tiểu sử, đại từ, múi giờ hoặc quyền riêng tư huy hiệu {premiumProductName} của bạn."
 
 #. Description text in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:85
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:84
 msgid "Verify your email before editing this community profile. You can still preview it here."
 msgstr "Xác minh email của bạn trước khi chỉnh sửa hồ sơ cộng đồng này. Bạn vẫn có thể xem trước tại đây."
 
 #. Description text in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:89
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:88
 msgid "Verify your email before editing your profile. You can still preview it here."
 msgstr "Xác minh email trước khi chỉnh sửa hồ sơ. Bạn vẫn có thể xem trước tại đây."
 
@@ -37421,12 +37354,12 @@ msgid "Verify your email to continue using {productName}."
 msgstr "Xác minh email của bạn để tiếp tục sử dụng {productName}."
 
 #. Label in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:109
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:108
 msgid "Verify your email to edit this community profile"
 msgstr "Xác minh email để chỉnh sửa hồ sơ cộng đồng này"
 
 #. Label in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:113
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:112
 msgid "Verify your email to edit your profile"
 msgstr "Xác minh email để chỉnh sửa hồ sơ"
 
@@ -37534,7 +37467,7 @@ msgid "Video options"
 msgstr "Tùy chọn video"
 
 #. Field label in the voice connection status popout. Shows received video packet loss percentage.
-#: src/features/voice/components/voice_connection_status/shared.ts:111
+#: src/features/voice/components/voice_connection_status/shared.ts:112
 msgid "Video packet loss:"
 msgstr "Mất gói video:"
 
@@ -37558,7 +37491,7 @@ msgid "Video quality"
 msgstr "Chất lượng video"
 
 #. Field label in the voice connection status popout. Shows current inbound video bitrate.
-#: src/features/voice/components/voice_connection_status/shared.ts:103
+#: src/features/voice/components/voice_connection_status/shared.ts:104
 msgid "Video receive:"
 msgstr "Nhận video:"
 
@@ -37568,7 +37501,7 @@ msgid "Video scrubbing"
 msgstr "Tua video"
 
 #. Field label in the voice connection status popout. Shows current outbound video bitrate.
-#: src/features/voice/components/voice_connection_status/shared.ts:99
+#: src/features/voice/components/voice_connection_status/shared.ts:100
 msgid "Video send:"
 msgstr "Gửi video:"
 
@@ -37977,7 +37910,7 @@ msgid "Voice activity on active now"
 msgstr "Hoạt động thoại trong mục Đang hoạt động"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:301
+#: src/features/input/state/input_keybind/shared.ts:309
 msgid "Voice activity priority"
 msgstr "Ưu tiên hoạt động giọng nói"
 
@@ -38050,7 +37983,7 @@ msgstr "Kênh thoại"
 
 #. Voice status popout title (secondary call site for the same surface as VOICE_CONNECTION_DESCRIPTOR).
 #. Voice status popout title.
-#: src/features/voice/components/voice_connection_status/MockedVoiceConnectionStatus.tsx:47
+#: src/features/voice/components/voice_connection_status/MockedVoiceConnectionStatus.tsx:48
 #: src/features/voice/components/voice_connection_status/VoiceDetailsPopout.tsx:56
 msgid "Voice connection"
 msgstr "Kết nối thoại"
@@ -38108,8 +38041,8 @@ msgid "Voice participants"
 msgstr "Người tham gia trò chuyện thoại"
 
 #. Voice settings radio group label for microphone processing profile.
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:644
-#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:55
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:639
+#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:52
 msgid "Voice processing"
 msgstr "Xử lý giọng nói"
 
@@ -38202,7 +38135,7 @@ msgstr "Tăng âm lượng"
 msgid "Wait a moment before deleting more messages."
 msgstr "Đợi một lát trước khi xóa thêm tin nhắn."
 
-#: src/features/user/components/modals/PhoneAddModal.tsx:352
+#: src/features/user/components/modals/PhoneAddModal.tsx:349
 msgid "Wait a moment. This window will close automatically once we receive your message."
 msgstr "Đợi một chút. Cửa sổ này sẽ tự động đóng khi chúng tôi nhận được tin nhắn của bạn."
 
@@ -38212,7 +38145,7 @@ msgid "Wait between messages. Members with \"{bypassSlowmodePermissionLabel}\" c
 msgstr "Chờ giữa các tin nhắn. Thành viên có quyền \"{bypassSlowmodePermissionLabel}\" có thể bỏ qua giới hạn này."
 
 #. Required-action modal carousel step title after the user sends an inbound phone verification text.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:474
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:470
 msgid "Wait here"
 msgstr "Đợi ở đây"
 
@@ -38378,13 +38311,13 @@ msgstr "Không đọc được chủ đề này. Có thể chủ đề bị lỗ
 msgid "We couldn't remove that account. Try again."
 msgstr "Chúng tôi không thể xóa tài khoản đó. Vui lòng thử lại."
 
-#. Required-action form error for phone attempts blocked by a fraud signal. Deliberately non-specific. Never name the signal, the score or the threshold.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:576
+#. Required-action form error when a phone attempt cannot be verified automatically and needs a support review. Keep it non-specific.
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:571
 msgid "We couldn't verify this number automatically. Contact support and a person will review your account."
 msgstr "Chúng tôi không thể xác minh số này một cách tự động. Hãy liên hệ bộ phận hỗ trợ, sẽ có người xem xét tài khoản của bạn."
 
 #. Required-action form error when the phone number's country is on the SMS send ban list. Must not imply the number itself is invalid.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:546
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:542
 msgid "We don't send verification texts to this country. Try a mobile number from another country, or contact support."
 msgstr "Chúng tôi không gửi tin nhắn xác minh đến quốc gia này. Vui lòng thử số di động từ quốc gia khác hoặc liên hệ bộ phận hỗ trợ."
 
@@ -38402,10 +38335,6 @@ msgstr "Chúng tôi đã giảm giá {premiumProductName} tại Brazil. Giá hi�
 #: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:210
 msgid "We need one verification step before you continue. This helps protect accounts and keep spam off {productName}."
 msgstr "Chúng tôi cần một bước xác minh trước khi bạn tiếp tục. Điều này giúp bảo vệ tài khoản và ngăn spam trên {productName}."
-
-#: src/features/auth/components/modals/CaptchaModal.tsx:128
-msgid "We need to make sure you're not a bot. Complete the verification below."
-msgstr "Chúng tôi cần xác minh bạn không phải là bot. Vui lòng hoàn tất xác minh bên dưới."
 
 #. Required-action modal intro text when both email and phone verification are required.
 #: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:216
@@ -38479,9 +38408,9 @@ msgstr "Chúng tôi sẽ gửi mã xác minh đến email của bạn trước k
 msgid "We'll send a verification code to your email before you can view your backup codes."
 msgstr "Chúng tôi sẽ gửi một mã xác minh đến email của bạn trước khi bạn có thể xem mã dự phòng của mình."
 
-#: src/features/user/components/modals/PhoneAddModal.tsx:286
-msgid "We'll send an SMS code when available. Your number is not linked to your account. We keep only an encrypted marker, with no user ID, to allow at most {PHONE_VERIFICATION_LIMIT} verifications in about {PHONE_VERIFICATION_WINDOW_DAYS} days."
-msgstr "Chúng tôi sẽ gửi mã SMS khi có thể. Số điện thoại của bạn không được liên kết với tài khoản của bạn. Chúng tôi chỉ lưu một mã đánh dấu được mã hóa, không có ID người dùng, để cho phép tối đa {PHONE_VERIFICATION_LIMIT} lần xác minh trong khoảng {PHONE_VERIFICATION_WINDOW_DAYS} ngày."
+#: src/features/user/components/modals/PhoneAddModal.tsx:284
+msgid "We'll send an SMS code when available. Your number is not linked to your account. We keep only an encrypted marker, with no user ID, for a limited time."
+msgstr "Chúng tôi sẽ gửi mã SMS khi có sẵn. Số của bạn không được liên kết với tài khoản của bạn. Chúng tôi chỉ lưu giữ một mã đánh dấu được mã hóa, không có ID người dùng, trong một thời gian giới hạn."
 
 #: src/features/user/components/modals/EmailChangeModal.tsx:189
 msgid "We'll verify your current email and then your new email with one-time codes."
@@ -38841,7 +38770,7 @@ msgstr "Những cuộc trò chuyện nào"
 msgid "Which rule was broken?"
 msgstr "Quy tắc nào đã bị vi phạm?"
 
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:358
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:355
 msgid "While push-to-talk is on, your shortcut controls your microphone, so the mute button is disabled."
 msgstr "Khi bật tính năng nhấn để nói, phím tắt sẽ điều khiển micrô của bạn, vì vậy nút tắt tiếng sẽ bị vô hiệu hóa."
 
@@ -39261,7 +39190,7 @@ msgid "You can't befriend yourself"
 msgstr "Bạn không thể kết bạn với chính mình"
 
 #. Label in the my profile tab. Keep the tone plain and specific.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:134
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:133
 msgid "You can't change your nickname here"
 msgstr "Bạn không thể thay đổi biệt danh của mình tại đây"
 
@@ -39511,7 +39440,7 @@ msgid "You have unsaved changes."
 msgstr "Bạn có thay đổi chưa lưu."
 
 #. Warning text in the my profile tab. Keep the tone plain and specific.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:81
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:80
 msgid "You have unsaved changes. Save or reset before leaving."
 msgstr "Bạn có thay đổi chưa lưu. Hãy lưu hoặc đặt lại trước khi rời đi."
 
@@ -39532,11 +39461,11 @@ msgstr "Bạn chưa chặn ai."
 msgid "You just pressed Tab. Keyboard mode is now on so you can navigate {productName} without a mouse."
 msgstr "Bạn vừa nhấn phím Tab. Chế độ bàn phím hiện đã bật để bạn có thể điều hướng {productName} mà không cần chuột."
 
-#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:135
+#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:137
 msgid "You keep your perks until your next renewal date, then have a 3-day grace period to resubscribe and keep your subscriber history."
 msgstr "Bạn giữ các đặc quyền của mình cho đến ngày gia hạn tiếp theo, sau đó có thời gian ân hạn 3 ngày để đăng ký lại và giữ lịch sử đăng ký của mình."
 
-#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:157
+#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:159
 msgid "You lose all {PREMIUM_PRODUCT_NAME} perks immediately and your subscriber history resets. This cannot be undone."
 msgstr "Bạn sẽ mất tất cả các đặc quyền của {PREMIUM_PRODUCT_NAME} ngay lập tức và lịch sử đăng ký của bạn sẽ được đặt lại. Thao tác này không thể hoàn tác."
 
@@ -39986,10 +39915,10 @@ msgstr "Phiên {productName} của bạn đã hết hạn. Vui lòng đăng nh�
 msgid "Your account"
 msgstr "Tài khoản của bạn"
 
-#. First line of the set-aside confirmation in the required-action modal. Always shown. Says can rather than will, because whether the check returns depends on account age and instance settings the user cannot see.
+#. First line of the set-aside confirmation in the required-action modal. Always shown. Says can rather than will, because the check may or may not come back.
 #: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:316
-msgid "Your account goes back to normal right away and you will not need a phone number now. This is not a permanent exemption. Joining a large or public community can bring this check back."
-msgstr "Tài khoản của bạn sẽ trở lại bình thường ngay lập tức và bạn chưa cần số điện thoại vào lúc này. Đây không phải là miễn trừ vĩnh viễn. Tham gia một cộng đồng lớn hoặc công khai có thể khiến bước kiểm tra này quay lại."
+msgid "Your account goes back to normal right away and you will not need a phone number now. This is not a permanent exemption, and we can ask for this check again later."
+msgstr "Tài khoản của bạn sẽ trở lại bình thường ngay lập tức và bạn sẽ không cần số điện thoại nữa. Đây không phải là miễn trừ vĩnh viễn và chúng tôi có thể yêu cầu kiểm tra lại sau."
 
 #: src/features/connection/components/pages/ConnectionCallbackPage.tsx:29
 msgid "Your account has been linked successfully. You can now close this tab and return to the app."
@@ -40036,10 +39965,6 @@ msgstr "Hành động của bạn không thể hoàn tất vì đã bị hệ th
 msgid "Your application is pending review. You can still update your listing details or withdraw the application."
 msgstr "Đơn đăng ký của bạn đang chờ xét duyệt. Bạn vẫn có thể cập nhật chi tiết hoặc rút lại đơn đăng ký."
 
-#: src/features/auth/components/AltchaVerification.tsx:50
-msgid "Your browser couldn't finish the check."
-msgstr "Trình duyệt của bạn không thể hoàn tất kiểm tra."
-
 #. Body of the browser-audio-required modal explaining why the user must click before audio can play.
 #: src/features/voice/components/modals/AudioPlaybackPermissionModal.tsx:12
 msgid "Your browser requires user interaction before audio can be played. Click the button below to enable voice chat."
@@ -40054,7 +39979,7 @@ msgid "Your card is eligible. Redirecting you to the payment page now."
 msgstr "Thẻ của bạn đủ điều kiện. Đang chuyển bạn đến trang thanh toán."
 
 #. Required-action form error when the carrier lookup says the number does not exist. Leaves room for the lookup to be wrong.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:564
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:560
 msgid "Your carrier says this number isn't in service. Check it and try again, or contact support if it's correct."
 msgstr "Nhà mạng cho biết số này không còn được sử dụng. Vui lòng kiểm tra lại rồi thử lại, hoặc liên hệ bộ phận hỗ trợ nếu số này là chính xác."
 
@@ -40226,10 +40151,10 @@ msgstr "email mới của bạn"
 msgid "Your new nickname, or leave blank to reset it."
 msgstr "Biệt danh mới của bạn, hoặc để trống để đặt lại."
 
-#. Required-action modal privacy note for phone verification. limit and duration are inserted by code.
+#. Required-action modal privacy note for phone verification.
 #: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:421
-msgid "Your number is not linked to your account. We keep only an encrypted marker, with no user ID, for at most {limit} verifications in about {duration} days."
-msgstr "Số điện thoại của bạn chưa được liên kết với tài khoản. Chúng tôi chỉ lưu trữ một điểm đánh dấu được mã hóa, không có ID người dùng, cho tối đa {limit} lần xác minh trong khoảng {duration} ngày."
+msgid "Your number is not linked to your account. We keep only an encrypted marker, with no user ID, for a limited time."
+msgstr "Số của bạn không được liên kết với tài khoản của bạn. Chúng tôi chỉ lưu giữ một mã hóa được mã hóa, không có ID người dùng, trong một thời gian giới hạn."
 
 #: src/features/premium/components/pages/PremiumCallbackPage.tsx:152
 msgid "Your payment was canceled. You can now close this tab and return to the app."
@@ -40391,7 +40316,7 @@ msgid "YouTube enrichment"
 msgstr "Bổ sung thông tin YouTube"
 
 #. Setup wizard title for YouTube integration credentials.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:977
+#: src/features/app/components/setup/SetupWizardSteps.tsx:970
 msgid "YouTube previews"
 msgstr "Xem trước YouTube"
 
@@ -40417,7 +40342,7 @@ msgstr "Thu phóng cửa sổ"
 #. Native View menu item that increases UI zoom level.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:628
-#: src/features/input/state/input_keybind/shared.ts:253
+#: src/features/input/state/input_keybind/shared.ts:261
 #: src/features/platform/utils/DesktopLocaleBridge.ts:113
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:82
 msgid "Zoom in"
@@ -40428,7 +40353,7 @@ msgstr "Phóng to"
 #. Native View menu item that decreases UI zoom level.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:624
-#: src/features/input/state/input_keybind/shared.ts:257
+#: src/features/input/state/input_keybind/shared.ts:265
 #: src/features/platform/utils/DesktopLocaleBridge.ts:117
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:86
 msgid "Zoom out"

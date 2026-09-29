@@ -2395,11 +2395,6 @@ msgstr "60 de secunde"
 msgid "7 days"
 msgstr "7 zile"
 
-#. Required-action error when the API requires a captcha for phone verification.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:581
-msgid "A browser check is required before phone verification. Try again from the sign-in page or contact support."
-msgstr "Este necesară o verificare în browser înainte de verificarea telefonică. Încearcă din nou de pe pagina de conectare sau contactează asistența."
-
 #. Hint shown beside in:. Sentence case, no trailing punctuation.
 #: src/features/search/utils/SearchUtils.ts:77
 msgid "a channel"
@@ -2874,7 +2869,7 @@ msgid "Activity sharing"
 msgstr "Partajarea activității"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:478
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:473
 #: src/features/user/components/settings_utils/section_registry/VoiceVideoSections.ts:102
 msgid "Activity threshold"
 msgstr "Prag de activitate"
@@ -2928,7 +2923,7 @@ msgid "Add a friend to get started."
 msgstr "Adaugă un prieten pentru a începe."
 
 #. Setup wizard body for GIF integration credentials.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:973
+#: src/features/app/components/setup/SetupWizardSteps.tsx:966
 msgid "Add a Klipy API key to enable GIF search at runtime."
 msgstr "Adaugă o cheie API Klipy pentru a activa căutarea GIF-urilor la rulare."
 
@@ -2965,7 +2960,7 @@ msgid "Add a working email"
 msgstr "Adaugă o adresă de e-mail funcțională"
 
 #. Setup wizard body for YouTube integration credentials.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:981
+#: src/features/app/components/setup/SetupWizardSteps.tsx:974
 msgid "Add a YouTube Data API key to enrich YouTube links."
 msgstr "Adaugă o cheie API YouTube Data pentru a îmbogăți linkurile YouTube."
 
@@ -3011,7 +3006,7 @@ msgid "Add another reaction"
 msgstr "Adaugă altă reacție"
 
 #. Setup wizard body for Bluesky integration credentials.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1005
+#: src/features/app/components/setup/SetupWizardSteps.tsx:990
 msgid "Add Bluesky OAuth client metadata and a signing key."
 msgstr "Adaugă metadate pentru clientul OAuth Bluesky și o cheie de semnare."
 
@@ -3120,7 +3115,7 @@ msgstr "Adaugă o cheie de acces"
 #. Generic action label that opens the reaction picker for a message.
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:527
-#: src/features/input/state/input_keybind/shared.ts:17
+#: src/features/input/state/input_keybind/shared.ts:21
 msgid "Add reaction"
 msgstr "Adaugă o reacție"
 
@@ -3161,7 +3156,7 @@ msgid "Add shortcut"
 msgstr "Adaugă scurtătură"
 
 #. Setup wizard body for SMTP integration credentials.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:997
+#: src/features/app/components/setup/SetupWizardSteps.tsx:982
 msgid "Add SMTP credentials so the instance can send verification and notification email."
 msgstr "Adaugă credențiale SMTP pentru ca instanța să poată trimite e-mailuri de verificare și notificare."
 
@@ -3188,7 +3183,7 @@ msgid "Add stream"
 msgstr "Adaugă stream"
 
 #. Description for configuring an optional setup wizard integration now.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:965
+#: src/features/app/components/setup/SetupWizardSteps.tsx:958
 msgid "Add the credentials during setup."
 msgstr "Adaugă credențialele în timpul configurării."
 
@@ -3611,11 +3606,11 @@ msgstr "Permite {everyoneMention} și {hereMention}"
 msgid "Allow {PRODUCT_NAME} to access your camera in {MACOS_SYSTEM_SETTINGS_NAME} → {MACOS_PRIVACY_AND_SECURITY_SETTINGS_NAME} → {MACOS_CAMERA_PERMISSION_NAME}."
 msgstr "Permite aplicației {PRODUCT_NAME} să îți acceseze camera în {MACOS_SYSTEM_SETTINGS_NAME} → {MACOS_PRIVACY_AND_SECURITY_SETTINGS_NAME} → {MACOS_CAMERA_PERMISSION_NAME}."
 
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:535
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:530
 msgid "Allow {PRODUCT_NAME} to access your microphone in {MACOS_SYSTEM_SETTINGS_NAME} → {MACOS_PRIVACY_AND_SECURITY_SETTINGS_NAME} → {MACOS_MICROPHONE_PERMISSION_NAME}."
 msgstr "Permite aplicației {PRODUCT_NAME} să îți acceseze microfonul în {MACOS_SYSTEM_SETTINGS_NAME} → {MACOS_PRIVACY_AND_SECURITY_SETTINGS_NAME} → {MACOS_MICROPHONE_PERMISSION_NAME}."
 
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:540
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:535
 msgid "Allow {PRODUCT_NAME} to access your microphone. Check your browser's address bar or settings."
 msgstr "Permite aplicației {PRODUCT_NAME} să îți acceseze microfonul. Verifică bara de adrese sau setările browserului."
 
@@ -3718,7 +3713,7 @@ msgstr "Permite membrilor fără permisiunea {readMessageHistoryPermissionLabel}
 msgid "Allow mentions for this role"
 msgstr "Permite menționări pentru acest rol"
 
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:560
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:555
 msgid "Allow microphone"
 msgstr "Permite accesul la microfon"
 
@@ -3954,7 +3949,7 @@ msgid "An invalid status was provided. You can now close this tab and return to 
 msgstr "A fost furnizată o stare nevalidă. Acum poți închide această filă și reveni la aplicație."
 
 #. Short label in the authentication auth form. Keep the tone plain and specific.
-#: src/features/auth/hooks/useAuthForm.ts:13
+#: src/features/auth/hooks/useAuthForm.ts:12
 msgid "An unexpected error occurred"
 msgstr "A apărut o eroare neașteptată"
 
@@ -4203,7 +4198,7 @@ msgid "Another round checkbox"
 msgstr "Încă o casetă de selectare rotundă"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:213
+#: src/features/input/state/input_keybind/shared.ts:221
 msgid "Answer the incoming call"
 msgstr "Răspunde la apelul primit"
 
@@ -4262,7 +4257,7 @@ msgid "Anyone can request an account, but an administrator must approve it."
 msgstr "Oricine poate solicita un cont, dar un administrator trebuie să-l aprobe."
 
 #. Label for an integration API key input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1018
+#: src/features/app/components/setup/SetupWizardSteps.tsx:994
 msgid "API key"
 msgstr "Cheie API"
 
@@ -4767,7 +4762,7 @@ msgid "Audio output"
 msgstr "Ieșire audio"
 
 #. Field label in the voice connection status popout. Shows received audio packet loss percentage.
-#: src/features/voice/components/voice_connection_status/shared.ts:107
+#: src/features/voice/components/voice_connection_status/shared.ts:108
 msgid "Audio packet loss:"
 msgstr "Pierdere pachete audio:"
 
@@ -4782,32 +4777,32 @@ msgid "Audio preview"
 msgstr "Previzualizare audio"
 
 #. Voice settings modal title for microphone processing options.
-#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:51
+#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:48
 msgid "Audio processing"
 msgstr "Procesare audio"
 
 #. Tooltip in the voice status popout. Describes the custom mic processing profile with enhanced (DeepFilterNet3) noise suppression.
-#: src/features/voice/components/voice_connection_status/shared.ts:19
+#: src/features/voice/components/voice_connection_status/shared.ts:20
 msgid "Audio processing (custom, enhanced)"
 msgstr "Procesare audio (personalizată, îmbunătățită)"
 
 #. Tooltip in the voice status popout. Describes the custom mic processing profile with no noise suppression.
-#: src/features/voice/components/voice_connection_status/shared.ts:29
+#: src/features/voice/components/voice_connection_status/shared.ts:30
 msgid "Audio processing (custom, no suppression)"
 msgstr "Procesare audio (personalizată, fără suprimare)"
 
 #. Tooltip in the voice status popout. Describes the custom mic processing profile with browser-built-in noise suppression.
-#: src/features/voice/components/voice_connection_status/shared.ts:24
+#: src/features/voice/components/voice_connection_status/shared.ts:25
 msgid "Audio processing (custom)"
 msgstr "Procesare audio (personalizată)"
 
 #. Tooltip in the voice status popout. Describes the studio / direct-input mic processing profile.
-#: src/features/voice/components/voice_connection_status/shared.ts:11
+#: src/features/voice/components/voice_connection_status/shared.ts:12
 msgid "Audio processing (direct input, raw)"
 msgstr "Procesare audio (intrare directă, brută)"
 
 #. Tooltip in the voice status popout. Describes the focused-voice mic processing profile.
-#: src/features/voice/components/voice_connection_status/shared.ts:15
+#: src/features/voice/components/voice_connection_status/shared.ts:16
 msgid "Audio processing (focused voice)"
 msgstr "Procesare audio (voce focalizată)"
 
@@ -4817,12 +4812,12 @@ msgid "Audio progress"
 msgstr "Progres audio"
 
 #. Field label in the voice connection status popout. Shows current inbound audio bitrate.
-#: src/features/voice/components/voice_connection_status/shared.ts:95
+#: src/features/voice/components/voice_connection_status/shared.ts:96
 msgid "Audio receive:"
 msgstr "Recepție audio:"
 
 #. Field label in the voice connection status popout. Shows current outbound audio bitrate.
-#: src/features/voice/components/voice_connection_status/shared.ts:91
+#: src/features/voice/components/voice_connection_status/shared.ts:92
 msgid "Audio send:"
 msgstr "Trimitere audio:"
 
@@ -4958,7 +4953,7 @@ msgid "Authorized apps"
 msgstr "Aplicații autorizate"
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:38
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:37
 msgid "Authorized IPs cleared. New logins will require email verification."
 msgstr "IP-urile autorizate au fost șterse. Noile autentificări vor necesita verificare prin e-mail."
 
@@ -4993,7 +4988,7 @@ msgstr "Detectare automată a limbii"
 
 #. Short label in the voice tab. Keep it concise.
 #: src/features/user/components/modals/tabs/UserVoiceTab.tsx:116
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:465
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:460
 msgid "Auto-set activity threshold"
 msgstr "Setează automat pragul de activitate"
 
@@ -5210,7 +5205,7 @@ msgid "Avatars"
 msgstr "Avatare"
 
 #. Field label in the voice connection status popout. Shows the average RTT in ms over the recent window.
-#: src/features/voice/components/voice_connection_status/shared.ts:50
+#: src/features/voice/components/voice_connection_status/shared.ts:51
 msgid "Average ping:"
 msgstr "Ping mediu:"
 
@@ -5240,8 +5235,8 @@ msgstr "Plecat acum"
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:396
 #: src/features/moderation/components/report_modal/IARModal.tsx:86
 #: src/features/moderation/components/report/ReportStepDetails.tsx:312
-#: src/features/user/components/modals/PhoneAddModal.tsx:420
-#: src/features/user/components/modals/PhoneAddModal.tsx:439
+#: src/features/user/components/modals/PhoneAddModal.tsx:417
+#: src/features/user/components/modals/PhoneAddModal.tsx:436
 msgid "Back"
 msgstr "Înapoi"
 
@@ -5450,7 +5445,7 @@ msgid "Ban this user"
 msgstr "Banează acest utilizator"
 
 #. Section heading in the voice connection status popout for current media bitrate usage.
-#: src/features/voice/components/voice_connection_status/shared.ts:66
+#: src/features/voice/components/voice_connection_status/shared.ts:67
 msgid "Bandwidth"
 msgstr "Lățime de bandă"
 
@@ -5730,7 +5725,7 @@ msgid "Bluesky connections"
 msgstr "Conexiuni Bluesky"
 
 #. Setup wizard title for Bluesky integration credentials.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1001
+#: src/features/app/components/setup/SetupWizardSteps.tsx:986
 msgid "Bluesky OAuth"
 msgstr "OAuth Bluesky"
 
@@ -5775,7 +5770,7 @@ msgstr "Limită de mesaje salvate atinsă"
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:531
-#: src/features/input/state/input_keybind/shared.ts:265
+#: src/features/input/state/input_keybind/shared.ts:273
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:66
 msgid "Bookmark message"
 msgstr "Salvează mesajul"
@@ -5896,11 +5891,6 @@ msgstr "Permisiunile botului nu pot fi negative."
 #: src/features/user/components/settings_utils/search_index/ApplicationsIndex.ts:64
 msgid "Bot profile"
 msgstr "Profil bot"
-
-#. Setup wizard title for CAPTCHA integration credentials.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:985
-msgid "Bot protection"
-msgstr "Protecție împotriva boților"
 
 #. Short label in the authentication OAUTH scopes step. Keep the tone plain and specific.
 #: src/features/auth/components/pages/oauth_authorize_page/OAuthScopesStep.tsx:20
@@ -6431,7 +6421,7 @@ msgstr "Nu se pot încărca fișiere aici"
 #: src/features/expressions/components/modals/EditGuildStickerModal.tsx:116
 #: src/features/guild/components/modals/TransferOwnershipModal.tsx:91
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:103
-#: src/features/input/state/input_keybind/shared.ts:137
+#: src/features/input/state/input_keybind/shared.ts:145
 #: src/features/invite/components/modals/InviteModal.tsx:552
 #: src/features/messaging/components/modals/AttachmentEditModal.tsx:133
 #: src/features/messaging/components/modals/EditAltTextModal.tsx:190
@@ -6451,7 +6441,7 @@ msgstr "Nu se pot încărca fișiere aici"
 #: src/features/user/components/modals/PasswordChangeModal.tsx:226
 #: src/features/user/components/modals/PasswordChangeModal.tsx:237
 #: src/features/user/components/modals/PasswordChangeModal.tsx:255
-#: src/features/user/components/modals/PhoneAddModal.tsx:401
+#: src/features/user/components/modals/PhoneAddModal.tsx:398
 #: src/features/user/components/modals/tabs/AuthorizedAppsTab.tsx:174
 #: src/features/voice/components/EntranceSoundTrimmerModal.tsx:33
 #: src/features/voice/components/modals/CameraPreviewModal.tsx:846
@@ -6501,12 +6491,12 @@ msgstr "Anulează schimbarea programată"
 #. Billing button that starts subscription cancellation.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:844
-#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:140
+#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:142
 #: src/features/user/components/settings_utils/search_index/PlutoniumIndex.ts:31
 msgid "Cancel subscription"
 msgstr "Anulează abonamentul"
 
-#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:133
+#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:135
 msgid "Cancel subscription?"
 msgstr "Anulezi abonamentul?"
 
@@ -6553,11 +6543,6 @@ msgstr "Nu se poate edita"
 #: src/features/guild/components/modals/GuildOwnershipWarningModal.tsx:12
 msgid "Cannot delete account"
 msgstr "Nu se poate șterge contul"
-
-#. Toast error shown when captcha verification fails inside the auth captcha interceptor.
-#: src/features/auth/components/CaptchaInterceptor.tsx:15
-msgid "Captcha verification failed. Try again."
-msgstr "Verificarea Captcha a eșuat. Încearcă din nou."
 
 #. Section header in the Linux audio source picker. Lists capture-target options (entire system / specific apps).
 #: src/features/voice/components/AudioSourcePickerLinux.tsx:50
@@ -7398,10 +7383,6 @@ msgstr "Se verifică accesul..."
 msgid "Checking screen recording permission..."
 msgstr "Se verifică permisiunea de înregistrare a ecranului..."
 
-#: src/features/auth/components/AltchaVerification.tsx:62
-msgid "Checking your browser. This takes a few seconds."
-msgstr "Verificăm browserul. Durează câteva secunde."
-
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/search_index/PlutoniumIndex.ts:67
 msgid "Checkout"
@@ -7570,11 +7551,6 @@ msgstr "Alege Fișier, apoi Adaugă în Dock."
 #: src/features/channel/utils/CreateDMModalUtils.tsx:39
 msgid "Choose friends to message."
 msgstr "Alege prieteni cărora să le trimiți mesaje."
-
-#. Setup wizard body for CAPTCHA integration credentials.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:989
-msgid "Choose hCaptcha or Cloudflare Turnstile for signup challenges."
-msgstr "Alege hCaptcha sau Cloudflare Turnstile pentru verificările de la înregistrare."
 
 #. Settings search entry description. One-line summary of what the settings search entry controls.
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:455
@@ -7865,7 +7841,7 @@ msgid "Clean link"
 msgstr "Curăță linkul"
 
 #. Description for the focused-voice option in the voice processing settings radio group.
-#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:34
+#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:31
 msgid "Cleans up your mic for clear speech."
 msgstr "Curăță microfonul pentru o vorbire clară."
 
@@ -7924,7 +7900,7 @@ msgid "Clear custom status"
 msgstr "Șterge starea personalizată"
 
 #. Body of the confirmation alert shown when clearing every reaction on a message.
-#: src/features/channel/components/MessageActionUtils.tsx:71
+#: src/features/channel/components/MessageActionUtils.tsx:74
 msgid "Clear every reaction from this message?"
 msgstr "Ștergi toate reacțiile de la acest mesaj?"
 
@@ -7982,17 +7958,17 @@ msgid "Clear selection"
 msgstr "Anulează selecția"
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:88
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:87
 msgid "Clear trust all setting"
 msgstr "Șterge setarea „încredere totală”"
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:63
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:62
 msgid "Clear trusted domains"
 msgstr "Șterge domeniile de încredere"
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:96
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:95
 msgid "Clear trusted domains ({trustedDomainsCount})"
 msgstr "Șterge domeniile de încredere ({trustedDomainsCount})"
 
@@ -8002,7 +7978,7 @@ msgid "Clearer text"
 msgstr "Text mai clar"
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:108
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:107
 msgid "Clearing trusted domains..."
 msgstr "Se șterg domeniile de încredere..."
 
@@ -8100,7 +8076,7 @@ msgid "Client"
 msgstr "Client"
 
 #. Label for Bluesky OAuth client name input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1057
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1031
 msgid "Client name"
 msgstr "Nume client"
 
@@ -8117,7 +8093,7 @@ msgid "Client secret regenerated. Update any code that uses the old secret."
 msgstr "Secretul clientului a fost regenerat. Actualizează orice cod care folosește vechiul secret."
 
 #. Label for Bluesky OAuth client URL input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1061
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1035
 msgid "Client URL"
 msgstr "URL client"
 
@@ -8269,11 +8245,6 @@ msgstr "DM-uri închise"
 msgid "Cloud upload"
 msgstr "Încărcare în cloud"
 
-#. Cloudflare Turnstile provider option.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1014
-msgid "Cloudflare Turnstile"
-msgstr "Cloudflare Turnstile"
-
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/section_registry/AppearanceSections.ts:58
 msgid "Coal"
@@ -8294,7 +8265,7 @@ msgstr "Temă cărbune"
 #. Label for an inbound phone verification code shown in the required-action modal.
 #: src/features/auth/components/modals/MfaTotpDisableModal.tsx:26
 #: src/features/auth/components/modals/MfaTotpEnableModal.tsx:36
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:466
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:462
 #: src/features/invite/components/InviteListItem.tsx:77
 #: src/features/moderation/components/report/ReportBreadcrumbs.tsx:29
 msgid "Code"
@@ -8669,7 +8640,7 @@ msgstr "Numele comunității"
 
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:126
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:125
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:113
 msgid "Community nickname"
 msgstr "Pseudonim în comunitate"
@@ -8722,7 +8693,7 @@ msgid "Community profile"
 msgstr "Profilul comunității"
 
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:73
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:72
 msgid "Community profile updated"
 msgstr "Profilul comunității a fost actualizat"
 
@@ -8880,7 +8851,7 @@ msgid "Configure keyboard shortcuts"
 msgstr "Configurează scurtăturile de la tastatură"
 
 #. Option for configuring an optional setup wizard integration.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:961
+#: src/features/app/components/setup/SetupWizardSteps.tsx:954
 msgid "Configure now"
 msgstr "Configurează acum"
 
@@ -9013,7 +8984,7 @@ msgstr "Conectează o cameră sau un dispozitiv de captură virtual, apoi încea
 msgid "Connect a display, then try again."
 msgstr "Conectează un ecran, apoi încearcă din nou."
 
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:545
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:540
 msgid "Connect a microphone and try again."
 msgstr "Conectează un microfon și încearcă din nou."
 
@@ -9058,7 +9029,7 @@ msgid "Connecting..."
 msgstr "Se conectează..."
 
 #. Voice connection status while joining or reconnecting.
-#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:46
+#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:47
 msgctxt "voice-connection-status"
 msgid "Connecting..."
 msgstr "Se conectează..."
@@ -9077,7 +9048,7 @@ msgid "Connection failed"
 msgstr "Conexiune eșuată"
 
 #. Voice connection status when the most recent attempt to join the channel failed.
-#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:56
+#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:57
 msgctxt "voice-connection-status"
 msgid "Connection failed"
 msgstr "Conexiune eșuată"
@@ -9464,7 +9435,7 @@ msgstr "Copiază ID-ul canalului"
 
 #. Action that copies a deep link to the selected channel.
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:205
+#: src/features/input/state/input_keybind/shared.ts:213
 #: src/features/ui/action_menu/items/ChannelMenuData.tsx:132
 msgid "Copy channel link"
 msgstr "Copiază linkul canalului"
@@ -9503,7 +9474,7 @@ msgid "Copy emoji URL"
 msgstr "Copiază URL-ul emoji-ului"
 
 #. Tooltip / button label that copies the voice endpoint hostname to the clipboard.
-#: src/features/voice/components/voice_connection_status/shared.ts:58
+#: src/features/voice/components/voice_connection_status/shared.ts:59
 msgid "Copy endpoint"
 msgstr "Copiază punctul final"
 
@@ -9613,7 +9584,7 @@ msgstr "Copiază mesajul"
 #. Developer-mode action that copies a message snowflake/ID to the clipboard.
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:737
-#: src/features/input/state/input_keybind/shared.ts:277
+#: src/features/input/state/input_keybind/shared.ts:285
 msgid "Copy message ID"
 msgstr "Copiază ID-ul mesajului"
 
@@ -9621,7 +9592,7 @@ msgstr "Copiază ID-ul mesajului"
 #. IAR modal: quick-action card title.
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:523
-#: src/features/input/state/input_keybind/shared.ts:273
+#: src/features/input/state/input_keybind/shared.ts:281
 #: src/features/moderation/components/report_modal/IARModalCopy.ts:389
 msgid "Copy message link"
 msgstr "Copiază linkul mesajului"
@@ -10299,7 +10270,7 @@ msgstr "Temporizator cu numărătoare inversă"
 #. Form field label for the country selector in the phone verification step.
 #. Short label in the phone add modal. Keep it concise.
 #: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:92
-#: src/features/user/components/modals/PhoneAddModal.tsx:59
+#: src/features/user/components/modals/PhoneAddModal.tsx:57
 msgid "Country"
 msgstr "Țara"
 
@@ -10460,7 +10431,7 @@ msgstr "Creează un link nou"
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Short label in the sidebar navigation add guild button.
 #: src/features/app/components/layout/sidebar_nav/AddGuildButton.tsx:32
-#: src/features/input/state/input_keybind/shared.ts:121
+#: src/features/input/state/input_keybind/shared.ts:129
 msgid "Create or join a community"
 msgstr "Creează sau alătură-te unei comunități"
 
@@ -10653,7 +10624,7 @@ msgid "Current DM"
 msgstr "DM-ul curent"
 
 #. Field label in the voice connection status popout. Shows the latest RTT in ms.
-#: src/features/voice/components/voice_connection_status/shared.ts:41
+#: src/features/voice/components/voice_connection_status/shared.ts:42
 msgid "Current ping:"
 msgstr "Ping actual:"
 
@@ -10701,7 +10672,7 @@ msgstr "Personalizat"
 #. Voice input processing profile where the user configures processing manually.
 #. Voice input processing profile where the user configures processing manually.
 #: src/features/user/components/modals/tabs/UserVoiceTab.tsx:91
-#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:42
+#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:39
 #: src/features/voice/components/VoiceSettingsMenus.tsx:70
 msgctxt "voice-processing-profile"
 msgid "Custom"
@@ -11229,7 +11200,7 @@ msgid "Decide whether replies @mention you by default"
 msgstr "Decide dacă răspunsurile te @menționează în mod implicit"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:217
+#: src/features/input/state/input_keybind/shared.ts:225
 msgid "Decline the incoming call"
 msgstr "Refuză apelul primit"
 
@@ -12007,7 +11978,7 @@ msgid "Device volume"
 msgstr "Volumul dispozitivului"
 
 #. Field label in the voice connection status popout. Shows the connected voice region / device.
-#: src/features/voice/components/voice_connection_status/shared.ts:37
+#: src/features/voice/components/voice_connection_status/shared.ts:38
 msgid "Device:"
 msgstr "Dispozitiv:"
 
@@ -12336,12 +12307,12 @@ msgstr "Deconectare de la {channel}"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Tray menu item. Leaves the current voice call when the channel name is unavailable.
-#: src/features/input/state/input_keybind/shared.ts:317
+#: src/features/input/state/input_keybind/shared.ts:325
 #: src/features/platform/utils/DesktopLocaleBridge.ts:221
 msgid "Disconnect from voice"
 msgstr "Deconectare de la apelul vocal"
 
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:261
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:243
 msgid "Disconnect socket"
 msgstr "Deconectare socket"
 
@@ -12353,7 +12324,7 @@ msgid "Disconnected"
 msgstr "Deconectat"
 
 #. Voice connection status when not connected.
-#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:51
+#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:52
 msgctxt "voice-connection-status"
 msgid "Disconnected"
 msgstr "Deconectat"
@@ -12418,7 +12389,7 @@ msgid "Dismiss"
 msgstr "Închide"
 
 #. Button that dismisses the failed voice connection status banner.
-#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:66
+#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:67
 msgctxt "voice-connection-status"
 msgid "Dismiss"
 msgstr "Închide"
@@ -12479,7 +12450,7 @@ msgstr "Mod de afișare"
 #. Short label in the inputs tab. Keep it concise.
 #. Short label in the my profile tab. Keep it concise.
 #: src/features/user/components/modals/tabs/component_gallery_tab/ComponentGalleryTabInputsTab.tsx:22
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:138
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:137
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:61
 msgid "Display name"
 msgstr "Nume afișat"
@@ -12625,7 +12596,7 @@ msgstr "Dorești să te alături la {communityName}?"
 #. Label in the accessibility tab.
 #. Label in the my profile tab.
 #: src/features/user/components/modals/tabs/AccessibilityTab.tsx:54
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:146
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:145
 msgid "Doc, I'm from the future. I came here in a time machine that you invented. Now, I need your help to get back to the year 1985."
 msgstr "Doc, sunt din viitor. Am venit aici într-o mașină a timpului pe care ai inventat-o. Acum, am nevoie de ajutorul tău ca să mă întorc în anul 1985."
 
@@ -12966,7 +12937,7 @@ msgid "Drop images, fonts, or other files here to use them inside your custom CS
 msgstr "Plasează imagini, fonturi sau alte fișiere aici pentru a le folosi în CSS-ul personalizat."
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:133
+#: src/features/input/state/input_keybind/shared.ts:141
 msgid "Drop item"
 msgstr "Plasează elementul"
 
@@ -13014,7 +12985,7 @@ msgid "Duplicate role"
 msgstr "Duplică rolul"
 
 #. Field label in the voice connection status popout. Shows how long the current voice session has been connected.
-#: src/features/voice/components/voice_connection_status/shared.ts:74
+#: src/features/voice/components/voice_connection_status/shared.ts:75
 msgid "Duration:"
 msgstr "Durată:"
 
@@ -13256,8 +13227,13 @@ msgstr "Editează avatarul, tagul, biografia, bannerul și comportamentul cereri
 msgid "Edit translation provider"
 msgstr "Editează furnizorul de traduceri"
 
+#. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
+#: src/features/input/state/input_keybind/shared.ts:13
+msgid "Edit your messages above or below"
+msgstr "Editează-ți mesajele de deasupra sau de dedesubt"
+
 #. Button or menu action label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:93
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:92
 msgid "Edit your profile appearance and see a live preview"
 msgstr "Editează-ți aspectul profilului și vezi o previzualizare live"
 
@@ -13325,7 +13301,7 @@ msgid "Email changed"
 msgstr "E-mail modificat"
 
 #. Setup wizard title for SMTP integration credentials.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:993
+#: src/features/app/components/setup/SetupWizardSteps.tsx:978
 msgid "Email delivery"
 msgstr "Livrare e-mail"
 
@@ -13350,7 +13326,7 @@ msgid "Email unavailable"
 msgstr "E-mail indisponibil"
 
 #. Required-action error shown when email update cannot continue.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:522
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:518
 msgid "Email update is unavailable right now. Try again later or contact support."
 msgstr "Actualizarea e-mailului nu este disponibilă momentan. Încearcă din nou mai târziu sau contactează asistența."
 
@@ -13441,12 +13417,12 @@ msgid "Embeds"
 msgstr "Încorporări"
 
 #. Toast confirmation after hiding link previews and embeds on a message.
-#: src/features/channel/components/MessageActionUtils.tsx:83
+#: src/features/channel/components/MessageActionUtils.tsx:86
 msgid "Embeds suppressed"
 msgstr "Încorporări suprimate"
 
 #. Toast confirmation after re-enabling link previews and embeds on a message.
-#: src/features/channel/components/MessageActionUtils.tsx:79
+#: src/features/channel/components/MessageActionUtils.tsx:82
 msgid "Embeds unsuppressed"
 msgstr "Încorporări reafișate"
 
@@ -13630,7 +13606,7 @@ msgid "Enable beta feature"
 msgstr "Activează funcția beta"
 
 #. Label for enabling Bluesky OAuth in setup.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1053
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1027
 msgid "Enable Bluesky OAuth"
 msgstr "Activare OAuth Bluesky"
 
@@ -13663,7 +13639,7 @@ msgid "Enable developer mode"
 msgstr "Activează modul dezvoltator"
 
 #. Label for enabling SMTP email delivery in setup.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1021
+#: src/features/app/components/setup/SetupWizardSteps.tsx:995
 msgid "Enable email delivery"
 msgstr "Activează livrarea e-mailurilor"
 
@@ -13894,11 +13870,11 @@ msgstr "Data de încheiere"
 msgid "End grace now"
 msgstr "Încheie perioada de grație acum"
 
-#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:162
+#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:164
 msgid "End grace period"
 msgstr "Încheie perioada de grație"
 
-#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:155
+#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:157
 msgid "End grace period now?"
 msgstr "Închei perioada de grație acum?"
 
@@ -13930,7 +13906,7 @@ msgid "Endpoint"
 msgstr "Punct final"
 
 #. Field label in the voice connection status popout. Shows the voice server endpoint hostname.
-#: src/features/voice/components/voice_connection_status/shared.ts:54
+#: src/features/voice/components/voice_connection_status/shared.ts:55
 msgid "Endpoint:"
 msgstr "Punct final:"
 
@@ -13999,7 +13975,7 @@ msgstr "Introdu un URL sau un cod de șablon {theOtherPlatform} valid."
 
 #. Inline validation error on the email step of the DSA report flow when the email is malformed.
 #. Required-action form error for an invalid email address.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:510
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:506
 #: src/features/moderation/components/pages/ReportPage.tsx:59
 msgid "Enter a valid email address."
 msgstr "Introdu o adresă de e-mail validă."
@@ -14010,14 +13986,14 @@ msgid "Enter a valid message link."
 msgstr "Introdu un link de mesaj valid."
 
 #. Required-action form error for an invalid phone number.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:526
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:522
 msgid "Enter a valid mobile phone number."
 msgstr "Introdu un număr de telefon mobil valid."
 
 #. Form validation error shown when the entered phone number cannot be parsed.
 #. Label in the phone add modal.
 #: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:108
-#: src/features/user/components/modals/PhoneAddModal.tsx:47
+#: src/features/user/components/modals/PhoneAddModal.tsx:45
 msgid "Enter a valid phone number"
 msgstr "Introdu un număr de telefon valid"
 
@@ -14101,7 +14077,7 @@ msgid "Enter the {digitCount}-digit code sent to {phoneNumber}."
 msgstr "Introdu codul de {digitCount} cifre trimis la {phoneNumber}."
 
 #. placeholder {0}: getE164PhoneNumber(phoneNumber, selectedCountry) ?? formattedPhone
-#: src/features/user/components/modals/PhoneAddModal.tsx:376
+#: src/features/user/components/modals/PhoneAddModal.tsx:373
 msgid "Enter the {MFA_CODE_DIGIT_COUNT}-digit code sent to {0}."
 msgstr "Introdu codul de {MFA_CODE_DIGIT_COUNT} cifre trimis la {0}."
 
@@ -14344,7 +14320,7 @@ msgstr "Seara"
 #. Description for the automatic gain control toggle in the voice processing settings.
 #. Description for the automatic gain control toggle in the voice processing settings.
 #: src/features/user/components/modals/tabs/UserVoiceTab.tsx:173
-#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:63
+#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:60
 msgid "Evens out your mic volume so you are not too quiet."
 msgstr "Nivelează volumul microfonului, ca să nu se audă prea încet."
 
@@ -14463,7 +14439,7 @@ msgid "Expand channel topic"
 msgstr "Extinde subiectul canalului"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:229
+#: src/features/input/state/input_keybind/shared.ts:237
 msgid "Expand or collapse compact call view"
 msgstr "Extinde sau restrânge vizualizarea compactă a apelului"
 
@@ -14700,7 +14676,7 @@ msgid "Failed to ban member. Try again."
 msgstr "Nu s-a putut bana membrul. Încearcă din nou."
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:59
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:58
 msgid "Failed to clear trusted domains."
 msgstr "Nu s-au putut șterge domeniile de încredere."
 
@@ -14757,7 +14733,7 @@ msgid "Failed to enable camera."
 msgstr "Activarea camerei a eșuat."
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:42
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:41
 msgid "Failed to forget authorized IPs. Try again."
 msgstr "Nu s-au putut uita IP-urile autorizate. Încearcă din nou."
 
@@ -14902,7 +14878,7 @@ msgid "Failed to resend verification code. Try again later."
 msgstr "Nu s-a putut retrimite codul de verificare. Încearcă din nou mai târziu."
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:75
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:74
 msgid "Failed to reset premium state."
 msgstr "Nu s-a putut reseta starea premium."
 
@@ -15385,12 +15361,12 @@ msgid "Focus ring"
 msgstr "Inel de focalizare"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:37
+#: src/features/input/state/input_keybind/shared.ts:45
 msgid "Focus text area"
 msgstr "Focalizează zona de text"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:197
+#: src/features/input/state/input_keybind/shared.ts:205
 msgid "Focus the text area"
 msgstr "Focalizează zona de text"
 
@@ -15576,7 +15552,7 @@ msgstr "Forțează scheletul de încărcare"
 msgid "Force mature media"
 msgstr "Forțează conținut matur"
 
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:276
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:258
 msgid "Force move to AFK channel"
 msgstr "Forțează mutarea pe canalul AFK"
 
@@ -15635,7 +15611,7 @@ msgid "Forced off"
 msgstr "Dezactivat forțat"
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:46
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:45
 msgid "Forget authorized IPs"
 msgstr "Uită IP-urile autorizate"
 
@@ -15645,7 +15621,7 @@ msgid "Forget subscriptions"
 msgstr "Uită abonamentele"
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:104
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:103
 msgid "Forgetting authorized IPs..."
 msgstr "Se uită IP-urile autorizate..."
 
@@ -15686,7 +15662,7 @@ msgstr "Redirecționează media"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Title of the forward message modal.
-#: src/features/input/state/input_keybind/shared.ts:25
+#: src/features/input/state/input_keybind/shared.ts:33
 #: src/features/messaging/components/modals/ForwardModal.tsx:83
 msgid "Forward message"
 msgstr "Redirecționează mesajul"
@@ -15902,12 +15878,12 @@ msgid "from <0>{0}</0>"
 msgstr "din <0>{0}</0>"
 
 #. Label for SMTP from email input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1025
+#: src/features/app/components/setup/SetupWizardSteps.tsx:999
 msgid "From email"
 msgstr "E-mail expeditor"
 
 #. Label for SMTP from name input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1029
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1003
 msgid "From name"
 msgstr "Nume expeditor"
 
@@ -16137,7 +16113,7 @@ msgstr "Obține {premiumProductName} pentru a-ți personaliza tagul sau pentru a
 
 #. Button in the required-action modal. Requests a new inbound SMS challenge code.
 #: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:202
-#: src/features/user/components/modals/PhoneAddModal.tsx:427
+#: src/features/user/components/modals/PhoneAddModal.tsx:424
 msgid "Get new code"
 msgstr "Cere cod nou"
 
@@ -16199,7 +16175,7 @@ msgid "GIF preview"
 msgstr "Previzualizare GIF"
 
 #. Setup wizard title for GIF integration credentials.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:969
+#: src/features/app/components/setup/SetupWizardSteps.tsx:962
 msgid "GIF search"
 msgstr "Căutare GIF"
 
@@ -16447,27 +16423,27 @@ msgid "Go to community"
 msgstr "Mergi la comunitate"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:81
+#: src/features/input/state/input_keybind/shared.ts:89
 msgid "Go to direct messages"
 msgstr "Mergi la mesaje directe"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:113
+#: src/features/input/state/input_keybind/shared.ts:121
 msgid "Go to eighth community"
 msgstr "Mergi la a opta comunitate"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:101
+#: src/features/input/state/input_keybind/shared.ts:109
 msgid "Go to fifth community"
 msgstr "Mergi la a cincea comunitate"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:85
+#: src/features/input/state/input_keybind/shared.ts:93
 msgid "Go to first community"
 msgstr "Mergi la prima comunitate"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:97
+#: src/features/input/state/input_keybind/shared.ts:105
 msgid "Go to fourth community"
 msgstr "Mergi la a patra comunitate"
 
@@ -16498,12 +16474,12 @@ msgid "Go to page {pageItem}"
 msgstr "Mergi la pagina {pageItem}"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:89
+#: src/features/input/state/input_keybind/shared.ts:97
 msgid "Go to second community"
 msgstr "Mergi la a doua comunitate"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:109
+#: src/features/input/state/input_keybind/shared.ts:117
 msgid "Go to seventh community"
 msgstr "Mergi la a șaptea comunitate"
 
@@ -16514,12 +16490,12 @@ msgid "Go to sign-in"
 msgstr "Mergi la autentificare"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:105
+#: src/features/input/state/input_keybind/shared.ts:113
 msgid "Go to sixth community"
 msgstr "Mergi la a șasea comunitate"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:93
+#: src/features/input/state/input_keybind/shared.ts:101
 msgid "Go to third community"
 msgstr "Mergi la a treia comunitate"
 
@@ -16839,7 +16815,7 @@ msgid "Hate speech"
 msgstr "Discurs instigator la ură"
 
 #. Premium page text shown on an instance where the premium tier cannot be bought, only redeemed. {PREMIUM_PRODUCT_NAME} is the premium tier name.
-#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:295
+#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:297
 msgid "Have a gift code? Redeem it to unlock {PREMIUM_PRODUCT_NAME}."
 msgstr "Ai un cod cadou? Valorifică-l pentru a debloca {PREMIUM_PRODUCT_NAME}."
 
@@ -16848,20 +16824,11 @@ msgstr "Ai un cod cadou? Valorifică-l pentru a debloca {PREMIUM_PRODUCT_NAME}."
 msgid "Having fun?"
 msgstr "Te distrezi?"
 
-#: src/features/auth/components/modals/CaptchaModal.tsx:175
-msgid "Having issues? Try hCaptcha instead"
-msgstr "Întâmpini probleme? Încearcă hCaptcha în schimb"
-
 #. US state name, shown next to the country name in the mature content gate.
 #: src/features/user/utils/UserGeo.ts:63
 msgctxt "us-state"
 msgid "Hawaii"
 msgstr "Hawaii"
-
-#. hCaptcha provider option.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1013
-msgid "hCaptcha"
-msgstr "hCaptcha"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/section_registry/VoiceVideoSections.ts:238
@@ -17183,11 +17150,6 @@ msgstr "Gamă dinamică înaltă"
 #: src/features/user/components/modals/tabs/appearance_tab/AppearanceTabHdrTab.tsx:29
 msgid "High dynamic range display mode"
 msgstr "Mod de afișare HDR"
-
-#. Description for the DeepFilterNet3 noise suppression strength slider.
-#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:71
-msgid "Higher values remove more noise but can affect speech texture."
-msgstr "Valorile mai mari elimină mai mult zgomot, dar pot afecta textura vorbirii."
 
 #. Short label in the language and locale names. Keep it concise.
 #: src/features/user/utils/LocaleUtils.ts:64
@@ -17809,7 +17771,7 @@ msgstr "În"
 msgid "In \"Operating system\" mode, dictionaries listed above are advisory. {PRODUCT_NAME} will pass these language tags to your OS spellchecker when supported. Tags it doesn't recognize are ignored."
 msgstr "În modul „Sistem de operare”, dicționarele enumerate mai sus sunt consultative. {PRODUCT_NAME} va transmite aceste etichete de limbă verificatorului ortografic al sistemului tău de operare, atunci când este acceptat. Etichetele pe care nu le recunoaște sunt ignorate."
 
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:310
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:307
 msgid "In a browser, push-to-talk only works while the {PRODUCT_NAME} tab is focused. Install the desktop app for system-wide push-to-talk."
 msgstr "Într-un browser, push-to-talk funcționează doar când fila {PRODUCT_NAME} este activă. Instalează aplicația desktop pentru push-to-talk la nivel de sistem."
 
@@ -17955,7 +17917,7 @@ msgid "Incoming calls: nobody"
 msgstr "Apeluri primite: nimeni"
 
 #. Field label in the voice connection status popout. Shows WebRTC estimated available incoming bandwidth.
-#: src/features/voice/components/voice_connection_status/shared.ts:123
+#: src/features/voice/components/voice_connection_status/shared.ts:124
 msgid "Incoming capacity:"
 msgstr "Capacitate de intrare:"
 
@@ -18664,7 +18626,7 @@ msgid "Jitter"
 msgstr "Jitter"
 
 #. Field label in the voice connection status popout. Shows audio jitter in milliseconds.
-#: src/features/voice/components/voice_connection_status/shared.ts:115
+#: src/features/voice/components/voice_connection_status/shared.ts:116
 msgid "Jitter:"
 msgstr "Jitter:"
 
@@ -18793,12 +18755,12 @@ msgid "Jump"
 msgstr "Salt"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:57
+#: src/features/input/state/input_keybind/shared.ts:65
 msgid "Jump between unread channels"
 msgstr "Salt între canalele necitite"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:61
+#: src/features/input/state/input_keybind/shared.ts:69
 msgid "Jump between unread channels with mentions"
 msgstr "Salt între canalele necitite cu mențiuni"
 
@@ -18807,7 +18769,7 @@ msgid "Jump straight to the app to continue."
 msgstr "Treci direct la aplicație pentru a continua."
 
 #. Tooltip / aria label on a button that jumps to the channel. {channelSourceLabel} is the channel or DM name.
-#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:87
+#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:88
 msgid "Jump to {channelSourceLabel}"
 msgstr "Salt la {channelSourceLabel}"
 
@@ -18869,7 +18831,7 @@ msgid "Jump to previous unread channel with mentions"
 msgstr "Salt la canalul necitit anterior cu mențiuni"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:65
+#: src/features/input/state/input_keybind/shared.ts:73
 msgid "Jump to the current call"
 msgstr "Salt la apelul curent"
 
@@ -18894,7 +18856,7 @@ msgid "Jump to the message in {labelText}"
 msgstr "Salt la mesajul din {labelText}"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:193
+#: src/features/input/state/input_keybind/shared.ts:201
 msgid "Jump to the oldest unread message"
 msgstr "Salt la cel mai vechi mesaj necitit"
 
@@ -18942,7 +18904,7 @@ msgstr "Păstrează atașamentele la ștergerea unei editări"
 msgid "Keep free and premium tiers. You can customize the tiers, sell premium through Stripe, or hand out gift codes later from the admin panel."
 msgstr "Păstrează nivelurile gratuit și premium. Poți personaliza nivelurile, poți vinde premium prin Stripe sau poți oferi ulterior coduri cadou din panoul de administrare."
 
-#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:164
+#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:166
 msgid "Keep grace period"
 msgstr "Păstrează perioada de grație"
 
@@ -18956,7 +18918,7 @@ msgstr "Ține Neko nemișcat"
 msgid "Keep running"
 msgstr "Rulează în fundal"
 
-#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:142
+#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:144
 msgid "Keep subscription"
 msgstr "Păstrează abonamentul"
 
@@ -19129,7 +19091,7 @@ msgid "Latency {latency} milliseconds"
 msgstr "Latență {latency} milisecunde"
 
 #. Aria label for the latency graph chart in the voice connection status popout.
-#: src/features/voice/components/voice_connection_status/shared.ts:33
+#: src/features/voice/components/voice_connection_status/shared.ts:34
 msgid "Latency graph"
 msgstr "Grafic de latență"
 
@@ -19768,7 +19730,7 @@ msgid "Logo"
 msgstr "Logo"
 
 #. Label for Bluesky OAuth logo URL input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1065
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1039
 msgid "Logo URL"
 msgstr "URL logo"
 
@@ -19798,7 +19760,7 @@ msgid "Look and feel"
 msgstr "Aspect și stil"
 
 #. placeholder {0}: externalProcessor.name
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:654
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:649
 msgid "Looks like you're using {0}. Stacking {PRODUCT_NAME}'s processing on top can cause pumping or distortion. Direct input passes your audio through untouched."
 msgstr "Se pare că folosești {0}. Suprapunerea procesării audio de la {PRODUCT_NAME} poate cauza distorsiuni sau efecte de pompare. Intrarea directă transmite sunetul netratat."
 
@@ -20055,7 +20017,7 @@ msgstr "Marchează toate DM-urile ca citite"
 
 #. Accessible label and tooltip for the mark-all-as-read button in the inbox popout.
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:165
+#: src/features/input/state/input_keybind/shared.ts:173
 #: src/features/messaging/components/popouts/InboxPopout.tsx:46
 msgid "Mark all inbox channels as read"
 msgstr "Marchează toate canalele din inbox ca citite"
@@ -20087,19 +20049,19 @@ msgstr "Marchează ca spoiler"
 #. Generic action label that flips a channel back to unread.
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:668
-#: src/features/input/state/input_keybind/shared.ts:33
+#: src/features/input/state/input_keybind/shared.ts:41
 msgid "Mark as unread"
 msgstr "Marchează ca necitit"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/input/state/input_keybind/shared.ts:145
+#: src/features/input/state/input_keybind/shared.ts:153
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:58
 msgid "Mark channel as read"
 msgstr "Marchează canalul ca citit"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:141
+#: src/features/input/state/input_keybind/shared.ts:149
 msgid "Mark community as read"
 msgstr "Marchează comunitatea ca citită"
 
@@ -20126,7 +20088,7 @@ msgid "Mark read"
 msgstr "Marchează ca citit"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:161
+#: src/features/input/state/input_keybind/shared.ts:169
 msgid "Mark top inbox channel as read"
 msgstr "Marchează primul canal din inbox ca citit"
 
@@ -20367,12 +20329,12 @@ msgid "Maybe later"
 msgstr "Poate mai târziu"
 
 #. Tooltip on the latency badge while voice latency is still being sampled.
-#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:83
+#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:84
 msgid "Measuring latency..."
 msgstr "Se măsoară latența..."
 
 #. Placeholder shown while voice latency is still being sampled. Trailing ellipsis indicates ongoing measurement.
-#: src/features/voice/components/voice_connection_status/shared.ts:45
+#: src/features/voice/components/voice_connection_status/shared.ts:46
 msgid "Measuring…"
 msgstr "Se măsoară…"
 
@@ -21475,7 +21437,7 @@ msgid "Mouse forward button"
 msgstr "Butonul Înainte al mouse-ului"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:129
+#: src/features/input/state/input_keybind/shared.ts:137
 msgid "Move"
 msgstr "Mută"
 
@@ -21490,7 +21452,7 @@ msgid "Move back through page history"
 msgstr "Înapoi în istoricul paginilor"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:49
+#: src/features/input/state/input_keybind/shared.ts:57
 msgid "Move back through viewed channel history"
 msgstr "Înapoi în istoricul canalelor vizualizate"
 
@@ -21507,7 +21469,7 @@ msgid "Move forward through page history"
 msgstr "Înainte în istoricul paginilor"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:53
+#: src/features/input/state/input_keybind/shared.ts:61
 msgid "Move forward through viewed channel history"
 msgstr "Înainte în istoricul canalelor vizualizate"
 
@@ -22115,7 +22077,7 @@ msgid "Netherlands"
 msgstr "Țările de Jos"
 
 #. Section heading in the voice connection status popout for WebRTC network quality stats.
-#: src/features/voice/components/voice_connection_status/shared.ts:70
+#: src/features/voice/components/voice_connection_status/shared.ts:71
 msgid "Network"
 msgstr "Rețea"
 
@@ -22706,7 +22668,7 @@ msgstr "Niciun rezultat găsit"
 msgid "No mentions yet"
 msgstr "Încă nu există mențiuni"
 
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:530
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:525
 msgid "No microphone found"
 msgstr "Nu s-a găsit niciun microfon"
 
@@ -22941,7 +22903,7 @@ msgid "No tokens match \"{searchQuery}\"."
 msgstr "Niciun token nu se potrivește cu „{searchQuery}”."
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:92
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:91
 msgid "No trusted domains"
 msgstr "Niciun domeniu de încredere"
 
@@ -23696,10 +23658,6 @@ msgstr "Deschide selectorul de browser"
 msgid "Open call view"
 msgstr "Deschide vizualizarea apelului"
 
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:288
-msgid "Open captcha modal"
-msgstr "Deschide fereastra captcha"
-
 #. Accessible label for the channel header title button in a community channel.
 #: src/features/channel/components/channel_header/shared.ts:14
 msgid "Open channel details for {channelName}"
@@ -23712,7 +23670,7 @@ msgstr "Deschide detaliile canalului {channelName}"
 msgid "Open chat"
 msgstr "Deschide chatul"
 
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:314
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:290
 msgid "Open claim account modal"
 msgstr "Deschide fereastra modală Revendică contul"
 
@@ -23814,7 +23772,7 @@ msgid "Open group details for {groupDMName}"
 msgstr "Deschide detaliile grupului pentru {groupDMName}"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:233
+#: src/features/input/state/input_keybind/shared.ts:241
 msgid "Open help"
 msgstr "Deschide Ajutor"
 
@@ -23944,11 +23902,11 @@ msgstr "Deschide stickerul în browser"
 msgid "Open streaming privacy settings"
 msgstr "Deschide setările de confidențialitate pentru streaming"
 
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:327
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:303
 msgid "Open sudo verification modal"
 msgstr "Deschide fereastra modală de verificare sudo"
 
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:342
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:318
 msgid "Open system DM"
 msgstr "Deschide DM-ul de sistem"
 
@@ -23967,7 +23925,7 @@ msgid "Open the ban dialog for this community."
 msgstr "Deschide fereastra de banare pentru această comunitate."
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:241
+#: src/features/input/state/input_keybind/shared.ts:249
 msgid "Open the context menu"
 msgstr "Deschide meniul contextual"
 
@@ -24000,7 +23958,7 @@ msgid "Open the verification email and use the link inside. This window updates 
 msgstr "Deschide e-mailul de verificare și folosește linkul din interior. Această fereastră se actualizează după deschiderea linkului."
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:249
+#: src/features/input/state/input_keybind/shared.ts:257
 msgid "Open theme studio popout"
 msgstr "Deschide fereastra pop-out a studioului de teme"
 
@@ -24044,7 +24002,7 @@ msgid "Open your browser, sign in, then enter the code below to link your accoun
 msgstr "Deschide browserul, conectează-te, apoi introdu codul de mai jos pentru a-ți asocia contul."
 
 #. Required-action modal carousel step title for the first inbound phone verification instruction.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:450
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:446
 msgid "Open your messages"
 msgstr "Deschide mesajele"
 
@@ -24052,17 +24010,17 @@ msgstr "Deschide mesajele"
 msgid "Open your old {PRODUCT_NAME} app and choose Link a new device, then enter the code below."
 msgstr "Deschide vechea ta aplicație {PRODUCT_NAME} și alege „Asociază un dispozitiv nou”, apoi introdu codul de mai jos."
 
-#: src/features/user/components/modals/PhoneAddModal.tsx:327
+#: src/features/user/components/modals/PhoneAddModal.tsx:324
 msgid "Open your phone's messaging app and create a new text message."
 msgstr "Deschide aplicația de mesagerie a telefonului și creează un mesaj text nou."
 
 #. Required-action modal body for the first inbound phone verification instruction.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:454
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:450
 msgid "Open your phone's messaging app and start a new text message."
 msgstr "Deschide aplicația de mesagerie de pe telefon și începe un mesaj text nou."
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:245
+#: src/features/input/state/input_keybind/shared.ts:253
 msgid "Open your settings"
 msgstr "Deschide setările"
 
@@ -24228,7 +24186,7 @@ msgid "OTP"
 msgstr "OTP"
 
 #. Required-action form error when our own phone lookup provider is unavailable and we fail closed. Must blame us, not the number, and must invite retrying the same number.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:558
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:554
 msgid "Our phone number check is down right now. This is on us, not your number. Wait a few minutes and try the same number again."
 msgstr "Verificarea noastră a numerelor de telefon nu funcționează momentan. Problema este la noi, nu la numărul tău. Așteaptă câteva minute și încearcă din nou cu același număr."
 
@@ -24238,7 +24196,7 @@ msgid "Our safety team is reviewing it. We'll send you a DM and email once we've
 msgstr "Echipa noastră de siguranță examinează raportul. Îți vom trimite un DM și un e-mail după ce ajungem la un verdict."
 
 #. Field label in the voice connection status popout. Shows WebRTC estimated available outgoing bandwidth.
-#: src/features/voice/components/voice_connection_status/shared.ts:119
+#: src/features/voice/components/voice_connection_status/shared.ts:120
 msgid "Outgoing capacity:"
 msgstr "Capacitate de ieșire:"
 
@@ -24384,7 +24342,7 @@ msgid "Participants"
 msgstr "Participanți"
 
 #. Field label in the voice connection status popout. Shows the current LiveKit participant count.
-#: src/features/voice/components/voice_connection_status/shared.ts:79
+#: src/features/voice/components/voice_connection_status/shared.ts:80
 msgid "Participants:"
 msgstr "Participanți:"
 
@@ -24430,7 +24388,7 @@ msgstr "Cheile de acces necesită un pachet macOS semnat, cu un identificator de
 
 #. Generic form-field label for a password.
 #. Label for SMTP password input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1036
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1010
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:215
 #: src/features/user/components/modals/tabs/account_security_tab/AccountTab.tsx:146
 #: src/features/user/components/modals/tabs/account_security_tab/AccountTab.tsx:183
@@ -24815,21 +24773,21 @@ msgstr "Telefon"
 #. Form field label for the phone number input.
 #. Short label in the phone add modal. Keep it concise.
 #: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:100
-#: src/features/user/components/modals/PhoneAddModal.tsx:67
+#: src/features/user/components/modals/PhoneAddModal.tsx:65
 msgid "Phone number"
 msgstr "Număr de telefon"
 
 #. Form validation error shown when the phone number field is empty.
 #. Label in the phone add modal.
 #: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:116
-#: src/features/user/components/modals/PhoneAddModal.tsx:43
+#: src/features/user/components/modals/PhoneAddModal.tsx:41
 msgid "Phone number is required"
 msgstr "Numărul de telefon este obligatoriu"
 
 #. Toast shown after phone verification succeeds.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:486
-#: src/features/user/components/modals/PhoneAddModal.tsx:180
-#: src/features/user/components/modals/PhoneAddModal.tsx:185
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:482
+#: src/features/user/components/modals/PhoneAddModal.tsx:178
+#: src/features/user/components/modals/PhoneAddModal.tsx:183
 msgid "Phone number verified"
 msgstr "Număr de telefon verificat"
 
@@ -24844,7 +24802,7 @@ msgid "Phone step"
 msgstr "Pasul telefonului"
 
 #. Required-action error when the account is not eligible to add phone verification.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:542
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:538
 msgid "Phone verification is not available for this account. Use another method or contact support."
 msgstr "Verificarea numărului de telefon nu este disponibilă pentru acest cont. Folosește o altă metodă sau contactează asistența."
 
@@ -24935,7 +24893,7 @@ msgstr "Imagine în imagine"
 
 #. Confirm button label on the pin message alert.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/channel/components/MessageActionUtils.tsx:63
+#: src/features/channel/components/MessageActionUtils.tsx:66
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:70
 msgid "Pin"
 msgstr "Fixare"
@@ -24953,9 +24911,9 @@ msgstr "Fixează DM-ul de grup"
 #. Generic action label that pins a message to the channel pins.
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Title of the confirmation alert shown when pinning a message.
-#: src/features/channel/components/MessageActionUtils.tsx:55
+#: src/features/channel/components/MessageActionUtils.tsx:58
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:539
-#: src/features/input/state/input_keybind/shared.ts:13
+#: src/features/input/state/input_keybind/shared.ts:17
 msgid "Pin message"
 msgstr "Fixare mesaj"
 
@@ -24980,7 +24938,7 @@ msgid "Pin or unpin any message."
 msgstr "Fixează sau desfixează orice mesaj."
 
 #. Body of the confirmation alert shown when pinning a message.
-#: src/features/channel/components/MessageActionUtils.tsx:59
+#: src/features/channel/components/MessageActionUtils.tsx:62
 msgid "Pin this message to the channel for everyone to see."
 msgstr "Fixează acest mesaj pe canal pentru ca toată lumea să-l vadă."
 
@@ -24999,12 +24957,12 @@ msgid "Ping on reply"
 msgstr "Notificare la răspuns"
 
 #. Compact latency badge on the voice control bar. {currentLatency} is an integer millisecond count.
-#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:79
+#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:80
 msgid "Ping: {currentLatency}ms"
 msgstr "Ping: {currentLatency} ms"
 
 #. Compact latency badge variant used in another voice surface. {latency} is an integer millisecond count.
-#: src/features/voice/components/voice_connection_status/MockedVoiceConnectionStatus.tsx:43
+#: src/features/voice/components/voice_connection_status/MockedVoiceConnectionStatus.tsx:44
 msgid "Ping: {latency}ms"
 msgstr "Ping: {latency} ms"
 
@@ -25212,7 +25170,7 @@ msgid "Popup"
 msgstr "Pop-up"
 
 #. Label for SMTP port input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1034
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1008
 msgid "Port"
 msgstr "Port"
 
@@ -25338,7 +25296,7 @@ msgid "Premium since date"
 msgstr "Premium de la data de"
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:71
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:70
 msgid "Premium state reset on the backend."
 msgstr "Starea premium a fost resetată în backend."
 
@@ -25608,7 +25566,7 @@ msgid "Privacy settings"
 msgstr "Setări de confidențialitate"
 
 #. Label for Bluesky OAuth privacy URL input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1073
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1047
 msgid "Privacy URL"
 msgstr "URL confidențialitate"
 
@@ -25633,7 +25591,7 @@ msgid "Private details"
 msgstr "Detalii private"
 
 #. Label for Bluesky OAuth private key input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1081
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1055
 msgid "Private key"
 msgstr "Cheie privată"
 
@@ -25699,18 +25657,18 @@ msgstr "Culoare profil"
 
 #. Settings section label for editing profile appearance and identity.
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:105
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:104
 #: src/features/user/components/settings_utils/section_registry/GeneralSettingsSections.ts:6
 msgid "Profile customization"
 msgstr "Personalizare profil"
 
 #. Label in the my profile tab. Preserve {selectedGuildName}; it is inserted by code.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:101
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:100
 msgid "Profile customization for {selectedGuildName}"
 msgstr "Personalizarea profilului pentru {selectedGuildName}"
 
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:97
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:96
 msgid "Profile customization form"
 msgstr "Formular de personalizare a profilului"
 
@@ -25775,7 +25733,7 @@ msgid "Profile type"
 msgstr "Tip profil"
 
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:77
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:76
 msgid "Profile updated"
 msgstr "Profil actualizat"
 
@@ -25812,7 +25770,7 @@ msgstr "Afișează o alertă când se conectează un dispozitiv audio nou"
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:142
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:141
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:177
 #: src/features/user/components/settings_utils/section_registry/PrivacySafetySections.ts:160
 msgid "Pronouns"
@@ -25842,11 +25800,6 @@ msgstr "Introdu un ID de utilizator sau un nume de utilizator pentru persoana pe
 msgid "Provide your full legal name for the declaration."
 msgstr "Introdu numele legal complet pentru declarație."
 
-#. Label for an integration provider choice.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1009
-msgid "Provider"
-msgstr "Furnizor"
-
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/section_registry/VoiceVideoSections.ts:90
 msgid "PTT"
@@ -25870,7 +25823,7 @@ msgid "Public registration is closed."
 msgstr "Înregistrarea publică este închisă."
 
 #. Field label in the voice connection status popout. Shows technical WebRTC publisher ICE transport details.
-#: src/features/voice/components/voice_connection_status/shared.ts:127
+#: src/features/voice/components/voice_connection_status/shared.ts:128
 msgid "Publisher transport:"
 msgstr "Transport expeditor:"
 
@@ -25984,21 +25937,21 @@ msgid "Push timeout"
 msgstr "Timp de inactivitate push"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:297
+#: src/features/input/state/input_keybind/shared.ts:305
 msgid "Push to mute"
 msgstr "Push-to-mute"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/input/state/input_keybind/shared.ts:289
+#: src/features/input/state/input_keybind/shared.ts:297
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:162
 #: src/features/user/components/settings_utils/section_registry/VoiceVideoSections.ts:86
 msgid "Push to talk"
 msgstr "Push-to-talk"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:293
+#: src/features/input/state/input_keybind/shared.ts:301
 msgid "Push to talk (priority)"
 msgstr "Push-to-talk (prioritate)"
 
@@ -26014,7 +25967,7 @@ msgstr "Tastă push-to-talk"
 
 #. Switch label in the voice tab toggling push-to-talk mode. Keep it concise.
 #: src/features/user/components/modals/tabs/UserVoiceTab.tsx:112
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:349
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:346
 #: src/features/voice/components/VoiceSettingsMenus.tsx:419
 msgid "Push-to-talk"
 msgstr "Push-to-talk"
@@ -26024,7 +25977,7 @@ msgstr "Push-to-talk"
 msgid "Push-to-talk (limited)"
 msgstr "Push-to-talk (limitat)"
 
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:681
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:676
 msgid "Push-to-talk is ignored in direct input. Switch to focused voice or custom to use it."
 msgstr "Push-to-talk este ignorat în modul intrare directă. Comută pe voce focalizată sau pe profilul personalizat ca să îl poți folosi."
 
@@ -26191,7 +26144,7 @@ msgid "Read aloud"
 msgstr "Citește cu voce tare"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:29
+#: src/features/input/state/input_keybind/shared.ts:37
 msgid "Read message aloud"
 msgstr "Citește mesajul cu voce tare"
 
@@ -26280,7 +26233,7 @@ msgid "Receive notifications when someone mentions you"
 msgstr "Primești notificări când cineva te menționează"
 
 #. Field label in the voice connection status popout. Shows total current inbound media bitrate.
-#: src/features/voice/components/voice_connection_status/shared.ts:87
+#: src/features/voice/components/voice_connection_status/shared.ts:88
 msgid "Receive:"
 msgstr "Primire:"
 
@@ -26399,7 +26352,7 @@ msgstr "Valorifică pentru tine"
 #. Billing button for entering a premium gift code.
 #. Billing button for entering a premium gift code.
 #: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:719
-#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:305
+#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:307
 msgid "Redeem gift code"
 msgstr "Valorifică codul cadou"
 
@@ -26716,7 +26669,7 @@ msgid "Remove {userName} from your friends?"
 msgstr "Elimini {userName} din lista ta de prieteni?"
 
 #. Confirm button label on the remove-all-reactions alert. Destructive.
-#: src/features/channel/components/MessageActionUtils.tsx:75
+#: src/features/channel/components/MessageActionUtils.tsx:78
 msgid "Remove all"
 msgstr "Elimină tot"
 
@@ -26729,7 +26682,7 @@ msgstr "Elimini toate reacțiile {emojiNameWithColons} de pe acest mesaj?"
 #. Message action that removes every reaction from the selected message.
 #. Title of the confirmation alert shown when clearing every reaction on a message.
 #: src/features/channel/components/MessageActionMenu.tsx:78
-#: src/features/channel/components/MessageActionUtils.tsx:67
+#: src/features/channel/components/MessageActionUtils.tsx:70
 #: src/features/ui/action_menu/items/MessageMenuItems.tsx:70
 msgid "Remove all reactions"
 msgstr "Elimină toate reacțiile"
@@ -27237,10 +27190,15 @@ msgstr "Preferința pentru mențiuni la răspuns în această comunitate"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Tooltip on the media viewer button that closes the viewer and replies to the message containing the media.
-#: src/features/input/state/input_keybind/shared.ts:21
+#: src/features/input/state/input_keybind/shared.ts:25
 #: src/features/messaging/components/modals/media_modal/shared.ts:105
 msgid "Reply to message"
 msgstr "Răspunde la mesaj"
+
+#. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
+#: src/features/input/state/input_keybind/shared.ts:29
+msgid "Reply to messages above or below"
+msgstr "Răspunde la mesajele de deasupra sau de dedesubt"
 
 #. TTS sentence spoken for a reply message. {replyAuthorName} is the original author, {authorName} is the replier, {formatted} is the speakable message body.
 #: src/features/voice/utils/TtsTextFormatter.ts:47
@@ -27324,7 +27282,7 @@ msgid "Reposts: <0>{countLabel}</0>"
 msgstr "Redistribuiri: <0>{countLabel}</0>"
 
 #. Required-action form error when the user submits before a code exists.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:498
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:494
 msgid "Request a new code first."
 msgstr "Solicită mai întâi un cod nou."
 
@@ -27621,7 +27579,7 @@ msgid "Reset password"
 msgstr "Resetare parolă"
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:79
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:78
 msgid "Reset premium state"
 msgstr "Resetează starea premium"
 
@@ -27630,7 +27588,7 @@ msgstr "Resetează starea premium"
 msgid "Reset slider to default value"
 msgstr "Resetează glisorul la valoarea implicită"
 
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:247
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:229
 msgid "Reset socket"
 msgstr "Resetează socketul"
 
@@ -27673,13 +27631,13 @@ msgstr "Resetare la valorile implicite"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Label for controls that reset app zoom to 100%, including the app zoom slider button.
-#: src/features/input/state/input_keybind/shared.ts:261
+#: src/features/input/state/input_keybind/shared.ts:269
 #: src/features/user/components/modals/tabs/appearance_tab/ScalingTab.tsx:38
 msgid "Reset zoom"
 msgstr "Resetare zoom"
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:112
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:111
 msgid "Resetting premium state..."
 msgstr "Se resetează starea premium..."
 
@@ -28310,7 +28268,7 @@ msgid "Run the instance as one community instead of many. This can only be enabl
 msgstr "Rulează instanța ca o singură comunitate în loc de mai multe. Aceasta poate fi activată doar acum, în timpul configurării."
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:100
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:99
 msgid "Runtime utilities"
 msgstr "Utilitare runtime"
 
@@ -28689,12 +28647,12 @@ msgid "Scroll animation"
 msgstr "Animație de derulare"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:189
+#: src/features/input/state/input_keybind/shared.ts:197
 msgid "Scroll chat down"
 msgstr "Derulează chatul în jos"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:185
+#: src/features/input/state/input_keybind/shared.ts:193
 msgid "Scroll chat up"
 msgstr "Derulează chatul în sus"
 
@@ -28798,7 +28756,7 @@ msgid "Search communities"
 msgstr "Caută comunități"
 
 #. Button or menu action label in the phone add modal. Keep it concise.
-#: src/features/user/components/modals/PhoneAddModal.tsx:63
+#: src/features/user/components/modals/PhoneAddModal.tsx:61
 msgid "Search countries..."
 msgstr "Caută țări..."
 
@@ -28881,7 +28839,7 @@ msgstr "Caută limbi…"
 #: src/features/channel/components/bottomsheets/ChannelSearchBottomSheet.tsx:137
 #: src/features/channel/components/bottomsheets/ChannelSearchBottomSheet.tsx:480
 #: src/features/channel/components/message_search_bar/MessageSearchBar.tsx:56
-#: src/features/input/state/input_keybind/shared.ts:237
+#: src/features/input/state/input_keybind/shared.ts:245
 msgid "Search messages"
 msgstr "Caută mesaje"
 
@@ -29097,11 +29055,6 @@ msgstr "S-a apăsat butonul secundar."
 #: src/features/user/components/settings_utils/search_index/ApplicationsIndex.ts:136
 msgid "Secret"
 msgstr "Secret"
-
-#. Label for a CAPTCHA secret key input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1020
-msgid "Secret key"
-msgstr "Cheie secretă"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label in the secrets section. Keep it concise. Keep the tone plain and specific.
@@ -29564,17 +29517,17 @@ msgstr "Trimite mesaje text-to-speech cu /tts. Membrii care au activat text-to-s
 
 #. placeholder {0}: inboundChallenge.challenge_code
 #. placeholder {1}: inboundChallenge.our_number
-#: src/features/user/components/modals/PhoneAddModal.tsx:335
+#: src/features/user/components/modals/PhoneAddModal.tsx:332
 msgid "Send the code <0>{0}</0> to <1>{1}</1>"
 msgstr "Trimite codul <0>{0}</0> la <1>{1}</1>"
 
 #. Required-action modal body for the second inbound phone verification instruction.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:462
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:458
 msgid "Send the code to the phone number below."
 msgstr "Trimite codul la numărul de telefon de mai jos."
 
 #. Required-action modal carousel step title for the second inbound phone verification instruction.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:458
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:454
 msgid "Send this code"
 msgstr "Trimite acest cod"
 
@@ -29584,7 +29537,7 @@ msgid "Send this pin back in time?"
 msgstr "Trimiți acest mesaj fixat înapoi în timp?"
 
 #. Label for the destination phone number in an inbound phone verification challenge.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:470
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:466
 msgid "Send to"
 msgstr "Trimite la"
 
@@ -29602,25 +29555,20 @@ msgstr "Trimite codul de verificare"
 #. Plus menu item that opens the desktop voice message composer to record and send a voice clip.
 #: src/features/channel/components/textarea/TextareaPlusMenu.tsx:35
 #: src/features/channel/components/VoiceMessageRecorder.tsx:69
-#: src/features/input/state/input_keybind/shared.ts:285
+#: src/features/input/state/input_keybind/shared.ts:293
 msgid "Send voice message"
 msgstr "Trimite mesaj vocal"
 
 #. Field label in the voice connection status popout. Shows total current outbound media bitrate.
-#: src/features/voice/components/voice_connection_status/shared.ts:83
+#: src/features/voice/components/voice_connection_status/shared.ts:84
 msgid "Send:"
 msgstr "Trimitere:"
 
-#. Required-action modal explanation for an inbound phone verification challenge due to SMS cost.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:442
-msgid "Sending an SMS to this number is expensive, so we need you to text us instead."
-msgstr "Trimiterea unui SMS la acest număr este costisitoare, așa că trebuie să ne trimiți tu un mesaj."
-
-#: src/features/user/components/modals/PhoneAddModal.tsx:304
+#: src/features/user/components/modals/PhoneAddModal.tsx:301
 msgid "Sending an SMS to this phone number is too expensive for {PRODUCT_NAME}, so we need you to send us an SMS instead. We know this isn't ideal. You can also ask the administrators of this instance to lift this requirement from your account."
 msgstr "Trimiterea unui SMS către acest număr de telefon este prea costisitoare pentru {PRODUCT_NAME}, așa că trebuie să ne trimiți tu un SMS. Știm că nu este ideal. Poți cere și administratorilor acestei instanțe să-ți elimine această cerință din cont."
 
-#: src/features/user/components/modals/PhoneAddModal.tsx:310
+#: src/features/user/components/modals/PhoneAddModal.tsx:307
 msgid "Sending an SMS to this phone number is too expensive for {PRODUCT_NAME}, so we need you to send us an SMS instead. We know this isn't ideal. You can also contact <0>{SUPPORT_EMAIL}</0> to have us lift this requirement from your account."
 msgstr "Trimiterea unui SMS către acest număr de telefon este prea costisitoare pentru {PRODUCT_NAME}, așa că trebuie să ne trimiți tu un SMS. Știm că nu este ideal. Poți contacta și <0>{SUPPORT_EMAIL}</0> pentru a-ți elimina această cerință din cont."
 
@@ -29640,7 +29588,7 @@ msgid "Sends both channels of a stereo microphone. Needs all processing off and 
 msgstr "Trimite ambele canale ale unui microfon stereo. Necesită dezactivarea tuturor procesărilor și un canal la 128 kbps sau mai mare."
 
 #. Description for the studio / direct-input option in the voice processing settings radio group.
-#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:38
+#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:35
 msgid "Sends raw mic audio with no processing."
 msgstr "Trimite sunetul brut al microfonului, fără procesare."
 
@@ -29714,7 +29662,7 @@ msgid "Service incident nagbar"
 msgstr "Notificare incident serviciu"
 
 #. Section heading in the voice connection status popout for current call/session debug stats.
-#: src/features/voice/components/voice_connection_status/shared.ts:62
+#: src/features/voice/components/voice_connection_status/shared.ts:63
 msgid "Session"
 msgstr "Sesiune"
 
@@ -29925,7 +29873,7 @@ msgid "Set up authenticator app"
 msgstr "Configurează aplicația de autentificare"
 
 #. Option for deferring an optional setup wizard integration.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:953
+#: src/features/app/components/setup/SetupWizardSteps.tsx:946
 msgid "Set up later"
 msgstr "Configurează mai târziu"
 
@@ -30164,7 +30112,7 @@ msgstr "Coduri scurte"
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/modals/tabs/keybinds_tab/CustomKeybindRow.tsx:121
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:364
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:361
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:38
 #: src/features/user/components/settings_utils/section_registry/VoiceVideoSections.ts:110
 msgid "Shortcut"
@@ -30266,7 +30214,7 @@ msgid "Show attachment expiration indicator"
 msgstr "Afișează indicatorul de expirare a atașamentelor"
 
 #. Developer voice status menu option for displaying participant avatars.
-#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:71
+#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:72
 msgid "Show call avatars"
 msgstr "Afișează avatarele apelului"
 
@@ -30291,7 +30239,7 @@ msgid "Show chat with {count, plural, one {# unread message} other {# unread mes
 msgstr "Afișează chatul cu {count, plural, one {# mesaj necitit} few {# mesaje necitite} other {# de mesaje necitite}}"
 
 #. Developer voice status menu option for displaying the voice connection identifier.
-#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:75
+#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:76
 msgid "Show connection ID"
 msgstr "Afișează ID-ul conexiunii"
 
@@ -30427,7 +30375,7 @@ msgstr "Afișează lista de DM-uri în linie"
 msgid "Show just the typing indicator without avatars"
 msgstr "Afișează doar indicatorul de tastare, fără avatare"
 
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:308
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:284
 msgid "Show keyboard mode intro"
 msgstr "Afișează introducerea modului tastatură"
 
@@ -30538,7 +30486,7 @@ msgstr "Afișează Neko"
 msgid "Show new device alerts"
 msgstr "Afișează alerte pentru dispozitive noi"
 
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:282
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:264
 msgid "Show new device modal"
 msgstr "Afișează fereastra modală pentru dispozitiv nou"
 
@@ -30820,7 +30768,7 @@ msgid "Signed-in devices"
 msgstr "Dispozitive conectate"
 
 #. Label for Bluesky OAuth signing key ID input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1077
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1051
 msgid "Signing key ID"
 msgstr "ID cheie de semnare"
 
@@ -30910,11 +30858,6 @@ msgstr "O singură linie"
 msgid "Single user (all statuses)"
 msgstr "Utilizator unic (toate statusurile)"
 
-#. Label for a CAPTCHA site key input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1019
-msgid "Site key"
-msgstr "Cheie de site"
-
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/search_index/DesktopSettingsIndex.ts:98
@@ -30964,7 +30907,7 @@ msgid "Skip the system leave notice — nobody gets pinged."
 msgstr "Omite mesajul de sistem despre părăsirea grupului. Nimeni nu primește notificare."
 
 #. Description for deferring an optional setup wizard integration.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:957
+#: src/features/app/components/setup/SetupWizardSteps.tsx:950
 msgid "Skip this now and configure it from the admin panel."
 msgstr "Omite acum și configurează din panoul de administrare."
 
@@ -31207,22 +31150,22 @@ msgid "Smoother video"
 msgstr "Video mai fluid"
 
 #. Required-action error when the SMS provider cannot send or verify a code.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:538
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:534
 msgid "SMS verification is unavailable right now. Try again later or contact support."
 msgstr "Verificarea prin SMS nu este disponibilă momentan. Încearcă din nou mai târziu sau contactează asistența."
 
 #. Success message after validating SMTP credentials.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1045
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1019
 msgid "SMTP connection verified."
 msgstr "Conexiune SMTP verificată."
 
 #. Label for SMTP host input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1033
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1007
 msgid "SMTP host"
 msgstr "Gazdă SMTP"
 
 #. Failure message after validating SMTP credentials when the server returns no error detail.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1049
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1023
 msgid "SMTP validation failed."
 msgstr "Validarea SMTP a eșuat."
 
@@ -31402,7 +31345,7 @@ msgstr "Ceva nu a mers bine. Încearcă din nou mai târziu."
 #. Inline error in the web deep-link prompt when opening the desktop app fails.
 #. Toast error shown when the mature content check request fails unexpectedly.
 #: src/features/auth/components/modals/MatureContentCheckModal.tsx:18
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:585
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:576
 #: src/features/auth/flow/DesktopDeepLinkPrompt.tsx:31
 msgid "Something went wrong. Try again."
 msgstr "Ceva nu a mers bine. Încearcă din nou."
@@ -31742,7 +31685,7 @@ msgid "Staff controls"
 msgstr "Controale pentru personal"
 
 #. Required-action modal notice for inbound phone verification.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:482
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:478
 msgid "Standard messaging rates from your carrier may apply."
 msgstr "Se pot aplica tarife standard de mesagerie de la operatorul tău."
 
@@ -31788,12 +31731,12 @@ msgid "Start {appName} automatically when you sign in."
 msgstr "Pornește automat {appName} la conectare."
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:221
+#: src/features/input/state/input_keybind/shared.ts:229
 msgid "Start a call in a DM or group"
 msgstr "Inițiază un apel într-un DM sau grup"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:149
+#: src/features/input/state/input_keybind/shared.ts:157
 msgid "Start a group DM"
 msgstr "Începe un DM de grup"
 
@@ -31829,7 +31772,7 @@ msgid "Start date must be earlier than end date."
 msgstr "Data de început trebuie să fie anterioară datei de sfârșit."
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:125
+#: src/features/input/state/input_keybind/shared.ts:133
 msgid "Start drag and drop"
 msgstr "Începe glisarea și fixarea"
 
@@ -32099,6 +32042,11 @@ msgstr "Se indexează în continuare — revino în scurt timp"
 msgid "Still Neko"
 msgstr "Neko nemișcat"
 
+#. Small toast shown only when an automatic background check before sign-in, sign-up or a similar request takes more than a couple of seconds. No user action needed. Keep it short and calm.
+#: src/features/auth/altcha/CaptchaInterceptor.ts:13
+msgid "Still working on it…"
+msgstr "Încă procesăm…"
+
 #. Stop-recording button label in the desktop voice message composer.
 #: src/features/voice/components/VoiceMessageComposerModal.tsx:65
 msgid "Stop"
@@ -32225,7 +32173,7 @@ msgid "Stopped the member from hearing others in this community"
 msgstr "A făcut ca membrul să nu îi mai audă pe ceilalți în această comunitate"
 
 #. Description for the echo cancellation toggle in the custom voice processing settings.
-#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:59
+#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:56
 msgid "Stops your speakers from looping back into your mic."
 msgstr "Împiedică sunetul din difuzoare să ajungă în microfon."
 
@@ -32378,7 +32326,7 @@ msgid "Submitting"
 msgstr "Se trimite"
 
 #. Field label in the voice connection status popout. Shows technical WebRTC subscriber ICE transport details.
-#: src/features/voice/components/voice_connection_status/shared.ts:131
+#: src/features/voice/components/voice_connection_status/shared.ts:132
 msgid "Subscriber transport:"
 msgstr "Transport abonat:"
 
@@ -32472,11 +32420,6 @@ msgstr "Suprimă mențiunile proprii fără privilegii"
 msgid "Suppression"
 msgstr "Suprimare"
 
-#. Label for the DeepFilterNet3 noise suppression strength slider in the custom voice processing settings.
-#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:67
-msgid "Suppression strength"
-msgstr "Intensitatea suprimării"
-
 #. Collapsible group heading in the Theme Studio tokens list, for background surface tokens.
 #: src/features/theme_studio/sections/TokenGroups.ts:46
 msgid "Surfaces"
@@ -32522,12 +32465,12 @@ msgid "Switch accounts"
 msgstr "Comută între conturi"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:45
+#: src/features/input/state/input_keybind/shared.ts:53
 msgid "Switch between channels"
 msgstr "Comută între canale"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:41
+#: src/features/input/state/input_keybind/shared.ts:49
 msgid "Switch between communities"
 msgstr "Comută între comunități"
 
@@ -32565,7 +32508,7 @@ msgstr "Treci la aspectul confortabil"
 msgid "Switch to dense layout"
 msgstr "Treci la aspectul compact"
 
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:649
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:644
 msgid "Switch to direct input"
 msgstr "Treci la intrarea directă"
 
@@ -32592,7 +32535,7 @@ msgid "Switch to next community"
 msgstr "Comută la comunitatea următoare"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:77
+#: src/features/input/state/input_keybind/shared.ts:85
 msgid "Switch to next community or DMs"
 msgstr "Comută la comunitatea următoare sau la DM-uri"
 
@@ -32607,7 +32550,7 @@ msgid "Switch to previous community"
 msgstr "Comută la comunitatea anterioară"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:73
+#: src/features/input/state/input_keybind/shared.ts:81
 msgid "Switch to previous community or DMs"
 msgstr "Comută la comunitatea anterioară sau la DM-uri"
 
@@ -32656,7 +32599,7 @@ msgid "Switch to…"
 msgstr "Comută la…"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:313
+#: src/features/input/state/input_keybind/shared.ts:321
 msgid "Switch voice channel"
 msgstr "Schimbă canalul vocal"
 
@@ -33018,7 +32961,7 @@ msgid "Terms of service"
 msgstr "Termeni și condiții"
 
 #. Label for Bluesky OAuth terms URL input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1069
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1043
 msgid "Terms URL"
 msgstr "URL termeni"
 
@@ -33028,7 +32971,7 @@ msgid "Terrorism or violent extremism"
 msgstr "Terorism sau extremism violent"
 
 #. Button that validates SMTP credentials.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1041
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1015
 msgid "Test SMTP"
 msgstr "Testează SMTP"
 
@@ -33175,12 +33118,12 @@ msgid "Thank you for helping keep {productName} safe. We'll review your report a
 msgstr "Îți mulțumim că ne ajuți să păstrăm {productName} în siguranță. Îți vom examina raportul cât mai curând posibil."
 
 #. Required-action form error for an invalid verification code.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:490
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:486
 msgid "That code didn't work. Check it and try again."
 msgstr "Codul nu a funcționat. Verifică-l și încearcă din nou."
 
 #. Required-action form error for an expired verification code.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:494
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:490
 msgid "That code expired. Request a new code."
 msgstr "Acest cod a expirat. Solicită un cod nou."
 
@@ -33208,7 +33151,7 @@ msgid "That doesn't look like a valid URL."
 msgstr "Nu pare un URL valid."
 
 #. Required-action form error when a new email is already used by another account.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:514
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:510
 msgid "That email is already in use."
 msgstr "Acest e-mail este deja utilizat."
 
@@ -33805,7 +33748,7 @@ msgid "This clears quick CSS, imported themes, uploaded assets, and local file r
 msgstr "Aceasta șterge CSS-ul rapid, temele importate, elementele încărcate și referințele fișierelor locale de pe acest dispozitiv."
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:83
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:82
 msgid "This clears your backend premium state entirely, including premium type, billing metadata, and override flags."
 msgstr "Aceasta șterge complet starea ta premium din backend, inclusiv tipul de premium, metadatele de facturare și indicatorii de suprascriere."
 
@@ -34128,8 +34071,8 @@ msgstr "Aceasta este ultima ta cheie de acces, iar cheile de acces sunt al doile
 msgid "This is your last passkey. Once it's gone you won't be able to use a passkey as your second factor."
 msgstr "Aceasta este ultima ta cheie de acces. Odată ce o ștergi, nu vei mai putea folosi o cheie de acces ca al doilea factor."
 
-#. Required-action form error for landline, toll-free, premium, shared-cost, UAN, voicemail and pager lines. Do not name which line type the provider returned.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:570
+#. Required-action form error when the number is not a mobile line. Do not name the line type.
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:566
 msgid "This isn't a mobile number, so it can't receive our text. Try a mobile number, or contact support if you think that's wrong."
 msgstr "Acesta nu este un număr de mobil, deci nu poate primi SMS-ul nostru. Încearcă un număr de mobil sau contactează suportul dacă crezi că este greșit."
 
@@ -34205,17 +34148,17 @@ msgid "This message no longer exists."
 msgstr "Acest mesaj nu mai există."
 
 #. Label in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:130
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:129
 msgid "This nickname will only be visible in this community"
 msgstr "Acest pseudonim va fi vizibil doar în această comunitate"
 
 #. Required-action form error when a number must use the inbound text-in challenge and the current step cannot start one. Do not say why the number was routed there.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:552
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:548
 msgid "This number is verified by texting us instead. Go back and start phone verification again to get the code and the number to text."
 msgstr "Acest număr se verifică printr-un SMS trimis de tine. Revino și începe din nou verificarea telefonică pentru a obține codul și numărul la care să trimiți mesajul."
 
 #. Required-action modal explanation for an inbound phone verification challenge.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:446
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:442
 msgid "This number needs text-in verification instead of an SMS from us."
 msgstr "Acest număr necesită un SMS trimis de tine, nu unul primit de la noi."
 
@@ -34240,12 +34183,12 @@ msgid "This participant was deafened by moderators"
 msgstr "Acestui participant i-a fost dezactivat sunetul de moderatori"
 
 #. Required-action form error when the backend rejects a phone number.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:530
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:526
 msgid "This phone number cannot be used. Try another mobile number or contact support."
 msgstr "Acest număr de telefon nu poate fi utilizat. Încearcă un alt număr de mobil sau contactează asistența."
 
 #. Required-action form error when the backend rejects a reused phone number.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:534
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:530
 msgid "This phone number has already been used. Try another number or contact support."
 msgstr "Acest număr de telefon a fost deja utilizat. Încearcă un alt număr sau contactează asistența."
 
@@ -34282,12 +34225,12 @@ msgid "This removes all custom CSS overrides. Theme files in your library are no
 msgstr "Aceasta elimină toate suprascrierile CSS personalizate. Fișierele de temă din biblioteca ta nu sunt afectate."
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:50
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:49
 msgid "This removes all previously authorized IP addresses on your account. The next login from any IP will require email verification."
 msgstr "Aceasta elimină toate adresele IP autorizate anterior din contul tău. Următoarea autentificare de pe orice IP va necesita verificarea prin e-mail."
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:67
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:66
 msgid "This removes all trusted domains. You will see the external link warning for all domains again."
 msgstr "Aceasta elimină toate domeniile de încredere. Vei vedea din nou avertismentul pentru linkuri externe la toate domeniile."
 
@@ -34397,7 +34340,7 @@ msgid "This verification session expired. Return to {productName} and start chec
 msgstr "Sesiunea de verificare a expirat. Revino la {productName} și începe din nou procesul de plată."
 
 #. Required-action form error when an email-change ticket or proof is invalid or expired.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:502
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:498
 msgid "This verification session expired. Start again."
 msgstr "Sesiunea de verificare a expirat. Începe din nou."
 
@@ -34495,7 +34438,7 @@ msgid "This will trust all external links and skip the warning for every domain.
 msgstr "Aceasta va acorda încredere tuturor linkurilor externe și va omite avertismentul pentru fiecare domeniu. Domeniile tale de încredere existente vor fi înlocuite. Această opțiune este mai puțin sigură."
 
 #. Required-action modal body after the user sends an inbound phone verification text.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:478
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:474
 msgid "This window updates automatically after we receive your message."
 msgstr "Această fereastră se actualizează automat după ce primim mesajul tău."
 
@@ -34669,12 +34612,12 @@ msgid "Today at {timeString}"
 msgstr "Astăzi la {timeString}"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:69
+#: src/features/input/state/input_keybind/shared.ts:77
 msgid "Toggle between last community and DMs"
 msgstr "Comută între ultima comunitate și DM-uri"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:309
+#: src/features/input/state/input_keybind/shared.ts:317
 msgid "Toggle camera"
 msgstr "Comută camera"
 
@@ -34694,7 +34637,7 @@ msgid "Toggle developer tools"
 msgstr "Comută instrumentele pentru dezvoltatori"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:269
+#: src/features/input/state/input_keybind/shared.ts:277
 msgid "Toggle embed suppression"
 msgstr "Comută suprimarea încorporărilor"
 
@@ -34710,23 +34653,23 @@ msgstr "Activează/dezactivează accelerarea hardware"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/input/state/input_keybind/shared.ts:209
+#: src/features/input/state/input_keybind/shared.ts:217
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:183
 msgid "Toggle mute"
 msgstr "Activează/dezactivează microfonul"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:153
+#: src/features/input/state/input_keybind/shared.ts:161
 msgid "Toggle pinned messages"
 msgstr "Comută mesajele fixate"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:117
+#: src/features/input/state/input_keybind/shared.ts:125
 msgid "Toggle quick switcher"
 msgstr "Comută comutatorul rapid"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:281
+#: src/features/input/state/input_keybind/shared.ts:289
 msgid "Toggle saved media"
 msgstr "Comută media salvată"
 
@@ -34735,17 +34678,17 @@ msgid "Toggle switches on and off to see state changes."
 msgstr "Activează și dezactivează comutatoarele pentru a vedea modificările de stare."
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:173
+#: src/features/input/state/input_keybind/shared.ts:181
 msgid "Toggle the emoji picker"
 msgstr "Comută selectorul de emoji"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:177
+#: src/features/input/state/input_keybind/shared.ts:185
 msgid "Toggle the GIF picker"
 msgstr "Comută selectorul de GIF-uri"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:157
+#: src/features/input/state/input_keybind/shared.ts:165
 msgid "Toggle the inbox"
 msgstr "Comută mesajele primite"
 
@@ -34755,22 +34698,22 @@ msgid "Toggle the kinds of conversations you want included."
 msgstr "Activează tipurile de conversații pe care vrei să le incluzi."
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:169
+#: src/features/input/state/input_keybind/shared.ts:177
 msgid "Toggle the member list or voice chat"
 msgstr "Comută lista de membri sau chatul vocal"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:225
+#: src/features/input/state/input_keybind/shared.ts:233
 msgid "Toggle the soundboard"
 msgstr "Comută panoul de sunete"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:181
+#: src/features/input/state/input_keybind/shared.ts:189
 msgid "Toggle the sticker picker"
 msgstr "Comută selectorul de stickere"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:305
+#: src/features/input/state/input_keybind/shared.ts:313
 msgid "Toggle voice activity"
 msgstr "Activează/dezactivează activitatea vocală"
 
@@ -34802,7 +34745,7 @@ msgid "Tone-map HDR images to standard range, reducing peak brightness."
 msgstr "Mapează imaginile HDR la un interval standard, reducând luminozitatea maximă."
 
 #. Required-action error shown for rate limits.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:506
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:502
 msgid "Too many attempts. Wait a bit, then try again."
 msgstr "Prea multe încercări. Așteaptă puțin, apoi încearcă din nou."
 
@@ -34954,7 +34897,7 @@ msgstr "Modificările pictogramei din bara de sistem se aplică numai după o re
 msgid "Trending GIFs"
 msgstr "GIF-uri populare"
 
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:383
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:359
 msgid "Trigger React crash"
 msgstr "Declanșează o eroare React"
 
@@ -35013,7 +34956,7 @@ msgid "Trusted domains"
 msgstr "Domenii de încredere"
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:55
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:54
 msgid "Trusted domains cleared."
 msgstr "Domeniile de încredere au fost șterse."
 
@@ -35059,14 +35002,13 @@ msgid "Try a different variable name or clear the search."
 msgstr "Încearcă un alt nume de variabilă sau șterge căutarea."
 
 #. Generic action label for retrying a failed or interrupted operation.
-#: src/features/auth/components/AltchaVerification.tsx:53
 #: src/features/auth/flow/AuthRouteLoadError.tsx:22
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:75
 msgid "Try again"
 msgstr "Încearcă din nou"
 
 #. Button that retries connecting to the voice channel after a failed attempt.
-#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:61
+#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:62
 msgctxt "voice-connection-status"
 msgid "Try again"
 msgstr "Încearcă din nou"
@@ -35137,10 +35079,6 @@ msgstr "Încearcă în schimb o cheie de securitate / cheie de acces"
 msgid "Try sending your message again."
 msgstr "Încearcă să trimiți din nou mesajul."
 
-#: src/features/auth/components/modals/CaptchaModal.tsx:177
-msgid "Try Turnstile instead"
-msgstr "Încearcă Turnstile în schimb"
-
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:135
 msgid "TTS"
@@ -35157,7 +35095,7 @@ msgid "TTS speed"
 msgstr "Viteză TTS"
 
 #. Description for the custom option in the voice processing settings radio group.
-#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:47
+#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:44
 msgid "Tune the processing yourself."
 msgstr "Reglează tu procesarea."
 
@@ -35896,7 +35834,7 @@ msgstr "Deblochează emoji-urile personalizate în DM-uri cu {premiumProductName
 msgid "Unlock HD screen share with {premiumProductName}"
 msgstr "Deblochează partajarea ecranului HD cu {premiumProductName}"
 
-#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:215
+#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:217
 msgid "Unlock higher limits and exclusive features while supporting an independent communication platform."
 msgstr "Deblochează limite mai mari și funcții exclusive, susținând în același timp o platformă de comunicare independentă."
 
@@ -36042,7 +35980,7 @@ msgid "Unordered"
 msgstr "Neordonată"
 
 #. Confirm button label on the unpin message alert.
-#: src/features/channel/components/MessageActionUtils.tsx:51
+#: src/features/channel/components/MessageActionUtils.tsx:54
 msgid "Unpin"
 msgstr "Anulează fixarea"
 
@@ -36067,7 +36005,7 @@ msgid "Unpin message"
 msgstr "Anulează fixarea mesajului"
 
 #. Body of the confirmation alert shown when unpinning a message.
-#: src/features/channel/components/MessageActionUtils.tsx:47
+#: src/features/channel/components/MessageActionUtils.tsx:50
 msgid "Unpin this message?"
 msgstr "Anulezi fixarea acestui mesaj?"
 
@@ -36373,7 +36311,7 @@ msgstr "Încarcă un sunet personalizat care se va reda automat când te alătur
 #. Card label in the asset source modal for uploading an image from the device. Keep it concise.
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #: src/features/expressions/components/modals/AssetSourceModal.tsx:19
-#: src/features/input/state/input_keybind/shared.ts:201
+#: src/features/input/state/input_keybind/shared.ts:209
 msgid "Upload a file"
 msgstr "Încarcă un fișier"
 
@@ -36642,7 +36580,7 @@ msgid "Use an email address you can access. We will send a code there."
 msgstr "Folosește o adresă de e-mail la care ai acces. Îți vom trimite un cod acolo."
 
 #. Required-action form error when the new email matches the current account email.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:518
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:514
 msgid "Use an email that is different from your current one."
 msgstr "Folosește o adresă de e-mail diferită de cea actuală."
 
@@ -36895,7 +36833,7 @@ msgid "Use this when troubleshooting the client or collecting logs. It may add v
 msgstr "Folosește asta când depanezi aplicația sau colectezi jurnale. Poate adăuga mesaje detaliate în consola browserului pentru clientul curent."
 
 #. Label for SMTP TLS toggle.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1037
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1011
 msgid "Use TLS"
 msgstr "Folosește TLS"
 
@@ -37061,7 +36999,7 @@ msgstr "Volum utilizator"
 #. Generic form-field label for a username.
 #. Label for SMTP username input.
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1035
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1009
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:572
 #: src/features/user/components/modals/FluxerTagChangeModal.tsx:218
 #: src/features/user/components/modals/tabs/my_profile_tab/MyProfileTabUsernameSection.tsx:56
@@ -37328,24 +37266,19 @@ msgstr "Confirmă că ești tu"
 #. Primary button in the required-action modal. Sends or submits phone verification.
 #: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:178
 #: src/features/channel/components/barriers/BarrierComponents.tsx:269
-#: src/features/user/components/modals/PhoneAddModal.tsx:408
+#: src/features/user/components/modals/PhoneAddModal.tsx:405
 msgid "Verify phone"
 msgstr "Verifică numărul de telefon"
 
 #. Short label in the phone add modal. Keep it concise.
-#: src/features/user/components/modals/PhoneAddModal.tsx:55
+#: src/features/user/components/modals/PhoneAddModal.tsx:53
 msgid "Verify phone number"
 msgstr "Verifică numărul de telefon"
 
 #. Label in the phone add modal.
-#: src/features/user/components/modals/PhoneAddModal.tsx:51
+#: src/features/user/components/modals/PhoneAddModal.tsx:49
 msgid "Verify phone number form"
 msgstr "Formular de verificare a numărului de telefon"
-
-#. Short label in the authentication captcha modal. Keep the tone plain and specific.
-#: src/features/auth/components/modals/CaptchaModal.tsx:17
-msgid "Verify you're human"
-msgstr "Confirmă că ești om"
 
 #. Title of the error modal shown when an unverified account tries to start a DM.
 #. Title shown when an unverified account cannot start a DM or group DM.
@@ -37374,22 +37307,22 @@ msgid "Verify your email before adding an authenticator app."
 msgstr "Verifică-ți adresa de e-mail înainte de a adăuga o aplicație de autentificare."
 
 #. Description text in the my profile tab. Keep the tone plain and specific.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:117
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:116
 msgid "Verify your email before changing your community nickname, avatar, banner, bio, pronouns, or accent color."
 msgstr "Verifică-ți adresa de e-mail înainte de a-ți schimba pseudonimul din comunitate, avatarul, bannerul, biografia, pronumele sau culoarea de accent."
 
 #. Label in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:121
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:120
 msgid "Verify your email before changing your username, display name, avatar, banner, bio, pronouns, time zone, or {premiumProductName} badge privacy."
 msgstr "Verifică-ți adresa de e-mail înainte de a-ți schimba numele de utilizator, numele afișat, avatarul, bannerul, biografia, pronumele, fusul orar sau confidențialitatea insignei {premiumProductName}."
 
 #. Description text in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:85
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:84
 msgid "Verify your email before editing this community profile. You can still preview it here."
 msgstr "Verifică-ți adresa de e-mail înainte de a edita acest profil de comunitate. Îl poți previzualiza în continuare aici."
 
 #. Description text in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:89
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:88
 msgid "Verify your email before editing your profile. You can still preview it here."
 msgstr "Verifică-ți adresa de e-mail înainte de a-ți edita profilul. Îl poți previzualiza în continuare aici."
 
@@ -37421,12 +37354,12 @@ msgid "Verify your email to continue using {productName}."
 msgstr "Verifică-ți adresa de e-mail pentru a continua să folosești {productName}."
 
 #. Label in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:109
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:108
 msgid "Verify your email to edit this community profile"
 msgstr "Verifică-ți adresa de e-mail pentru a edita acest profil de comunitate"
 
 #. Label in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:113
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:112
 msgid "Verify your email to edit your profile"
 msgstr "Verifică-ți adresa de e-mail pentru a-ți edita profilul"
 
@@ -37534,7 +37467,7 @@ msgid "Video options"
 msgstr "Opțiuni video"
 
 #. Field label in the voice connection status popout. Shows received video packet loss percentage.
-#: src/features/voice/components/voice_connection_status/shared.ts:111
+#: src/features/voice/components/voice_connection_status/shared.ts:112
 msgid "Video packet loss:"
 msgstr "Pierdere pachete video:"
 
@@ -37558,7 +37491,7 @@ msgid "Video quality"
 msgstr "Calitatea video"
 
 #. Field label in the voice connection status popout. Shows current inbound video bitrate.
-#: src/features/voice/components/voice_connection_status/shared.ts:103
+#: src/features/voice/components/voice_connection_status/shared.ts:104
 msgid "Video receive:"
 msgstr "Recepție video:"
 
@@ -37568,7 +37501,7 @@ msgid "Video scrubbing"
 msgstr "Derulare video"
 
 #. Field label in the voice connection status popout. Shows current outbound video bitrate.
-#: src/features/voice/components/voice_connection_status/shared.ts:99
+#: src/features/voice/components/voice_connection_status/shared.ts:100
 msgid "Video send:"
 msgstr "Trimitere video:"
 
@@ -37977,7 +37910,7 @@ msgid "Voice activity on active now"
 msgstr "Activitate vocală în „Activ acum”"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:301
+#: src/features/input/state/input_keybind/shared.ts:309
 msgid "Voice activity priority"
 msgstr "Prioritate pentru activitatea vocală"
 
@@ -38050,7 +37983,7 @@ msgstr "Canale vocale"
 
 #. Voice status popout title (secondary call site for the same surface as VOICE_CONNECTION_DESCRIPTOR).
 #. Voice status popout title.
-#: src/features/voice/components/voice_connection_status/MockedVoiceConnectionStatus.tsx:47
+#: src/features/voice/components/voice_connection_status/MockedVoiceConnectionStatus.tsx:48
 #: src/features/voice/components/voice_connection_status/VoiceDetailsPopout.tsx:56
 msgid "Voice connection"
 msgstr "Conexiune vocală"
@@ -38108,8 +38041,8 @@ msgid "Voice participants"
 msgstr "Participanți la apelul vocal"
 
 #. Voice settings radio group label for microphone processing profile.
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:644
-#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:55
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:639
+#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:52
 msgid "Voice processing"
 msgstr "Procesarea vocii"
 
@@ -38202,7 +38135,7 @@ msgstr "Mărește volumul"
 msgid "Wait a moment before deleting more messages."
 msgstr "Așteaptă un moment înainte să ștergi mai multe mesaje."
 
-#: src/features/user/components/modals/PhoneAddModal.tsx:352
+#: src/features/user/components/modals/PhoneAddModal.tsx:349
 msgid "Wait a moment. This window will close automatically once we receive your message."
 msgstr "Așteaptă un moment. Această fereastră se va închide automat după ce primim mesajul tău."
 
@@ -38212,7 +38145,7 @@ msgid "Wait between messages. Members with \"{bypassSlowmodePermissionLabel}\" c
 msgstr "Așteaptă între mesaje. Membrii cu permisiunea „{bypassSlowmodePermissionLabel}” pot ocoli această limită."
 
 #. Required-action modal carousel step title after the user sends an inbound phone verification text.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:474
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:470
 msgid "Wait here"
 msgstr "Așteaptă aici"
 
@@ -38378,13 +38311,13 @@ msgstr "Nu am putut citi această temă. Poate fi coruptă sau nevalidă."
 msgid "We couldn't remove that account. Try again."
 msgstr "Nu am putut elimina acest cont. Încearcă din nou."
 
-#. Required-action form error for phone attempts blocked by a fraud signal. Deliberately non-specific. Never name the signal, the score or the threshold.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:576
+#. Required-action form error when a phone attempt cannot be verified automatically and needs a support review. Keep it non-specific.
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:571
 msgid "We couldn't verify this number automatically. Contact support and a person will review your account."
 msgstr "Nu am putut verifica automat acest număr. Contactează asistența și o persoană va analiza contul tău."
 
 #. Required-action form error when the phone number's country is on the SMS send ban list. Must not imply the number itself is invalid.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:546
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:542
 msgid "We don't send verification texts to this country. Try a mobile number from another country, or contact support."
 msgstr "Nu trimitem mesaje de verificare în această țară. Încearcă un număr de mobil din altă țară sau contactează asistența."
 
@@ -38402,10 +38335,6 @@ msgstr "Am redus prețul pentru {premiumProductName} în Brazilia. Acum este {mo
 #: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:210
 msgid "We need one verification step before you continue. This helps protect accounts and keep spam off {productName}."
 msgstr "Mai este necesar un pas de verificare înainte de a continua. Acest lucru ajută la protejarea conturilor și la eliminarea spamului de pe {productName}."
-
-#: src/features/auth/components/modals/CaptchaModal.tsx:128
-msgid "We need to make sure you're not a bot. Complete the verification below."
-msgstr "Trebuie să ne asigurăm că nu ești un bot. Completează verificarea de mai jos."
 
 #. Required-action modal intro text when both email and phone verification are required.
 #: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:216
@@ -38479,9 +38408,9 @@ msgstr "Îți vom trimite un cod de verificare pe e-mail înainte să-ți poți 
 msgid "We'll send a verification code to your email before you can view your backup codes."
 msgstr "Îți vom trimite un cod de verificare pe e-mail înainte să poți vedea codurile de rezervă."
 
-#: src/features/user/components/modals/PhoneAddModal.tsx:286
-msgid "We'll send an SMS code when available. Your number is not linked to your account. We keep only an encrypted marker, with no user ID, to allow at most {PHONE_VERIFICATION_LIMIT} verifications in about {PHONE_VERIFICATION_WINDOW_DAYS} days."
-msgstr "Vom trimite un cod SMS când va fi disponibil. Numărul tău nu este conectat la contul tău. Păstrăm doar un marcator criptat, fără ID de utilizator, pentru a permite cel mult {PHONE_VERIFICATION_LIMIT} verificări în aproximativ {PHONE_VERIFICATION_WINDOW_DAYS} zile."
+#: src/features/user/components/modals/PhoneAddModal.tsx:284
+msgid "We'll send an SMS code when available. Your number is not linked to your account. We keep only an encrypted marker, with no user ID, for a limited time."
+msgstr "Vom trimite un cod SMS când va fi disponibil. Numărul tău nu este legat de contul tău. Păstrăm doar un marcator criptat, fără ID de utilizator, pentru o perioadă limitată."
 
 #: src/features/user/components/modals/EmailChangeModal.tsx:189
 msgid "We'll verify your current email and then your new email with one-time codes."
@@ -38841,7 +38770,7 @@ msgstr "Ce conversații"
 msgid "Which rule was broken?"
 msgstr "Ce regulă a fost încălcată?"
 
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:358
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:355
 msgid "While push-to-talk is on, your shortcut controls your microphone, so the mute button is disabled."
 msgstr "Cât timp push-to-talk este activat, microfonul este controlat de scurtătură, așa că butonul de dezactivare a microfonului nu este disponibil."
 
@@ -39261,7 +39190,7 @@ msgid "You can't befriend yourself"
 msgstr "Nu te poți adăuga pe tine ca prieten"
 
 #. Label in the my profile tab. Keep the tone plain and specific.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:134
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:133
 msgid "You can't change your nickname here"
 msgstr "Nu-ți poți schimba pseudonimul aici"
 
@@ -39511,7 +39440,7 @@ msgid "You have unsaved changes."
 msgstr "Ai modificări nesalvate."
 
 #. Warning text in the my profile tab. Keep the tone plain and specific.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:81
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:80
 msgid "You have unsaved changes. Save or reset before leaving."
 msgstr "Ai modificări nesalvate. Salvează sau resetează înainte de a pleca."
 
@@ -39532,11 +39461,11 @@ msgstr "Nu ai blocat încă pe nimeni."
 msgid "You just pressed Tab. Keyboard mode is now on so you can navigate {productName} without a mouse."
 msgstr "Tocmai ai apăsat Tab. Modul tastatură este acum activ, ca să poți naviga în {productName} fără mouse."
 
-#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:135
+#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:137
 msgid "You keep your perks until your next renewal date, then have a 3-day grace period to resubscribe and keep your subscriber history."
 msgstr "Îți păstrezi beneficiile până la următoarea dată de reînnoire, apoi ai o perioadă de grație de 3 zile pentru a te reabona și a-ți păstra istoricul de abonat."
 
-#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:157
+#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:159
 msgid "You lose all {PREMIUM_PRODUCT_NAME} perks immediately and your subscriber history resets. This cannot be undone."
 msgstr "Pierzi imediat toate beneficiile {PREMIUM_PRODUCT_NAME}, iar istoricul tău de abonat se resetează. Această acțiune nu poate fi anulată."
 
@@ -39986,10 +39915,10 @@ msgstr "Sesiunea ta {productName} a expirat. Conectează-te din nou pentru a con
 msgid "Your account"
 msgstr "Contul tău"
 
-#. First line of the set-aside confirmation in the required-action modal. Always shown. Says can rather than will, because whether the check returns depends on account age and instance settings the user cannot see.
+#. First line of the set-aside confirmation in the required-action modal. Always shown. Says can rather than will, because the check may or may not come back.
 #: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:316
-msgid "Your account goes back to normal right away and you will not need a phone number now. This is not a permanent exemption. Joining a large or public community can bring this check back."
-msgstr "Contul tău revine imediat la normal și nu vei mai avea nevoie de un număr de telefon. Aceasta nu este o scutire permanentă. Alăturarea la o comunitate mare sau publică poate readuce această verificare."
+msgid "Your account goes back to normal right away and you will not need a phone number now. This is not a permanent exemption, and we can ask for this check again later."
+msgstr "Contul tău revine imediat la normal și nu vei mai avea nevoie de un număr de telefon. Aceasta nu este o scutire permanentă și putem solicita această verificare din nou mai târziu."
 
 #: src/features/connection/components/pages/ConnectionCallbackPage.tsx:29
 msgid "Your account has been linked successfully. You can now close this tab and return to the app."
@@ -40036,10 +39965,6 @@ msgstr "Acțiunea ta nu a putut fi finalizată deoarece a fost semnalată de sis
 msgid "Your application is pending review. You can still update your listing details or withdraw the application."
 msgstr "Cererea ta este în curs de examinare. Poți actualiza în continuare detaliile listării sau poți retrage cererea."
 
-#: src/features/auth/components/AltchaVerification.tsx:50
-msgid "Your browser couldn't finish the check."
-msgstr "Browserul tău nu a putut finaliza verificarea."
-
 #. Body of the browser-audio-required modal explaining why the user must click before audio can play.
 #: src/features/voice/components/modals/AudioPlaybackPermissionModal.tsx:12
 msgid "Your browser requires user interaction before audio can be played. Click the button below to enable voice chat."
@@ -40054,7 +39979,7 @@ msgid "Your card is eligible. Redirecting you to the payment page now."
 msgstr "Cardul tău este eligibil. Te redirecționăm acum către pagina de plată."
 
 #. Required-action form error when the carrier lookup says the number does not exist. Leaves room for the lookup to be wrong.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:564
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:560
 msgid "Your carrier says this number isn't in service. Check it and try again, or contact support if it's correct."
 msgstr "Operatorul tău spune că acest număr nu este activ. Verifică-l și încearcă din nou sau contactează asistența dacă este corect."
 
@@ -40226,10 +40151,10 @@ msgstr "noul tău e-mail"
 msgid "Your new nickname, or leave blank to reset it."
 msgstr "Noul tău pseudonim sau lasă gol pentru a-l reseta."
 
-#. Required-action modal privacy note for phone verification. limit and duration are inserted by code.
+#. Required-action modal privacy note for phone verification.
 #: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:421
-msgid "Your number is not linked to your account. We keep only an encrypted marker, with no user ID, for at most {limit} verifications in about {duration} days."
-msgstr "Numărul tău nu este conectat la contul tău. Păstrăm doar un marcator criptat, fără ID de utilizator, pentru cel mult {limit} verificări în aproximativ {duration} zile."
+msgid "Your number is not linked to your account. We keep only an encrypted marker, with no user ID, for a limited time."
+msgstr "Numărul tău nu este asociat cu contul tău. Păstrăm doar un identificator criptat, fără ID de utilizator, pentru o perioadă limitată."
 
 #: src/features/premium/components/pages/PremiumCallbackPage.tsx:152
 msgid "Your payment was canceled. You can now close this tab and return to the app."
@@ -40391,7 +40316,7 @@ msgid "YouTube enrichment"
 msgstr "Îmbogățire YouTube"
 
 #. Setup wizard title for YouTube integration credentials.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:977
+#: src/features/app/components/setup/SetupWizardSteps.tsx:970
 msgid "YouTube previews"
 msgstr "Previzualizări YouTube"
 
@@ -40417,7 +40342,7 @@ msgstr "Maximizează"
 #. Native View menu item that increases UI zoom level.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:628
-#: src/features/input/state/input_keybind/shared.ts:253
+#: src/features/input/state/input_keybind/shared.ts:261
 #: src/features/platform/utils/DesktopLocaleBridge.ts:113
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:82
 msgid "Zoom in"
@@ -40428,7 +40353,7 @@ msgstr "Mărire"
 #. Native View menu item that decreases UI zoom level.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:624
-#: src/features/input/state/input_keybind/shared.ts:257
+#: src/features/input/state/input_keybind/shared.ts:265
 #: src/features/platform/utils/DesktopLocaleBridge.ts:117
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:86
 msgid "Zoom out"

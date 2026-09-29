@@ -11,10 +11,7 @@ import {ADMIN_ACL_COUNT, AdminAclType} from '@fluxer/schema/src/domains/admin/Ad
 import {AdminArchiveResponseSchema} from '@fluxer/schema/src/domains/admin/AdminArchiveSchemas';
 import {GuildAdminResponse} from '@fluxer/schema/src/domains/admin/AdminGuildSchemas';
 import {UserAdminResponseSchema} from '@fluxer/schema/src/domains/admin/AdminUserSchemas';
-import {
-	AltchaCaptchaConfigResponse,
-	AltchaCaptchaConfigUpdateRequest,
-} from '@fluxer/schema/src/domains/admin/AltchaCaptchaSchemas';
+import {CaptchaConfigResponse, CaptchaConfigUpdateRequest} from '@fluxer/schema/src/domains/admin/CaptchaSchemas';
 import {
 	DomainMigrationConfigResponse,
 	DomainMigrationConfigUpdateRequest,
@@ -27,24 +24,13 @@ import {
 	InstanceBillingResponse,
 	InstanceBillingUpdateRequest,
 } from '@fluxer/schema/src/domains/admin/InstanceBillingSchemas';
-import {
-	ProfileTimezoneConfigResponse,
-	ProfileTimezoneConfigUpdateRequest,
-} from '@fluxer/schema/src/domains/admin/ProfileTimezoneSchemas';
 import {PushRelayConfigResponse, PushRelayConfigUpdateRequest} from '@fluxer/schema/src/domains/admin/PushRelaySchemas';
-import {
-	VoiceNoiseSuppressionConfigResponse,
-	VoiceNoiseSuppressionConfigUpdateRequest,
-} from '@fluxer/schema/src/domains/admin/VoiceNoiseSuppressionSchemas';
 import {
 	ExperimentDeliveryConfigResponse,
 	ExperimentDeliveryConfigUpdateRequest,
 } from '@fluxer/schema/src/domains/experiment/ExperimentSchemas';
 import {GuildMemberResponse} from '@fluxer/schema/src/domains/guild/GuildMemberSchemas';
-import {
-	InstanceCaptchaProviderSchema,
-	InstanceRegistrationModeSchema,
-} from '@fluxer/schema/src/domains/instance/InstanceSchemas';
+import {InstanceRegistrationModeSchema} from '@fluxer/schema/src/domains/instance/InstanceSchemas';
 import {MessageResponseSchema} from '@fluxer/schema/src/domains/message/MessageResponseSchemas';
 import {GiftCodeDurationTypeSchema} from '@fluxer/schema/src/domains/premium/GiftCodeSchemas';
 import {ChannelTypeSchema} from '@fluxer/schema/src/primitives/ChannelValidators';
@@ -313,19 +299,6 @@ export const BanEmailRequest = z.object({
 
 export type BanEmailRequest = z.infer<typeof BanEmailRequest>;
 
-export const SuspiciousEmailDomainRequest = z.object({
-	domain: z
-		.string()
-		.min(1)
-		.max(253)
-		.regex(/^[a-zA-Z0-9][a-zA-Z0-9\-.]*\.[a-zA-Z]{2,}$/, 'Must be a valid domain name (e.g. example.com)')
-		.describe(
-			'Email domain to flag as suspicious (e.g. mail.ru). Registrants from this domain will be required to verify a phone number.',
-		),
-});
-
-export type SuspiciousEmailDomainRequest = z.infer<typeof SuspiciousEmailDomainRequest>;
-
 export const BanPhraseRequest = z.object({
 	phrase: createStringType(1, 500).describe(
 		'Phrase to ban. Matching is case-insensitive and also normalizes common bypass tricks such as inserted whitespace, punctuation, invisible characters, and compatibility glyphs.',
@@ -589,11 +562,6 @@ const InstancePolicyResponse = z.object({
 		youtube: z.boolean(),
 		bluesky: z.boolean(),
 	}),
-	deferred_phone_gate: z.object({
-		enabled: z.boolean(),
-		window_hours: z.number(),
-		member_threshold: z.number(),
-	}),
 });
 
 const EmailProviderSchema = z.enum(['smtp', 'none']);
@@ -634,15 +602,6 @@ const InstanceIntegrationsResponse = z.object({
 		api_key_set: z.boolean(),
 		effective_available: z.boolean(),
 	}),
-	captcha: z.object({
-		provider: InstanceCaptchaProviderSchema.nullable(),
-		effective_provider: InstanceCaptchaProviderSchema,
-		hcaptcha_site_key: z.string().nullable(),
-		hcaptcha_secret_key_set: z.boolean(),
-		turnstile_site_key: z.string().nullable(),
-		turnstile_secret_key_set: z.boolean(),
-		effective_enabled: z.boolean(),
-	}),
 	email: z.object({
 		enabled: z.boolean().nullable(),
 		effective_enabled: z.boolean(),
@@ -675,11 +634,9 @@ const InstanceIntegrationsResponse = z.object({
 export const InstanceConfigResponse = z.object({
 	sso: SsoConfigResponse,
 	gateway_rollout: GatewayRolloutConfigResponse,
-	voice_noise_suppression: VoiceNoiseSuppressionConfigResponse,
 	push_relay: PushRelayConfigResponse,
 	domain_migration: DomainMigrationConfigResponse,
-	altcha_captcha: AltchaCaptchaConfigResponse,
-	profile_timezone: ProfileTimezoneConfigResponse,
+	captcha: CaptchaConfigResponse,
 	experiment_delivery: ExperimentDeliveryConfigResponse,
 	registration: InstanceRegistrationResponse,
 	self_hosted: z.boolean(),
@@ -705,22 +662,13 @@ const InstancePolicyUpdateSchema = z.object({
 			bluesky_enabled: z.boolean().nullish(),
 		})
 		.nullish(),
-	deferred_phone_gate: z
-		.object({
-			enabled: z.boolean().optional(),
-			window_hours: z.number().positive().max(8760).optional(),
-			member_threshold: z.number().int().positive().max(1_000_000).optional(),
-		})
-		.nullish(),
 });
 
 export const InstanceConfigUpdateRequest = z.object({
 	gateway_rollout: GatewayRolloutConfigUpdateRequest.nullish(),
-	voice_noise_suppression: VoiceNoiseSuppressionConfigUpdateRequest.nullish(),
 	push_relay: PushRelayConfigUpdateRequest.nullish(),
 	domain_migration: DomainMigrationConfigUpdateRequest.nullish(),
-	altcha_captcha: AltchaCaptchaConfigUpdateRequest.nullish(),
-	profile_timezone: ProfileTimezoneConfigUpdateRequest.nullish(),
+	captcha: CaptchaConfigUpdateRequest.nullish(),
 	experiment_delivery: ExperimentDeliveryConfigUpdateRequest.nullish(),
 	registration: z
 		.object({
@@ -756,15 +704,6 @@ export const InstanceConfigUpdateRequest = z.object({
 			youtube: z
 				.object({
 					api_key: z.string().trim().max(4096).nullish(),
-				})
-				.nullish(),
-			captcha: z
-				.object({
-					provider: InstanceCaptchaProviderSchema.nullish(),
-					hcaptcha_site_key: z.string().trim().max(4096).nullish(),
-					hcaptcha_secret_key: z.string().trim().max(4096).nullish(),
-					turnstile_site_key: z.string().trim().max(4096).nullish(),
-					turnstile_secret_key: z.string().trim().max(4096).nullish(),
 				})
 				.nullish(),
 			email: z

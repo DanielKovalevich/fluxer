@@ -2395,11 +2395,6 @@ msgstr "60 sekunder"
 msgid "7 days"
 msgstr "7 dagar"
 
-#. Required-action error when the API requires a captcha for phone verification.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:581
-msgid "A browser check is required before phone verification. Try again from the sign-in page or contact support."
-msgstr "En webbläsarkontroll krävs innan telefonverifiering. Försök igen från inloggningssidan eller kontakta supporten."
-
 #. Hint shown beside in:. Sentence case, no trailing punctuation.
 #: src/features/search/utils/SearchUtils.ts:77
 msgid "a channel"
@@ -2874,7 +2869,7 @@ msgid "Activity sharing"
 msgstr "Delning av aktivitet"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:478
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:473
 #: src/features/user/components/settings_utils/section_registry/VoiceVideoSections.ts:102
 msgid "Activity threshold"
 msgstr "Aktivitetströskel"
@@ -2928,7 +2923,7 @@ msgid "Add a friend to get started."
 msgstr "Lägg till en vän för att komma igång."
 
 #. Setup wizard body for GIF integration credentials.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:973
+#: src/features/app/components/setup/SetupWizardSteps.tsx:966
 msgid "Add a Klipy API key to enable GIF search at runtime."
 msgstr "Lägg till en Klipy-API-nyckel för att aktivera GIF-sökning när instansen körs."
 
@@ -2965,7 +2960,7 @@ msgid "Add a working email"
 msgstr "Lägg till en fungerande e-postadress"
 
 #. Setup wizard body for YouTube integration credentials.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:981
+#: src/features/app/components/setup/SetupWizardSteps.tsx:974
 msgid "Add a YouTube Data API key to enrich YouTube links."
 msgstr "Lägg till en YouTube Data API-nyckel för att visa utökade förhandsvisningar av YouTube-länkar."
 
@@ -3011,7 +3006,7 @@ msgid "Add another reaction"
 msgstr "Lägg till en till reaktion"
 
 #. Setup wizard body for Bluesky integration credentials.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1005
+#: src/features/app/components/setup/SetupWizardSteps.tsx:990
 msgid "Add Bluesky OAuth client metadata and a signing key."
 msgstr "Lägg till Bluesky OAuth-klientmetadata och en signeringsnyckel."
 
@@ -3120,7 +3115,7 @@ msgstr "Lägg till lösennyckel"
 #. Generic action label that opens the reaction picker for a message.
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:527
-#: src/features/input/state/input_keybind/shared.ts:17
+#: src/features/input/state/input_keybind/shared.ts:21
 msgid "Add reaction"
 msgstr "Lägg till reaktion"
 
@@ -3161,7 +3156,7 @@ msgid "Add shortcut"
 msgstr "Lägg till genväg"
 
 #. Setup wizard body for SMTP integration credentials.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:997
+#: src/features/app/components/setup/SetupWizardSteps.tsx:982
 msgid "Add SMTP credentials so the instance can send verification and notification email."
 msgstr "Lägg till SMTP-uppgifter så att instansen kan skicka e-post för verifiering och aviseringar."
 
@@ -3188,7 +3183,7 @@ msgid "Add stream"
 msgstr "Lägg till sändning"
 
 #. Description for configuring an optional setup wizard integration now.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:965
+#: src/features/app/components/setup/SetupWizardSteps.tsx:958
 msgid "Add the credentials during setup."
 msgstr "Lägg till uppgifterna under installationen."
 
@@ -3611,11 +3606,11 @@ msgstr "Tillåt {everyoneMention} och {hereMention}"
 msgid "Allow {PRODUCT_NAME} to access your camera in {MACOS_SYSTEM_SETTINGS_NAME} → {MACOS_PRIVACY_AND_SECURITY_SETTINGS_NAME} → {MACOS_CAMERA_PERMISSION_NAME}."
 msgstr "Tillåt {PRODUCT_NAME} att komma åt din kamera i {MACOS_SYSTEM_SETTINGS_NAME} → {MACOS_PRIVACY_AND_SECURITY_SETTINGS_NAME} → {MACOS_CAMERA_PERMISSION_NAME}."
 
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:535
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:530
 msgid "Allow {PRODUCT_NAME} to access your microphone in {MACOS_SYSTEM_SETTINGS_NAME} → {MACOS_PRIVACY_AND_SECURITY_SETTINGS_NAME} → {MACOS_MICROPHONE_PERMISSION_NAME}."
 msgstr "Tillåt att {PRODUCT_NAME} får åtkomst till din mikrofon i {MACOS_SYSTEM_SETTINGS_NAME} → {MACOS_PRIVACY_AND_SECURITY_SETTINGS_NAME} → {MACOS_MICROPHONE_PERMISSION_NAME}."
 
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:540
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:535
 msgid "Allow {PRODUCT_NAME} to access your microphone. Check your browser's address bar or settings."
 msgstr "Tillåt {PRODUCT_NAME} att komma åt din mikrofon. Kontrollera webbläsarens adressfält eller inställningar."
 
@@ -3718,7 +3713,7 @@ msgstr "Tillåt medlemmar utan behörigheten {readMessageHistoryPermissionLabel}
 msgid "Allow mentions for this role"
 msgstr "Tillåt omnämnanden för den här rollen"
 
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:560
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:555
 msgid "Allow microphone"
 msgstr "Tillåt mikrofon"
 
@@ -3954,7 +3949,7 @@ msgid "An invalid status was provided. You can now close this tab and return to 
 msgstr "En ogiltig status angavs. Du kan nu stänga den här fliken och återgå till appen."
 
 #. Short label in the authentication auth form. Keep the tone plain and specific.
-#: src/features/auth/hooks/useAuthForm.ts:13
+#: src/features/auth/hooks/useAuthForm.ts:12
 msgid "An unexpected error occurred"
 msgstr "Ett oväntat fel uppstod"
 
@@ -4203,7 +4198,7 @@ msgid "Another round checkbox"
 msgstr "Ytterligare en rund kryssruta"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:213
+#: src/features/input/state/input_keybind/shared.ts:221
 msgid "Answer the incoming call"
 msgstr "Svara på det inkommande samtalet"
 
@@ -4262,7 +4257,7 @@ msgid "Anyone can request an account, but an administrator must approve it."
 msgstr "Vem som helst kan begära ett konto, men en administratör måste godkänna det."
 
 #. Label for an integration API key input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1018
+#: src/features/app/components/setup/SetupWizardSteps.tsx:994
 msgid "API key"
 msgstr "API-nyckel"
 
@@ -4767,7 +4762,7 @@ msgid "Audio output"
 msgstr "Ljudutgång"
 
 #. Field label in the voice connection status popout. Shows received audio packet loss percentage.
-#: src/features/voice/components/voice_connection_status/shared.ts:107
+#: src/features/voice/components/voice_connection_status/shared.ts:108
 msgid "Audio packet loss:"
 msgstr "Förlorade ljudpaket:"
 
@@ -4782,32 +4777,32 @@ msgid "Audio preview"
 msgstr "Ljudförhandsgranskning"
 
 #. Voice settings modal title for microphone processing options.
-#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:51
+#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:48
 msgid "Audio processing"
 msgstr "Ljudbehandling"
 
 #. Tooltip in the voice status popout. Describes the custom mic processing profile with enhanced (DeepFilterNet3) noise suppression.
-#: src/features/voice/components/voice_connection_status/shared.ts:19
+#: src/features/voice/components/voice_connection_status/shared.ts:20
 msgid "Audio processing (custom, enhanced)"
 msgstr "Ljudbehandling (anpassad, förbättrad)"
 
 #. Tooltip in the voice status popout. Describes the custom mic processing profile with no noise suppression.
-#: src/features/voice/components/voice_connection_status/shared.ts:29
+#: src/features/voice/components/voice_connection_status/shared.ts:30
 msgid "Audio processing (custom, no suppression)"
 msgstr "Ljudbehandling (anpassad, ingen brusreducering)"
 
 #. Tooltip in the voice status popout. Describes the custom mic processing profile with browser-built-in noise suppression.
-#: src/features/voice/components/voice_connection_status/shared.ts:24
+#: src/features/voice/components/voice_connection_status/shared.ts:25
 msgid "Audio processing (custom)"
 msgstr "Ljudbehandling (anpassad)"
 
 #. Tooltip in the voice status popout. Describes the studio / direct-input mic processing profile.
-#: src/features/voice/components/voice_connection_status/shared.ts:11
+#: src/features/voice/components/voice_connection_status/shared.ts:12
 msgid "Audio processing (direct input, raw)"
 msgstr "Ljudbehandling (direkt inmatning, rådata)"
 
 #. Tooltip in the voice status popout. Describes the focused-voice mic processing profile.
-#: src/features/voice/components/voice_connection_status/shared.ts:15
+#: src/features/voice/components/voice_connection_status/shared.ts:16
 msgid "Audio processing (focused voice)"
 msgstr "Ljudbehandling (fokuserat röstläge)"
 
@@ -4817,12 +4812,12 @@ msgid "Audio progress"
 msgstr "Ljudförlopp"
 
 #. Field label in the voice connection status popout. Shows current inbound audio bitrate.
-#: src/features/voice/components/voice_connection_status/shared.ts:95
+#: src/features/voice/components/voice_connection_status/shared.ts:96
 msgid "Audio receive:"
 msgstr "Ljudmottagning:"
 
 #. Field label in the voice connection status popout. Shows current outbound audio bitrate.
-#: src/features/voice/components/voice_connection_status/shared.ts:91
+#: src/features/voice/components/voice_connection_status/shared.ts:92
 msgid "Audio send:"
 msgstr "Ljudsändning:"
 
@@ -4958,7 +4953,7 @@ msgid "Authorized apps"
 msgstr "Auktoriserade appar"
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:38
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:37
 msgid "Authorized IPs cleared. New logins will require email verification."
 msgstr "Auktoriserade IP-adresser har rensats. Nya inloggningar kräver e-postverifiering."
 
@@ -4993,7 +4988,7 @@ msgstr "Identifiera språk automatiskt"
 
 #. Short label in the voice tab. Keep it concise.
 #: src/features/user/components/modals/tabs/UserVoiceTab.tsx:116
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:465
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:460
 msgid "Auto-set activity threshold"
 msgstr "Ställ in aktivitetströskel automatiskt"
 
@@ -5210,7 +5205,7 @@ msgid "Avatars"
 msgstr "Avatarer"
 
 #. Field label in the voice connection status popout. Shows the average RTT in ms over the recent window.
-#: src/features/voice/components/voice_connection_status/shared.ts:50
+#: src/features/voice/components/voice_connection_status/shared.ts:51
 msgid "Average ping:"
 msgstr "Genomsnittlig ping:"
 
@@ -5240,8 +5235,8 @@ msgstr "Borta just nu"
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx:396
 #: src/features/moderation/components/report_modal/IARModal.tsx:86
 #: src/features/moderation/components/report/ReportStepDetails.tsx:312
-#: src/features/user/components/modals/PhoneAddModal.tsx:420
-#: src/features/user/components/modals/PhoneAddModal.tsx:439
+#: src/features/user/components/modals/PhoneAddModal.tsx:417
+#: src/features/user/components/modals/PhoneAddModal.tsx:436
 msgid "Back"
 msgstr "Tillbaka"
 
@@ -5450,7 +5445,7 @@ msgid "Ban this user"
 msgstr "Bannlys den här användaren"
 
 #. Section heading in the voice connection status popout for current media bitrate usage.
-#: src/features/voice/components/voice_connection_status/shared.ts:66
+#: src/features/voice/components/voice_connection_status/shared.ts:67
 msgid "Bandwidth"
 msgstr "Bandbredd"
 
@@ -5730,7 +5725,7 @@ msgid "Bluesky connections"
 msgstr "Bluesky-anslutningar"
 
 #. Setup wizard title for Bluesky integration credentials.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1001
+#: src/features/app/components/setup/SetupWizardSteps.tsx:986
 msgid "Bluesky OAuth"
 msgstr "Bluesky OAuth"
 
@@ -5775,7 +5770,7 @@ msgstr "Bokmärkesgränsen har nåtts"
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:531
-#: src/features/input/state/input_keybind/shared.ts:265
+#: src/features/input/state/input_keybind/shared.ts:273
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:66
 msgid "Bookmark message"
 msgstr "Bokmärk meddelande"
@@ -5896,11 +5891,6 @@ msgstr "Botbehörigheter kan inte vara negativa."
 #: src/features/user/components/settings_utils/search_index/ApplicationsIndex.ts:64
 msgid "Bot profile"
 msgstr "Botprofil"
-
-#. Setup wizard title for CAPTCHA integration credentials.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:985
-msgid "Bot protection"
-msgstr "Botskydd"
 
 #. Short label in the authentication OAUTH scopes step. Keep the tone plain and specific.
 #: src/features/auth/components/pages/oauth_authorize_page/OAuthScopesStep.tsx:20
@@ -6431,7 +6421,7 @@ msgstr "Kan inte ladda upp filer här"
 #: src/features/expressions/components/modals/EditGuildStickerModal.tsx:116
 #: src/features/guild/components/modals/TransferOwnershipModal.tsx:91
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:103
-#: src/features/input/state/input_keybind/shared.ts:137
+#: src/features/input/state/input_keybind/shared.ts:145
 #: src/features/invite/components/modals/InviteModal.tsx:552
 #: src/features/messaging/components/modals/AttachmentEditModal.tsx:133
 #: src/features/messaging/components/modals/EditAltTextModal.tsx:190
@@ -6451,7 +6441,7 @@ msgstr "Kan inte ladda upp filer här"
 #: src/features/user/components/modals/PasswordChangeModal.tsx:226
 #: src/features/user/components/modals/PasswordChangeModal.tsx:237
 #: src/features/user/components/modals/PasswordChangeModal.tsx:255
-#: src/features/user/components/modals/PhoneAddModal.tsx:401
+#: src/features/user/components/modals/PhoneAddModal.tsx:398
 #: src/features/user/components/modals/tabs/AuthorizedAppsTab.tsx:174
 #: src/features/voice/components/EntranceSoundTrimmerModal.tsx:33
 #: src/features/voice/components/modals/CameraPreviewModal.tsx:846
@@ -6501,12 +6491,12 @@ msgstr "Avbryt schemalagt byte"
 #. Billing button that starts subscription cancellation.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:844
-#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:140
+#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:142
 #: src/features/user/components/settings_utils/search_index/PlutoniumIndex.ts:31
 msgid "Cancel subscription"
 msgstr "Säg upp abonnemanget"
 
-#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:133
+#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:135
 msgid "Cancel subscription?"
 msgstr "Säga upp abonnemanget?"
 
@@ -6553,11 +6543,6 @@ msgstr "Kan inte redigeras"
 #: src/features/guild/components/modals/GuildOwnershipWarningModal.tsx:12
 msgid "Cannot delete account"
 msgstr "Kan inte radera konto"
-
-#. Toast error shown when captcha verification fails inside the auth captcha interceptor.
-#: src/features/auth/components/CaptchaInterceptor.tsx:15
-msgid "Captcha verification failed. Try again."
-msgstr "Verifiering av captcha misslyckades. Försök igen."
 
 #. Section header in the Linux audio source picker. Lists capture-target options (entire system / specific apps).
 #: src/features/voice/components/AudioSourcePickerLinux.tsx:50
@@ -7398,10 +7383,6 @@ msgstr "Kontrollerar åtkomst..."
 msgid "Checking screen recording permission..."
 msgstr "Kontrollerar skärminspelningsbehörigheten…"
 
-#: src/features/auth/components/AltchaVerification.tsx:62
-msgid "Checking your browser. This takes a few seconds."
-msgstr "Kontrollerar din webbläsare. Det här tar några sekunder."
-
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/search_index/PlutoniumIndex.ts:67
 msgid "Checkout"
@@ -7570,11 +7551,6 @@ msgstr "Välj Arkiv och sedan Lägg till i Dock."
 #: src/features/channel/utils/CreateDMModalUtils.tsx:39
 msgid "Choose friends to message."
 msgstr "Välj vänner att skicka meddelanden till."
-
-#. Setup wizard body for CAPTCHA integration credentials.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:989
-msgid "Choose hCaptcha or Cloudflare Turnstile for signup challenges."
-msgstr "Välj hCaptcha eller Cloudflare Turnstile för kontroller vid registrering."
 
 #. Settings search entry description. One-line summary of what the settings search entry controls.
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:455
@@ -7865,7 +7841,7 @@ msgid "Clean link"
 msgstr "Rensa länk"
 
 #. Description for the focused-voice option in the voice processing settings radio group.
-#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:34
+#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:31
 msgid "Cleans up your mic for clear speech."
 msgstr "Rensar mikrofonsignalen för tydligt tal."
 
@@ -7924,7 +7900,7 @@ msgid "Clear custom status"
 msgstr "Rensa anpassad status"
 
 #. Body of the confirmation alert shown when clearing every reaction on a message.
-#: src/features/channel/components/MessageActionUtils.tsx:71
+#: src/features/channel/components/MessageActionUtils.tsx:74
 msgid "Clear every reaction from this message?"
 msgstr "Rensa alla reaktioner från det här meddelandet?"
 
@@ -7982,17 +7958,17 @@ msgid "Clear selection"
 msgstr "Rensa markering"
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:88
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:87
 msgid "Clear trust all setting"
 msgstr "Rensa inställningen \"lita på alla\""
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:63
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:62
 msgid "Clear trusted domains"
 msgstr "Rensa betrodda domäner"
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:96
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:95
 msgid "Clear trusted domains ({trustedDomainsCount})"
 msgstr "Rensa betrodda domäner ({trustedDomainsCount})"
 
@@ -8002,7 +7978,7 @@ msgid "Clearer text"
 msgstr "Tydligare text"
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:108
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:107
 msgid "Clearing trusted domains..."
 msgstr "Rensar betrodda domäner..."
 
@@ -8100,7 +8076,7 @@ msgid "Client"
 msgstr "Klient"
 
 #. Label for Bluesky OAuth client name input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1057
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1031
 msgid "Client name"
 msgstr "Klientnamn"
 
@@ -8117,7 +8093,7 @@ msgid "Client secret regenerated. Update any code that uses the old secret."
 msgstr "En ny klienthemlighet har skapats. Uppdatera all kod som använder den gamla."
 
 #. Label for Bluesky OAuth client URL input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1061
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1035
 msgid "Client URL"
 msgstr "Klient-URL"
 
@@ -8269,11 +8245,6 @@ msgstr "Stängda DM-konversationer"
 msgid "Cloud upload"
 msgstr "Molnuppladdning"
 
-#. Cloudflare Turnstile provider option.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1014
-msgid "Cloudflare Turnstile"
-msgstr "Cloudflare Turnstile"
-
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/section_registry/AppearanceSections.ts:58
 msgid "Coal"
@@ -8294,7 +8265,7 @@ msgstr "Koltema"
 #. Label for an inbound phone verification code shown in the required-action modal.
 #: src/features/auth/components/modals/MfaTotpDisableModal.tsx:26
 #: src/features/auth/components/modals/MfaTotpEnableModal.tsx:36
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:466
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:462
 #: src/features/invite/components/InviteListItem.tsx:77
 #: src/features/moderation/components/report/ReportBreadcrumbs.tsx:29
 msgid "Code"
@@ -8669,7 +8640,7 @@ msgstr "Namn på community"
 
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:126
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:125
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:113
 msgid "Community nickname"
 msgstr "Smeknamn i communityn"
@@ -8722,7 +8693,7 @@ msgid "Community profile"
 msgstr "Communityprofil"
 
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:73
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:72
 msgid "Community profile updated"
 msgstr "Communityprofilen uppdaterad"
 
@@ -8880,7 +8851,7 @@ msgid "Configure keyboard shortcuts"
 msgstr "Konfigurera kortkommandon"
 
 #. Option for configuring an optional setup wizard integration.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:961
+#: src/features/app/components/setup/SetupWizardSteps.tsx:954
 msgid "Configure now"
 msgstr "Konfigurera nu"
 
@@ -9013,7 +8984,7 @@ msgstr "Anslut en kamera eller virtuell inspelningsenhet och försök igen."
 msgid "Connect a display, then try again."
 msgstr "Anslut en skärm och försök igen."
 
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:545
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:540
 msgid "Connect a microphone and try again."
 msgstr "Anslut en mikrofon och försök igen."
 
@@ -9058,7 +9029,7 @@ msgid "Connecting..."
 msgstr "Ansluter..."
 
 #. Voice connection status while joining or reconnecting.
-#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:46
+#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:47
 msgctxt "voice-connection-status"
 msgid "Connecting..."
 msgstr "Ansluter..."
@@ -9077,7 +9048,7 @@ msgid "Connection failed"
 msgstr "Anslutningen misslyckades"
 
 #. Voice connection status when the most recent attempt to join the channel failed.
-#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:56
+#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:57
 msgctxt "voice-connection-status"
 msgid "Connection failed"
 msgstr "Anslutningen misslyckades"
@@ -9464,7 +9435,7 @@ msgstr "Kopiera kanal-ID"
 
 #. Action that copies a deep link to the selected channel.
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:205
+#: src/features/input/state/input_keybind/shared.ts:213
 #: src/features/ui/action_menu/items/ChannelMenuData.tsx:132
 msgid "Copy channel link"
 msgstr "Kopiera kanallänk"
@@ -9503,7 +9474,7 @@ msgid "Copy emoji URL"
 msgstr "Kopiera emoji-URL"
 
 #. Tooltip / button label that copies the voice endpoint hostname to the clipboard.
-#: src/features/voice/components/voice_connection_status/shared.ts:58
+#: src/features/voice/components/voice_connection_status/shared.ts:59
 msgid "Copy endpoint"
 msgstr "Kopiera slutpunkt"
 
@@ -9613,7 +9584,7 @@ msgstr "Kopiera meddelande"
 #. Developer-mode action that copies a message snowflake/ID to the clipboard.
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:737
-#: src/features/input/state/input_keybind/shared.ts:277
+#: src/features/input/state/input_keybind/shared.ts:285
 msgid "Copy message ID"
 msgstr "Kopiera meddelande-ID"
 
@@ -9621,7 +9592,7 @@ msgstr "Kopiera meddelande-ID"
 #. IAR modal: quick-action card title.
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:523
-#: src/features/input/state/input_keybind/shared.ts:273
+#: src/features/input/state/input_keybind/shared.ts:281
 #: src/features/moderation/components/report_modal/IARModalCopy.ts:389
 msgid "Copy message link"
 msgstr "Kopiera meddelandelänk"
@@ -10299,7 +10270,7 @@ msgstr "Nedräkningstimer"
 #. Form field label for the country selector in the phone verification step.
 #. Short label in the phone add modal. Keep it concise.
 #: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:92
-#: src/features/user/components/modals/PhoneAddModal.tsx:59
+#: src/features/user/components/modals/PhoneAddModal.tsx:57
 msgid "Country"
 msgstr "Land"
 
@@ -10460,7 +10431,7 @@ msgstr "Skapa ny länk"
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Short label in the sidebar navigation add guild button.
 #: src/features/app/components/layout/sidebar_nav/AddGuildButton.tsx:32
-#: src/features/input/state/input_keybind/shared.ts:121
+#: src/features/input/state/input_keybind/shared.ts:129
 msgid "Create or join a community"
 msgstr "Skapa eller gå med i en community"
 
@@ -10653,7 +10624,7 @@ msgid "Current DM"
 msgstr "Nuvarande DM"
 
 #. Field label in the voice connection status popout. Shows the latest RTT in ms.
-#: src/features/voice/components/voice_connection_status/shared.ts:41
+#: src/features/voice/components/voice_connection_status/shared.ts:42
 msgid "Current ping:"
 msgstr "Aktuell ping:"
 
@@ -10701,7 +10672,7 @@ msgstr "Anpassad källa"
 #. Voice input processing profile where the user configures processing manually.
 #. Voice input processing profile where the user configures processing manually.
 #: src/features/user/components/modals/tabs/UserVoiceTab.tsx:91
-#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:42
+#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:39
 #: src/features/voice/components/VoiceSettingsMenus.tsx:70
 msgctxt "voice-processing-profile"
 msgid "Custom"
@@ -11229,7 +11200,7 @@ msgid "Decide whether replies @mention you by default"
 msgstr "Bestäm om svar ska @-omnämna dig som standard"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:217
+#: src/features/input/state/input_keybind/shared.ts:225
 msgid "Decline the incoming call"
 msgstr "Avvisa inkommande samtal"
 
@@ -12007,7 +11978,7 @@ msgid "Device volume"
 msgstr "Enhetsvolym"
 
 #. Field label in the voice connection status popout. Shows the connected voice region / device.
-#: src/features/voice/components/voice_connection_status/shared.ts:37
+#: src/features/voice/components/voice_connection_status/shared.ts:38
 msgid "Device:"
 msgstr "Enhet:"
 
@@ -12336,12 +12307,12 @@ msgstr "Koppla från {channel}"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Tray menu item. Leaves the current voice call when the channel name is unavailable.
-#: src/features/input/state/input_keybind/shared.ts:317
+#: src/features/input/state/input_keybind/shared.ts:325
 #: src/features/platform/utils/DesktopLocaleBridge.ts:221
 msgid "Disconnect from voice"
 msgstr "Koppla från röstchatten"
 
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:261
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:243
 msgid "Disconnect socket"
 msgstr "Koppla från socket"
 
@@ -12353,7 +12324,7 @@ msgid "Disconnected"
 msgstr "Nedkopplad"
 
 #. Voice connection status when not connected.
-#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:51
+#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:52
 msgctxt "voice-connection-status"
 msgid "Disconnected"
 msgstr "Frånkopplad"
@@ -12418,7 +12389,7 @@ msgid "Dismiss"
 msgstr "Stäng"
 
 #. Button that dismisses the failed voice connection status banner.
-#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:66
+#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:67
 msgctxt "voice-connection-status"
 msgid "Dismiss"
 msgstr "Stäng"
@@ -12479,7 +12450,7 @@ msgstr "Visningsläge"
 #. Short label in the inputs tab. Keep it concise.
 #. Short label in the my profile tab. Keep it concise.
 #: src/features/user/components/modals/tabs/component_gallery_tab/ComponentGalleryTabInputsTab.tsx:22
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:138
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:137
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:61
 msgid "Display name"
 msgstr "Visningsnamn"
@@ -12625,7 +12596,7 @@ msgstr "Vill du gå med i {communityName}?"
 #. Label in the accessibility tab.
 #. Label in the my profile tab.
 #: src/features/user/components/modals/tabs/AccessibilityTab.tsx:54
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:146
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:145
 msgid "Doc, I'm from the future. I came here in a time machine that you invented. Now, I need your help to get back to the year 1985."
 msgstr "Doktor, jag är från framtiden. Jag kom hit i en tidsmaskin som du uppfann. Nu behöver jag din hjälp för att komma tillbaka till år 1985."
 
@@ -12966,7 +12937,7 @@ msgid "Drop images, fonts, or other files here to use them inside your custom CS
 msgstr "Släpp bilder, typsnitt eller andra filer här för att använda dem i din anpassade CSS."
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:133
+#: src/features/input/state/input_keybind/shared.ts:141
 msgid "Drop item"
 msgstr "Släpp objekt"
 
@@ -13014,7 +12985,7 @@ msgid "Duplicate role"
 msgstr "Duplicera roll"
 
 #. Field label in the voice connection status popout. Shows how long the current voice session has been connected.
-#: src/features/voice/components/voice_connection_status/shared.ts:74
+#: src/features/voice/components/voice_connection_status/shared.ts:75
 msgid "Duration:"
 msgstr "Varaktighet:"
 
@@ -13256,8 +13227,13 @@ msgstr "Redigera botens avatar, tagg, presentation, banner och beteende för vä
 msgid "Edit translation provider"
 msgstr "Redigera översättningsleverantör"
 
+#. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
+#: src/features/input/state/input_keybind/shared.ts:13
+msgid "Edit your messages above or below"
+msgstr "Redigera dina meddelanden ovanför eller nedanför"
+
 #. Button or menu action label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:93
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:92
 msgid "Edit your profile appearance and see a live preview"
 msgstr "Redigera profilens utseende och se en förhandsvisning direkt"
 
@@ -13325,7 +13301,7 @@ msgid "Email changed"
 msgstr "E-postadress ändrad"
 
 #. Setup wizard title for SMTP integration credentials.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:993
+#: src/features/app/components/setup/SetupWizardSteps.tsx:978
 msgid "Email delivery"
 msgstr "E-postleverans"
 
@@ -13350,7 +13326,7 @@ msgid "Email unavailable"
 msgstr "E-postadressen är inte tillgänglig"
 
 #. Required-action error shown when email update cannot continue.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:522
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:518
 msgid "Email update is unavailable right now. Try again later or contact support."
 msgstr "Det går inte att uppdatera e-postadressen just nu. Försök igen senare eller kontakta supporten."
 
@@ -13441,12 +13417,12 @@ msgid "Embeds"
 msgstr "Inbäddningar"
 
 #. Toast confirmation after hiding link previews and embeds on a message.
-#: src/features/channel/components/MessageActionUtils.tsx:83
+#: src/features/channel/components/MessageActionUtils.tsx:86
 msgid "Embeds suppressed"
 msgstr "Inbäddningar dolda"
 
 #. Toast confirmation after re-enabling link previews and embeds on a message.
-#: src/features/channel/components/MessageActionUtils.tsx:79
+#: src/features/channel/components/MessageActionUtils.tsx:82
 msgid "Embeds unsuppressed"
 msgstr "Inbäddningar visas"
 
@@ -13630,7 +13606,7 @@ msgid "Enable beta feature"
 msgstr "Aktivera beta-funktion"
 
 #. Label for enabling Bluesky OAuth in setup.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1053
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1027
 msgid "Enable Bluesky OAuth"
 msgstr "Aktivera Bluesky OAuth"
 
@@ -13663,7 +13639,7 @@ msgid "Enable developer mode"
 msgstr "Aktivera utvecklarläge"
 
 #. Label for enabling SMTP email delivery in setup.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1021
+#: src/features/app/components/setup/SetupWizardSteps.tsx:995
 msgid "Enable email delivery"
 msgstr "Aktivera e-postleverans"
 
@@ -13894,11 +13870,11 @@ msgstr "Slutdatum"
 msgid "End grace now"
 msgstr "Avsluta respitperioden nu"
 
-#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:162
+#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:164
 msgid "End grace period"
 msgstr "Avsluta respitperiod"
 
-#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:155
+#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:157
 msgid "End grace period now?"
 msgstr "Avsluta respitperioden nu?"
 
@@ -13930,7 +13906,7 @@ msgid "Endpoint"
 msgstr "Slutpunkt"
 
 #. Field label in the voice connection status popout. Shows the voice server endpoint hostname.
-#: src/features/voice/components/voice_connection_status/shared.ts:54
+#: src/features/voice/components/voice_connection_status/shared.ts:55
 msgid "Endpoint:"
 msgstr "Slutpunkt:"
 
@@ -13999,7 +13975,7 @@ msgstr "Ange en giltig malladress eller kod för {theOtherPlatform}."
 
 #. Inline validation error on the email step of the DSA report flow when the email is malformed.
 #. Required-action form error for an invalid email address.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:510
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:506
 #: src/features/moderation/components/pages/ReportPage.tsx:59
 msgid "Enter a valid email address."
 msgstr "Ange en giltig e-postadress."
@@ -14010,14 +13986,14 @@ msgid "Enter a valid message link."
 msgstr "Ange en giltig meddelandelänk."
 
 #. Required-action form error for an invalid phone number.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:526
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:522
 msgid "Enter a valid mobile phone number."
 msgstr "Ange ett giltigt mobilnummer."
 
 #. Form validation error shown when the entered phone number cannot be parsed.
 #. Label in the phone add modal.
 #: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:108
-#: src/features/user/components/modals/PhoneAddModal.tsx:47
+#: src/features/user/components/modals/PhoneAddModal.tsx:45
 msgid "Enter a valid phone number"
 msgstr "Ange ett giltigt telefonnummer"
 
@@ -14101,7 +14077,7 @@ msgid "Enter the {digitCount}-digit code sent to {phoneNumber}."
 msgstr "Ange den {digitCount}-siffriga koden som skickats till {phoneNumber}."
 
 #. placeholder {0}: getE164PhoneNumber(phoneNumber, selectedCountry) ?? formattedPhone
-#: src/features/user/components/modals/PhoneAddModal.tsx:376
+#: src/features/user/components/modals/PhoneAddModal.tsx:373
 msgid "Enter the {MFA_CODE_DIGIT_COUNT}-digit code sent to {0}."
 msgstr "Ange den {MFA_CODE_DIGIT_COUNT}-siffriga koden som skickades till {0}."
 
@@ -14344,7 +14320,7 @@ msgstr "Kvällstid"
 #. Description for the automatic gain control toggle in the voice processing settings.
 #. Description for the automatic gain control toggle in the voice processing settings.
 #: src/features/user/components/modals/tabs/UserVoiceTab.tsx:173
-#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:63
+#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:60
 msgid "Evens out your mic volume so you are not too quiet."
 msgstr "Jämnar ut din mikrofonvolym så att du inte är för tyst."
 
@@ -14463,7 +14439,7 @@ msgid "Expand channel topic"
 msgstr "Fäll ut kanalämne"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:229
+#: src/features/input/state/input_keybind/shared.ts:237
 msgid "Expand or collapse compact call view"
 msgstr "Expandera eller minimera kompakt samtalsvy"
 
@@ -14700,7 +14676,7 @@ msgid "Failed to ban member. Try again."
 msgstr "Kunde inte bannlysa medlemmen. Försök igen."
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:59
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:58
 msgid "Failed to clear trusted domains."
 msgstr "Kunde inte rensa betrodda domäner."
 
@@ -14757,7 +14733,7 @@ msgid "Failed to enable camera."
 msgstr "Kunde inte aktivera kameran."
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:42
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:41
 msgid "Failed to forget authorized IPs. Try again."
 msgstr "Kunde inte glömma auktoriserade IP-adresser. Försök igen."
 
@@ -14902,7 +14878,7 @@ msgid "Failed to resend verification code. Try again later."
 msgstr "Det gick inte att skicka verifieringskoden igen. Försök igen senare."
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:75
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:74
 msgid "Failed to reset premium state."
 msgstr "Kunde inte återställa premiumstatus."
 
@@ -15385,12 +15361,12 @@ msgid "Focus ring"
 msgstr "Fokusring"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:37
+#: src/features/input/state/input_keybind/shared.ts:45
 msgid "Focus text area"
 msgstr "Fokusera textfält"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:197
+#: src/features/input/state/input_keybind/shared.ts:205
 msgid "Focus the text area"
 msgstr "Fokusera textfältet"
 
@@ -15576,7 +15552,7 @@ msgstr "Tvinga fram laddningsplatshållare"
 msgid "Force mature media"
 msgstr "Tvinga fram medier med vuxet innehåll"
 
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:276
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:258
 msgid "Force move to AFK channel"
 msgstr "Tvinga flytt till AFK-kanal"
 
@@ -15635,7 +15611,7 @@ msgid "Forced off"
 msgstr "Tvingat av"
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:46
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:45
 msgid "Forget authorized IPs"
 msgstr "Glöm auktoriserade IP-adresser"
 
@@ -15645,7 +15621,7 @@ msgid "Forget subscriptions"
 msgstr "Glöm prenumerationer"
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:104
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:103
 msgid "Forgetting authorized IPs..."
 msgstr "Glömmer auktoriserade IP-adresser..."
 
@@ -15686,7 +15662,7 @@ msgstr "Vidarebefordra medieobjekt"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Title of the forward message modal.
-#: src/features/input/state/input_keybind/shared.ts:25
+#: src/features/input/state/input_keybind/shared.ts:33
 #: src/features/messaging/components/modals/ForwardModal.tsx:83
 msgid "Forward message"
 msgstr "Vidarebefordra meddelande"
@@ -15902,12 +15878,12 @@ msgid "from <0>{0}</0>"
 msgstr "från <0>{0}</0>"
 
 #. Label for SMTP from email input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1025
+#: src/features/app/components/setup/SetupWizardSteps.tsx:999
 msgid "From email"
 msgstr "Avsändarens e-postadress"
 
 #. Label for SMTP from name input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1029
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1003
 msgid "From name"
 msgstr "Avsändarnamn"
 
@@ -16137,7 +16113,7 @@ msgstr "Skaffa {premiumProductName} för att anpassa din tagg eller behålla den
 
 #. Button in the required-action modal. Requests a new inbound SMS challenge code.
 #: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:202
-#: src/features/user/components/modals/PhoneAddModal.tsx:427
+#: src/features/user/components/modals/PhoneAddModal.tsx:424
 msgid "Get new code"
 msgstr "Hämta ny kod"
 
@@ -16199,7 +16175,7 @@ msgid "GIF preview"
 msgstr "GIF-förhandsvisning"
 
 #. Setup wizard title for GIF integration credentials.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:969
+#: src/features/app/components/setup/SetupWizardSteps.tsx:962
 msgid "GIF search"
 msgstr "GIF-sökning"
 
@@ -16447,27 +16423,27 @@ msgid "Go to community"
 msgstr "Gå till communityn"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:81
+#: src/features/input/state/input_keybind/shared.ts:89
 msgid "Go to direct messages"
 msgstr "Gå till direktmeddelanden"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:113
+#: src/features/input/state/input_keybind/shared.ts:121
 msgid "Go to eighth community"
 msgstr "Gå till åttonde communityn"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:101
+#: src/features/input/state/input_keybind/shared.ts:109
 msgid "Go to fifth community"
 msgstr "Gå till femte communityn"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:85
+#: src/features/input/state/input_keybind/shared.ts:93
 msgid "Go to first community"
 msgstr "Gå till första communityn"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:97
+#: src/features/input/state/input_keybind/shared.ts:105
 msgid "Go to fourth community"
 msgstr "Gå till fjärde communityn"
 
@@ -16498,12 +16474,12 @@ msgid "Go to page {pageItem}"
 msgstr "Gå till sida {pageItem}"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:89
+#: src/features/input/state/input_keybind/shared.ts:97
 msgid "Go to second community"
 msgstr "Gå till andra communityn"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:109
+#: src/features/input/state/input_keybind/shared.ts:117
 msgid "Go to seventh community"
 msgstr "Gå till sjunde communityn"
 
@@ -16514,12 +16490,12 @@ msgid "Go to sign-in"
 msgstr "Gå till inloggning"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:105
+#: src/features/input/state/input_keybind/shared.ts:113
 msgid "Go to sixth community"
 msgstr "Gå till sjätte communityn"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:93
+#: src/features/input/state/input_keybind/shared.ts:101
 msgid "Go to third community"
 msgstr "Gå till tredje communityn"
 
@@ -16839,7 +16815,7 @@ msgid "Hate speech"
 msgstr "Hatiska uttalanden"
 
 #. Premium page text shown on an instance where the premium tier cannot be bought, only redeemed. {PREMIUM_PRODUCT_NAME} is the premium tier name.
-#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:295
+#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:297
 msgid "Have a gift code? Redeem it to unlock {PREMIUM_PRODUCT_NAME}."
 msgstr "Har du en presentkod? Lös in den för att låsa upp {PREMIUM_PRODUCT_NAME}."
 
@@ -16848,20 +16824,11 @@ msgstr "Har du en presentkod? Lös in den för att låsa upp {PREMIUM_PRODUCT_NA
 msgid "Having fun?"
 msgstr "Har du roligt?"
 
-#: src/features/auth/components/modals/CaptchaModal.tsx:175
-msgid "Having issues? Try hCaptcha instead"
-msgstr "Har du problem? Prova hCaptcha istället"
-
 #. US state name, shown next to the country name in the mature content gate.
 #: src/features/user/utils/UserGeo.ts:63
 msgctxt "us-state"
 msgid "Hawaii"
 msgstr "Hawaii"
-
-#. hCaptcha provider option.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1013
-msgid "hCaptcha"
-msgstr "hCaptcha"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/section_registry/VoiceVideoSections.ts:238
@@ -17183,11 +17150,6 @@ msgstr "Högt dynamiskt omfång"
 #: src/features/user/components/modals/tabs/appearance_tab/AppearanceTabHdrTab.tsx:29
 msgid "High dynamic range display mode"
 msgstr "Visningsläge med högt dynamiskt omfång"
-
-#. Description for the DeepFilterNet3 noise suppression strength slider.
-#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:71
-msgid "Higher values remove more noise but can affect speech texture."
-msgstr "Högre värden tar bort mer brus men kan påverka hur talet låter."
 
 #. Short label in the language and locale names. Keep it concise.
 #: src/features/user/utils/LocaleUtils.ts:64
@@ -17809,7 +17771,7 @@ msgstr "I"
 msgid "In \"Operating system\" mode, dictionaries listed above are advisory. {PRODUCT_NAME} will pass these language tags to your OS spellchecker when supported. Tags it doesn't recognize are ignored."
 msgstr "I läget \"Operativsystem\" är ordlistorna ovan vägledande. {PRODUCT_NAME} skickar dessa språktaggar till din OS-stavningskontroll om det stöds. Taggar som inte känns igen ignoreras."
 
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:310
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:307
 msgid "In a browser, push-to-talk only works while the {PRODUCT_NAME} tab is focused. Install the desktop app for system-wide push-to-talk."
 msgstr "I en webbläsare fungerar tryck för att prata bara när fliken {PRODUCT_NAME} har fokus. Installera datorappen för att använda tryck för att prata i hela systemet."
 
@@ -17955,7 +17917,7 @@ msgid "Incoming calls: nobody"
 msgstr "Inkommande samtal: ingen"
 
 #. Field label in the voice connection status popout. Shows WebRTC estimated available incoming bandwidth.
-#: src/features/voice/components/voice_connection_status/shared.ts:123
+#: src/features/voice/components/voice_connection_status/shared.ts:124
 msgid "Incoming capacity:"
 msgstr "Inkommande kapacitet:"
 
@@ -18664,7 +18626,7 @@ msgid "Jitter"
 msgstr "Jitter"
 
 #. Field label in the voice connection status popout. Shows audio jitter in milliseconds.
-#: src/features/voice/components/voice_connection_status/shared.ts:115
+#: src/features/voice/components/voice_connection_status/shared.ts:116
 msgid "Jitter:"
 msgstr "Jitter:"
 
@@ -18793,12 +18755,12 @@ msgid "Jump"
 msgstr "Hoppa till"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:57
+#: src/features/input/state/input_keybind/shared.ts:65
 msgid "Jump between unread channels"
 msgstr "Hoppa mellan olästa kanaler"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:61
+#: src/features/input/state/input_keybind/shared.ts:69
 msgid "Jump between unread channels with mentions"
 msgstr "Hoppa mellan olästa kanaler med omnämnanden"
 
@@ -18807,7 +18769,7 @@ msgid "Jump straight to the app to continue."
 msgstr "Gå direkt till appen för att fortsätta."
 
 #. Tooltip / aria label on a button that jumps to the channel. {channelSourceLabel} is the channel or DM name.
-#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:87
+#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:88
 msgid "Jump to {channelSourceLabel}"
 msgstr "Gå till {channelSourceLabel}"
 
@@ -18869,7 +18831,7 @@ msgid "Jump to previous unread channel with mentions"
 msgstr "Gå till föregående olästa kanal med omnämnanden"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:65
+#: src/features/input/state/input_keybind/shared.ts:73
 msgid "Jump to the current call"
 msgstr "Gå till det aktuella samtalet"
 
@@ -18894,7 +18856,7 @@ msgid "Jump to the message in {labelText}"
 msgstr "Hoppa till meddelandet i {labelText}"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:193
+#: src/features/input/state/input_keybind/shared.ts:201
 msgid "Jump to the oldest unread message"
 msgstr "Gå till äldsta olästa meddelandet"
 
@@ -18942,7 +18904,7 @@ msgstr "Behåll bilagor vid rensning av en redigering"
 msgid "Keep free and premium tiers. You can customize the tiers, sell premium through Stripe, or hand out gift codes later from the admin panel."
 msgstr "Behåll gratis- och premiumnivåer. Du kan anpassa nivåerna, sälja premium via Stripe eller dela ut presentkoder senare från administrationspanelen."
 
-#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:164
+#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:166
 msgid "Keep grace period"
 msgstr "Behåll respitperiod"
 
@@ -18956,7 +18918,7 @@ msgstr "Håll Neko stilla"
 msgid "Keep running"
 msgstr "Fortsätt köra"
 
-#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:142
+#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:144
 msgid "Keep subscription"
 msgstr "Behåll abonnemanget"
 
@@ -19129,7 +19091,7 @@ msgid "Latency {latency} milliseconds"
 msgstr "Latens {latency} millisekunder"
 
 #. Aria label for the latency graph chart in the voice connection status popout.
-#: src/features/voice/components/voice_connection_status/shared.ts:33
+#: src/features/voice/components/voice_connection_status/shared.ts:34
 msgid "Latency graph"
 msgstr "Latensgraf"
 
@@ -19768,7 +19730,7 @@ msgid "Logo"
 msgstr "Logotyp"
 
 #. Label for Bluesky OAuth logo URL input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1065
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1039
 msgid "Logo URL"
 msgstr "Logotyp-URL"
 
@@ -19798,7 +19760,7 @@ msgid "Look and feel"
 msgstr "Utseende och känsla"
 
 #. placeholder {0}: externalProcessor.name
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:654
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:649
 msgid "Looks like you're using {0}. Stacking {PRODUCT_NAME}'s processing on top can cause pumping or distortion. Direct input passes your audio through untouched."
 msgstr "Det verkar som att du använder {0}. Om du lägger till ljudbehandlingen i {PRODUCT_NAME} ovanpå den kan det orsaka pumpning eller distorsion. Direktinmatning skickar ditt ljud oförändrat."
 
@@ -20055,7 +20017,7 @@ msgstr "Markera alla DM som lästa"
 
 #. Accessible label and tooltip for the mark-all-as-read button in the inbox popout.
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:165
+#: src/features/input/state/input_keybind/shared.ts:173
 #: src/features/messaging/components/popouts/InboxPopout.tsx:46
 msgid "Mark all inbox channels as read"
 msgstr "Markera alla inkorgskanaler som lästa"
@@ -20087,19 +20049,19 @@ msgstr "Markera som spoiler"
 #. Generic action label that flips a channel back to unread.
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:668
-#: src/features/input/state/input_keybind/shared.ts:33
+#: src/features/input/state/input_keybind/shared.ts:41
 msgid "Mark as unread"
 msgstr "Markera som oläst"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/input/state/input_keybind/shared.ts:145
+#: src/features/input/state/input_keybind/shared.ts:153
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:58
 msgid "Mark channel as read"
 msgstr "Markera kanal som läst"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:141
+#: src/features/input/state/input_keybind/shared.ts:149
 msgid "Mark community as read"
 msgstr "Markera community som läst"
 
@@ -20126,7 +20088,7 @@ msgid "Mark read"
 msgstr "Markera som läst"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:161
+#: src/features/input/state/input_keybind/shared.ts:169
 msgid "Mark top inbox channel as read"
 msgstr "Markera översta inkorgskanalen som läst"
 
@@ -20367,12 +20329,12 @@ msgid "Maybe later"
 msgstr "Kanske senare"
 
 #. Tooltip on the latency badge while voice latency is still being sampled.
-#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:83
+#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:84
 msgid "Measuring latency..."
 msgstr "Mäter latens..."
 
 #. Placeholder shown while voice latency is still being sampled. Trailing ellipsis indicates ongoing measurement.
-#: src/features/voice/components/voice_connection_status/shared.ts:45
+#: src/features/voice/components/voice_connection_status/shared.ts:46
 msgid "Measuring…"
 msgstr "Mäter…"
 
@@ -21475,7 +21437,7 @@ msgid "Mouse forward button"
 msgstr "Musens framåtknapp"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:129
+#: src/features/input/state/input_keybind/shared.ts:137
 msgid "Move"
 msgstr "Flytta"
 
@@ -21490,7 +21452,7 @@ msgid "Move back through page history"
 msgstr "Gå tillbaka i sidhistoriken"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:49
+#: src/features/input/state/input_keybind/shared.ts:57
 msgid "Move back through viewed channel history"
 msgstr "Gå bakåt i kanalhistoriken"
 
@@ -21507,7 +21469,7 @@ msgid "Move forward through page history"
 msgstr "Gå framåt i sidhistoriken"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:53
+#: src/features/input/state/input_keybind/shared.ts:61
 msgid "Move forward through viewed channel history"
 msgstr "Gå framåt i kanalhistoriken"
 
@@ -22115,7 +22077,7 @@ msgid "Netherlands"
 msgstr "Nederländerna"
 
 #. Section heading in the voice connection status popout for WebRTC network quality stats.
-#: src/features/voice/components/voice_connection_status/shared.ts:70
+#: src/features/voice/components/voice_connection_status/shared.ts:71
 msgid "Network"
 msgstr "Nätverk"
 
@@ -22706,7 +22668,7 @@ msgstr "Inga träffar"
 msgid "No mentions yet"
 msgstr "Inga omnämnanden än"
 
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:530
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:525
 msgid "No microphone found"
 msgstr "Ingen mikrofon hittades"
 
@@ -22941,7 +22903,7 @@ msgid "No tokens match \"{searchQuery}\"."
 msgstr "Inga tokens matchar \"{searchQuery}\"."
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:92
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:91
 msgid "No trusted domains"
 msgstr "Inga betrodda domäner"
 
@@ -23696,10 +23658,6 @@ msgstr "Öppna webbläsarväljaren"
 msgid "Open call view"
 msgstr "Öppna samtalsvyn"
 
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:288
-msgid "Open captcha modal"
-msgstr "Öppna captcha-dialog"
-
 #. Accessible label for the channel header title button in a community channel.
 #: src/features/channel/components/channel_header/shared.ts:14
 msgid "Open channel details for {channelName}"
@@ -23712,7 +23670,7 @@ msgstr "Öppna kanalinformation för {channelName}"
 msgid "Open chat"
 msgstr "Öppna chatt"
 
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:314
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:290
 msgid "Open claim account modal"
 msgstr "Öppna dialogen för att säkra kontot"
 
@@ -23814,7 +23772,7 @@ msgid "Open group details for {groupDMName}"
 msgstr "Öppna gruppinformation för {groupDMName}"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:233
+#: src/features/input/state/input_keybind/shared.ts:241
 msgid "Open help"
 msgstr "Öppna hjälp"
 
@@ -23944,11 +23902,11 @@ msgstr "Öppna klistermärket i webbläsaren"
 msgid "Open streaming privacy settings"
 msgstr "Öppna inställningar för sekretess vid sändning"
 
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:327
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:303
 msgid "Open sudo verification modal"
 msgstr "Öppna dialogen för sudo-verifiering"
 
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:342
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:318
 msgid "Open system DM"
 msgstr "Öppna system-DM"
 
@@ -23967,7 +23925,7 @@ msgid "Open the ban dialog for this community."
 msgstr "Öppna bannlysningsdialogen för den här communityn."
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:241
+#: src/features/input/state/input_keybind/shared.ts:249
 msgid "Open the context menu"
 msgstr "Öppna snabbmenyn"
 
@@ -24000,7 +23958,7 @@ msgid "Open the verification email and use the link inside. This window updates 
 msgstr "Öppna verifieringsmeddelandet och använd länken inuti. Det här fönstret uppdateras när länken har öppnats."
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:249
+#: src/features/input/state/input_keybind/shared.ts:257
 msgid "Open theme studio popout"
 msgstr "Öppna temastudion i eget fönster"
 
@@ -24044,7 +24002,7 @@ msgid "Open your browser, sign in, then enter the code below to link your accoun
 msgstr "Öppna din webbläsare, logga in och ange sedan koden nedan för att länka ditt konto."
 
 #. Required-action modal carousel step title for the first inbound phone verification instruction.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:450
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:446
 msgid "Open your messages"
 msgstr "Öppna dina meddelanden"
 
@@ -24052,17 +24010,17 @@ msgstr "Öppna dina meddelanden"
 msgid "Open your old {PRODUCT_NAME} app and choose Link a new device, then enter the code below."
 msgstr "Öppna din gamla {PRODUCT_NAME}-app, välj Länka en ny enhet och ange sedan koden nedan."
 
-#: src/features/user/components/modals/PhoneAddModal.tsx:327
+#: src/features/user/components/modals/PhoneAddModal.tsx:324
 msgid "Open your phone's messaging app and create a new text message."
 msgstr "Öppna telefonens meddelandeapp och skapa ett nytt SMS."
 
 #. Required-action modal body for the first inbound phone verification instruction.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:454
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:450
 msgid "Open your phone's messaging app and start a new text message."
 msgstr "Öppna telefonens meddelandeapp och påbörja ett nytt SMS."
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:245
+#: src/features/input/state/input_keybind/shared.ts:253
 msgid "Open your settings"
 msgstr "Öppna dina inställningar"
 
@@ -24228,7 +24186,7 @@ msgid "OTP"
 msgstr "OTP"
 
 #. Required-action form error when our own phone lookup provider is unavailable and we fail closed. Must blame us, not the number, and must invite retrying the same number.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:558
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:554
 msgid "Our phone number check is down right now. This is on us, not your number. Wait a few minutes and try the same number again."
 msgstr "Vår kontroll av telefonnummer är nere just nu. Det är vårt fel, inte ditt nummer. Vänta några minuter och försök med samma nummer igen."
 
@@ -24238,7 +24196,7 @@ msgid "Our safety team is reviewing it. We'll send you a DM and email once we've
 msgstr "Vårt säkerhetsteam granskar det. Vi skickar ett DM och ett e-postmeddelande när vi har fattat ett beslut."
 
 #. Field label in the voice connection status popout. Shows WebRTC estimated available outgoing bandwidth.
-#: src/features/voice/components/voice_connection_status/shared.ts:119
+#: src/features/voice/components/voice_connection_status/shared.ts:120
 msgid "Outgoing capacity:"
 msgstr "Utgående kapacitet:"
 
@@ -24384,7 +24342,7 @@ msgid "Participants"
 msgstr "Deltagare"
 
 #. Field label in the voice connection status popout. Shows the current LiveKit participant count.
-#: src/features/voice/components/voice_connection_status/shared.ts:79
+#: src/features/voice/components/voice_connection_status/shared.ts:80
 msgid "Participants:"
 msgstr "Deltagare:"
 
@@ -24430,7 +24388,7 @@ msgstr "Lösennycklar kräver ett signerat macOS-paket med ett giltigt app-ID. I
 
 #. Generic form-field label for a password.
 #. Label for SMTP password input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1036
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1010
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:215
 #: src/features/user/components/modals/tabs/account_security_tab/AccountTab.tsx:146
 #: src/features/user/components/modals/tabs/account_security_tab/AccountTab.tsx:183
@@ -24815,21 +24773,21 @@ msgstr "Telefon"
 #. Form field label for the phone number input.
 #. Short label in the phone add modal. Keep it concise.
 #: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:100
-#: src/features/user/components/modals/PhoneAddModal.tsx:67
+#: src/features/user/components/modals/PhoneAddModal.tsx:65
 msgid "Phone number"
 msgstr "Telefonnummer"
 
 #. Form validation error shown when the phone number field is empty.
 #. Label in the phone add modal.
 #: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:116
-#: src/features/user/components/modals/PhoneAddModal.tsx:43
+#: src/features/user/components/modals/PhoneAddModal.tsx:41
 msgid "Phone number is required"
 msgstr "Telefonnummer krävs"
 
 #. Toast shown after phone verification succeeds.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:486
-#: src/features/user/components/modals/PhoneAddModal.tsx:180
-#: src/features/user/components/modals/PhoneAddModal.tsx:185
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:482
+#: src/features/user/components/modals/PhoneAddModal.tsx:178
+#: src/features/user/components/modals/PhoneAddModal.tsx:183
 msgid "Phone number verified"
 msgstr "Telefonnummer verifierat"
 
@@ -24844,7 +24802,7 @@ msgid "Phone step"
 msgstr "Telefonsteg"
 
 #. Required-action error when the account is not eligible to add phone verification.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:542
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:538
 msgid "Phone verification is not available for this account. Use another method or contact support."
 msgstr "Telefonverifiering är inte tillgänglig för det här kontot. Använd en annan metod eller kontakta support."
 
@@ -24935,7 +24893,7 @@ msgstr "Bild i bild"
 
 #. Confirm button label on the pin message alert.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/channel/components/MessageActionUtils.tsx:63
+#: src/features/channel/components/MessageActionUtils.tsx:66
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:70
 msgid "Pin"
 msgstr "Fäst"
@@ -24953,9 +24911,9 @@ msgstr "Fäst grupp-DM"
 #. Generic action label that pins a message to the channel pins.
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Title of the confirmation alert shown when pinning a message.
-#: src/features/channel/components/MessageActionUtils.tsx:55
+#: src/features/channel/components/MessageActionUtils.tsx:58
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:539
-#: src/features/input/state/input_keybind/shared.ts:13
+#: src/features/input/state/input_keybind/shared.ts:17
 msgid "Pin message"
 msgstr "Fäst meddelande"
 
@@ -24980,7 +24938,7 @@ msgid "Pin or unpin any message."
 msgstr "Fäst eller lossa valfritt meddelande."
 
 #. Body of the confirmation alert shown when pinning a message.
-#: src/features/channel/components/MessageActionUtils.tsx:59
+#: src/features/channel/components/MessageActionUtils.tsx:62
 msgid "Pin this message to the channel for everyone to see."
 msgstr "Fäst det här meddelandet i kanalen så att alla kan se det."
 
@@ -24999,12 +24957,12 @@ msgid "Ping on reply"
 msgstr "Ping vid svar"
 
 #. Compact latency badge on the voice control bar. {currentLatency} is an integer millisecond count.
-#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:79
+#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:80
 msgid "Ping: {currentLatency}ms"
 msgstr "Ping: {currentLatency} ms"
 
 #. Compact latency badge variant used in another voice surface. {latency} is an integer millisecond count.
-#: src/features/voice/components/voice_connection_status/MockedVoiceConnectionStatus.tsx:43
+#: src/features/voice/components/voice_connection_status/MockedVoiceConnectionStatus.tsx:44
 msgid "Ping: {latency}ms"
 msgstr "Ping: {latency} ms"
 
@@ -25212,7 +25170,7 @@ msgid "Popup"
 msgstr "Popup"
 
 #. Label for SMTP port input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1034
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1008
 msgid "Port"
 msgstr "Port"
 
@@ -25338,7 +25296,7 @@ msgid "Premium since date"
 msgstr "Premium sedan datum"
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:71
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:70
 msgid "Premium state reset on the backend."
 msgstr "Premiumstatus återställd på servern."
 
@@ -25608,7 +25566,7 @@ msgid "Privacy settings"
 msgstr "Sekretessinställningar"
 
 #. Label for Bluesky OAuth privacy URL input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1073
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1047
 msgid "Privacy URL"
 msgstr "URL till integritetspolicyn"
 
@@ -25633,7 +25591,7 @@ msgid "Private details"
 msgstr "Privata detaljer"
 
 #. Label for Bluesky OAuth private key input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1081
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1055
 msgid "Private key"
 msgstr "Privat nyckel"
 
@@ -25699,18 +25657,18 @@ msgstr "Profilfärg"
 
 #. Settings section label for editing profile appearance and identity.
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:105
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:104
 #: src/features/user/components/settings_utils/section_registry/GeneralSettingsSections.ts:6
 msgid "Profile customization"
 msgstr "Anpassa profil"
 
 #. Label in the my profile tab. Preserve {selectedGuildName}; it is inserted by code.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:101
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:100
 msgid "Profile customization for {selectedGuildName}"
 msgstr "Profilanpassning för {selectedGuildName}"
 
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:97
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:96
 msgid "Profile customization form"
 msgstr "Formulär för profilanpassning"
 
@@ -25775,7 +25733,7 @@ msgid "Profile type"
 msgstr "Profiltyp"
 
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:77
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:76
 msgid "Profile updated"
 msgstr "Profilen uppdaterad"
 
@@ -25812,7 +25770,7 @@ msgstr "Fråga när nya ljudenheter upptäcks"
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Short label in the my profile tab. Keep it concise.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:142
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:141
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts:177
 #: src/features/user/components/settings_utils/section_registry/PrivacySafetySections.ts:160
 msgid "Pronouns"
@@ -25842,11 +25800,6 @@ msgstr "Ange antingen ett användar-ID eller ett användarnamn för personen du 
 msgid "Provide your full legal name for the declaration."
 msgstr "Ange ditt fullständiga juridiska namn för deklarationen."
 
-#. Label for an integration provider choice.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1009
-msgid "Provider"
-msgstr "Leverantör"
-
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/section_registry/VoiceVideoSections.ts:90
 msgid "PTT"
@@ -25870,7 +25823,7 @@ msgid "Public registration is closed."
 msgstr "Offentlig registrering är stängd."
 
 #. Field label in the voice connection status popout. Shows technical WebRTC publisher ICE transport details.
-#: src/features/voice/components/voice_connection_status/shared.ts:127
+#: src/features/voice/components/voice_connection_status/shared.ts:128
 msgid "Publisher transport:"
 msgstr "Avsändartransport:"
 
@@ -25984,21 +25937,21 @@ msgid "Push timeout"
 msgstr "Push-tidsgräns"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:297
+#: src/features/input/state/input_keybind/shared.ts:305
 msgid "Push to mute"
 msgstr "Tryck för att tysta mikrofonen"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/input/state/input_keybind/shared.ts:289
+#: src/features/input/state/input_keybind/shared.ts:297
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:162
 #: src/features/user/components/settings_utils/section_registry/VoiceVideoSections.ts:86
 msgid "Push to talk"
 msgstr "Tryck för att prata"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:293
+#: src/features/input/state/input_keybind/shared.ts:301
 msgid "Push to talk (priority)"
 msgstr "Tryck för att prata (prioritet)"
 
@@ -26014,7 +25967,7 @@ msgstr "Tangent för tryck för att prata"
 
 #. Switch label in the voice tab toggling push-to-talk mode. Keep it concise.
 #: src/features/user/components/modals/tabs/UserVoiceTab.tsx:112
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:349
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:346
 #: src/features/voice/components/VoiceSettingsMenus.tsx:419
 msgid "Push-to-talk"
 msgstr "Tryck för att prata"
@@ -26024,7 +25977,7 @@ msgstr "Tryck för att prata"
 msgid "Push-to-talk (limited)"
 msgstr "Tryck för att prata (begränsat)"
 
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:681
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:676
 msgid "Push-to-talk is ignored in direct input. Switch to focused voice or custom to use it."
 msgstr "Tryck för att prata ignoreras vid direktinmatning. Växla till fokuserat röstläge eller anpassat läge för att använda funktionen."
 
@@ -26191,7 +26144,7 @@ msgid "Read aloud"
 msgstr "Läs upp"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:29
+#: src/features/input/state/input_keybind/shared.ts:37
 msgid "Read message aloud"
 msgstr "Läs upp meddelandet"
 
@@ -26280,7 +26233,7 @@ msgid "Receive notifications when someone mentions you"
 msgstr "Få aviseringar när någon nämner dig"
 
 #. Field label in the voice connection status popout. Shows total current inbound media bitrate.
-#: src/features/voice/components/voice_connection_status/shared.ts:87
+#: src/features/voice/components/voice_connection_status/shared.ts:88
 msgid "Receive:"
 msgstr "Ta emot:"
 
@@ -26399,7 +26352,7 @@ msgstr "Lös in själv"
 #. Billing button for entering a premium gift code.
 #. Billing button for entering a premium gift code.
 #: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:719
-#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:305
+#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:307
 msgid "Redeem gift code"
 msgstr "Lös in presentkod"
 
@@ -26716,7 +26669,7 @@ msgid "Remove {userName} from your friends?"
 msgstr "Ta bort {userName} från dina vänner?"
 
 #. Confirm button label on the remove-all-reactions alert. Destructive.
-#: src/features/channel/components/MessageActionUtils.tsx:75
+#: src/features/channel/components/MessageActionUtils.tsx:78
 msgid "Remove all"
 msgstr "Ta bort alla"
 
@@ -26729,7 +26682,7 @@ msgstr "Ta bort alla {emojiNameWithColons}-reaktioner från det här meddelandet
 #. Message action that removes every reaction from the selected message.
 #. Title of the confirmation alert shown when clearing every reaction on a message.
 #: src/features/channel/components/MessageActionMenu.tsx:78
-#: src/features/channel/components/MessageActionUtils.tsx:67
+#: src/features/channel/components/MessageActionUtils.tsx:70
 #: src/features/ui/action_menu/items/MessageMenuItems.tsx:70
 msgid "Remove all reactions"
 msgstr "Ta bort alla reaktioner"
@@ -27237,10 +27190,15 @@ msgstr "Inställning för omnämnanden i svar i den här communityn"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Tooltip on the media viewer button that closes the viewer and replies to the message containing the media.
-#: src/features/input/state/input_keybind/shared.ts:21
+#: src/features/input/state/input_keybind/shared.ts:25
 #: src/features/messaging/components/modals/media_modal/shared.ts:105
 msgid "Reply to message"
 msgstr "Svara på meddelande"
+
+#. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
+#: src/features/input/state/input_keybind/shared.ts:29
+msgid "Reply to messages above or below"
+msgstr "Svara på meddelanden ovanför eller nedanför"
 
 #. TTS sentence spoken for a reply message. {replyAuthorName} is the original author, {authorName} is the replier, {formatted} is the speakable message body.
 #: src/features/voice/utils/TtsTextFormatter.ts:47
@@ -27324,7 +27282,7 @@ msgid "Reposts: <0>{countLabel}</0>"
 msgstr "Återpubliceringar: <0>{countLabel}</0>"
 
 #. Required-action form error when the user submits before a code exists.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:498
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:494
 msgid "Request a new code first."
 msgstr "Begär en ny kod först."
 
@@ -27621,7 +27579,7 @@ msgid "Reset password"
 msgstr "Återställ lösenord"
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:79
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:78
 msgid "Reset premium state"
 msgstr "Återställ premiumstatus"
 
@@ -27630,7 +27588,7 @@ msgstr "Återställ premiumstatus"
 msgid "Reset slider to default value"
 msgstr "Återställ reglaget till standardvärdet"
 
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:247
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:229
 msgid "Reset socket"
 msgstr "Återställ socket"
 
@@ -27673,13 +27631,13 @@ msgstr "Återställ standardinställningar"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Label for controls that reset app zoom to 100%, including the app zoom slider button.
-#: src/features/input/state/input_keybind/shared.ts:261
+#: src/features/input/state/input_keybind/shared.ts:269
 #: src/features/user/components/modals/tabs/appearance_tab/ScalingTab.tsx:38
 msgid "Reset zoom"
 msgstr "Återställ zoom"
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:112
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:111
 msgid "Resetting premium state..."
 msgstr "Återställer premiumstatus..."
 
@@ -28310,7 +28268,7 @@ msgid "Run the instance as one community instead of many. This can only be enabl
 msgstr "Kör instansen som en enda community istället för många. Detta kan bara aktiveras nu, under installationen."
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:100
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:99
 msgid "Runtime utilities"
 msgstr "Körningsverktyg"
 
@@ -28689,12 +28647,12 @@ msgid "Scroll animation"
 msgstr "Rullningsanimering"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:189
+#: src/features/input/state/input_keybind/shared.ts:197
 msgid "Scroll chat down"
 msgstr "Skrolla ned i chatten"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:185
+#: src/features/input/state/input_keybind/shared.ts:193
 msgid "Scroll chat up"
 msgstr "Skrolla upp i chatten"
 
@@ -28798,7 +28756,7 @@ msgid "Search communities"
 msgstr "Sök communities"
 
 #. Button or menu action label in the phone add modal. Keep it concise.
-#: src/features/user/components/modals/PhoneAddModal.tsx:63
+#: src/features/user/components/modals/PhoneAddModal.tsx:61
 msgid "Search countries..."
 msgstr "Sök länder..."
 
@@ -28881,7 +28839,7 @@ msgstr "Sök språk…"
 #: src/features/channel/components/bottomsheets/ChannelSearchBottomSheet.tsx:137
 #: src/features/channel/components/bottomsheets/ChannelSearchBottomSheet.tsx:480
 #: src/features/channel/components/message_search_bar/MessageSearchBar.tsx:56
-#: src/features/input/state/input_keybind/shared.ts:237
+#: src/features/input/state/input_keybind/shared.ts:245
 msgid "Search messages"
 msgstr "Sök meddelanden"
 
@@ -29097,11 +29055,6 @@ msgstr "Sekundär knapp klickad."
 #: src/features/user/components/settings_utils/search_index/ApplicationsIndex.ts:136
 msgid "Secret"
 msgstr "Hemlighet"
-
-#. Label for a CAPTCHA secret key input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1020
-msgid "Secret key"
-msgstr "Hemlig nyckel"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label in the secrets section. Keep it concise. Keep the tone plain and specific.
@@ -29564,17 +29517,17 @@ msgstr "Skicka text-till-tal-meddelanden med /tts. Medlemmar som har aktiverat t
 
 #. placeholder {0}: inboundChallenge.challenge_code
 #. placeholder {1}: inboundChallenge.our_number
-#: src/features/user/components/modals/PhoneAddModal.tsx:335
+#: src/features/user/components/modals/PhoneAddModal.tsx:332
 msgid "Send the code <0>{0}</0> to <1>{1}</1>"
 msgstr "Skicka koden <0>{0}</0> till <1>{1}</1>"
 
 #. Required-action modal body for the second inbound phone verification instruction.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:462
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:458
 msgid "Send the code to the phone number below."
 msgstr "Skicka koden till telefonnumret nedan."
 
 #. Required-action modal carousel step title for the second inbound phone verification instruction.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:458
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:454
 msgid "Send this code"
 msgstr "Skicka den här koden"
 
@@ -29584,7 +29537,7 @@ msgid "Send this pin back in time?"
 msgstr "Ska den här fästade posten skickas tillbaka i tiden?"
 
 #. Label for the destination phone number in an inbound phone verification challenge.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:470
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:466
 msgid "Send to"
 msgstr "Skicka till"
 
@@ -29602,25 +29555,20 @@ msgstr "Skicka verifieringskod"
 #. Plus menu item that opens the desktop voice message composer to record and send a voice clip.
 #: src/features/channel/components/textarea/TextareaPlusMenu.tsx:35
 #: src/features/channel/components/VoiceMessageRecorder.tsx:69
-#: src/features/input/state/input_keybind/shared.ts:285
+#: src/features/input/state/input_keybind/shared.ts:293
 msgid "Send voice message"
 msgstr "Skicka röstmeddelande"
 
 #. Field label in the voice connection status popout. Shows total current outbound media bitrate.
-#: src/features/voice/components/voice_connection_status/shared.ts:83
+#: src/features/voice/components/voice_connection_status/shared.ts:84
 msgid "Send:"
 msgstr "Skicka:"
 
-#. Required-action modal explanation for an inbound phone verification challenge due to SMS cost.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:442
-msgid "Sending an SMS to this number is expensive, so we need you to text us instead."
-msgstr "Att skicka ett sms till det här numret är dyrt, så vi behöver att du skickar ett sms till oss istället."
-
-#: src/features/user/components/modals/PhoneAddModal.tsx:304
+#: src/features/user/components/modals/PhoneAddModal.tsx:301
 msgid "Sending an SMS to this phone number is too expensive for {PRODUCT_NAME}, so we need you to send us an SMS instead. We know this isn't ideal. You can also ask the administrators of this instance to lift this requirement from your account."
 msgstr "Att skicka ett SMS till det här telefonnumret är för dyrt för {PRODUCT_NAME}, så vi behöver att du skickar ett SMS till oss istället. Vi vet att det här inte är optimalt. Du kan också be administratörerna för den här instansen att ta bort det här kravet från ditt konto."
 
-#: src/features/user/components/modals/PhoneAddModal.tsx:310
+#: src/features/user/components/modals/PhoneAddModal.tsx:307
 msgid "Sending an SMS to this phone number is too expensive for {PRODUCT_NAME}, so we need you to send us an SMS instead. We know this isn't ideal. You can also contact <0>{SUPPORT_EMAIL}</0> to have us lift this requirement from your account."
 msgstr "Att skicka ett SMS till det här telefonnumret är för dyrt för {PRODUCT_NAME}, så vi behöver att du skickar ett SMS till oss istället. Vi vet att det här inte är optimalt. Du kan också kontakta <0>{SUPPORT_EMAIL}</0> för att få oss att ta bort det här kravet från ditt konto."
 
@@ -29640,7 +29588,7 @@ msgid "Sends both channels of a stereo microphone. Needs all processing off and 
 msgstr "Skickar båda kanalerna från en stereomikrofon. Kräver att all bearbetning är avstängd och en kanal på 128 kbps eller högre."
 
 #. Description for the studio / direct-input option in the voice processing settings radio group.
-#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:38
+#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:35
 msgid "Sends raw mic audio with no processing."
 msgstr "Skickar rått mikrofonljud utan bearbetning."
 
@@ -29714,7 +29662,7 @@ msgid "Service incident nagbar"
 msgstr "Serviceincident i nagbar"
 
 #. Section heading in the voice connection status popout for current call/session debug stats.
-#: src/features/voice/components/voice_connection_status/shared.ts:62
+#: src/features/voice/components/voice_connection_status/shared.ts:63
 msgid "Session"
 msgstr "Session"
 
@@ -29925,7 +29873,7 @@ msgid "Set up authenticator app"
 msgstr "Konfigurera autentiseringsapp"
 
 #. Option for deferring an optional setup wizard integration.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:953
+#: src/features/app/components/setup/SetupWizardSteps.tsx:946
 msgid "Set up later"
 msgstr "Konfigurera senare"
 
@@ -30164,7 +30112,7 @@ msgstr "Kortkoder"
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/modals/tabs/keybinds_tab/CustomKeybindRow.tsx:121
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:364
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:361
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:38
 #: src/features/user/components/settings_utils/section_registry/VoiceVideoSections.ts:110
 msgid "Shortcut"
@@ -30266,7 +30214,7 @@ msgid "Show attachment expiration indicator"
 msgstr "Visa indikator för bilagors utgångsdatum"
 
 #. Developer voice status menu option for displaying participant avatars.
-#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:71
+#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:72
 msgid "Show call avatars"
 msgstr "Visa samtalsavatarer"
 
@@ -30291,7 +30239,7 @@ msgid "Show chat with {count, plural, one {# unread message} other {# unread mes
 msgstr "Visa chatt med {count, plural, one {# oläst meddelande} other {# olästa meddelanden}}"
 
 #. Developer voice status menu option for displaying the voice connection identifier.
-#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:75
+#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:76
 msgid "Show connection ID"
 msgstr "Visa anslutnings-ID"
 
@@ -30427,7 +30375,7 @@ msgstr "Visa inbäddad DM-lista"
 msgid "Show just the typing indicator without avatars"
 msgstr "Visa endast indikatorn för att någon skriver, utan avatarer"
 
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:308
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:284
 msgid "Show keyboard mode intro"
 msgstr "Visa introduktion till tangentbordsläge"
 
@@ -30538,7 +30486,7 @@ msgstr "Visa Neko"
 msgid "Show new device alerts"
 msgstr "Visa aviseringar för nya enheter"
 
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:282
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:264
 msgid "Show new device modal"
 msgstr "Visa dialog för ny enhet"
 
@@ -30820,7 +30768,7 @@ msgid "Signed-in devices"
 msgstr "Inloggade enheter"
 
 #. Label for Bluesky OAuth signing key ID input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1077
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1051
 msgid "Signing key ID"
 msgstr "Signeringsnyckel-ID"
 
@@ -30910,11 +30858,6 @@ msgstr "Enkel rad"
 msgid "Single user (all statuses)"
 msgstr "En användare (alla statusar)"
 
-#. Label for a CAPTCHA site key input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1019
-msgid "Site key"
-msgstr "Webbplatsnyckel"
-
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/search_index/DesktopSettingsIndex.ts:98
@@ -30964,7 +30907,7 @@ msgid "Skip the system leave notice — nobody gets pinged."
 msgstr "Hoppa över systemmeddelandet om att du lämnar – ingen får en avisering."
 
 #. Description for deferring an optional setup wizard integration.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:957
+#: src/features/app/components/setup/SetupWizardSteps.tsx:950
 msgid "Skip this now and configure it from the admin panel."
 msgstr "Hoppa över detta nu och konfigurera det från administrationspanelen."
 
@@ -31207,22 +31150,22 @@ msgid "Smoother video"
 msgstr "Mjukare video"
 
 #. Required-action error when the SMS provider cannot send or verify a code.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:538
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:534
 msgid "SMS verification is unavailable right now. Try again later or contact support."
 msgstr "Sms-verifiering är inte tillgänglig just nu. Försök igen senare eller kontakta supporten."
 
 #. Success message after validating SMTP credentials.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1045
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1019
 msgid "SMTP connection verified."
 msgstr "SMTP-anslutning verifierad."
 
 #. Label for SMTP host input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1033
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1007
 msgid "SMTP host"
 msgstr "SMTP-värd"
 
 #. Failure message after validating SMTP credentials when the server returns no error detail.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1049
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1023
 msgid "SMTP validation failed."
 msgstr "SMTP-valideringen misslyckades."
 
@@ -31402,7 +31345,7 @@ msgstr "Något gick fel. Försök igen senare."
 #. Inline error in the web deep-link prompt when opening the desktop app fails.
 #. Toast error shown when the mature content check request fails unexpectedly.
 #: src/features/auth/components/modals/MatureContentCheckModal.tsx:18
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:585
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:576
 #: src/features/auth/flow/DesktopDeepLinkPrompt.tsx:31
 msgid "Something went wrong. Try again."
 msgstr "Något gick fel. Försök igen."
@@ -31742,7 +31685,7 @@ msgid "Staff controls"
 msgstr "Personalinställningar"
 
 #. Required-action modal notice for inbound phone verification.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:482
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:478
 msgid "Standard messaging rates from your carrier may apply."
 msgstr "Standardtaxor för meddelanden från din operatör kan tillkomma."
 
@@ -31788,12 +31731,12 @@ msgid "Start {appName} automatically when you sign in."
 msgstr "Starta {appName} automatiskt när du loggar in."
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:221
+#: src/features/input/state/input_keybind/shared.ts:229
 msgid "Start a call in a DM or group"
 msgstr "Starta ett samtal i en DM-konversation eller grupp"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:149
+#: src/features/input/state/input_keybind/shared.ts:157
 msgid "Start a group DM"
 msgstr "Starta en grupp-DM-konversation"
 
@@ -31829,7 +31772,7 @@ msgid "Start date must be earlier than end date."
 msgstr "Startdatum måste vara tidigare än slutdatum."
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:125
+#: src/features/input/state/input_keybind/shared.ts:133
 msgid "Start drag and drop"
 msgstr "Börja dra och släpp"
 
@@ -32099,6 +32042,11 @@ msgstr "Indexerar fortfarande – titta tillbaka om en stund"
 msgid "Still Neko"
 msgstr "Stillastående Neko"
 
+#. Small toast shown only when an automatic background check before sign-in, sign-up or a similar request takes more than a couple of seconds. No user action needed. Keep it short and calm.
+#: src/features/auth/altcha/CaptchaInterceptor.ts:13
+msgid "Still working on it…"
+msgstr "Fortfarande på gång…"
+
 #. Stop-recording button label in the desktop voice message composer.
 #: src/features/voice/components/VoiceMessageComposerModal.tsx:65
 msgid "Stop"
@@ -32225,7 +32173,7 @@ msgid "Stopped the member from hearing others in this community"
 msgstr "Hindrade medlemmen från att höra andra i den här communityn"
 
 #. Description for the echo cancellation toggle in the custom voice processing settings.
-#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:59
+#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:56
 msgid "Stops your speakers from looping back into your mic."
 msgstr "Hindrar ljudet från högtalarna från att matas tillbaka till mikrofonen."
 
@@ -32378,7 +32326,7 @@ msgid "Submitting"
 msgstr "Skickar"
 
 #. Field label in the voice connection status popout. Shows technical WebRTC subscriber ICE transport details.
-#: src/features/voice/components/voice_connection_status/shared.ts:131
+#: src/features/voice/components/voice_connection_status/shared.ts:132
 msgid "Subscriber transport:"
 msgstr "Prenumeranttransport:"
 
@@ -32472,11 +32420,6 @@ msgstr "Ignorera omnämnanden av dig från användare utan särskild behörighet
 msgid "Suppression"
 msgstr "Undertryckning"
 
-#. Label for the DeepFilterNet3 noise suppression strength slider in the custom voice processing settings.
-#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:67
-msgid "Suppression strength"
-msgstr "Styrka på brusreducering"
-
 #. Collapsible group heading in the Theme Studio tokens list, for background surface tokens.
 #: src/features/theme_studio/sections/TokenGroups.ts:46
 msgid "Surfaces"
@@ -32522,12 +32465,12 @@ msgid "Switch accounts"
 msgstr "Byt konto"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:45
+#: src/features/input/state/input_keybind/shared.ts:53
 msgid "Switch between channels"
 msgstr "Växla mellan kanaler"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:41
+#: src/features/input/state/input_keybind/shared.ts:49
 msgid "Switch between communities"
 msgstr "Växla mellan communities"
 
@@ -32565,7 +32508,7 @@ msgstr "Byt till rymlig layout"
 msgid "Switch to dense layout"
 msgstr "Växla till kompakt layout"
 
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:649
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:644
 msgid "Switch to direct input"
 msgstr "Byt till direktinmatning"
 
@@ -32592,7 +32535,7 @@ msgid "Switch to next community"
 msgstr "Växla till nästa community"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:77
+#: src/features/input/state/input_keybind/shared.ts:85
 msgid "Switch to next community or DMs"
 msgstr "Växla till nästa community eller DM"
 
@@ -32607,7 +32550,7 @@ msgid "Switch to previous community"
 msgstr "Växla till föregående community"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:73
+#: src/features/input/state/input_keybind/shared.ts:81
 msgid "Switch to previous community or DMs"
 msgstr "Växla till föregående community eller DM"
 
@@ -32656,7 +32599,7 @@ msgid "Switch to…"
 msgstr "Byt till…"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:313
+#: src/features/input/state/input_keybind/shared.ts:321
 msgid "Switch voice channel"
 msgstr "Byt röstkanal"
 
@@ -33018,7 +32961,7 @@ msgid "Terms of service"
 msgstr "Användarvillkor"
 
 #. Label for Bluesky OAuth terms URL input.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1069
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1043
 msgid "Terms URL"
 msgstr "URL för villkor"
 
@@ -33028,7 +32971,7 @@ msgid "Terrorism or violent extremism"
 msgstr "Terrorism eller våldsbejakande extremism"
 
 #. Button that validates SMTP credentials.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1041
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1015
 msgid "Test SMTP"
 msgstr "Testa SMTP"
 
@@ -33175,12 +33118,12 @@ msgid "Thank you for helping keep {productName} safe. We'll review your report a
 msgstr "Tack för att du hjälper till att hålla {productName} säkert. Vi granskar din anmälan så snart som möjligt."
 
 #. Required-action form error for an invalid verification code.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:490
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:486
 msgid "That code didn't work. Check it and try again."
 msgstr "Koden fungerade inte. Kontrollera den och försök igen."
 
 #. Required-action form error for an expired verification code.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:494
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:490
 msgid "That code expired. Request a new code."
 msgstr "Koden har gått ut. Begär en ny kod."
 
@@ -33208,7 +33151,7 @@ msgid "That doesn't look like a valid URL."
 msgstr "Det där ser inte ut som en giltig URL."
 
 #. Required-action form error when a new email is already used by another account.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:514
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:510
 msgid "That email is already in use."
 msgstr "E-postadressen används redan."
 
@@ -33805,7 +33748,7 @@ msgid "This clears quick CSS, imported themes, uploaded assets, and local file r
 msgstr "Detta rensar snabb-CSS, importerade teman, uppladdade resurser och lokala filreferenser på den här enheten."
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:83
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:82
 msgid "This clears your backend premium state entirely, including premium type, billing metadata, and override flags."
 msgstr "Detta rensar hela din premiumstatus på servern, inklusive premiumtyp, faktureringsmetadata och åsidosättningsflaggor."
 
@@ -34128,8 +34071,8 @@ msgstr "Det här är din sista lösennyckel, och lösennycklar är din andra fak
 msgid "This is your last passkey. Once it's gone you won't be able to use a passkey as your second factor."
 msgstr "Det här är din sista lösennyckel. När den är borta kan du inte längre använda en lösennyckel som din andra faktor."
 
-#. Required-action form error for landline, toll-free, premium, shared-cost, UAN, voicemail and pager lines. Do not name which line type the provider returned.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:570
+#. Required-action form error when the number is not a mobile line. Do not name the line type.
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:566
 msgid "This isn't a mobile number, so it can't receive our text. Try a mobile number, or contact support if you think that's wrong."
 msgstr "Det här är inte ett mobilnummer, så det kan inte ta emot våra SMS. Prova ett mobilnummer, eller kontakta support om du tror att det är fel."
 
@@ -34205,17 +34148,17 @@ msgid "This message no longer exists."
 msgstr "Det här meddelandet finns inte längre."
 
 #. Label in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:130
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:129
 msgid "This nickname will only be visible in this community"
 msgstr "Det här smeknamnet syns bara i den här communityn"
 
 #. Required-action form error when a number must use the inbound text-in challenge and the current step cannot start one. Do not say why the number was routed there.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:552
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:548
 msgid "This number is verified by texting us instead. Go back and start phone verification again to get the code and the number to text."
 msgstr "Det här numret verifieras genom att skicka ett SMS till oss istället. Gå tillbaka och starta telefonverifieringen igen för att få koden och numret att skicka till."
 
 #. Required-action modal explanation for an inbound phone verification challenge.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:446
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:442
 msgid "This number needs text-in verification instead of an SMS from us."
 msgstr "Det här numret måste verifieras genom att du skickar ett SMS till oss i stället för att ta emot ett från oss."
 
@@ -34240,12 +34183,12 @@ msgid "This participant was deafened by moderators"
 msgstr "Moderatorerna stängde av den här deltagarens ljud"
 
 #. Required-action form error when the backend rejects a phone number.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:530
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:526
 msgid "This phone number cannot be used. Try another mobile number or contact support."
 msgstr "Det här telefonnumret kan inte användas. Prova ett annat mobilnummer eller kontakta supporten."
 
 #. Required-action form error when the backend rejects a reused phone number.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:534
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:530
 msgid "This phone number has already been used. Try another number or contact support."
 msgstr "Det här telefonnumret har redan använts. Prova ett annat nummer eller kontakta supporten."
 
@@ -34282,12 +34225,12 @@ msgid "This removes all custom CSS overrides. Theme files in your library are no
 msgstr "Detta tar bort alla anpassade CSS-åsidosättningar. Temafiler i ditt bibliotek påverkas inte."
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:50
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:49
 msgid "This removes all previously authorized IP addresses on your account. The next login from any IP will require email verification."
 msgstr "Detta tar bort alla tidigare auktoriserade IP-adresser från ditt konto. Nästa inloggning från valfri IP kräver e-postverifiering."
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:67
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:66
 msgid "This removes all trusted domains. You will see the external link warning for all domains again."
 msgstr "Detta tar bort alla betrodda domäner. Du kommer att se varningen för externa länkar för alla domäner igen."
 
@@ -34397,7 +34340,7 @@ msgid "This verification session expired. Return to {productName} and start chec
 msgstr "Verifieringssessionen har löpt ut. Gå tillbaka till {productName} och starta kassan igen."
 
 #. Required-action form error when an email-change ticket or proof is invalid or expired.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:502
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:498
 msgid "This verification session expired. Start again."
 msgstr "Verifieringssessionen har löpt ut. Börja om."
 
@@ -34495,7 +34438,7 @@ msgid "This will trust all external links and skip the warning for every domain.
 msgstr "Detta kommer att lita på alla externa länkar och hoppa över varningen för varje domän. Dina befintliga betrodda domäner kommer att ersättas. Detta är mindre säkert."
 
 #. Required-action modal body after the user sends an inbound phone verification text.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:478
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:474
 msgid "This window updates automatically after we receive your message."
 msgstr "Det här fönstret uppdateras automatiskt när vi har tagit emot ditt meddelande."
 
@@ -34669,12 +34612,12 @@ msgid "Today at {timeString}"
 msgstr "Idag {timeString}"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:69
+#: src/features/input/state/input_keybind/shared.ts:77
 msgid "Toggle between last community and DMs"
 msgstr "Växla mellan senaste community och DM"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:309
+#: src/features/input/state/input_keybind/shared.ts:317
 msgid "Toggle camera"
 msgstr "Slå på eller av kameran"
 
@@ -34694,7 +34637,7 @@ msgid "Toggle developer tools"
 msgstr "Visa eller dölj utvecklarverktyg"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:269
+#: src/features/input/state/input_keybind/shared.ts:277
 msgid "Toggle embed suppression"
 msgstr "Visa eller dölj inbäddningar"
 
@@ -34710,23 +34653,23 @@ msgstr "Växla maskinvaruacceleration"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/input/state/input_keybind/shared.ts:209
+#: src/features/input/state/input_keybind/shared.ts:217
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:183
 msgid "Toggle mute"
 msgstr "Slå på eller av mikrofonen"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:153
+#: src/features/input/state/input_keybind/shared.ts:161
 msgid "Toggle pinned messages"
 msgstr "Visa eller dölj fästa meddelanden"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:117
+#: src/features/input/state/input_keybind/shared.ts:125
 msgid "Toggle quick switcher"
 msgstr "Visa eller dölj snabbväxlaren"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:281
+#: src/features/input/state/input_keybind/shared.ts:289
 msgid "Toggle saved media"
 msgstr "Visa eller dölj sparade medier"
 
@@ -34735,17 +34678,17 @@ msgid "Toggle switches on and off to see state changes."
 msgstr "Slå av och på reglagen för att se statusändringar."
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:173
+#: src/features/input/state/input_keybind/shared.ts:181
 msgid "Toggle the emoji picker"
 msgstr "Visa eller dölj emojiväljaren"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:177
+#: src/features/input/state/input_keybind/shared.ts:185
 msgid "Toggle the GIF picker"
 msgstr "Visa eller dölj GIF-väljaren"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:157
+#: src/features/input/state/input_keybind/shared.ts:165
 msgid "Toggle the inbox"
 msgstr "Visa eller dölj inkorgen"
 
@@ -34755,22 +34698,22 @@ msgid "Toggle the kinds of conversations you want included."
 msgstr "Välj vilka typer av konversationer du vill inkludera."
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:169
+#: src/features/input/state/input_keybind/shared.ts:177
 msgid "Toggle the member list or voice chat"
 msgstr "Visa eller dölj medlemslistan eller röstchatten"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:225
+#: src/features/input/state/input_keybind/shared.ts:233
 msgid "Toggle the soundboard"
 msgstr "Visa eller dölj ljudpanelen"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:181
+#: src/features/input/state/input_keybind/shared.ts:189
 msgid "Toggle the sticker picker"
 msgstr "Visa eller dölj klistermärkesväljaren"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:305
+#: src/features/input/state/input_keybind/shared.ts:313
 msgid "Toggle voice activity"
 msgstr "Växla röstaktivitet"
 
@@ -34802,7 +34745,7 @@ msgid "Tone-map HDR images to standard range, reducing peak brightness."
 msgstr "Tonmappa HDR-bilder till standardomfång, vilket minskar den högsta ljusstyrkan."
 
 #. Required-action error shown for rate limits.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:506
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:502
 msgid "Too many attempts. Wait a bit, then try again."
 msgstr "För många försök. Vänta en stund och försök igen."
 
@@ -34954,7 +34897,7 @@ msgstr "Ändringar av ikonen i meddelandefältet tillämpas först efter en omst
 msgid "Trending GIFs"
 msgstr "Trendande GIF:ar"
 
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:383
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:359
 msgid "Trigger React crash"
 msgstr "Utlös React-krasch"
 
@@ -35013,7 +34956,7 @@ msgid "Trusted domains"
 msgstr "Betrodda domäner"
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
-#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:55
+#: src/features/channel/components/channel_header_components/developer_tools/ToolsMenu.tsx:54
 msgid "Trusted domains cleared."
 msgstr "Betrodda domäner rensade."
 
@@ -35059,14 +35002,13 @@ msgid "Try a different variable name or clear the search."
 msgstr "Prova ett annat variabelnamn eller rensa sökningen."
 
 #. Generic action label for retrying a failed or interrupted operation.
-#: src/features/auth/components/AltchaVerification.tsx:53
 #: src/features/auth/flow/AuthRouteLoadError.tsx:22
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:75
 msgid "Try again"
 msgstr "Försök igen"
 
 #. Button that retries connecting to the voice channel after a failed attempt.
-#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:61
+#: src/features/voice/components/voice_connection_status/VoiceConnectionStatusInner.tsx:62
 msgctxt "voice-connection-status"
 msgid "Try again"
 msgstr "Försök igen"
@@ -35137,10 +35079,6 @@ msgstr "Prova säkerhetsnyckel/lösennyckel i stället"
 msgid "Try sending your message again."
 msgstr "Försök skicka meddelandet igen."
 
-#: src/features/auth/components/modals/CaptchaModal.tsx:177
-msgid "Try Turnstile instead"
-msgstr "Prova Turnstile istället"
-
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:135
 msgid "TTS"
@@ -35157,7 +35095,7 @@ msgid "TTS speed"
 msgstr "TTS-hastighet"
 
 #. Description for the custom option in the voice processing settings radio group.
-#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:47
+#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:44
 msgid "Tune the processing yourself."
 msgstr "Justera bearbetningen själv."
 
@@ -35896,7 +35834,7 @@ msgstr "Lås upp anpassade emojier i DM med {premiumProductName}"
 msgid "Unlock HD screen share with {premiumProductName}"
 msgstr "Lås upp HD-skärmdelning med {premiumProductName}"
 
-#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:215
+#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:217
 msgid "Unlock higher limits and exclusive features while supporting an independent communication platform."
 msgstr "Lås upp högre gränser och exklusiva funktioner samtidigt som du stöder en oberoende kommunikationsplattform."
 
@@ -36042,7 +35980,7 @@ msgid "Unordered"
 msgstr "Oordnad"
 
 #. Confirm button label on the unpin message alert.
-#: src/features/channel/components/MessageActionUtils.tsx:51
+#: src/features/channel/components/MessageActionUtils.tsx:54
 msgid "Unpin"
 msgstr "Lossa"
 
@@ -36067,7 +36005,7 @@ msgid "Unpin message"
 msgstr "Lossa meddelande"
 
 #. Body of the confirmation alert shown when unpinning a message.
-#: src/features/channel/components/MessageActionUtils.tsx:47
+#: src/features/channel/components/MessageActionUtils.tsx:50
 msgid "Unpin this message?"
 msgstr "Vill du ta bort fästningen för det här meddelandet?"
 
@@ -36373,7 +36311,7 @@ msgstr "Ladda upp ett anpassat ljud som spelas automatiskt när du går med i en
 #. Card label in the asset source modal for uploading an image from the device. Keep it concise.
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #: src/features/expressions/components/modals/AssetSourceModal.tsx:19
-#: src/features/input/state/input_keybind/shared.ts:201
+#: src/features/input/state/input_keybind/shared.ts:209
 msgid "Upload a file"
 msgstr "Ladda upp en fil"
 
@@ -36642,7 +36580,7 @@ msgid "Use an email address you can access. We will send a code there."
 msgstr "Använd en e-postadress du har tillgång till. Vi skickar en kod dit."
 
 #. Required-action form error when the new email matches the current account email.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:518
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:514
 msgid "Use an email that is different from your current one."
 msgstr "Använd en annan e-postadress än din nuvarande."
 
@@ -36895,7 +36833,7 @@ msgid "Use this when troubleshooting the client or collecting logs. It may add v
 msgstr "Använd detta när du felsöker klienten eller samlar in loggar. Det kan lägga till utförliga meddelanden i webbläsarkonsolen för den aktuella klienten."
 
 #. Label for SMTP TLS toggle.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1037
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1011
 msgid "Use TLS"
 msgstr "Använd TLS"
 
@@ -37061,7 +36999,7 @@ msgstr "Användarvolym"
 #. Generic form-field label for a username.
 #. Label for SMTP username input.
 #. Settings search entry label. Also used as a search synonym in the settings search bar.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:1035
+#: src/features/app/components/setup/SetupWizardSteps.tsx:1009
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:572
 #: src/features/user/components/modals/FluxerTagChangeModal.tsx:218
 #: src/features/user/components/modals/tabs/my_profile_tab/MyProfileTabUsernameSection.tsx:56
@@ -37328,24 +37266,19 @@ msgstr "Verifiera att det är du"
 #. Primary button in the required-action modal. Sends or submits phone verification.
 #: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:178
 #: src/features/channel/components/barriers/BarrierComponents.tsx:269
-#: src/features/user/components/modals/PhoneAddModal.tsx:408
+#: src/features/user/components/modals/PhoneAddModal.tsx:405
 msgid "Verify phone"
 msgstr "Verifiera telefonnummer"
 
 #. Short label in the phone add modal. Keep it concise.
-#: src/features/user/components/modals/PhoneAddModal.tsx:55
+#: src/features/user/components/modals/PhoneAddModal.tsx:53
 msgid "Verify phone number"
 msgstr "Verifiera telefonnummer"
 
 #. Label in the phone add modal.
-#: src/features/user/components/modals/PhoneAddModal.tsx:51
+#: src/features/user/components/modals/PhoneAddModal.tsx:49
 msgid "Verify phone number form"
 msgstr "Formulär för att verifiera telefonnummer"
-
-#. Short label in the authentication captcha modal. Keep the tone plain and specific.
-#: src/features/auth/components/modals/CaptchaModal.tsx:17
-msgid "Verify you're human"
-msgstr "Verifiera att du är människa"
 
 #. Title of the error modal shown when an unverified account tries to start a DM.
 #. Title shown when an unverified account cannot start a DM or group DM.
@@ -37374,22 +37307,22 @@ msgid "Verify your email before adding an authenticator app."
 msgstr "Verifiera din e-postadress innan du lägger till en autentiseringsapp."
 
 #. Description text in the my profile tab. Keep the tone plain and specific.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:117
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:116
 msgid "Verify your email before changing your community nickname, avatar, banner, bio, pronouns, or accent color."
 msgstr "Verifiera din e-postadress innan du ändrar ditt smeknamn, din avatar, banner, presentation, dina pronomen eller din accentfärg i communityn."
 
 #. Label in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:121
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:120
 msgid "Verify your email before changing your username, display name, avatar, banner, bio, pronouns, time zone, or {premiumProductName} badge privacy."
 msgstr "Verifiera din e-postadress innan du ändrar ditt användarnamn, visningsnamn, din avatar, banner, presentation, dina pronomen, din tidszon eller sekretessen för ditt {premiumProductName}-märke."
 
 #. Description text in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:85
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:84
 msgid "Verify your email before editing this community profile. You can still preview it here."
 msgstr "Verifiera din e-postadress innan du redigerar den här communityprofilen. Du kan fortfarande förhandsgranska den här."
 
 #. Description text in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:89
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:88
 msgid "Verify your email before editing your profile. You can still preview it here."
 msgstr "Verifiera din e-postadress innan du redigerar din profil. Du kan fortfarande förhandsgranska den här."
 
@@ -37421,12 +37354,12 @@ msgid "Verify your email to continue using {productName}."
 msgstr "Verifiera din e-postadress för att fortsätta använda {productName}."
 
 #. Label in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:109
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:108
 msgid "Verify your email to edit this community profile"
 msgstr "Verifiera din e-postadress för att redigera den här communityprofilen"
 
 #. Label in the my profile tab.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:113
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:112
 msgid "Verify your email to edit your profile"
 msgstr "Verifiera din e-postadress för att redigera din profil"
 
@@ -37534,7 +37467,7 @@ msgid "Video options"
 msgstr "Videoalternativ"
 
 #. Field label in the voice connection status popout. Shows received video packet loss percentage.
-#: src/features/voice/components/voice_connection_status/shared.ts:111
+#: src/features/voice/components/voice_connection_status/shared.ts:112
 msgid "Video packet loss:"
 msgstr "Videopaketförlust:"
 
@@ -37558,7 +37491,7 @@ msgid "Video quality"
 msgstr "Videokvalitet"
 
 #. Field label in the voice connection status popout. Shows current inbound video bitrate.
-#: src/features/voice/components/voice_connection_status/shared.ts:103
+#: src/features/voice/components/voice_connection_status/shared.ts:104
 msgid "Video receive:"
 msgstr "Video, mottaget:"
 
@@ -37568,7 +37501,7 @@ msgid "Video scrubbing"
 msgstr "Videospolning"
 
 #. Field label in the voice connection status popout. Shows current outbound video bitrate.
-#: src/features/voice/components/voice_connection_status/shared.ts:99
+#: src/features/voice/components/voice_connection_status/shared.ts:100
 msgid "Video send:"
 msgstr "Videosändning:"
 
@@ -37977,7 +37910,7 @@ msgid "Voice activity on active now"
 msgstr "Röstaktivitet i Aktiva nu"
 
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
-#: src/features/input/state/input_keybind/shared.ts:301
+#: src/features/input/state/input_keybind/shared.ts:309
 msgid "Voice activity priority"
 msgstr "Prioritet för röstaktivitet"
 
@@ -38050,7 +37983,7 @@ msgstr "Röstkanaler"
 
 #. Voice status popout title (secondary call site for the same surface as VOICE_CONNECTION_DESCRIPTOR).
 #. Voice status popout title.
-#: src/features/voice/components/voice_connection_status/MockedVoiceConnectionStatus.tsx:47
+#: src/features/voice/components/voice_connection_status/MockedVoiceConnectionStatus.tsx:48
 #: src/features/voice/components/voice_connection_status/VoiceDetailsPopout.tsx:56
 msgid "Voice connection"
 msgstr "Röstanslutning"
@@ -38108,8 +38041,8 @@ msgid "Voice participants"
 msgstr "Röstdeltagare"
 
 #. Voice settings radio group label for microphone processing profile.
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:644
-#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:55
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:639
+#: src/features/voice/components/voice_connection_status/AudioProcessingModal.tsx:52
 msgid "Voice processing"
 msgstr "Röstbearbetning"
 
@@ -38202,7 +38135,7 @@ msgstr "Höj volymen"
 msgid "Wait a moment before deleting more messages."
 msgstr "Vänta en stund innan du tar bort fler meddelanden."
 
-#: src/features/user/components/modals/PhoneAddModal.tsx:352
+#: src/features/user/components/modals/PhoneAddModal.tsx:349
 msgid "Wait a moment. This window will close automatically once we receive your message."
 msgstr "Vänta ett ögonblick. Det här fönstret stängs automatiskt när vi har tagit emot ditt meddelande."
 
@@ -38212,7 +38145,7 @@ msgid "Wait between messages. Members with \"{bypassSlowmodePermissionLabel}\" c
 msgstr "Vänta mellan meddelanden. Medlemmar med behörigheten ”{bypassSlowmodePermissionLabel}” kan kringgå detta."
 
 #. Required-action modal carousel step title after the user sends an inbound phone verification text.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:474
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:470
 msgid "Wait here"
 msgstr "Vänta här"
 
@@ -38378,13 +38311,13 @@ msgstr "Vi kunde inte läsa det här temat. Det kan vara skadat eller ogiltigt."
 msgid "We couldn't remove that account. Try again."
 msgstr "Vi kunde inte ta bort kontot. Försök igen."
 
-#. Required-action form error for phone attempts blocked by a fraud signal. Deliberately non-specific. Never name the signal, the score or the threshold.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:576
+#. Required-action form error when a phone attempt cannot be verified automatically and needs a support review. Keep it non-specific.
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:571
 msgid "We couldn't verify this number automatically. Contact support and a person will review your account."
 msgstr "Vi kunde inte verifiera numret automatiskt. Kontakta supporten så granskar en person ditt konto."
 
 #. Required-action form error when the phone number's country is on the SMS send ban list. Must not imply the number itself is invalid.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:546
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:542
 msgid "We don't send verification texts to this country. Try a mobile number from another country, or contact support."
 msgstr "Vi skickar inte verifierings-SMS till det här landet. Prova ett mobilnummer från ett annat land eller kontakta supporten."
 
@@ -38402,10 +38335,6 @@ msgstr "Vi har sänkt priset på {premiumProductName} i Brasilien. Det kostar nu
 #: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:210
 msgid "We need one verification step before you continue. This helps protect accounts and keep spam off {productName}."
 msgstr "Vi behöver ett verifieringssteg innan du kan fortsätta. Detta hjälper till att skydda konton och hålla spam borta från {productName}."
-
-#: src/features/auth/components/modals/CaptchaModal.tsx:128
-msgid "We need to make sure you're not a bot. Complete the verification below."
-msgstr "Vi behöver säkerställa att du inte är en robot. Slutför verifieringen nedan."
 
 #. Required-action modal intro text when both email and phone verification are required.
 #: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:216
@@ -38479,9 +38408,9 @@ msgstr "Vi skickar en verifieringskod till din e-post innan du kan ändra ditt l
 msgid "We'll send a verification code to your email before you can view your backup codes."
 msgstr "Vi skickar en verifieringskod till din e-postadress innan du kan se dina reservkoder."
 
-#: src/features/user/components/modals/PhoneAddModal.tsx:286
-msgid "We'll send an SMS code when available. Your number is not linked to your account. We keep only an encrypted marker, with no user ID, to allow at most {PHONE_VERIFICATION_LIMIT} verifications in about {PHONE_VERIFICATION_WINDOW_DAYS} days."
-msgstr "Vi skickar en SMS-kod när det är möjligt. Ditt nummer är inte kopplat till ditt konto. Vi sparar endast en krypterad markör, utan användar-ID, för att tillåta högst {PHONE_VERIFICATION_LIMIT} verifieringar under cirka {PHONE_VERIFICATION_WINDOW_DAYS} dagar."
+#: src/features/user/components/modals/PhoneAddModal.tsx:284
+msgid "We'll send an SMS code when available. Your number is not linked to your account. We keep only an encrypted marker, with no user ID, for a limited time."
+msgstr "Vi skickar en SMS-kod när den är tillgänglig. Ditt nummer är inte kopplat till ditt konto. Vi behåller endast en krypterad markör, utan användar-ID, under en begränsad tid."
 
 #: src/features/user/components/modals/EmailChangeModal.tsx:189
 msgid "We'll verify your current email and then your new email with one-time codes."
@@ -38841,7 +38770,7 @@ msgstr "Vilka konversationer"
 msgid "Which rule was broken?"
 msgstr "Vilken regel bröts?"
 
-#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:358
+#: src/features/user/components/modals/tabs/UserVoiceTab.tsx:355
 msgid "While push-to-talk is on, your shortcut controls your microphone, so the mute button is disabled."
 msgstr "När tryck för att prata är på styr kortkommandot mikrofonen, så knappen för att stänga av mikrofonen är inaktiverad."
 
@@ -39261,7 +39190,7 @@ msgid "You can't befriend yourself"
 msgstr "Du kan inte bli vän med dig själv"
 
 #. Label in the my profile tab. Keep the tone plain and specific.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:134
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:133
 msgid "You can't change your nickname here"
 msgstr "Du kan inte ändra ditt smeknamn här"
 
@@ -39511,7 +39440,7 @@ msgid "You have unsaved changes."
 msgstr "Du har osparade ändringar."
 
 #. Warning text in the my profile tab. Keep the tone plain and specific.
-#: src/features/user/components/modals/tabs/MyProfileTab.tsx:81
+#: src/features/user/components/modals/tabs/MyProfileTab.tsx:80
 msgid "You have unsaved changes. Save or reset before leaving."
 msgstr "Du har osparade ändringar. Spara eller återställ innan du lämnar."
 
@@ -39532,11 +39461,11 @@ msgstr "Du har inte blockerat någon än."
 msgid "You just pressed Tab. Keyboard mode is now on so you can navigate {productName} without a mouse."
 msgstr "Du tryckte precis på Tab. Tangentbordsläget är nu aktiverat så att du kan navigera i {productName} utan mus."
 
-#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:135
+#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:137
 msgid "You keep your perks until your next renewal date, then have a 3-day grace period to resubscribe and keep your subscriber history."
 msgstr "Du behåller dina förmåner till nästa förnyelsedatum och har sedan en respitperiod på 3 dagar för att teckna abonnemang igen och behålla din abonnemangshistorik."
 
-#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:157
+#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:159
 msgid "You lose all {PREMIUM_PRODUCT_NAME} perks immediately and your subscriber history resets. This cannot be undone."
 msgstr "Du förlorar alla {PREMIUM_PRODUCT_NAME}-förmåner direkt och din abonnemangshistorik återställs. Detta kan inte ångras."
 
@@ -39986,10 +39915,10 @@ msgstr "Din {productName}-session har upphört. Logga in igen för att fortsätt
 msgid "Your account"
 msgstr "Ditt konto"
 
-#. First line of the set-aside confirmation in the required-action modal. Always shown. Says can rather than will, because whether the check returns depends on account age and instance settings the user cannot see.
+#. First line of the set-aside confirmation in the required-action modal. Always shown. Says can rather than will, because the check may or may not come back.
 #: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:316
-msgid "Your account goes back to normal right away and you will not need a phone number now. This is not a permanent exemption. Joining a large or public community can bring this check back."
-msgstr "Ditt konto fungerar som vanligt igen direkt och du behöver inget telefonnummer nu. Detta är inget permanent undantag. Om du går med i en stor eller offentlig community kan kontrollen återkomma."
+msgid "Your account goes back to normal right away and you will not need a phone number now. This is not a permanent exemption, and we can ask for this check again later."
+msgstr "Ditt konto återgår till det normala direkt och du behöver ingen telefonnummer nu. Detta är inte ett permanent undantag, och vi kan komma att begära denna kontroll igen senare."
 
 #: src/features/connection/components/pages/ConnectionCallbackPage.tsx:29
 msgid "Your account has been linked successfully. You can now close this tab and return to the app."
@@ -40036,10 +39965,6 @@ msgstr "Din åtgärd kunde inte slutföras eftersom den flaggades av våra säke
 msgid "Your application is pending review. You can still update your listing details or withdraw the application."
 msgstr "Din ansökan väntar på granskning. Du kan fortfarande uppdatera listningens uppgifter eller dra tillbaka ansökan."
 
-#: src/features/auth/components/AltchaVerification.tsx:50
-msgid "Your browser couldn't finish the check."
-msgstr "Webbläsaren kunde inte slutföra kontrollen."
-
 #. Body of the browser-audio-required modal explaining why the user must click before audio can play.
 #: src/features/voice/components/modals/AudioPlaybackPermissionModal.tsx:12
 msgid "Your browser requires user interaction before audio can be played. Click the button below to enable voice chat."
@@ -40054,7 +39979,7 @@ msgid "Your card is eligible. Redirecting you to the payment page now."
 msgstr "Ditt kort är godkänt. Du omdirigeras nu till betalningssidan."
 
 #. Required-action form error when the carrier lookup says the number does not exist. Leaves room for the lookup to be wrong.
-#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:564
+#: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:560
 msgid "Your carrier says this number isn't in service. Check it and try again, or contact support if it's correct."
 msgstr "Din mobiloperatör säger att numret inte är i bruk. Kontrollera det och försök igen, eller kontakta support om det stämmer."
 
@@ -40226,10 +40151,10 @@ msgstr "din nya e-postadress"
 msgid "Your new nickname, or leave blank to reset it."
 msgstr "Ditt nya smeknamn, eller lämna tomt för att återställa det."
 
-#. Required-action modal privacy note for phone verification. limit and duration are inserted by code.
+#. Required-action modal privacy note for phone verification.
 #: src/features/auth/components/modals/required_action/RequiredActionDescriptors.ts:421
-msgid "Your number is not linked to your account. We keep only an encrypted marker, with no user ID, for at most {limit} verifications in about {duration} days."
-msgstr "Ditt nummer är inte kopplat till ditt konto. Vi sparar endast en krypterad markör, utan användar-ID, för högst {limit} verifieringar under cirka {duration} dagar."
+msgid "Your number is not linked to your account. We keep only an encrypted marker, with no user ID, for a limited time."
+msgstr "Ditt nummer är inte kopplat till ditt konto. Vi sparar bara en krypterad markör, utan användar-ID, under en begränsad tid."
 
 #: src/features/premium/components/pages/PremiumCallbackPage.tsx:152
 msgid "Your payment was canceled. You can now close this tab and return to the app."
@@ -40391,7 +40316,7 @@ msgid "YouTube enrichment"
 msgstr "YouTube-berikning"
 
 #. Setup wizard title for YouTube integration credentials.
-#: src/features/app/components/setup/SetupWizardSteps.tsx:977
+#: src/features/app/components/setup/SetupWizardSteps.tsx:970
 msgid "YouTube previews"
 msgstr "YouTube-förhandsvisningar"
 
@@ -40417,7 +40342,7 @@ msgstr "Zooma"
 #. Native View menu item that increases UI zoom level.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:628
-#: src/features/input/state/input_keybind/shared.ts:253
+#: src/features/input/state/input_keybind/shared.ts:261
 #: src/features/platform/utils/DesktopLocaleBridge.ts:113
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:82
 msgid "Zoom in"
@@ -40428,7 +40353,7 @@ msgstr "Zooma in"
 #. Native View menu item that decreases UI zoom level.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:624
-#: src/features/input/state/input_keybind/shared.ts:257
+#: src/features/input/state/input_keybind/shared.ts:265
 #: src/features/platform/utils/DesktopLocaleBridge.ts:117
 #: src/features/user/components/settings_utils/search_index/KeybindsIndex.ts:86
 msgid "Zoom out"
