@@ -192,6 +192,8 @@ export const ERROR_I18N_MESSAGES = {
 		'Discoverable communities must have a verification level of at least Low.',
 	'channels_and_guilds.group_dm_recipients_not_addable': "One or more selected users can't be added to this group DM.",
 	'channels_and_guilds.guild_banner_requires_feature': 'Community banner requires BANNER feature.',
+	'channels_and_guilds.guild_creation_permission_required':
+		"You don't have permission to create communities on this instance. Contact your instance administrator to request access.",
 	'channels_and_guilds.guild_feature_not_toggleable': 'This feature cannot be toggled.',
 	'channels_and_guilds.guild_id_must_match_referenced_message':
 		'Community ID must match the community containing the channel the referenced message was fetched from.',
@@ -506,6 +508,12 @@ export const ERROR_I18N_MESSAGES = {
 	'stickers_and_emojis.not_valid_unicode_emoji': 'Not a valid Unicode emoji.',
 	'stickers_and_emojis.unknown_emoji': 'Unknown emoji.',
 	'stickers_and_emojis.unknown_sticker': 'Unknown sticker.',
+	'store_billing.notification_unauthorized': 'The notification signature is invalid.',
+	'store_billing.purchase_invalid': 'This purchase could not be verified.',
+	'store_billing.purchase_owned_by_other_account': 'This purchase is linked to a different account.',
+	'store_billing.purchase_sandbox_not_entitled': 'Test purchases cannot be applied to this account.',
+	'store_billing.unavailable': 'In-app purchases are unavailable right now. Try again later.',
+	'store_billing.unknown_purchase': 'Unknown store purchase.',
 	'stripe.error': 'Payment processing encountered an error. Please try again or contact support.',
 	'stripe.invalid_product_configuration': 'Invalid product configuration.',
 	'stripe.invalid_product_selection': 'Invalid product selection.',

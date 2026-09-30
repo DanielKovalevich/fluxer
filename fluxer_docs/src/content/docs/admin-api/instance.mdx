@@ -73,7 +73,7 @@ Single sign-on settings for the deployment's OpenID Connect provider.
 
 <sup>2</sup> Each entry is stored lowercased and IDNA encoded, duplicates are collapsed, and an empty entry is dropped
 
-<sup>3</sup> The configured web application endpoint followed by `/auth/sso/callback`. No operation can set it
+<sup>3</sup> The configured web application endpoint followed by `/auth/sso/callback`. It is the only redirect URI the provider needs, mobile sign-in included. No operation can set it
 
 ## Gateway rollout configuration object
 
@@ -298,6 +298,7 @@ Community, direct message, premium and gating policy for the whole deployment.
 | single_community_guild_id | ?string | Guild used as that community, or null before one has been created |
 | direct_messages_disabled | boolean | Whether direct messages are disabled |
 | direct_messages_locked<sup>1</sup> | boolean | Whether the direct message setting is locked against further change |
+| guild_create_access | boolean | Whether every account can create communities, or only admins and holders of the `feature_guild_create` limit |
 | premium_mode | string | [Premium mode](#premium-modes) |
 | services | object | Operator overrides for `gif_enabled`, `youtube_enabled`, and `bluesky_enabled`. Each is nullable, and null means no override |
 | services_resolved<sup>2</sup> | object | The same keys as concrete booleans, resolved from the override and the provider's own availability |
@@ -630,6 +631,7 @@ Fluxer skips URL validation while the merged configuration leaves single sign-on
 | single_community_name?<sup>1</sup> | string | Name used only when the community has to be created (1-100 characters) |
 | direct_messages_disabled?<sup>2</sup> | boolean | Whether direct messages are disabled |
 | direct_messages_locked?<sup>2</sup> | boolean | Whether the direct message setting stays locked |
+| guild_create_access? | boolean | Whether every account can create communities |
 | premium_mode? | string | [Premium mode](#premium-modes) |
 | services? | object | Nullable `gif_enabled`, `youtube_enabled`, and `bluesky_enabled` overrides |
 

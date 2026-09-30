@@ -245,6 +245,7 @@ fn policy_config_section(
                 (single_community_form(base, csrf_token, policy))
                 (direct_messages_form(base, csrf_token, policy))
                 (premium_mode_form(base, csrf_token, policy, premium_name))
+                (community_creation_form(base, csrf_token, policy))
                 (services_form(base, csrf_token, policy))
             }
         },
@@ -357,6 +358,37 @@ fn premium_mode_form(
                     ], policy.premium_mode.as_str()))
                     (form_actions(html! {
                         (submit_button("Save premium model"))
+                    }))
+                }
+            }
+        }
+    }
+}
+
+fn community_creation_form(
+    base: &str,
+    csrf_token: &str,
+    policy: &InstancePolicyResponse,
+) -> Markup {
+    html! {
+        div id="community-creation" class="space-y-4 border-t border-neutral-200 pt-6" {
+            h3 class="text-sm font-semibold text-neutral-900" { "Community creation" }
+            form method="post" action={(base) "/instance-config?action=update_policy"} {
+                (csrf_input(csrf_token))
+                div class="space-y-4" {
+                    (select_input("policy_guild_create_access", "Who can create communities", &[
+                        ("true", "Everyone"),
+                        ("false", "Restricted"),
+                    ], if policy.guild_create_access { "true" } else { "false" }))
+                    p class="text-xs text-neutral-500" {
+                        "When restricted, only admins with the wildcard ACL and users matched by a "
+                        a href={(base) "/limit-config"} class="text-blue-600 hover:underline" {
+                            "limit rule"
+                        }
+                        " that grants Community Creation Access can create communities."
+                    }
+                    (form_actions(html! {
+                        (submit_button("Save community creation policy"))
                     }))
                 }
             }

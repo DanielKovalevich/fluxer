@@ -227,6 +227,7 @@ export type ListReportsQuery = z.infer<typeof ListReportsQuery>;
 export const UpdateReportRequest = z.object({
 	status: z.literal('resolved').describe('The status to move the report to'),
 	public_comment: createStringType(0, 512).optional().describe('Public comment to include with the resolution'),
+	notify_reporter: z.boolean().default(true).describe('Whether to notify the reporter by system DM and email'),
 });
 
 export type UpdateReportRequest = z.infer<typeof UpdateReportRequest>;
@@ -546,6 +547,7 @@ const InstancePolicyResponse = z.object({
 	single_community_guild_id: z.string().nullable(),
 	direct_messages_disabled: z.boolean(),
 	direct_messages_locked: z.boolean(),
+	guild_create_access: z.boolean(),
 	premium_mode: z.enum(['mirror', 'everyone']),
 	services: z.object({
 		gif_enabled: z.boolean().nullable(),
@@ -655,6 +657,7 @@ const InstancePolicyUpdateSchema = z.object({
 	direct_messages_disabled: z.boolean().optional(),
 	direct_messages_locked: z.literal(false).optional(),
 	premium_mode: z.enum(['mirror', 'everyone']).optional(),
+	guild_create_access: z.boolean().optional(),
 	services: z
 		.object({
 			gif_enabled: z.boolean().nullish(),
@@ -858,19 +861,31 @@ export const LimitConfigUpdateRequest = z.object({
 
 export type LimitConfigUpdateRequest = z.infer<typeof LimitConfigUpdateRequest>;
 
-export const SendSystemDmRequest = z.object({
-	content: z.string().min(1).max(4000).describe('Message content to send to each recipient'),
-	user_ids: z
-		.array(SnowflakeType)
-		.min(1)
-		.max(10000)
-		.describe('Recipient user IDs. Each receives the same content as a system DM.'),
-});
+export const SendSystemDmRequest = z
+	.object({
+		content: z.string().min(1).max(4000).describe('Message content to send to each recipient'),
+		user_ids: z
+			.array(SnowflakeType)
+			.min(1)
+			.max(10000)
+			.optional()
+			.describe('Recipient user IDs. Each receives the same content as a system DM.'),
+		all_users: z
+			.boolean()
+			.optional()
+			.describe('Send to every user account, skipping bots, system accounts, and deleted or disabled accounts'),
+	})
+	.refine((value) => (value.all_users === true) !== (value.user_ids !== undefined), {
+		error: 'Provide either user_ids or all_users, not both',
+		path: ['user_ids'],
+	});
 
 export type SendSystemDmRequest = z.infer<typeof SendSystemDmRequest>;
 
 export const SendSystemDmResponse = z.object({
-	recipient_count: Int32Type.describe('Number of recipients the worker job was queued to deliver to'),
+	recipient_count: Int32Type.nullable().describe(
+		'Number of recipients the worker job was queued to deliver to, or null when sending to all users',
+	),
 });
 
 export type SendSystemDmResponse = z.infer<typeof SendSystemDmResponse>;

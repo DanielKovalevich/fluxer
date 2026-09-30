@@ -6,7 +6,6 @@ import {AdminService} from '@app/api/admin/AdminService';
 import {AuthRequestService} from '@app/api/auth/AuthRequestService';
 import {DesktopHandoffService} from '@app/api/auth/services/DesktopHandoffService';
 import {SsoService} from '@app/api/auth/services/SsoService';
-import {buildIpInfoCache, buildIpInfoRequestAuditLogger} from '@app/api/ban/IpInfoCacheFactory';
 import type {IBlueskyOAuthService} from '@app/api/bluesky/IBlueskyOAuthService';
 import {Config} from '@app/api/Config';
 import {createApiContext} from '@app/api/CreateApiContext';
@@ -98,6 +97,7 @@ import {
 	getReadStateService,
 	getReportRepository,
 	getStorageService,
+	getStoreBillingRepository,
 	getStreamPreviewService,
 	getSweegoWebhookService,
 	getThemeService,
@@ -119,6 +119,8 @@ import {ReportService} from '@app/api/report/ReportService';
 import {RpcService} from '@app/api/rpc/RpcService';
 import {getReportSearchService} from '@app/api/SearchFactory';
 import {SearchService} from '@app/api/search/SearchService';
+import type {StoreEntitlementService} from '@app/api/store_billing/StoreEntitlementService';
+import {createStoreEntitlementService} from '@app/api/store_billing/StoreEntitlementServiceFactory';
 import {StripeService} from '@app/api/stripe/StripeService';
 import {AgeVerificationService} from '@app/api/stripe/services/AgeVerificationService';
 import type {HonoEnv} from '@app/api/types/HonoEnv';
@@ -135,7 +137,6 @@ import {getRequestClientIp} from '@app/api/utils/RequestClientIp';
 import {VoiceService} from '@app/api/voice/VoiceService';
 import {WebhookRequestService} from '@app/api/webhook/WebhookRequestService';
 import {WebhookService} from '@app/api/webhook/WebhookService';
-import {createIpInfoService, createUnavailableIpInfoService, type IpInfoService} from '@pkgs/geoip/src/IpInfoService';
 import {createMiddleware} from 'hono/factory';
 
 export {initializeServiceSingletons} from '@app/api/middleware/ServiceSingletons';
@@ -167,33 +168,6 @@ export function shutdownReportService(): void {
 		_reportService.shutdown();
 		_reportService = null;
 	}
-}
-
-let _ipInfoService: IpInfoService | null = null;
-let _injectedIpInfoService: IpInfoService | undefined;
-
-export function setInjectedIpInfoService(service: IpInfoService | undefined): void {
-	_injectedIpInfoService = service;
-}
-
-export function getIpInfoService(): IpInfoService {
-	if (_injectedIpInfoService) {
-		return _injectedIpInfoService;
-	}
-	if (_ipInfoService) return _ipInfoService;
-	if (!Config.ipinfo.apiKey) {
-		_ipInfoService = createUnavailableIpInfoService('IPInfo API key not configured');
-		return _ipInfoService;
-	}
-	const cache = buildIpInfoCache({
-		hot: getCacheService(),
-	});
-	_ipInfoService = createIpInfoService({
-		apiKey: Config.ipinfo.apiKey,
-		cache,
-		auditLogger: buildIpInfoRequestAuditLogger(),
-	});
-	return _ipInfoService;
 }
 
 let _liveKitWebhookService: LiveKitWebhookService | null = null;
@@ -254,6 +228,7 @@ class RequestServices implements RequestScopedServices {
 	private cachedRpcService: RpcService | undefined;
 	private cachedSearchService: SearchService | undefined;
 	private cachedStripeService: StripeService | undefined;
+	private cachedStoreEntitlementService: StoreEntitlementService | undefined;
 	private cachedAgeVerificationService: AgeVerificationService | undefined;
 	private cachedDonationService: DonationService | undefined;
 	private cachedUserService: UserService | undefined;
@@ -345,7 +320,6 @@ class RequestServices implements RequestScopedServices {
 			voiceRoomStore: this.voiceRooms,
 			liveKitService: this.liveKit,
 			voiceAvailabilityService: getVoiceAvailabilityService(),
-			ipInfoService: getIpInfoService(),
 		});
 		return this.cachedGuildStack;
 	}
@@ -540,7 +514,7 @@ class RequestServices implements RequestScopedServices {
 			getApplicationRepository(),
 			this.stripeService.getStripe(),
 			new JobLedgerRepository(),
-			getIpInfoService(),
+			this.storeEntitlementService,
 		);
 		return this.cachedAdminService;
 	}
@@ -767,8 +741,22 @@ class RequestServices implements RequestScopedServices {
 			this.guildService,
 			getCacheService(),
 			getBillingRepository(),
+			getStoreBillingRepository(),
+			this.storeEntitlementService,
 		);
 		return this.cachedStripeService;
+	}
+
+	get storeEntitlementService(): StoreEntitlementService {
+		this.cachedStoreEntitlementService ??= createStoreEntitlementService({
+			userRepository: getUserRepository(),
+			userCacheService: getUserCacheService(),
+			gatewayService: this.gatewayService,
+			kvClient: getKVClient(),
+			snowflakeService: getSnowflakeService(),
+			premiumStateReconciliationQueueService: getPremiumStateReconciliationQueueService(),
+		});
+		return this.cachedStoreEntitlementService;
 	}
 
 	get ageVerificationService(): AgeVerificationService | undefined {
@@ -912,6 +900,5 @@ export const ServiceMiddleware = createMiddleware<HonoEnv>(async (ctx, next) => 
 
 export function resetServiceMiddlewareForTesting(): void {
 	shutdownReportService();
-	_ipInfoService = null;
 	_liveKitWebhookService = null;
 }

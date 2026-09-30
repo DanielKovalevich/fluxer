@@ -43,12 +43,18 @@ pub struct InstancePolicyResponse {
     pub direct_messages_locked: bool,
     #[serde(default)]
     pub premium_mode: PremiumMode,
+    #[serde(default = "default_guild_create_access")]
+    pub guild_create_access: bool,
     #[serde(default)]
     pub services: InstanceServicesOverrides,
     #[serde(default)]
     pub services_resolved: InstanceServicesResolved,
     #[serde(default)]
     pub services_available: InstanceServicesAvailable,
+}
+
+fn default_guild_create_access() -> bool {
+    true
 }
 
 impl Default for InstancePolicyResponse {
@@ -59,6 +65,7 @@ impl Default for InstancePolicyResponse {
             direct_messages_disabled: false,
             direct_messages_locked: false,
             premium_mode: PremiumMode::Everyone,
+            guild_create_access: default_guild_create_access(),
             services: InstanceServicesOverrides::default(),
             services_resolved: InstanceServicesResolved::default(),
             services_available: InstanceServicesAvailable::default(),
@@ -655,6 +662,8 @@ pub struct InstancePolicyUpdateRequest {
     pub single_community_name: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub direct_messages_disabled: Option<bool>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub guild_create_access: Option<bool>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub premium_mode: Option<PremiumMode>,
     #[serde(skip_serializing_if = "Option::is_none")]

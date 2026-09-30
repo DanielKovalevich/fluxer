@@ -2471,7 +2471,7 @@ msgid "A Linux desktop update is available. Choose the package format for this s
 msgstr "Linuxデスクトップ版のアップデートが利用可能です。このシステムで使用するパッケージ形式を選択すると、{productName}がファイルをローカルに保存します。"
 
 #. Plutonium subscription card line offering a move to a lower price. {listPriceEffectiveDate} is a date already formatted and localized by code; never write a date into the translation.
-#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:684
+#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:700
 msgid "A lower price is available. Switching takes effect on <0>{listPriceEffectiveDate}</0> and changes nothing else."
 msgstr "より安い価格をご利用いただけます。切り替えは<0>{listPriceEffectiveDate}</0>から適用され、それ以外は何も変わりません。"
 
@@ -2639,7 +2639,7 @@ msgstr "基本的なプロフィール情報（ユーザー名、アバターな
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. User settings tab for accessibility preferences (visual, motion, screen reader, etc.).
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedSettingsCategories.ts:14
-#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:94
+#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:102
 #: src/features/user/components/settings_utils/SettingsConstants.tsx:61
 msgid "Accessibility"
 msgstr "アクセシビリティ"
@@ -3487,19 +3487,19 @@ msgstr "配置調整は、画面幅が広い場合のみ利用できます"
 msgid "All"
 msgstr "すべて"
 
-#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:524
+#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:540
 msgid "All <0/> for <1>{effectiveMonthlyPrice}/month</1>."
 msgstr "すべての<0/>を<1>{effectiveMonthlyPrice}/月</1>でご利用いただけます。"
 
-#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:546
+#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:562
 msgid "All <0/> for <1>{effectiveYearlyPrice}/year</1>."
 msgstr "すべての<0/>を<1>{effectiveYearlyPrice}/年</1>でご利用いただけます。"
 
-#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:567
+#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:583
 msgid "All <0/> included with your subscription."
 msgstr "すべての<0/>はサブスクリプションに含まれています。"
 
-#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:514
+#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:530
 msgid "All <0/>, forever. No billing, no renewals."
 msgstr "すべての<0/>を永久にご利用いただけます。請求も更新もありません。"
 
@@ -4706,7 +4706,7 @@ msgstr "添付ファイル"
 #. Generic tab / section / category label for audio content or settings.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:255
-#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:171
+#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:179
 msgid "Audio"
 msgstr "オーディオ"
 
@@ -6210,7 +6210,7 @@ msgid "California"
 msgstr "カリフォルニア州"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:151
+#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:159
 msgid "Call"
 msgstr "通話"
 
@@ -6469,7 +6469,7 @@ msgid "Cancel import"
 msgstr "インポートをキャンセル"
 
 #. Billing button that cancels a scheduled move to a lower subscription price.
-#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:821
+#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:837
 msgid "Cancel price change"
 msgstr "価格変更をキャンセル"
 
@@ -6484,14 +6484,14 @@ msgid "Cancel request"
 msgstr "リクエストをキャンセル"
 
 #. Billing button that cancels a scheduled billing-cycle change.
-#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:829
+#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:845
 msgid "Cancel scheduled switch"
 msgstr "予約済みの切り替えをキャンセル"
 
 #. Billing button that starts subscription cancellation.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:844
-#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:142
+#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:860
+#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:141
 #: src/features/user/components/settings_utils/search_index/PlutoniumIndex.ts:31
 msgid "Cancel subscription"
 msgstr "サブスクリプションをキャンセル"
@@ -6501,7 +6501,7 @@ msgid "Cancel subscription?"
 msgstr "サブスクリプションをキャンセルしますか？"
 
 #. Plutonium subscription card hint shown to a subscriber who could move to a lower price but has another billing change already scheduled.
-#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:647
+#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:663
 msgid "Cancel the scheduled change to move to the current price instead."
 msgstr "現在の価格に変更するには、予定されている変更をキャンセルしてください。"
 
@@ -6511,7 +6511,7 @@ msgid "Cancel upload"
 msgstr "アップロードをキャンセル"
 
 #. Billing button that cancels a scheduled yearly upgrade.
-#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:825
+#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:841
 msgid "Cancel yearly upgrade"
 msgstr "年額プランのアップグレードをキャンセル"
 
@@ -6530,7 +6530,7 @@ msgstr "キャンセル中"
 msgid "Cancellation"
 msgstr "エコーキャンセレーション"
 
-#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:501
+#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:517
 msgid "Cancels on <0>{cancelDate}</0>. <1/> remain active until then."
 msgstr "<0>{cancelDate}</0>にキャンセルされます。<1/>それまでは引き続きご利用いただけます。"
 
@@ -7088,7 +7088,7 @@ msgid "Channel"
 msgstr "チャンネル"
 
 #. Fallback name for an unnamed channel in the forward modal destination list. Preserve {id}; it is inserted by code.
-#: src/features/app/components/dialogs/shared/UseForwardDestinations.ts:78
+#: src/features/app/components/dialogs/shared/UseForwardDestinations.ts:79
 msgid "Channel {id}"
 msgstr "チャンネル {id}"
 
@@ -7317,7 +7317,7 @@ msgid "Chat font size"
 msgstr "チャットのフォントサイズ"
 
 #. Settings search synonym. Refers to the message composer area.
-#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:66
+#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:74
 msgid "chat input"
 msgstr "チャット入力"
 
@@ -8726,7 +8726,7 @@ msgid "Community updated"
 msgstr "コミュニティを更新しました"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:35
+#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:38
 msgid "Community voice"
 msgstr "コミュニティボイス"
 
@@ -8789,12 +8789,13 @@ msgstr "{productName}を継続して利用するには、必要な認証を完�
 msgid "Completely hide your {premiumProductName} badge from other users"
 msgstr "{premiumProductName}バッジを他のユーザーから完全に非表示にする"
 
-#: src/features/auth/components/pages/SsoCallbackPage.tsx:134
+#: src/features/auth/components/pages/SsoCallbackPage.tsx:118
+#: src/features/auth/components/pages/SsoCallbackPage.tsx:168
 #: src/features/auth/flow/HandoffApprovalFlow.tsx:218
 msgid "Completing sign-in…"
 msgstr "サインインを完了しています…"
 
-#: src/features/auth/components/pages/SsoCallbackPage.tsx:138
+#: src/features/auth/components/pages/SsoCallbackPage.tsx:172
 msgid "Completing your sign-in…"
 msgstr "サインインを完了しています…"
 
@@ -8912,8 +8913,8 @@ msgstr "確認"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #. Short label for an advanced voice-channel safety preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedAppearanceControls.tsx:21
-#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:15
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedAppearanceControls.tsx:24
+#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:18
 msgid "Confirm before joining voice channels"
 msgstr "ボイスチャンネル参加時に確認する"
 
@@ -8952,7 +8953,7 @@ msgstr "パスワード（確認）"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:27
+#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:30
 #: src/features/user/components/settings_utils/section_registry/AppearanceSections.ts:398
 msgid "Confirm voice join"
 msgstr "ボイス参加の確認"
@@ -8963,7 +8964,7 @@ msgid "Confirmation"
 msgstr "確認"
 
 #. Settings search entry description. One-line summary of what the settings search entry controls.
-#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:43
+#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:46
 msgid "Confirmation or double-click for community voice joins"
 msgstr "コミュニティボイスへの参加時の確認またはダブルクリック"
 
@@ -9200,7 +9201,7 @@ msgstr "コンテンツ安全ゲート"
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/ui/action_menu/ContextMenu.tsx:23
 #: src/features/user/components/settings_utils/search_index/AccessibilityIndex.ts:225
-#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:155
+#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:163
 msgid "Context menu"
 msgstr "コンテキストメニュー"
 
@@ -10871,7 +10872,7 @@ msgstr "カスタム…"
 
 #. Billing button that opens the external customer portal.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:750
+#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:766
 #: src/features/user/components/settings_utils/search_index/PlutoniumIndex.ts:39
 msgid "Customer portal"
 msgstr "カスタマーポータル"
@@ -11341,7 +11342,7 @@ msgstr "デラウェア州"
 #: src/features/user/components/modals/tabs/component_gallery_tab/ComponentGalleryTabButtonsTab.tsx:290
 #: src/features/user/components/modals/tabs/component_gallery_tab/index.tsx:238
 #: src/features/user/components/settings_utils/search_index/AccountSecurityIndex.ts:174
-#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:188
+#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:196
 msgid "Delete"
 msgstr "削除"
 
@@ -11626,7 +11627,7 @@ msgid "Deleted {duration} of the member's recent message history"
 msgstr "メンバーの直近{duration}のメッセージ履歴を削除しました"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:115
+#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:123
 msgid "Deleted text"
 msgstr "打ち消し線"
 
@@ -12028,7 +12029,7 @@ msgid "Different sizes & member counts"
 msgstr "サイズとメンバー数の違い"
 
 #. Toggle label and settings search entry for slightly muting text formatted with Markdown strikethrough.
-#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:98
+#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:106
 msgid "Dim strikethrough text"
 msgstr "取り消し線のテキストを薄く表示する"
 
@@ -12043,7 +12044,7 @@ msgstr "ダイレクト入力"
 #: src/features/channel/components/bottomsheets/channel_details_bottom_sheet/ChannelDetailsBottomSheetShared.ts:14
 #: src/features/channel/components/channel_header_components/developer_tools/MockingMenu.tsx:398
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:567
-#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:86
+#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:94
 msgid "Direct message"
 msgstr "ダイレクトメッセージ"
 
@@ -12480,7 +12481,7 @@ msgid "District of Columbia"
 msgstr "コロンビア特別区"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:180
+#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:188
 msgid "DM"
 msgstr "DM"
 
@@ -12734,6 +12735,16 @@ msgstr "{productName}をダウンロード"
 #: src/features/connection/components/modals/AddConnectionModal.tsx:330
 msgid "Download <0>fluxer-verification</0> and place it in your <1>.well-known</1> folder so we can validate the domain."
 msgstr "<0>fluxer-verification</0> をダウンロードして <1>.well-known</1> フォルダーに配置してください。ドメインの検証に使用します。"
+
+#. Settings search synonym. Used to match this term when the user types it in the settings search bar.
+#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:98
+msgid "Download app"
+msgstr "アプリをダウンロード"
+
+#. Settings search entry description. One-line summary of what the setting controls.
+#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:106
+msgid "Download app button in the sidebar"
+msgstr "アプリをダウンロード"
 
 #. Media context menu action that downloads an audio attachment.
 #: src/features/ui/action_menu/items/MediaMenuData.tsx:122
@@ -13433,7 +13444,7 @@ msgstr "埋め込みを再表示しました"
 #: src/features/app/config/AuditLogConstants.ts:167
 #: src/features/emoji/components/emojis/EmojiListItem.tsx:337
 #: src/features/theme_studio/sections/TokenGroups.ts:114
-#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:163
+#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:171
 msgid "Emoji"
 msgstr "絵文字"
 
@@ -13866,15 +13877,15 @@ msgid "End date"
 msgstr "終了日"
 
 #. Billing button that ends premium grace period immediately.
-#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:856
+#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:872
 msgid "End grace now"
 msgstr "猶予期間を終了"
 
-#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:164
+#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:163
 msgid "End grace period"
 msgstr "猶予期間を終了"
 
-#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:157
+#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:156
 msgid "End grace period now?"
 msgstr "猶予期間を今すぐ終了しますか？"
 
@@ -14681,7 +14692,7 @@ msgid "Failed to clear trusted domains."
 msgstr "信頼済みドメインのクリアに失敗しました。"
 
 #. Short label in the authentication SSO callback page. Keep the tone plain and specific.
-#: src/features/auth/components/pages/SsoCallbackPage.tsx:28
+#: src/features/auth/components/pages/SsoCallbackPage.tsx:30
 msgid "Failed to complete SSO sign-in"
 msgstr "SSOサインインを完了できませんでした"
 
@@ -15027,7 +15038,7 @@ msgid "Favorite channel"
 msgstr "チャンネルをお気に入りに追加"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:79
+#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:82
 msgid "Favorite channels"
 msgstr "お気に入りチャンネル"
 
@@ -15800,7 +15811,7 @@ msgstr "友達になれるボット"
 #: src/features/connection/components/modals/EditConnectionModal.tsx:86
 #: src/features/search/utils/QuickSwitcherModalUtils.tsx:50
 #: src/features/user/components/modals/tabs/my_profile_tab/TimezoneProfileSettings.tsx:63
-#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:90
+#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:98
 msgid "Friends"
 msgstr "友達"
 
@@ -16145,7 +16156,7 @@ msgstr "新しい{productName}アプリを入手する"
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Type label for GIF media.
 #: src/features/expressions/utils/FavoriteMemeUtils.ts:10
-#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:159
+#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:167
 msgid "GIF"
 msgstr "GIF"
 
@@ -16336,7 +16347,7 @@ msgstr "ギフト：もうすぐ期限切れ"
 msgid "Gift: grace period (still have access)"
 msgstr "ギフト：猶予期間（引き続きアクセス可能）"
 
-#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:486
+#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:502
 msgid "Gifted <0/> until <1>{giftEndDate}</1>. Does not renew automatically. Redeem more gift codes to extend."
 msgstr "<0/>をギフトで<1>{giftEndDate}</1>まで利用できます。自動更新はされません。ギフトコードをさらに引き換えると期間を延長できます。"
 
@@ -16549,7 +16560,7 @@ msgid "Graphics"
 msgstr "グラフィック"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:119
+#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:127
 msgid "Gray text"
 msgstr "グレーテキスト"
 
@@ -16815,7 +16826,7 @@ msgid "Hate speech"
 msgstr "ヘイトスピーチ"
 
 #. Premium page text shown on an instance where the premium tier cannot be bought, only redeemed. {PREMIUM_PRODUCT_NAME} is the premium tier name.
-#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:297
+#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:296
 msgid "Have a gift code? Redeem it to unlock {PREMIUM_PRODUCT_NAME}."
 msgstr "ギフトコードをお持ちですか？{PREMIUM_PRODUCT_NAME}をアンロックするためにコードを入力してください。"
 
@@ -16896,10 +16907,20 @@ msgstr "こんにちは、{username}さん！来てくれてうれしいです�
 msgid "Help"
 msgstr "ヘルプ"
 
+#. Settings search synonym. Used to match this term when the user types it in the settings search bar.
+#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:94
+msgid "Help button"
+msgstr "ヘルプボタン"
+
 #. Short label in the sidebar navigation help button.
 #: src/features/app/components/layout/sidebar_nav/HelpButton.tsx:27
 msgid "Help center"
 msgstr "ヘルプセンター"
+
+#. Settings search entry description. One-line summary of what the setting controls.
+#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:102
+msgid "Help center button in the sidebar"
+msgstr "ヘルプセンターボタン"
 
 #: src/features/user/components/modals/tabs/LanguageTab.tsx:348
 msgid "Help translate {PRODUCT_NAME} into your language on <0>{I18N_WEBLATE_DOMAIN}</0>."
@@ -17035,7 +17056,7 @@ msgid "Hide join messages"
 msgstr "参加メッセージを非表示"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:47
+#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:50
 msgid "Hide keyboard hints"
 msgstr "キーボードのヒントを非表示"
 
@@ -18721,7 +18742,7 @@ msgstr "ビデオ通話に参加"
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/profile/VoiceActivityCard.tsx:67
-#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:31
+#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:34
 #: src/features/user/components/settings_utils/section_registry/AppearanceSections.ts:454
 msgid "Join voice"
 msgstr "ボイスに参加"
@@ -18764,6 +18785,7 @@ msgstr "未読チャンネル間を移動"
 msgid "Jump between unread channels with mentions"
 msgstr "メンションがある未読チャンネル間を移動"
 
+#: src/features/auth/components/pages/SsoCallbackPage.tsx:121
 #: src/features/auth/flow/DesktopDeepLinkPrompt.tsx:75
 msgid "Jump straight to the app to continue."
 msgstr "続けるにはアプリに移動してください。"
@@ -18904,7 +18926,7 @@ msgstr "編集をクリアしても添付ファイルを保持する"
 msgid "Keep free and premium tiers. You can customize the tiers, sell premium through Stripe, or hand out gift codes later from the admin panel."
 msgstr "無料版とプレミアム版を残します。ティアをカスタマイズしたり、Stripe で"
 
-#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:166
+#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:165
 msgid "Keep grace period"
 msgstr "猶予期間を保持"
 
@@ -18918,7 +18940,7 @@ msgstr "ネコを固定する"
 msgid "Keep running"
 msgstr "常駐"
 
-#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:144
+#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:143
 msgid "Keep subscription"
 msgstr "サブスクリプションを継続"
 
@@ -18980,7 +19002,7 @@ msgid "Keyboard mode"
 msgstr "キーボードモード"
 
 #. Settings search entry description. One-line summary of what the setting controls.
-#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:59
+#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:62
 msgid "Keyboard shortcut hints in tooltips"
 msgstr "ツールチップに表示されるキーボードショートカットのヒント"
 
@@ -19275,8 +19297,8 @@ msgstr "マウスの左ボタン"
 msgid "Left tooltip"
 msgstr "左ツールチップ"
 
-#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:539
-#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:561
+#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:555
+#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:577
 msgid "Legacy rate"
 msgstr "旧料金"
 
@@ -20094,7 +20116,7 @@ msgstr "受信箱の一番上のチャンネルを既読にする"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/modals/tabs/component_gallery_tab/index.tsx:364
-#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:123
+#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:131
 msgid "Markdown"
 msgstr "マークダウン"
 
@@ -20644,7 +20666,7 @@ msgstr "このロールにメンションしますか？"
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/guild/components/modals/GuildNotificationSettingsModal.tsx:136
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:648
-#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:167
+#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:175
 msgid "Mentions"
 msgstr "メンション"
 
@@ -21158,7 +21180,7 @@ msgid "Missing client_id"
 msgstr "client_idがありません"
 
 #. SSO callback page error shown when the SSO callback is missing code or state parameters.
-#: src/features/auth/components/pages/SsoCallbackPage.tsx:24
+#: src/features/auth/components/pages/SsoCallbackPage.tsx:26
 msgid "Missing SSO code. Sign in again."
 msgstr "SSOコードがありません。もう一度サインインしてください。"
 
@@ -21317,11 +21339,11 @@ msgstr "月額"
 msgid "Monthly {monthlyPrice}"
 msgstr "月額{monthlyPrice}"
 
-#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:631
+#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:647
 msgid "Monthly billing starts on <0>{pendingChangeDate}</0>."
 msgstr "月額の請求は<0>{pendingChangeDate}</0>に開始されます。"
 
-#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:624
+#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:640
 msgid "Monthly billing starts on <0>{pendingChangeDate}</0>. First monthly charge: {pendingInitialPriceLabel}. Future monthly renewals: {pendingRecurringPriceLabel}/month."
 msgstr "<0>{pendingChangeDate}</0>より月額請求が開始されます。初回月額料金: {pendingInitialPriceLabel}。次月以降の月額更新料金: {pendingRecurringPriceLabel}/月。"
 
@@ -21756,7 +21778,7 @@ msgstr "ミュート中"
 #. Status label indicating the surface is currently muted.
 #: src/features/app/components/layout/sidebar_nav/UseGuildListItemState.ts:23
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:491
-#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:74
+#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:82
 #: src/lib/overlay/OverlayContextMenu.tsx:24
 msgid "Muted"
 msgstr "ミュート中"
@@ -21779,7 +21801,7 @@ msgstr "モデレーターによりミュート中"
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts:495
-#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:70
+#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:78
 msgid "Muted channels"
 msgstr "ミュート中のチャンネル"
 
@@ -21992,7 +22014,7 @@ msgid "Narrates only the channel you're viewing. Narration follows you between c
 msgstr "現在表示しているチャンネルのみを読み上げます。チャンネルを移動しても読み上げは継続されます。"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:147
+#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:155
 msgid "Narration"
 msgstr "ナレーション"
 
@@ -22057,12 +22079,12 @@ msgid "Need an account?"
 msgstr "アカウントが必要ですか？"
 
 #. Settings search synonym. Proper name of the optional cat sprite that chases the cursor.
-#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:62
+#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:70
 msgid "Neko"
 msgstr "ネコ"
 
 #. Settings search entry description. One-line summary of what the setting controls.
-#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:63
+#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:66
 msgid "Neko cat that chases your cursor"
 msgstr "カーソルを追いかける猫"
 
@@ -22247,12 +22269,12 @@ msgid "New password"
 msgstr "新しいパスワード"
 
 #. Plutonium subscription card line shown when a move to a lower price is scheduled but the new amount is unknown. {pendingChangeDate} is a date already formatted and localized by code; never write a date into the translation.
-#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:595
+#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:611
 msgid "New price scheduled for <0>{pendingChangeDate}</0>."
 msgstr "新しい価格は<0>{pendingChangeDate}</0>に予定されています。"
 
 #. Plutonium subscription card line shown when a move to a lower price is scheduled. {pendingChangeDate} is a date and {pendingTargetPriceLabel} is a currency amount, both already formatted and localized by code; never write a date or an amount into the translation.
-#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:589
+#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:605
 msgid "New price scheduled for <0>{pendingChangeDate}</0>. Renewals will be {pendingTargetPriceLabel} from then on."
 msgstr "<0>{pendingChangeDate}</0>に新しい価格が適用されます。それ以降の更新は{pendingTargetPriceLabel}になります。"
 
@@ -23560,6 +23582,8 @@ msgid "Open {macosSystemSettingsName} → {macosPrivacyAndSecuritySettingsName} 
 msgstr "「{macosSystemSettingsName}」→「{macosPrivacyAndSecuritySettingsName}」→「{macosScreenRecordingPermissionName}」を開き、{productName}にアクセスを許可してください。すでに{productName2}が有効になっている場合は、{productName3}を完全に終了して再起動し、macOSに権限を適用してください。"
 
 #. Button label that opens the desktop app. productName is the app name.
+#. Button that hands SSO sign-in back to the mobile app. productName is the app name.
+#: src/features/auth/components/pages/SsoCallbackPage.tsx:34
 #: src/features/auth/flow/DesktopDeepLinkPrompt.tsx:27
 msgid "Open {productName}"
 msgstr "{productName}を開く"
@@ -24945,7 +24969,7 @@ msgstr "このメッセージをチャンネルにピン留めし、全員に表
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Voice stats field label (mobile lobby). Shows current latency in ms.
 #. Voice stats field label (mobile voice lobby). Shows current latency in ms.
-#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:184
+#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:192
 #: src/features/voice/components/bottomsheets/DirectCallLobbyBottomSheet.tsx:118
 #: src/features/voice/components/bottomsheets/VoiceLobbyBottomSheet.tsx:86
 msgid "Ping"
@@ -25165,7 +25189,7 @@ msgid "Popped out"
 msgstr "ポップアウト中"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:196
+#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:204
 msgid "Popup"
 msgstr "ポップアップ"
 
@@ -26128,7 +26152,7 @@ msgstr "リアクション"
 
 #. Billing button that cancels a scheduled subscription cancellation.
 #. Button label on the premium-expired nagbar. Opens billing so the user can reactivate their subscription.
-#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:746
+#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:762
 #: src/features/app/components/layout/app_layout/nagbars/PremiumExpiredNagbar.tsx:25
 msgid "Reactivate"
 msgstr "再開する"
@@ -26139,7 +26163,7 @@ msgid "Reactivate subscription"
 msgstr "サブスクリプションを再開"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:131
+#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:139
 msgid "Read aloud"
 msgstr "読み上げ"
 
@@ -26156,7 +26180,7 @@ msgstr "メッセージ履歴を読む"
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/search_index/AccessibilityIndex.ts:177
-#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:127
+#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:135
 msgid "Read messages"
 msgstr "メッセージを読む"
 
@@ -26351,8 +26375,8 @@ msgstr "自分で引き換える"
 
 #. Billing button for entering a premium gift code.
 #. Billing button for entering a premium gift code.
-#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:719
-#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:307
+#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:735
+#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:306
 msgid "Redeem gift code"
 msgstr "ギフトコードを引き換える"
 
@@ -26630,7 +26654,7 @@ msgstr "ウィンドウのサイズと位置を記憶する"
 #: src/features/user/components/modals/tabs/chat_settings_tab/SearchEnginesTab.tsx:26
 #: src/features/user/components/modals/tabs/LinkedAccountsTab.tsx:55
 #: src/features/user/components/settings_utils/search_index/AccountSecurityIndex.ts:178
-#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:192
+#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:200
 #: src/features/webhook/components/WebhookListItem.tsx:277
 msgid "Remove"
 msgstr "削除"
@@ -27123,7 +27147,7 @@ msgstr "更新しきい値（日）"
 msgid "Renew window (days)"
 msgstr "更新ウィンドウ（日）"
 
-#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:701
+#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:717
 msgid "Renews on <0>{renewalDate}.</0>"
 msgstr "<0>{renewalDate}</0>に更新されます。"
 
@@ -27321,7 +27345,7 @@ msgid "Require a passkey as your second factor"
 msgstr "2段階認証でパスキーを必須にする"
 
 #. Short label for an advanced voice-channel navigation preference.
-#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedAppearanceControls.tsx:17
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedAppearanceControls.tsx:20
 msgid "Require double-click to join voice channels"
 msgstr "ボイスチャンネルへの参加にダブルクリックを必須にする"
 
@@ -27872,8 +27896,8 @@ msgstr "ウィンドウを元に戻す"
 
 #. Billing button for restarting a subscription during the grace period.
 #. Billing button for starting a new subscription after premium expired.
-#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:738
-#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:742
+#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:754
+#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:758
 msgid "Resubscribe"
 msgstr "再登録"
 
@@ -29578,7 +29602,7 @@ msgid "Sending malware or dangerous links"
 msgstr "マルウェアや危険なリンクの送信"
 
 #. Short label under a destination row in the forward modal, shown when the community has messaging disabled.
-#: src/features/app/components/dialogs/shared/UseForwardDestinations.ts:54
+#: src/features/app/components/dialogs/shared/UseForwardDestinations.ts:55
 msgid "Sending messages is disabled in this community"
 msgstr "このコミュニティではメッセージを送信できません"
 
@@ -30120,7 +30144,7 @@ msgstr "ショートカット"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:55
+#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:58
 #: src/features/user/components/settings_utils/section_registry/AppearanceSections.ts:370
 msgid "Shortcut badges"
 msgstr "ショートカットバッジ"
@@ -30280,7 +30304,9 @@ msgid "Show delete button"
 msgstr "削除ボタンを表示"
 
 #. Short label for an advanced media button preference.
+#. Toggle label and settings search entry for showing the download app button in the sidebar.
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:76
+#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:66
 msgid "Show download button"
 msgstr "ダウンロードボタンを表示"
 
@@ -30322,7 +30348,7 @@ msgid "Show favorite button"
 msgstr "お気に入りボタンを表示"
 
 #. Settings search entry description. One-line summary of what the setting controls.
-#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:87
+#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:90
 msgid "Show favorites throughout the app"
 msgstr "アプリ全体で「お気に入り」を表示する"
 
@@ -30349,6 +30375,11 @@ msgstr "GIFインジケーターを表示"
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx:104
 msgid "Show GIFs button"
 msgstr "GIFボタンを表示"
+
+#. Toggle label and settings search entry for showing the help center button in the sidebar.
+#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:62
+msgid "Show help center button"
+msgstr "ヘルプセンターボタンを表示"
 
 #. Switch label in the community-folder settings modal. When on, the folder icon is shown in the sidebar while the folder is collapsed.
 #: src/features/guild/components/modals/GuildFolderSettingsModal.tsx:77
@@ -30565,7 +30596,7 @@ msgid "Show stickers in expression autocomplete"
 msgstr "エクスプレッションの入力候補にスタンプを表示"
 
 #. Description for a visual accessibility setting that mutes the color of text formatted with Markdown strikethrough.
-#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:102
+#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:110
 msgid "Show strikethrough Markdown text in a slightly muted color."
 msgstr "取り消し線付きのMarkdownテキストを、やや落ち着いた色で表示します。"
 
@@ -31008,7 +31039,7 @@ msgid "Slowmode"
 msgstr "スローモード"
 
 #. Short label under a destination row in the forward modal while slowmode blocks sending. Preserve {remaining}; it is inserted by code.
-#: src/features/app/components/dialogs/shared/UseForwardDestinations.ts:73
+#: src/features/app/components/dialogs/shared/UseForwardDestinations.ts:74
 msgid "Slowmode · wait {remaining}"
 msgstr "スローモード · 残り{remaining}"
 
@@ -31559,7 +31590,7 @@ msgstr "視聴者 - {count}"
 #. Native macOS Edit submenu title for text-to-speech actions.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/platform/utils/DesktopLocaleBridge.ts:85
-#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:143
+#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:151
 msgid "Speech"
 msgstr "スピーチ"
 
@@ -31670,12 +31701,12 @@ msgstr "四角いアイコンボタン"
 msgid "SSO is required to access this workspace."
 msgstr "このワークスペースへのアクセスにはSSOが必要です。"
 
-#: src/features/auth/components/pages/SsoCallbackPage.tsx:105
+#: src/features/auth/components/pages/SsoCallbackPage.tsx:139
 msgid "SSO sign-in failed"
 msgstr "SSOサインインに失敗しました"
 
 #. SSO callback page error shown when the SSO sign-in timed out before the callback arrived.
-#: src/features/auth/components/pages/SsoCallbackPage.tsx:20
+#: src/features/auth/components/pages/SsoCallbackPage.tsx:22
 msgid "SSO sign-in timed out. Try again."
 msgstr "SSOサインインがタイムアウトしました。もう一度お試しください。"
 
@@ -31714,7 +31745,7 @@ msgid "Star animation"
 msgstr "スターアニメーション"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:83
+#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:86
 msgid "Starred channels"
 msgstr "スター付きチャンネル"
 
@@ -31791,7 +31822,7 @@ msgstr "最初からやり直す"
 msgid "Start recording"
 msgstr "録音を開始"
 
-#: src/features/search/components/quick_switcher/QuickSwitcherModal.tsx:592
+#: src/features/search/components/quick_switcher/QuickSwitcherModal.tsx:582
 msgid "Start searches with <0>{peoplePrefix}</0> <1>{textChannelPrefix}</1> <2>{voiceChannelPrefix}</2> <3>{communityPrefix}</3> to narrow down results."
 msgstr "検索の先頭に <0>{peoplePrefix}</0> <1>{textChannelPrefix}</1> <2>{voiceChannelPrefix}</2> <3>{communityPrefix}</3> を付けると、結果を絞り込めます。"
 
@@ -31831,7 +31862,7 @@ msgid "Startup"
 msgstr "起動"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:75
+#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:78
 msgid "Static Neko"
 msgstr "静止したネコ"
 
@@ -32038,7 +32069,7 @@ msgid "Still indexing — check back in a moment"
 msgstr "まだインデックスを作成中です。しばらくしてからもう一度ご確認ください"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:71
+#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:74
 msgid "Still Neko"
 msgstr "ネコを静止"
 
@@ -32067,7 +32098,7 @@ msgid "Stop mic test"
 msgstr "マイクテストを停止"
 
 #. Settings search entry description. One-line summary of what the setting controls.
-#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:67
+#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:70
 msgid "Stop Neko from chasing your cursor while keeping it draggable and interactive."
 msgstr "ネコをドラッグしたり操作したりできる状態のまま、カーソルを追いかけないようにします。"
 
@@ -32259,14 +32290,14 @@ msgid "Streaming privacy on"
 msgstr "配信プライバシーがオン"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:111
+#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:119
 msgid "Strike through"
 msgstr "取り消し線"
 
 #. Selection formatting toolbar button.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/lexical/composer/SelectionFormattingToolbar.tsx:72
-#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:107
+#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:115
 msgid "Strikethrough"
 msgstr "取り消し線"
 
@@ -32490,7 +32521,7 @@ msgid "Switch price"
 msgstr "価格を変更"
 
 #. Billing button that opens confirmation to move the subscription down to the current price. {listPriceNewLabel} is the localized new price.
-#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:806
+#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:822
 msgid "Switch to {listPriceNewLabel}"
 msgstr "{listPriceNewLabel}に切り替える"
 
@@ -32515,7 +32546,7 @@ msgstr "直接入力に切り替える"
 #. Billing button that opens confirmation to switch to monthly billing.
 #. Button confirming a change to monthly subscription billing.
 #: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:57
-#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:789
+#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:805
 msgid "Switch to monthly"
 msgstr "月額払いに変更"
 
@@ -32584,7 +32615,7 @@ msgstr "2列表示に切り替える"
 #. Billing button that opens confirmation to switch to yearly billing.
 #. Button confirming a change to yearly subscription billing.
 #: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:53
-#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:785
+#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:801
 msgid "Switch to yearly"
 msgstr "年額払いに変更"
 
@@ -33074,7 +33105,7 @@ msgstr "お使いの携帯電話からSMSを送信してください"
 #. Feature label / section heading for the text-to-speech feature.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:419
-#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:139
+#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:147
 msgid "Text-to-speech"
 msgstr "テキスト読み上げ"
 
@@ -34133,7 +34164,7 @@ msgid "This member isn't connected to voice anymore."
 msgstr "このメンバーはすでにボイスチャンネルに接続していません。"
 
 #. Forward dialog error shown when the forwarded message contains age-restricted media and the target channel is not age-restricted.
-#: src/features/app/components/dialogs/shared/UseForwardDestinations.ts:68
+#: src/features/app/components/dialogs/shared/UseForwardDestinations.ts:69
 msgid "This message can only be forwarded to age-restricted channels"
 msgstr "このメッセージは年齢制限のあるチャンネルにのみ転送できます"
 
@@ -34766,7 +34797,7 @@ msgid "Toolbar"
 msgstr "ツールバー"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:51
+#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:54
 msgid "Tooltip shortcuts"
 msgstr "ツールチップのショートカット"
 
@@ -35080,7 +35111,7 @@ msgid "Try sending your message again."
 msgstr "もう一度メッセージを送信してください。"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:135
+#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:143
 msgid "TTS"
 msgstr "TTS"
 
@@ -35277,7 +35308,7 @@ msgstr "24時間"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:39
+#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:42
 #: src/features/user/components/settings_utils/section_registry/AppearanceSections.ts:406
 msgid "Two clicks"
 msgstr "2回クリック"
@@ -35834,7 +35865,7 @@ msgstr "{premiumProductName}でDMのカスタム絵文字をアンロック"
 msgid "Unlock HD screen share with {premiumProductName}"
 msgstr "{premiumProductName}でHD画面共有をアンロック"
 
-#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:217
+#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:216
 msgid "Unlock higher limits and exclusive features while supporting an independent communication platform."
 msgstr "独立したコミュニケーションプラットフォームを支援しながら、上限アップや限定機能をご利用いただけます。"
 
@@ -36044,7 +36075,7 @@ msgstr "未読"
 #. Tab label in the inbox popout filtering to channels with unread messages.
 #: src/features/messaging/components/popouts/InboxPopout.tsx:30
 #: src/features/user/components/settings_utils/search_index/NotificationsIndex.ts:10
-#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:78
+#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:86
 msgid "Unread"
 msgstr "未読"
 
@@ -37866,7 +37897,7 @@ msgstr "ユーザーのステータスを示す視覚的なインジケーター
 #: src/features/app/components/layout/MobileBottomNav.tsx:123
 #: src/features/channel/utils/ChannelUtils.tsx:31
 #: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedSettingsCategories.ts:17
-#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:82
+#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:90
 msgid "Voice"
 msgstr "音声"
 
@@ -37961,7 +37992,7 @@ msgstr "ボイスチャンネル"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
-#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:23
+#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:26
 #: src/features/user/components/settings_utils/section_registry/AppearanceSections.ts:402
 msgid "Voice channel confirmation"
 msgstr "ボイスチャンネルの確認"
@@ -37972,7 +38003,7 @@ msgid "Voice channel full"
 msgstr "ボイスチャンネルの定員がいっぱいです"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
-#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:19
+#: src/features/user/components/settings_utils/search_index/AppearanceIndex.ts:22
 msgid "Voice channel join behavior"
 msgstr "ボイスチャンネル参加時の動作"
 
@@ -38099,7 +38130,7 @@ msgstr "無効"
 #: src/features/i18n/utils/CommonMessageDescriptors.ts:378
 #: src/features/user/components/modals/tabs/UserVoiceTab.tsx:181
 #: src/features/user/components/settings_utils/search_index/NotificationsIndex.ts:86
-#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:175
+#: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts:183
 msgid "Volume"
 msgstr "音量"
 
@@ -38984,15 +39015,15 @@ msgstr "年額{yearlyPrice}"
 msgid "Yearly gift"
 msgstr "年間ギフト"
 
-#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:618
+#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:634
 msgid "Yearly upgrade scheduled for <0>{pendingChangeDate}</0>."
 msgstr "<0>{pendingChangeDate}</0>に年額プランへのアップグレードが予定されています。"
 
-#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:603
+#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:619
 msgid "Yearly upgrade scheduled for <0>{pendingChangeDate}</0>. First yearly charge: {pendingInitialPriceLabel} after a {pendingCreditPriceLabel} credit. Future yearly renewals: {pendingRecurringPriceLabel}/year."
 msgstr "<0>{pendingChangeDate}</0>に年額プランへのアップグレードが予定されています。初回年額料金: {pendingCreditPriceLabel}のクレジット適用後、{pendingInitialPriceLabel}。翌年以降の年額更新料金: {pendingRecurringPriceLabel}/年。"
 
-#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:610
+#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:626
 msgid "Yearly upgrade scheduled for <0>{pendingChangeDate}</0>. First yearly charge: {pendingInitialPriceLabel}. Future yearly renewals: {pendingRecurringPriceLabel}/year."
 msgstr "<0>{pendingChangeDate}</0>に年額プランへのアップグレードが予定されています。初回年額料金: {pendingInitialPriceLabel}。翌年以降の年額更新料金: {pendingRecurringPriceLabel}/年。"
 
@@ -39462,10 +39493,10 @@ msgid "You just pressed Tab. Keyboard mode is now on so you can navigate {produc
 msgstr "Tabキーを押しましたね。キーボードモードがオンになり、マウスなしで{productName}を操作できます。"
 
 #: src/features/app/components/dialogs/components/PlutoniumContent.tsx:137
-msgid "You keep your perks until your next renewal date, then have a 3-day grace period to resubscribe and keep your subscriber history."
-msgstr "特典は次回の更新日まで保持され、その後3日間の猶予期間中に再登録すると、サブスクリプション履歴を引き継ぐことができます。"
+msgid "You keep your perks until your next renewal date. Reactivate before then to keep your subscriber history."
+msgstr "特典は次回の更新日まで保持されます。サブスクリプション履歴を引き継ぐには、それまでに再開してください。"
 
-#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:159
+#: src/features/app/components/dialogs/components/PlutoniumContent.tsx:158
 msgid "You lose all {PREMIUM_PRODUCT_NAME} perks immediately and your subscriber history resets. This cannot be undone."
 msgstr "{PREMIUM_PRODUCT_NAME}のすべての特典が直ちに失われ、サブスクリプション履歴がリセットされます。この操作は元に戻せません。"
 
@@ -39508,12 +39539,12 @@ msgid "You need access to your current email to change it from here. Use phone v
 msgstr "メールアドレスを変更するには、現在のメールアドレスにアクセスできる必要があります。電話番号認証を利用するか、サポートにお問い合わせください。"
 
 #. Forward dialog error shown when the forwarded message has attachments and the user lacks Attach Files in the target channel.
-#: src/features/app/components/dialogs/shared/UseForwardDestinations.ts:63
+#: src/features/app/components/dialogs/shared/UseForwardDestinations.ts:64
 msgid "You need the \"{attachFilesPermissionLabel}\" permission to attach files in this channel"
 msgstr "このチャンネルでファイルを添付するには、「{attachFilesPermissionLabel}」の権限が必要です"
 
 #. Forward dialog error shown when the forwarded message contains embeds and the user lacks Embed Links in the target channel.
-#: src/features/app/components/dialogs/shared/UseForwardDestinations.ts:58
+#: src/features/app/components/dialogs/shared/UseForwardDestinations.ts:59
 msgid "You need the \"{embedLinksPermissionLabel}\" permission to embed links in this channel"
 msgstr "このチャンネルにリンクを埋め込むには、「{embedLinksPermissionLabel}」の権限が必要です"
 
@@ -40200,6 +40231,11 @@ msgstr "お住まいの地域"
 msgid "Your registration needs an extra anti-spam check before you can continue."
 msgstr "引き続きご利用いただくには、追加のスパム対策認証が必要です。"
 
+#. Plutonium subscription card text shown while a failed renewal payment is being retried. {graceDate} is a date already formatted and localized by code; never write a date into the translation.
+#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:470
+msgid "Your renewal payment failed but <0/> stay active until <1>{graceDate}</1>. Update your payment method before then to keep your subscription."
+msgstr "更新の支払いに失敗しましたが、<0/>は<1>{graceDate}</1>まで有効です。それまでに支払い方法を更新して、サブスクリプションを継続してください。"
+
 #. Video settings note shown when the saved screen share quality is above what this account can send. Resolutions are short labels such as 1440p or Source and rates are whole numbers. FPS is a technical token.
 #: src/features/user/components/modals/tabs/UserVideoTab.tsx:92
 msgid "Your saved {savedResolution} at {savedFrameRate} FPS needs {premiumProductName}, so shares use {resolution} at {frameRate} FPS."
@@ -40221,7 +40257,7 @@ msgstr "配信は継続中です"
 msgid "Your subscription can't move to the new price right now."
 msgstr "現在、サブスクリプションを新しい価格に変更することはできません。"
 
-#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:470
+#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:486
 msgid "Your subscription ended but <0/> stay active until <1>{graceDate}</1>. Resubscribe before then to keep your subscriber history."
 msgstr "サブスクリプションは終了しましたが、<0/>は<1>{graceDate}</1>まで有効です。それまでに再登録して、サブスクリプション履歴を保持してください。"
 
@@ -40250,7 +40286,7 @@ msgstr "サブスクリプションが月額請求に切り替わりました。
 msgid "Your subscription has been switched to yearly billing."
 msgstr "サブスクリプションが年額請求に切り替わりました。"
 
-#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:512
+#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:528
 msgid "Your subscription is active but perks are temporarily paused."
 msgstr "サブスクリプションは有効ですが、特典は一時停止されています。"
 
@@ -40270,7 +40306,7 @@ msgid "Your subscription moves to the new price on {effectiveDate}."
 msgstr "サブスクリプションは{effectiveDate}に新しい価格へ移行します。"
 
 #. Plutonium subscription card line shown to a subscriber on a legacy price whose subscription is already set to cancel. {cancelDate} is a date and {listPriceNewLabel} is a currency amount, both already formatted and localized by code; never write a date or an amount into the translation.
-#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:666
+#: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx:682
 msgid "Your subscription still ends on <0>{cancelDate}</0>. The current price is now {listPriceNewLabel}. If you reactivate, you can switch to it from here."
 msgstr "サブスクリプションは<0>{cancelDate}</0>に終了します。現在の料金は{listPriceNewLabel}です。再開すると、ここから切り替えることができます。"
 
