@@ -6,12 +6,13 @@ import bulkBanFileShas from '@app/api/worker/tasks/admin_bulk/BulkBanFileShas';
 import bulkDeleteMessagesForUsers from '@app/api/worker/tasks/admin_bulk/BulkDeleteMessagesForUsers';
 import bulkScheduleUserDeletion from '@app/api/worker/tasks/admin_bulk/BulkScheduleUserDeletion';
 import bulkUpdateGuildFeatures from '@app/api/worker/tasks/admin_bulk/BulkUpdateGuildFeatures';
-import bulkUpdateSuspiciousActivityFlags from '@app/api/worker/tasks/admin_bulk/BulkUpdateSuspiciousActivityFlags';
 import bulkUpdateUserFlags from '@app/api/worker/tasks/admin_bulk/BulkUpdateUserFlags';
 import batchGuildAuditLogMessageDeletes from '@app/api/worker/tasks/BatchGuildAuditLogMessageDeletes';
 import bulkDeleteSelfMessagesImmediate from '@app/api/worker/tasks/BulkDeleteSelfMessagesImmediate';
 import bulkDeleteUserMessages from '@app/api/worker/tasks/BulkDeleteUserMessages';
 import bulkDeleteUserMessagesScoped from '@app/api/worker/tasks/BulkDeleteUserMessagesScoped';
+import crosspostMessage from '@app/api/worker/tasks/CrosspostMessage';
+import crosspostMessageChunk from '@app/api/worker/tasks/CrosspostMessageChunk';
 import deleteUserMessagesInGuildByTime from '@app/api/worker/tasks/DeleteUserMessagesInGuildByTime';
 import drainActivitySpool from '@app/api/worker/tasks/DrainActivitySpool';
 import expireAttachments from '@app/api/worker/tasks/ExpireAttachments';
@@ -42,7 +43,10 @@ import prunePostgresKvTtl from '@app/api/worker/tasks/PrunePostgresKvTtl';
 import reconcileUserPayments from '@app/api/worker/tasks/ReconcileUserPayments';
 import refreshSearchIndex from '@app/api/worker/tasks/RefreshSearchIndex';
 import refreshStorePurchase from '@app/api/worker/tasks/RefreshStorePurchase';
+import removeChannelFollowers from '@app/api/worker/tasks/RemoveChannelFollowers';
 import {sendSystemDm} from '@app/api/worker/tasks/SendSystemDm';
+import syncCrosspostCopies from '@app/api/worker/tasks/SyncCrosspostCopies';
+import syncCrosspostedMessage from '@app/api/worker/tasks/SyncCrosspostedMessage';
 import syncDiscoveryIndex from '@app/api/worker/tasks/SyncDiscoveryIndex';
 import syncFileShaBlocklists from '@app/api/worker/tasks/SyncFileShaBlocklists';
 import syncUrlBlocklists from '@app/api/worker/tasks/SyncUrlBlocklists';
@@ -62,8 +66,9 @@ export const workerTasks: Record<WorkerTaskName, WorkerTaskHandler> = {
 	bulkDeleteUserMessagesScoped,
 	bulkScheduleUserDeletion: bulkScheduleUserDeletion,
 	bulkUpdateGuildFeatures: bulkUpdateGuildFeatures,
-	bulkUpdateSuspiciousActivityFlags: bulkUpdateSuspiciousActivityFlags,
 	bulkUpdateUserFlags: bulkUpdateUserFlags,
+	crosspostMessage,
+	crosspostMessageChunk,
 	deleteUserMessagesInGuildByTime,
 	drainActivitySpool,
 	expireAttachments,
@@ -93,10 +98,13 @@ export const workerTasks: Record<WorkerTaskName, WorkerTaskHandler> = {
 	pollAppStoreNotificationHistory,
 	prunePostgresKvTtl,
 	refreshSearchIndex,
+	removeChannelFollowers,
 	sendSystemDm,
 	syncFileShaBlocklists,
 	syncUrlBlocklists,
 	syncDiscoveryIndex,
+	syncCrosspostCopies,
+	syncCrosspostedMessage,
 	flushUserActivityBuffer,
 	userProcessPendingDeletion,
 	userProcessPendingDeletions,

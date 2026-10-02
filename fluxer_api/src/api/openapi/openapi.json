@@ -2688,6 +2688,134 @@
 				}
 			}
 		},
+		"/channels/{channel_id}/follower-stats": {
+			"get": {
+				"operationId": "get_channel_follower_stats",
+				"summary": "Get announcement channel follower stats",
+				"tags": ["Channels"],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/ChannelFollowerStatsResponse"}}}
+					},
+					"400": {
+						"description": "Bad Request - The request was malformed or contained invalid data",
+						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
+					},
+					"401": {
+						"description": "Unauthorized - Authentication is required or the token is invalid",
+						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
+					},
+					"403": {
+						"description": "Forbidden - You do not have permission to perform this action",
+						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
+					},
+					"429": {
+						"description": "Too Many Requests - You are being rate limited",
+						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/ThrottledError"}}},
+						"headers": {
+							"Retry-After": {
+								"description": "Number of seconds to wait before retrying (only on 429)",
+								"schema": {"type": "integer"}
+							},
+							"X-RateLimit-Limit": {
+								"description": "The number of requests that can be made in the current window",
+								"schema": {"type": "integer"}
+							},
+							"X-RateLimit-Remaining": {
+								"description": "The number of remaining requests that can be made",
+								"schema": {"type": "integer"}
+							},
+							"X-RateLimit-Reset": {
+								"description": "Unix timestamp when the rate limit resets",
+								"schema": {"type": "integer"}
+							}
+						}
+					},
+					"500": {
+						"description": "Internal Server Error - An unexpected error occurred",
+						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
+					}
+				},
+				"description": "Returns how many channels and distinct guilds follow an announcement channel. Requires View Channel on the announcement channel.",
+				"security": [{"botToken": []}, {"sessionToken": []}],
+				"parameters": [
+					{
+						"name": "channel_id",
+						"in": "path",
+						"required": true,
+						"schema": {"description": "The ID of the channel", "$ref": "#/components/schemas/SnowflakeType"},
+						"description": "The ID of the channel"
+					}
+				]
+			}
+		},
+		"/channels/{channel_id}/followers": {
+			"post": {
+				"operationId": "follow_channel",
+				"summary": "Follow an announcement channel",
+				"tags": ["Channels"],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/FollowedChannelResponse"}}}
+					},
+					"400": {
+						"description": "Bad Request - The request was malformed or contained invalid data",
+						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
+					},
+					"401": {
+						"description": "Unauthorized - Authentication is required or the token is invalid",
+						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
+					},
+					"403": {
+						"description": "Forbidden - You do not have permission to perform this action",
+						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
+					},
+					"429": {
+						"description": "Too Many Requests - You are being rate limited",
+						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/ThrottledError"}}},
+						"headers": {
+							"Retry-After": {
+								"description": "Number of seconds to wait before retrying (only on 429)",
+								"schema": {"type": "integer"}
+							},
+							"X-RateLimit-Limit": {
+								"description": "The number of requests that can be made in the current window",
+								"schema": {"type": "integer"}
+							},
+							"X-RateLimit-Remaining": {
+								"description": "The number of remaining requests that can be made",
+								"schema": {"type": "integer"}
+							},
+							"X-RateLimit-Reset": {
+								"description": "Unix timestamp when the rate limit resets",
+								"schema": {"type": "integer"}
+							}
+						}
+					},
+					"500": {
+						"description": "Internal Server Error - An unexpected error occurred",
+						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
+					}
+				},
+				"description": "Follows an announcement channel into a text channel. Creates a channel follower webhook in the target channel that receives every message published in the announcement channel. Requires Manage Webhooks in the target channel and View Channel on the announcement channel.",
+				"security": [{"botToken": []}, {"sessionToken": []}],
+				"parameters": [
+					{
+						"name": "channel_id",
+						"in": "path",
+						"required": true,
+						"schema": {"description": "The ID of the channel", "$ref": "#/components/schemas/SnowflakeType"},
+						"description": "The ID of the channel"
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {"application/json": {"schema": {"$ref": "#/components/schemas/ChannelFollowRequest"}}}
+				}
+			}
+		},
 		"/channels/{channel_id}/invites": {
 			"post": {
 				"operationId": "create_channel_invite",
@@ -3659,6 +3787,144 @@
 						"required": true,
 						"schema": {"description": "The ID of the attachment", "$ref": "#/components/schemas/SnowflakeType"},
 						"description": "The ID of the attachment"
+					}
+				]
+			}
+		},
+		"/channels/{channel_id}/messages/{message_id}/crosspost": {
+			"post": {
+				"operationId": "crosspost_message",
+				"summary": "Publish a message to following channels",
+				"tags": ["Channels", "Messages"],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/MessageResponseSchema"}}}
+					},
+					"400": {
+						"description": "Bad Request - The request was malformed or contained invalid data",
+						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
+					},
+					"401": {
+						"description": "Unauthorized - Authentication is required or the token is invalid",
+						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
+					},
+					"403": {
+						"description": "Forbidden - You do not have permission to perform this action",
+						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
+					},
+					"429": {
+						"description": "Too Many Requests - You are being rate limited",
+						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/ThrottledError"}}},
+						"headers": {
+							"Retry-After": {
+								"description": "Number of seconds to wait before retrying (only on 429)",
+								"schema": {"type": "integer"}
+							},
+							"X-RateLimit-Limit": {
+								"description": "The number of requests that can be made in the current window",
+								"schema": {"type": "integer"}
+							},
+							"X-RateLimit-Remaining": {
+								"description": "The number of remaining requests that can be made",
+								"schema": {"type": "integer"}
+							},
+							"X-RateLimit-Reset": {
+								"description": "Unix timestamp when the rate limit resets",
+								"schema": {"type": "integer"}
+							}
+						}
+					},
+					"500": {
+						"description": "Internal Server Error - An unexpected error occurred",
+						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
+					}
+				},
+				"description": "Publishes a message in an announcement channel to every channel that follows it. The author needs Send Messages. Anyone else needs Send Messages and Manage Messages. Only default messages that are not replies, forwards or copies can be published, and each message can be published once. Copies are delivered asynchronously. Publishing is limited per channel (10 in a row, then one every 6 minutes) and per community (30 in a row, then one every 2 minutes). Returns the updated message with the CROSSPOSTED flag set.",
+				"security": [{"botToken": []}, {"sessionToken": []}],
+				"parameters": [
+					{
+						"name": "channel_id",
+						"in": "path",
+						"required": true,
+						"schema": {"description": "The ID of the channel", "$ref": "#/components/schemas/SnowflakeType"},
+						"description": "The ID of the channel"
+					},
+					{
+						"name": "message_id",
+						"in": "path",
+						"required": true,
+						"schema": {"description": "The ID of the message", "$ref": "#/components/schemas/SnowflakeType"},
+						"description": "The ID of the message"
+					}
+				]
+			}
+		},
+		"/channels/{channel_id}/messages/{message_id}/crosspost-source": {
+			"get": {
+				"operationId": "get_message_crosspost_source",
+				"summary": "Get the source community of a published message copy",
+				"tags": ["Channels", "Messages"],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/CrosspostSourceResponse"}}}
+					},
+					"400": {
+						"description": "Bad Request - The request was malformed or contained invalid data",
+						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
+					},
+					"401": {
+						"description": "Unauthorized - Authentication is required or the token is invalid",
+						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
+					},
+					"403": {
+						"description": "Forbidden - You do not have permission to perform this action",
+						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
+					},
+					"429": {
+						"description": "Too Many Requests - You are being rate limited",
+						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/ThrottledError"}}},
+						"headers": {
+							"Retry-After": {
+								"description": "Number of seconds to wait before retrying (only on 429)",
+								"schema": {"type": "integer"}
+							},
+							"X-RateLimit-Limit": {
+								"description": "The number of requests that can be made in the current window",
+								"schema": {"type": "integer"}
+							},
+							"X-RateLimit-Remaining": {
+								"description": "The number of remaining requests that can be made",
+								"schema": {"type": "integer"}
+							},
+							"X-RateLimit-Reset": {
+								"description": "Unix timestamp when the rate limit resets",
+								"schema": {"type": "integer"}
+							}
+						}
+					},
+					"500": {
+						"description": "Internal Server Error - An unexpected error occurred",
+						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
+					}
+				},
+				"description": "Returns the public profile of the community a message copy was published from. Works on copies delivered to a following channel and on the system message posted when a channel starts following. Needs the same access as fetching the message. The response holds the community name, icon, banner, badge features, approximate counts and whether it can be joined through discovery.",
+				"security": [{"botToken": []}, {"sessionToken": []}],
+				"parameters": [
+					{
+						"name": "channel_id",
+						"in": "path",
+						"required": true,
+						"schema": {"description": "The ID of the channel", "$ref": "#/components/schemas/SnowflakeType"},
+						"description": "The ID of the channel"
+					},
+					{
+						"name": "message_id",
+						"in": "path",
+						"required": true,
+						"schema": {"description": "The ID of the message", "$ref": "#/components/schemas/SnowflakeType"},
+						"description": "The ID of the message"
 					}
 				]
 			}
@@ -5044,7 +5310,7 @@
 				"responses": {
 					"200": {
 						"description": "Success",
-						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/WebhookResponse"}}}
+						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/WebhookCreateResponse"}}}
 					},
 					"400": {
 						"description": "Bad Request - The request was malformed or contained invalid data",
@@ -13636,7 +13902,7 @@
 						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
 					}
 				},
-				"description": "Retrieves the current authenticated user's profile information, including account details and settings. OAuth2 bearer tokens require identify scope, and email is returned only when the email scope is also present. Bearer tokens receive a reduced response: sensitive fields such as phone, MFA status, authenticator types, ACLs, traits, premium billing details, and password metadata are omitted. Session and bot tokens return the full user object with all private fields.",
+				"description": "Retrieves the current authenticated user's profile information, including account details and settings. OAuth2 bearer tokens require identify scope, and email is returned only when the email scope is also present. Bearer tokens receive a reduced response: sensitive fields such as MFA status, authenticator types, ACLs, traits, premium billing details, and password metadata are omitted. Session and bot tokens return the full user object with all private fields.",
 				"security": [{"botToken": []}, {"oauth2Token": ["identify"]}, {"sessionToken": []}]
 			},
 			"patch": {
@@ -14875,7 +15141,7 @@
 						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
 					}
 				},
-				"description": "Completes bounced-email recovery by verifying the replacement email code, updating the account email, and clearing email-related suspicious-activity requirements.",
+				"description": "Completes bounced-email recovery by verifying the replacement email code, and updating the account email.",
 				"security": [{"sessionToken": []}],
 				"requestBody": {
 					"required": true,
@@ -18571,175 +18837,6 @@
 				}
 			}
 		},
-		"/users/@me/phone/inbound-challenge": {
-			"post": {
-				"operationId": "start_inbound_phone_challenge",
-				"summary": "Start an inbound SMS challenge",
-				"tags": ["Users"],
-				"responses": {
-					"200": {
-						"description": "Success",
-						"content": {
-							"application/json": {"schema": {"$ref": "#/components/schemas/InboundSmsChallengeStartResponse"}}
-						}
-					},
-					"400": {
-						"description": "Bad Request - The request was malformed or contained invalid data",
-						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
-					},
-					"401": {
-						"description": "Unauthorized - Authentication is required or the token is invalid",
-						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
-					},
-					"403": {
-						"description": "Forbidden - You do not have permission to perform this action",
-						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
-					},
-					"429": {
-						"description": "Too Many Requests - You are being rate limited",
-						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/ThrottledError"}}},
-						"headers": {
-							"Retry-After": {
-								"description": "Number of seconds to wait before retrying (only on 429)",
-								"schema": {"type": "integer"}
-							},
-							"X-RateLimit-Limit": {
-								"description": "The number of requests that can be made in the current window",
-								"schema": {"type": "integer"}
-							},
-							"X-RateLimit-Remaining": {
-								"description": "The number of remaining requests that can be made",
-								"schema": {"type": "integer"}
-							},
-							"X-RateLimit-Reset": {
-								"description": "Unix timestamp when the rate limit resets",
-								"schema": {"type": "integer"}
-							}
-						}
-					},
-					"500": {
-						"description": "Internal Server Error - An unexpected error occurred",
-						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
-					}
-				},
-				"description": "When an account must verify its phone number inbound, the user texts a one-time code to the platform's number instead of receiving one. This endpoint generates the code and the destination number to display.",
-				"security": [{"sessionToken": []}]
-			}
-		},
-		"/users/@me/phone/send-verification": {
-			"post": {
-				"operationId": "send_phone_verification_code",
-				"summary": "Send phone verification code",
-				"tags": ["Users"],
-				"responses": {
-					"200": {
-						"description": "Success",
-						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/PhoneSendVerificationResponse"}}}
-					},
-					"400": {
-						"description": "Bad Request - The request was malformed or contained invalid data",
-						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
-					},
-					"401": {
-						"description": "Unauthorized - Authentication is required or the token is invalid",
-						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
-					},
-					"403": {
-						"description": "Forbidden - You do not have permission to perform this action",
-						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
-					},
-					"429": {
-						"description": "Too Many Requests - You are being rate limited",
-						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/ThrottledError"}}},
-						"headers": {
-							"Retry-After": {
-								"description": "Number of seconds to wait before retrying (only on 429)",
-								"schema": {"type": "integer"}
-							},
-							"X-RateLimit-Limit": {
-								"description": "The number of requests that can be made in the current window",
-								"schema": {"type": "integer"}
-							},
-							"X-RateLimit-Remaining": {
-								"description": "The number of remaining requests that can be made",
-								"schema": {"type": "integer"}
-							},
-							"X-RateLimit-Reset": {
-								"description": "Unix timestamp when the rate limit resets",
-								"schema": {"type": "integer"}
-							}
-						}
-					},
-					"500": {
-						"description": "Internal Server Error - An unexpected error occurred",
-						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
-					}
-				},
-				"description": "Send a one-time code on the requested channel. Defaults to the first available channel from server policy. Pass channel=\"sms\" to request SMS (only honoured for SMS-allowlisted destinations) or channel=\"inbound_challenge\" to receive challenge details to text in. Expensive outbound destinations always downgrade to an inbound challenge. Requires a solved captcha challenge (X-Captcha-Token) when the phone verification service asks for one.",
-				"security": [{"sessionToken": []}],
-				"requestBody": {
-					"required": true,
-					"content": {"application/json": {"schema": {"$ref": "#/components/schemas/PhoneSendVerificationRequest"}}}
-				}
-			}
-		},
-		"/users/@me/phone/verify": {
-			"post": {
-				"operationId": "verify_phone_code",
-				"summary": "Verify phone code",
-				"tags": ["Users"],
-				"responses": {
-					"200": {
-						"description": "Success",
-						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/PhoneVerifyResponse"}}}
-					},
-					"400": {
-						"description": "Bad Request - The request was malformed or contained invalid data",
-						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
-					},
-					"401": {
-						"description": "Unauthorized - Authentication is required or the token is invalid",
-						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
-					},
-					"403": {
-						"description": "Forbidden - You do not have permission to perform this action",
-						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
-					},
-					"429": {
-						"description": "Too Many Requests - You are being rate limited",
-						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/ThrottledError"}}},
-						"headers": {
-							"Retry-After": {
-								"description": "Number of seconds to wait before retrying (only on 429)",
-								"schema": {"type": "integer"}
-							},
-							"X-RateLimit-Limit": {
-								"description": "The number of requests that can be made in the current window",
-								"schema": {"type": "integer"}
-							},
-							"X-RateLimit-Remaining": {
-								"description": "The number of remaining requests that can be made",
-								"schema": {"type": "integer"}
-							},
-							"X-RateLimit-Reset": {
-								"description": "Unix timestamp when the rate limit resets",
-								"schema": {"type": "integer"}
-							}
-						}
-					},
-					"500": {
-						"description": "Internal Server Error - An unexpected error occurred",
-						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
-					}
-				},
-				"description": "Verify a phone number by confirming the SMS verification code. Returns phone verification status.",
-				"security": [{"sessionToken": []}],
-				"requestBody": {
-					"required": true,
-					"content": {"application/json": {"schema": {"$ref": "#/components/schemas/PhoneVerifyRequest"}}}
-				}
-			}
-		},
 		"/users/@me/preload-messages": {
 			"post": {
 				"operationId": "preload_messages_for_channels",
@@ -19493,114 +19590,6 @@
 					"content": {
 						"application/json": {"schema": {"$ref": "#/components/schemas/RelationshipNicknameUpdateRequest"}}
 					}
-				}
-			}
-		},
-		"/users/@me/required-actions/phone-gate-escape": {
-			"get": {
-				"operationId": "get_phone_gate_escape",
-				"summary": "Preview setting the deferred phone check aside",
-				"tags": ["Users"],
-				"responses": {
-					"200": {
-						"description": "Success",
-						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/PhoneGateEscapePreviewResponse"}}}
-					},
-					"400": {
-						"description": "Bad Request - The request was malformed or contained invalid data",
-						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
-					},
-					"401": {
-						"description": "Unauthorized - Authentication is required or the token is invalid",
-						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
-					},
-					"403": {
-						"description": "Forbidden - You do not have permission to perform this action",
-						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
-					},
-					"429": {
-						"description": "Too Many Requests - You are being rate limited",
-						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/ThrottledError"}}},
-						"headers": {
-							"Retry-After": {
-								"description": "Number of seconds to wait before retrying (only on 429)",
-								"schema": {"type": "integer"}
-							},
-							"X-RateLimit-Limit": {
-								"description": "The number of requests that can be made in the current window",
-								"schema": {"type": "integer"}
-							},
-							"X-RateLimit-Remaining": {
-								"description": "The number of remaining requests that can be made",
-								"schema": {"type": "integer"}
-							},
-							"X-RateLimit-Reset": {
-								"description": "Unix timestamp when the rate limit resets",
-								"schema": {"type": "integer"}
-							}
-						}
-					},
-					"500": {
-						"description": "Internal Server Error - An unexpected error occurred",
-						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
-					}
-				},
-				"description": "Reports whether this account can set a due phone verification requirement aside. The community lists are always empty.",
-				"security": [{"sessionToken": []}]
-			},
-			"post": {
-				"operationId": "execute_phone_gate_escape",
-				"summary": "Set the deferred phone check aside",
-				"tags": ["Users"],
-				"responses": {
-					"200": {
-						"description": "Success",
-						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/UserPrivateResponse"}}}
-					},
-					"400": {
-						"description": "Bad Request - The request was malformed or contained invalid data",
-						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
-					},
-					"401": {
-						"description": "Unauthorized - Authentication is required or the token is invalid",
-						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
-					},
-					"403": {
-						"description": "Forbidden - You do not have permission to perform this action",
-						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
-					},
-					"429": {
-						"description": "Too Many Requests - You are being rate limited",
-						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/ThrottledError"}}},
-						"headers": {
-							"Retry-After": {
-								"description": "Number of seconds to wait before retrying (only on 429)",
-								"schema": {"type": "integer"}
-							},
-							"X-RateLimit-Limit": {
-								"description": "The number of requests that can be made in the current window",
-								"schema": {"type": "integer"}
-							},
-							"X-RateLimit-Remaining": {
-								"description": "The number of remaining requests that can be made",
-								"schema": {"type": "integer"}
-							},
-							"X-RateLimit-Reset": {
-								"description": "Unix timestamp when the rate limit resets",
-								"schema": {"type": "integer"}
-							}
-						}
-					},
-					"500": {
-						"description": "Internal Server Error - An unexpected error occurred",
-						"content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}
-					}
-				},
-				"description": "Defers a due phone verification requirement again, so the account works normally without leaving any community. Returns the updated private user object.",
-				"security": [{"sessionToken": []}],
-				"requestBody": {
-					"required": false,
-					"content": {"application/json": {"schema": {"$ref": "#/components/schemas/EmptyBodyRequest"}}}
 				}
 			}
 		},
@@ -21501,8 +21490,8 @@
 										"$ref": "#/components/schemas/SnowflakeStringType"
 									},
 									"message_id": {
-										"description": "The ID of the referenced message",
-										"$ref": "#/components/schemas/SnowflakeStringType"
+										"description": "The ID of the referenced message, absent on a channel follow system message",
+										"anyOf": [{"$ref": "#/components/schemas/SnowflakeStringType"}, {"type": "null"}]
 									},
 									"guild_id": {
 										"description": "The ID of the guild containing the referenced message",
@@ -21510,7 +21499,7 @@
 									},
 									"type": {"$ref": "#/components/schemas/MessageReferenceType"}
 								},
-								"required": ["channel_id", "message_id", "type"],
+								"required": ["channel_id", "type"],
 								"additionalProperties": false
 							},
 							{"type": "null"}
@@ -21664,8 +21653,8 @@
 														"$ref": "#/components/schemas/SnowflakeStringType"
 													},
 													"message_id": {
-														"description": "The ID of the referenced message",
-														"$ref": "#/components/schemas/SnowflakeStringType"
+														"description": "The ID of the referenced message, absent on a channel follow system message",
+														"anyOf": [{"$ref": "#/components/schemas/SnowflakeStringType"}, {"type": "null"}]
 													},
 													"guild_id": {
 														"description": "The ID of the guild containing the referenced message",
@@ -21673,7 +21662,7 @@
 													},
 													"type": {"$ref": "#/components/schemas/MessageReferenceType"}
 												},
-												"required": ["channel_id", "message_id", "type"],
+												"required": ["channel_id", "type"],
 												"additionalProperties": false
 											},
 											{"type": "null"}
@@ -22442,9 +22431,10 @@
 					},
 					"name": {"type": "string", "description": "The display name of the webhook"},
 					"avatar": {"description": "The hash of the webhook avatar image", "type": ["string", "null"]},
+					"type": {"$ref": "#/components/schemas/WebhookType"},
 					"token": {"type": "string", "description": "The secure token used to execute the webhook"}
 				},
-				"required": ["id", "guild_id", "channel_id", "name", "token"],
+				"required": ["id", "guild_id", "channel_id", "name", "type", "token"],
 				"additionalProperties": false
 			},
 			"WebhookUpdateRequest": {
@@ -22478,13 +22468,50 @@
 					},
 					"name": {"type": "string", "description": "The display name of the webhook"},
 					"avatar": {"description": "The hash of the webhook avatar image", "type": ["string", "null"]},
-					"token": {"type": "string", "description": "The secure token used to execute the webhook"},
+					"type": {"$ref": "#/components/schemas/WebhookType"},
+					"token": {
+						"description": "The secure token used to execute the webhook, omitted for channel follower webhooks",
+						"type": "string"
+					},
 					"user": {
 						"description": "The user who created the webhook",
 						"$ref": "#/components/schemas/UserPartialResponse"
+					},
+					"source_guild": {
+						"description": "The guild of the followed announcement channel, present on channel follower webhooks while the creator can view it",
+						"type": "object",
+						"properties": {
+							"id": {
+								"description": "The ID of the guild that owns the followed announcement channel",
+								"$ref": "#/components/schemas/SnowflakeStringType"
+							},
+							"name": {
+								"type": "string",
+								"description": "The name of the guild that owns the followed announcement channel"
+							},
+							"icon": {
+								"description": "The icon hash of the guild that owns the followed announcement channel",
+								"type": ["string", "null"]
+							}
+						},
+						"required": ["id", "name"],
+						"additionalProperties": false
+					},
+					"source_channel": {
+						"description": "The followed announcement channel, present on channel follower webhooks while the creator can view it",
+						"type": "object",
+						"properties": {
+							"id": {
+								"description": "The ID of the followed announcement channel",
+								"$ref": "#/components/schemas/SnowflakeStringType"
+							},
+							"name": {"type": "string", "description": "The name of the followed announcement channel"}
+						},
+						"required": ["id", "name"],
+						"additionalProperties": false
 					}
 				},
-				"required": ["id", "guild_id", "channel_id", "name", "token", "user"],
+				"required": ["id", "guild_id", "channel_id", "name", "type", "user"],
 				"additionalProperties": false
 			},
 			"EntranceSoundPlayRequest": {
@@ -22674,14 +22701,7 @@
 						"description": "Whether the current email address is marked as bounced by the mail provider",
 						"type": "boolean"
 					},
-					"phone": {
-						"description": "Always null. Retained for old-client backward compatibility — phone numbers are no longer stored on the user record.",
-						"type": ["string", "null"]
-					},
-					"has_verified_phone": {
-						"type": "boolean",
-						"description": "Whether this account has completed phone verification"
-					},
+					"has_verified_phone": {"type": "boolean", "description": "Deprecated. Always false."},
 					"bio": {"description": "The user biography text", "type": ["string", "null"]},
 					"pronouns": {"description": "The preferred pronouns of the user", "type": ["string", "null"]},
 					"accent_color": {
@@ -22702,6 +22722,7 @@
 						"items": {"$ref": "#/components/schemas/UserAuthenticatorTypes"}
 					},
 					"verified": {"type": "boolean", "description": "Whether the email address has been verified"},
+					"account_limited": {"description": "Whether the account is limited", "type": "boolean"},
 					"premium_type": {
 						"anyOf": [
 							{"$ref": "#/components/schemas/UserPremiumTypes", "description": "The type of premium subscription"},
@@ -22764,10 +22785,6 @@
 						"type": "boolean",
 						"description": "Whether premium perks are temporarily disabled for this account"
 					},
-					"force_inbound_phone_verification": {
-						"description": "Whether this account is forced through the inbound phone verification flow, for debugging",
-						"type": "boolean"
-					},
 					"password_last_changed_at": {
 						"description": "ISO8601 timestamp of the last password change",
 						"type": ["string", "null"]
@@ -22779,7 +22796,7 @@
 					"required_actions": {
 						"type": "array",
 						"items": {"type": "string"},
-						"description": "Actions the user must complete before full access"
+						"description": "Deprecated. Always empty."
 					},
 					"nsfw_allowed": {"type": "boolean", "description": "Whether the user is allowed to view NSFW content"},
 					"has_dismissed_premium_onboarding": {
@@ -23279,49 +23296,6 @@
 				"type": "array",
 				"items": {"$ref": "#/components/schemas/SavedMessageEntryResponse"}
 			},
-			"PhoneGateEscapePreviewResponse": {
-				"type": "object",
-				"properties": {
-					"available": {
-						"type": "boolean",
-						"description": "Whether this account can set a due phone verification requirement aside right now"
-					},
-					"guilds": {
-						"type": "array",
-						"items": {
-							"type": "object",
-							"properties": {
-								"id": {
-									"description": "The unique identifier (snowflake) for the community",
-									"$ref": "#/components/schemas/SnowflakeStringType"
-								},
-								"name": {"type": "string", "description": "The community name"}
-							},
-							"required": ["id", "name"],
-							"additionalProperties": false
-						},
-						"description": "Always empty, the escape leaves no community"
-					},
-					"owned_guilds": {
-						"type": "array",
-						"items": {
-							"type": "object",
-							"properties": {
-								"id": {
-									"description": "The unique identifier (snowflake) for the community",
-									"$ref": "#/components/schemas/SnowflakeStringType"
-								},
-								"name": {"type": "string", "description": "The community name"}
-							},
-							"required": ["id", "name"],
-							"additionalProperties": false
-						},
-						"description": "Always empty, the escape leaves no community"
-					}
-				},
-				"required": ["available", "guilds", "owned_guilds"],
-				"additionalProperties": false
-			},
 			"RelationshipNicknameUpdateRequest": {
 				"type": "object",
 				"properties": {
@@ -23503,112 +23477,6 @@
 				"propertyNames": {"$ref": "#/components/schemas/SnowflakeStringType"},
 				"additionalProperties": {"anyOf": [{"$ref": "#/components/schemas/MessageResponseSchema"}, {"type": "null"}]},
 				"description": "A map of channel IDs to the latest message in each channel"
-			},
-			"PhoneVerifyRequest": {
-				"type": "object",
-				"properties": {
-					"phone": {"description": "Phone number being verified", "$ref": "#/components/schemas/PhoneNumberType"},
-					"code": {"description": "The verification code", "type": "string"}
-				},
-				"required": ["phone", "code"]
-			},
-			"PhoneVerifyResponse": {
-				"type": "object",
-				"properties": {
-					"verified": {
-						"type": "boolean",
-						"const": true,
-						"description": "Indicates the phone number was verified successfully"
-					}
-				},
-				"required": ["verified"],
-				"additionalProperties": false
-			},
-			"PhoneSendVerificationRequest": {
-				"type": "object",
-				"properties": {
-					"phone": {
-						"description": "Phone number to send verification code",
-						"$ref": "#/components/schemas/PhoneNumberType"
-					},
-					"channel": {
-						"description": "Channel to deliver the OTP on. Defaults to the first available channel from server policy. Server may override to an available fallback when the requested channel is disabled.",
-						"type": "string",
-						"enum": ["sms", "inbound_challenge"]
-					}
-				},
-				"required": ["phone"]
-			},
-			"PhoneSendVerificationResponse": {
-				"anyOf": [
-					{
-						"type": "object",
-						"properties": {
-							"channel": {
-								"type": "string",
-								"const": "sms",
-								"description": "Channel actually used for delivery (may differ from request when server adjusts)"
-							}
-						},
-						"required": ["channel"],
-						"additionalProperties": false
-					},
-					{
-						"type": "object",
-						"properties": {
-							"channel": {
-								"type": "string",
-								"const": "inbound_challenge",
-								"description": "The user must send Fluxer an SMS instead of receiving one"
-							},
-							"challenge_code": {
-								"description": "The numeric code the user must text to our number",
-								"type": "string",
-								"minLength": 4,
-								"maxLength": 12
-							},
-							"our_number": {
-								"description": "The Twilio number the user must text the code to (E.164)",
-								"type": "string",
-								"minLength": 4,
-								"maxLength": 32
-							},
-							"expires_at": {
-								"type": "string",
-								"format": "date-time",
-								"pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z))$",
-								"description": "ISO 8601 timestamp when this inbound challenge expires"
-							},
-							"reason": {
-								"type": "string",
-								"enum": ["verification_required"],
-								"description": "Always verification_required"
-							}
-						},
-						"required": ["channel", "challenge_code", "our_number", "expires_at", "reason"],
-						"additionalProperties": false
-					}
-				]
-			},
-			"InboundSmsChallengeStartResponse": {
-				"type": "object",
-				"properties": {
-					"challenge_code": {
-						"description": "The numeric code the user must text to our number",
-						"type": "string",
-						"minLength": 4,
-						"maxLength": 12
-					},
-					"our_number": {
-						"description": "The Twilio number the user must text the code to (E.164)",
-						"type": "string",
-						"minLength": 4,
-						"maxLength": 32
-					},
-					"expires_at": {"type": "string", "description": "ISO timestamp at which the challenge becomes invalid"}
-				},
-				"required": ["challenge_code", "our_number", "expires_at"],
-				"additionalProperties": false
 			},
 			"PasswordChangeVerifyRequest": {
 				"type": "object",
@@ -28047,6 +27915,7 @@
 			"ChannelCreateRequest": {
 				"oneOf": [
 					{"$ref": "#/components/schemas/GuildTextChannelCreateRequest"},
+					{"$ref": "#/components/schemas/GuildAnnouncementChannelCreateRequest"},
 					{"$ref": "#/components/schemas/GuildVoiceChannelCreateRequest"},
 					{"$ref": "#/components/schemas/GuildCategoryChannelCreateRequest"},
 					{"$ref": "#/components/schemas/GuildLinkChannelCreateRequest"}
@@ -28214,8 +28083,8 @@
 					},
 					"default_message_notifications": {"$ref": "#/components/schemas/DefaultMessageNotificationsInput"},
 					"verification_level": {
-						"$ref": "#/components/schemas/GuildVerificationLevelInput",
-						"description": "Required verification level for members to participate"
+						"description": "Required verification level for members to participate",
+						"$ref": "#/components/schemas/GuildVerificationLevelInput"
 					},
 					"mfa_level": {"$ref": "#/components/schemas/GuildMFALevelInput"},
 					"nsfw_level": {
@@ -28386,7 +28255,10 @@
 					"poll_jitter_percent": {"type": "integer", "minimum": 0, "maximum": 50},
 					"assignments": {
 						"type": "object",
-						"properties": {"domain_migration": {"$ref": "#/components/schemas/DomainMigrationAssignmentResponse"}},
+						"properties": {
+							"domain_migration": {"$ref": "#/components/schemas/DomainMigrationAssignmentResponse"},
+							"plutonium_page": {"$ref": "#/components/schemas/PlutoniumPageAssignmentResponse"}
+						},
 						"additionalProperties": false
 					}
 				},
@@ -28531,6 +28403,33 @@
 				},
 				"required": ["name"]
 			},
+			"WebhookCreateResponse": {
+				"type": "object",
+				"properties": {
+					"id": {
+						"description": "The unique identifier (snowflake) for the webhook",
+						"$ref": "#/components/schemas/SnowflakeStringType"
+					},
+					"guild_id": {
+						"description": "The ID of the guild this webhook belongs to",
+						"$ref": "#/components/schemas/SnowflakeStringType"
+					},
+					"channel_id": {
+						"description": "The ID of the channel this webhook posts to",
+						"$ref": "#/components/schemas/SnowflakeStringType"
+					},
+					"name": {"type": "string", "description": "The display name of the webhook"},
+					"avatar": {"description": "The hash of the webhook avatar image", "type": ["string", "null"]},
+					"type": {"$ref": "#/components/schemas/WebhookType"},
+					"token": {"type": "string", "description": "The secure token used to execute the webhook"},
+					"user": {
+						"description": "The user who created the webhook",
+						"$ref": "#/components/schemas/UserPartialResponse"
+					}
+				},
+				"required": ["id", "guild_id", "channel_id", "name", "type", "token", "user"],
+				"additionalProperties": false
+			},
 			"ChannelSlowmodeStateResponse": {
 				"type": "object",
 				"properties": {
@@ -28615,6 +28514,47 @@
 					}
 				},
 				"required": ["name"]
+			},
+			"CrosspostSourceResponse": {
+				"type": "object",
+				"properties": {
+					"guild": {
+						"properties": {
+							"id": {
+								"description": "The ID of the source community",
+								"$ref": "#/components/schemas/SnowflakeStringType"
+							},
+							"name": {"type": "string", "description": "The name of the source community"},
+							"icon": {"description": "The hash of the source community icon", "type": ["string", "null"]},
+							"banner": {"description": "The hash of the source community banner", "type": ["string", "null"]},
+							"description": {
+								"description": "The discovery description of the source community, or null when it is not listed in discovery",
+								"type": ["string", "null"]
+							},
+							"features": {
+								"type": "array",
+								"items": {"$ref": "#/components/schemas/GuildFeatureSchema"},
+								"description": "The public badge features of the source community: VERIFIED, PARTNERED and DISCOVERABLE only"
+							},
+							"approximate_member_count": {
+								"anyOf": [{"$ref": "#/components/schemas/Int32Type"}, {"type": "null"}],
+								"description": "Approximate number of members in the source community, or null when unavailable"
+							},
+							"approximate_presence_count": {
+								"anyOf": [{"$ref": "#/components/schemas/Int32Type"}, {"type": "null"}],
+								"description": "Approximate number of online members in the source community, or null when unavailable"
+							},
+							"discoverable": {
+								"type": "boolean",
+								"description": "Whether the source community can be joined through discovery"
+							}
+						},
+						"description": "The community the message was published from",
+						"$ref": "#/components/schemas/CrosspostSourceGuildResponse"
+					}
+				},
+				"required": ["guild"],
+				"additionalProperties": false
 			},
 			"MessageAckRequest": {
 				"type": "object",
@@ -28797,6 +28737,46 @@
 					{"$ref": "#/components/schemas/GroupDmInviteMetadataResponse"}
 				]
 			},
+			"ChannelFollowRequest": {
+				"type": "object",
+				"properties": {
+					"webhook_channel_id": {
+						"description": "The ID of the text channel that receives published messages",
+						"$ref": "#/components/schemas/SnowflakeType"
+					}
+				},
+				"required": ["webhook_channel_id"]
+			},
+			"FollowedChannelResponse": {
+				"type": "object",
+				"properties": {
+					"channel_id": {
+						"description": "The ID of the followed announcement channel",
+						"$ref": "#/components/schemas/SnowflakeStringType"
+					},
+					"webhook_id": {
+						"description": "The ID of the channel follower webhook created in the target channel",
+						"$ref": "#/components/schemas/SnowflakeStringType"
+					}
+				},
+				"required": ["channel_id", "webhook_id"],
+				"additionalProperties": false
+			},
+			"ChannelFollowerStatsResponse": {
+				"type": "object",
+				"properties": {
+					"channel_count": {
+						"description": "The number of channels following this announcement channel",
+						"$ref": "#/components/schemas/Int32Type"
+					},
+					"guild_count": {
+						"description": "The number of distinct guilds following this announcement channel",
+						"$ref": "#/components/schemas/Int32Type"
+					}
+				},
+				"required": ["channel_count", "guild_count"],
+				"additionalProperties": false
+			},
 			"CallRingBodySchema": {
 				"type": "object",
 				"properties": {
@@ -28966,7 +28946,103 @@
 								"description": "Voice region ID for the voice channel (1-64 characters)",
 								"type": ["string", "null"]
 							},
-							"name": {"description": "The name of the channel", "type": ["string", "null"]}
+							"name": {"description": "The name of the channel", "type": ["string", "null"]},
+							"type": {
+								"description": "Convert between text (0) and announcement (5). Other conversions are rejected.",
+								"anyOf": [{"type": "number", "const": 0}, {"type": "number", "const": 5}]
+							}
+						}
+					},
+					{
+						"type": "object",
+						"properties": {
+							"topic": {"description": "The channel topic (1-1024 characters)", "type": ["string", "null"]},
+							"url": {"description": "External URL for link channels", "type": ["string", "null"]},
+							"parent_id": {
+								"description": "ID of the parent category for this channel",
+								"anyOf": [{"$ref": "#/components/schemas/SnowflakeType"}, {"type": "null"}]
+							},
+							"bitrate": {
+								"description": "Voice channel bitrate in bits per second (8000-384000), clamped to 96000 unless the guild holds an AUDIO_BITRATE feature",
+								"anyOf": [{"type": "integer", "minimum": 8000, "maximum": 384000}, {"type": "null"}]
+							},
+							"user_limit": {
+								"description": "Maximum users allowed in voice channel (0-99, 0 means unlimited)",
+								"anyOf": [{"type": "integer", "minimum": 0, "maximum": 99}, {"type": "null"}]
+							},
+							"voice_connection_limit": {
+								"description": "Maximum active voice connections allowed per user in a voice channel (1-100)",
+								"anyOf": [{"type": "integer", "minimum": 1, "maximum": 100}, {"type": "null"}]
+							},
+							"permission_overwrites": {
+								"description": "Permission overwrites for roles and members",
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"id": {
+											"description": "The ID of the role or user to overwrite permissions for",
+											"$ref": "#/components/schemas/SnowflakeType"
+										},
+										"type": {
+											"description": "The type of overwrite (0 = role, 1 = member)",
+											"x-enumNames": ["ROLE", "MEMBER"],
+											"enum": [0, 1],
+											"type": "integer"
+										},
+										"allow": {
+											"description": "Bitwise value of allowed permissions",
+											"$ref": "#/components/schemas/UnsignedInt64Type"
+										},
+										"deny": {
+											"description": "Bitwise value of denied permissions",
+											"$ref": "#/components/schemas/UnsignedInt64Type"
+										}
+									},
+									"required": ["id", "type"]
+								}
+							},
+							"rate_limit_per_user": {
+								"description": "Slowmode delay in seconds (0-21600)",
+								"anyOf": [{"type": "integer", "minimum": 0, "maximum": 21600}, {"type": "null"}]
+							},
+							"nsfw": {
+								"description": "Legacy: setting true maps to nsfw_override=true; setting false maps to nsfw_override=null (inherit). Prefer nsfw_override.",
+								"type": ["boolean", "null"]
+							},
+							"nsfw_override": {
+								"description": "Per-channel adult-content override (true=on, false=off, null=inherit from category then guild). Takes precedence over the legacy `nsfw` field if both are present.",
+								"type": ["boolean", "null"]
+							},
+							"content_warning_level": {
+								"description": "Channel-level content warning override (0=inherit, 1=force-warn)",
+								"$ref": "#/components/schemas/ContentWarningLevelInput"
+							},
+							"content_warning_text": {
+								"description": "Custom channel content warning text (max 200 characters); null inherits from parent or guild",
+								"anyOf": [{"type": "string", "maxLength": 200}, {"type": "null"}]
+							},
+							"icon": {
+								"description": "Base64-encoded icon image for group DM channels",
+								"anyOf": [{"$ref": "#/components/schemas/Base64ImageType"}, {"type": "null"}]
+							},
+							"owner_id": {
+								"description": "ID of the new owner for group DM channels",
+								"anyOf": [{"$ref": "#/components/schemas/SnowflakeType"}, {"type": "null"}]
+							},
+							"nicks": {
+								"description": "Custom nicknames for users in this channel",
+								"$ref": "#/components/schemas/ChannelNicknameOverrides"
+							},
+							"rtc_region": {
+								"description": "Voice region ID for the voice channel (1-64 characters)",
+								"type": ["string", "null"]
+							},
+							"name": {"description": "The name of the channel", "type": ["string", "null"]},
+							"type": {
+								"description": "Convert between text (0) and announcement (5). Other conversions are rejected.",
+								"anyOf": [{"type": "number", "const": 0}, {"type": "number", "const": 5}]
+							}
 						}
 					},
 					{
@@ -30340,7 +30416,8 @@
 					"emails_enabled": {
 						"type": "boolean",
 						"description": "Whether the instance sends emails (verification, password reset, etc.)"
-					}
+					},
+					"phone_verification_enabled": {"type": "boolean", "description": "Deprecated. Always false."}
 				},
 				"required": [
 					"voice_enabled",
@@ -30349,7 +30426,8 @@
 					"stripe_serviceable",
 					"self_hosted",
 					"presigned_attachment_uploads",
-					"emails_enabled"
+					"emails_enabled",
+					"phone_verification_enabled"
 				],
 				"additionalProperties": false,
 				"description": "Feature flags for this instance"
@@ -31044,7 +31122,7 @@
 				"additionalProperties": false
 			},
 			"GuildFeatureSchema": {
-				"description": "A guild feature flag Known values: ANIMATED_ICON, ANIMATED_BANNER, AUDIO_BITRATE_128_KBPS, AUDIO_BITRATE_256_KBPS, AUDIO_BITRATE_384_KBPS, BANNER, CLONE_EMOJI_DISABLED, CLONE_EMOJI_ENABLED, CLONE_STICKER_DISABLED, CLONE_STICKER_ENABLED, DETACHED_BANNER, INVITE_SPLASH, INVITES_DISABLED, RAID_DETECTED, TEXT_CHANNEL_FLEXIBLE_NAMES, HIDE_OWNER_CROWN, MORE_EMOJI, MORE_STICKERS, UNLIMITED_EMOJI, UNLIMITED_STICKERS, EXPRESSION_PURGE_ALLOWED, VANITY_URL, DISCOVERABLE, PARTNERED, VERIFIED, VIP_VOICE, VOICE_E2EE, UNAVAILABLE_FOR_EVERYONE, UNAVAILABLE_FOR_EVERYONE_BUT_STAFF, UNAVAILABLE_HIDDEN, VISIONARY, LARGE_GUILD_OVERRIDE, VERY_LARGE_GUILD (other values allowed)",
+				"description": "A guild feature flag Known values: ANIMATED_ICON, ANIMATED_BANNER, AUDIO_BITRATE_128_KBPS, AUDIO_BITRATE_256_KBPS, AUDIO_BITRATE_384_KBPS, BANNER, CLONE_EMOJI_DISABLED, CLONE_EMOJI_ENABLED, CLONE_STICKER_DISABLED, CLONE_STICKER_ENABLED, DETACHED_BANNER, INVITE_SPLASH, INVITES_DISABLED, RAID_DETECTED, TEXT_CHANNEL_FLEXIBLE_NAMES, HIDE_OWNER_CROWN, MORE_EMOJI, MORE_STICKERS, UNLIMITED_EMOJI, UNLIMITED_STICKERS, EXPRESSION_PURGE_ALLOWED, VANITY_URL, DISCOVERABLE, PARTNERED, VERIFIED, VIP_VOICE, VOICE_E2EE, UNAVAILABLE_FOR_EVERYONE, UNAVAILABLE_FOR_EVERYONE_BUT_STAFF, UNAVAILABLE_HIDDEN, VISIONARY, LARGE_GUILD_OVERRIDE, VERY_LARGE_GUILD, ANNOUNCEMENT_CHANNELS_DISABLED (other values allowed)",
 				"x-enumNames": [
 					"ANIMATED_ICON",
 					"ANIMATED_BANNER",
@@ -31078,7 +31156,8 @@
 					"UNAVAILABLE_HIDDEN",
 					"VISIONARY",
 					"LARGE_GUILD_OVERRIDE",
-					"VERY_LARGE_GUILD"
+					"VERY_LARGE_GUILD",
+					"ANNOUNCEMENT_CHANNELS_DISABLED"
 				],
 				"x-enumDescriptions": [
 					"Guild can have an animated icon",
@@ -31113,14 +31192,15 @@
 					"Guild is hidden when it is force unavailable",
 					"Guild is a visionary guild",
 					"Guild has large guild overrides enabled",
-					"Guild has increased member capacity enabled"
+					"Guild has increased member capacity enabled",
+					"Guild cannot publish announcement messages or gain new followers"
 				],
 				"type": "string"
 			},
 			"ChannelType": {
 				"description": "The type of the channel",
 				"type": "integer",
-				"enum": [0, 1, 2, 3, 4, 998, 999],
+				"enum": [0, 1, 2, 3, 4, 5, 998, 999],
 				"format": "int32",
 				"x-enumNames": [
 					"GUILD_TEXT",
@@ -31128,6 +31208,7 @@
 					"GUILD_VOICE",
 					"GROUP_DM",
 					"GUILD_CATEGORY",
+					"GUILD_ANNOUNCEMENT",
 					"GUILD_LINK",
 					"DM_PERSONAL_NOTES"
 				],
@@ -31137,6 +31218,7 @@
 					"A voice channel within a guild",
 					"A group direct message between users",
 					"A category that contains channels",
+					"A guild channel whose messages can be published to channels that follow it",
 					"A link channel for external resources",
 					"Personal notes DM channel"
 				]
@@ -31153,9 +31235,24 @@
 				"format": "int32",
 				"x-bitflagValues": [
 					{
+						"name": "CROSSPOSTED",
+						"value": "1",
+						"description": "This message has been published to channels that follow this announcement channel"
+					},
+					{
+						"name": "IS_CROSSPOST",
+						"value": "2",
+						"description": "This message was delivered from an announcement channel this channel follows"
+					},
+					{
 						"name": "SUPPRESS_EMBEDS",
 						"value": "4",
 						"description": "Do not include embeds when serialising this message"
+					},
+					{
+						"name": "SOURCE_MESSAGE_DELETED",
+						"value": "8",
+						"description": "The published message this copy came from has been deleted"
 					},
 					{
 						"name": "SUPPRESS_NOTIFICATIONS",
@@ -31537,8 +31634,8 @@
 												"$ref": "#/components/schemas/SnowflakeStringType"
 											},
 											"message_id": {
-												"description": "The ID of the referenced message",
-												"$ref": "#/components/schemas/SnowflakeStringType"
+												"description": "The ID of the referenced message, absent on a channel follow system message",
+												"anyOf": [{"$ref": "#/components/schemas/SnowflakeStringType"}, {"type": "null"}]
 											},
 											"guild_id": {
 												"description": "The ID of the guild containing the referenced message",
@@ -31546,7 +31643,7 @@
 											},
 											"type": {"$ref": "#/components/schemas/MessageReferenceType"}
 										},
-										"required": ["channel_id", "message_id", "type"],
+										"required": ["channel_id", "type"],
 										"additionalProperties": false
 									},
 									{"type": "null"}
@@ -31844,7 +31941,7 @@
 			"MessageType": {
 				"description": "The type of message",
 				"type": "integer",
-				"enum": [0, 1, 2, 3, 4, 5, 6, 7, 19],
+				"enum": [0, 1, 2, 3, 4, 5, 6, 7, 12, 19],
 				"format": "int32",
 				"x-enumNames": [
 					"DEFAULT",
@@ -31855,6 +31952,7 @@
 					"CHANNEL_ICON_CHANGE",
 					"CHANNEL_PINNED_MESSAGE",
 					"USER_JOIN",
+					"CHANNEL_FOLLOW_ADD",
 					"REPLY"
 				],
 				"x-enumDescriptions": [
@@ -31866,6 +31964,7 @@
 					"A system message indicating the channel icon changed",
 					"A system message indicating a message was pinned",
 					"A system message indicating a user joined",
+					"System message posted when a channel starts following an announcement channel",
 					"A reply message"
 				]
 			},
@@ -32061,6 +32160,46 @@
 					}
 				}
 			},
+			"CrosspostSourceGuildResponse": {
+				"type": "object",
+				"properties": {
+					"id": {"description": "The ID of the source community", "$ref": "#/components/schemas/SnowflakeStringType"},
+					"name": {"type": "string", "description": "The name of the source community"},
+					"icon": {"description": "The hash of the source community icon", "type": ["string", "null"]},
+					"banner": {"description": "The hash of the source community banner", "type": ["string", "null"]},
+					"description": {
+						"description": "The discovery description of the source community, or null when it is not listed in discovery",
+						"type": ["string", "null"]
+					},
+					"features": {
+						"type": "array",
+						"items": {"$ref": "#/components/schemas/GuildFeatureSchema"},
+						"description": "The public badge features of the source community: VERIFIED, PARTNERED and DISCOVERABLE only"
+					},
+					"approximate_member_count": {
+						"anyOf": [{"$ref": "#/components/schemas/Int32Type"}, {"type": "null"}],
+						"description": "Approximate number of members in the source community, or null when unavailable"
+					},
+					"approximate_presence_count": {
+						"anyOf": [{"$ref": "#/components/schemas/Int32Type"}, {"type": "null"}],
+						"description": "Approximate number of online members in the source community, or null when unavailable"
+					},
+					"discoverable": {
+						"type": "boolean",
+						"description": "Whether the source community can be joined through discovery"
+					}
+				},
+				"required": [
+					"id",
+					"name",
+					"description",
+					"features",
+					"approximate_member_count",
+					"approximate_presence_count",
+					"discoverable"
+				],
+				"additionalProperties": false
+			},
 			"ChannelOverwriteType": {
 				"description": "The type of entity the overwrite applies to",
 				"x-enumNames": ["ROLE", "MEMBER"],
@@ -32078,6 +32217,14 @@
 				"required": ["id", "name", "emoji"],
 				"additionalProperties": false
 			},
+			"WebhookType": {
+				"description": "The type of webhook",
+				"type": "integer",
+				"enum": [1, 2],
+				"format": "int32",
+				"x-enumNames": ["INCOMING", "CHANNEL_FOLLOWER"],
+				"x-enumDescriptions": ["Incoming webhook", "Channel follower webhook"]
+			},
 			"DiscoveryCategoryResponse": {
 				"type": "object",
 				"properties": {
@@ -32088,6 +32235,12 @@
 				"additionalProperties": false
 			},
 			"DonationCurrency": {"type": "string", "enum": ["usd", "eur", "brl", "inr", "pln", "try", "sek", "dkk", "nok"]},
+			"PlutoniumPageAssignmentResponse": {
+				"type": "object",
+				"properties": {"enabled": {"type": "boolean"}},
+				"required": ["enabled"],
+				"additionalProperties": false
+			},
 			"DomainMigrationAssignmentResponse": {
 				"type": "object",
 				"properties": {"enabled": {"type": "boolean"}},
@@ -32260,15 +32413,14 @@
 				"minimum": 0,
 				"maximum": 2147483647,
 				"format": "int32",
-				"x-enumNames": ["NONE", "LOW", "MEDIUM", "HIGH", "VERY_HIGH"],
+				"x-enumNames": ["NONE", "LOW", "MEDIUM", "HIGH"],
 				"x-enumDescriptions": [
 					"Unrestricted",
 					"Must have verified email",
 					"Registered for more than 5 minutes",
-					"Member of the server for more than 10 minutes",
-					"Must have a verified phone number"
+					"Member of the server for more than 10 minutes"
 				],
-				"enum": [0, 1, 2, 3, 4]
+				"enum": [0, 1, 2, 3]
 			},
 			"DefaultMessageNotificationsInput": {
 				"description": "Default notification level for new members",
@@ -32506,14 +32658,6 @@
 					"Message was pinned",
 					"Message was unpinned"
 				]
-			},
-			"WebhookType": {
-				"description": "The type of webhook",
-				"type": "integer",
-				"enum": [1, 2],
-				"format": "int32",
-				"x-enumNames": ["INCOMING", "CHANNEL_FOLLOWER"],
-				"x-enumDescriptions": ["Incoming webhook", "Channel follower webhook"]
 			},
 			"GuildBanResponse": {
 				"type": "object",
@@ -32768,6 +32912,82 @@
 						"x-enumNames": ["GUILD_VOICE"],
 						"x-enumDescriptions": ["Channel type (voice channel)"],
 						"enum": [2]
+					},
+					"name": {"description": "The name of the channel", "type": "string"}
+				},
+				"required": ["type", "name"]
+			},
+			"GuildAnnouncementChannelCreateRequest": {
+				"type": "object",
+				"properties": {
+					"topic": {"description": "The channel topic (1-1024 characters)", "type": ["string", "null"]},
+					"url": {"description": "External URL for link channels", "type": ["string", "null"]},
+					"parent_id": {
+						"description": "ID of the parent category for this channel",
+						"anyOf": [{"$ref": "#/components/schemas/SnowflakeType"}, {"type": "null"}]
+					},
+					"bitrate": {
+						"description": "Voice channel bitrate in bits per second (8000-384000), clamped to 96000 unless the guild holds an AUDIO_BITRATE feature",
+						"anyOf": [{"type": "integer", "minimum": 8000, "maximum": 384000}, {"type": "null"}]
+					},
+					"user_limit": {
+						"description": "Maximum users allowed in voice channel (0-99, 0 means unlimited)",
+						"anyOf": [{"type": "integer", "minimum": 0, "maximum": 99}, {"type": "null"}]
+					},
+					"voice_connection_limit": {
+						"description": "Maximum active voice connections allowed per user in a voice channel (1-100)",
+						"anyOf": [{"type": "integer", "minimum": 1, "maximum": 100}, {"type": "null"}]
+					},
+					"permission_overwrites": {
+						"description": "Permission overwrites for roles and members",
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"id": {
+									"description": "The ID of the role or user to overwrite permissions for",
+									"$ref": "#/components/schemas/SnowflakeType"
+								},
+								"type": {
+									"description": "The type of overwrite (0 = role, 1 = member)",
+									"x-enumNames": ["ROLE", "MEMBER"],
+									"enum": [0, 1],
+									"type": "integer"
+								},
+								"allow": {
+									"description": "Bitwise value of allowed permissions",
+									"$ref": "#/components/schemas/UnsignedInt64Type"
+								},
+								"deny": {
+									"description": "Bitwise value of denied permissions",
+									"$ref": "#/components/schemas/UnsignedInt64Type"
+								}
+							},
+							"required": ["id", "type"]
+						}
+					},
+					"rate_limit_per_user": {
+						"description": "Slowmode delay in seconds (0-21600)",
+						"anyOf": [{"type": "integer", "minimum": 0, "maximum": 21600}, {"type": "null"}]
+					},
+					"nsfw": {"default": false, "description": "Whether the channel is marked as NSFW", "type": "boolean"},
+					"nsfw_override": {
+						"description": "Per-channel adult-content override (true=on, false=off, null=inherit from category then guild). Takes precedence over the legacy `nsfw` field if both are present.",
+						"type": ["boolean", "null"]
+					},
+					"content_warning_level": {
+						"description": "Channel-level content warning override (0=inherit, 1=force-warn)",
+						"$ref": "#/components/schemas/ContentWarningLevelInput"
+					},
+					"content_warning_text": {
+						"description": "Custom channel content warning text (max 200 characters); null inherits from parent or guild",
+						"anyOf": [{"type": "string", "maxLength": 200}, {"type": "null"}]
+					},
+					"type": {
+						"type": "integer",
+						"x-enumNames": ["GUILD_ANNOUNCEMENT"],
+						"x-enumDescriptions": ["Channel type (announcement channel)"],
+						"enum": [5]
 					},
 					"name": {"description": "The name of the channel", "type": "string"}
 				},
@@ -33133,15 +33353,14 @@
 			"GuildVerificationLevel": {
 				"description": "Required verification level for members",
 				"type": "integer",
-				"enum": [0, 1, 2, 3, 4],
+				"enum": [0, 1, 2, 3],
 				"format": "int32",
-				"x-enumNames": ["NONE", "LOW", "MEDIUM", "HIGH", "VERY_HIGH"],
+				"x-enumNames": ["NONE", "LOW", "MEDIUM", "HIGH"],
 				"x-enumDescriptions": [
 					"Unrestricted",
 					"Must have verified email",
 					"Registered for more than 5 minutes",
-					"Member of the server for more than 10 minutes",
-					"Must have a verified phone number"
+					"Member of the server for more than 10 minutes"
 				]
 			},
 			"GroupDmInviteResponse": {
@@ -34474,8 +34693,8 @@
 													"$ref": "#/components/schemas/SnowflakeStringType"
 												},
 												"message_id": {
-													"description": "The ID of the referenced message",
-													"$ref": "#/components/schemas/SnowflakeStringType"
+													"description": "The ID of the referenced message, absent on a channel follow system message",
+													"anyOf": [{"$ref": "#/components/schemas/SnowflakeStringType"}, {"type": "null"}]
 												},
 												"guild_id": {
 													"description": "The ID of the guild containing the referenced message",
@@ -34483,7 +34702,7 @@
 												},
 												"type": {"$ref": "#/components/schemas/MessageReferenceType"}
 											},
-											"required": ["channel_id", "message_id", "type"],
+											"required": ["channel_id", "type"],
 											"additionalProperties": false
 										},
 										{"type": "null"}
@@ -35088,7 +35307,6 @@
 				"required": ["status"],
 				"additionalProperties": false
 			},
-			"PhoneNumberType": {"type": "string"},
 			"RelationshipTypesInput": {
 				"description": "Relationship type",
 				"type": "integer",

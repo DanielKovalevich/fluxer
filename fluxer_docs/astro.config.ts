@@ -168,6 +168,7 @@ export default defineConfig({
 					items: [
 						'http-api/errors',
 						'topics/rate-limits',
+						'topics/announcement-channels',
 						'http-api/permissions',
 						'topics/captcha',
 						'topics/uploads',
@@ -196,7 +197,6 @@ export default defineConfig({
 						'http-api/users/settings-protobuf',
 						'http-api/users/email-and-password',
 						'http-api/users/mfa',
-						'http-api/users/phone-verification',
 						'http-api/users/relationships',
 						'http-api/users/notes',
 						'http-api/users/private-channels',

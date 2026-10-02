@@ -24,6 +24,10 @@ import {
 	InstanceBillingResponse,
 	InstanceBillingUpdateRequest,
 } from '@fluxer/schema/src/domains/admin/InstanceBillingSchemas';
+import {
+	PlutoniumPageConfigResponse,
+	PlutoniumPageConfigUpdateRequest,
+} from '@fluxer/schema/src/domains/admin/PlutoniumPageSchemas';
 import {PushRelayConfigResponse, PushRelayConfigUpdateRequest} from '@fluxer/schema/src/domains/admin/PushRelaySchemas';
 import {
 	ExperimentDeliveryConfigResponse,
@@ -56,7 +60,7 @@ import {
 	SnowflakeType,
 	withOpenApiType,
 } from '@fluxer/schema/src/primitives/SchemaPrimitives';
-import {EmailType} from '@fluxer/schema/src/primitives/UserValidators';
+import {EmailBlocklistEntryType} from '@fluxer/schema/src/primitives/UserValidators';
 import {schemaMetadata} from '@fluxer/schema/src/SchemaMetadata';
 import {z} from 'zod';
 
@@ -295,7 +299,9 @@ export const BanIpRequest = z.object({
 export type BanIpRequest = z.infer<typeof BanIpRequest>;
 
 export const BanEmailRequest = z.object({
-	email: EmailType.describe('Email address to ban'),
+	email: EmailBlocklistEntryType.describe(
+		'Email address to ban, or a domain written as @example.com to ban every address at it and its subdomains',
+	),
 });
 
 export type BanEmailRequest = z.infer<typeof BanEmailRequest>;
@@ -638,6 +644,7 @@ export const InstanceConfigResponse = z.object({
 	gateway_rollout: GatewayRolloutConfigResponse,
 	push_relay: PushRelayConfigResponse,
 	domain_migration: DomainMigrationConfigResponse,
+	plutonium_page: PlutoniumPageConfigResponse,
 	captcha: CaptchaConfigResponse,
 	experiment_delivery: ExperimentDeliveryConfigResponse,
 	registration: InstanceRegistrationResponse,
@@ -671,6 +678,7 @@ export const InstanceConfigUpdateRequest = z.object({
 	gateway_rollout: GatewayRolloutConfigUpdateRequest.nullish(),
 	push_relay: PushRelayConfigUpdateRequest.nullish(),
 	domain_migration: DomainMigrationConfigUpdateRequest.nullish(),
+	plutonium_page: PlutoniumPageConfigUpdateRequest.nullish(),
 	captcha: CaptchaConfigUpdateRequest.nullish(),
 	experiment_delivery: ExperimentDeliveryConfigUpdateRequest.nullish(),
 	registration: z
@@ -1127,6 +1135,9 @@ export type ReloadAllGuildsResponse = z.infer<typeof ReloadAllGuildsResponse>;
 export const NodeStatsResponse = z.object({
 	status: createStringType(1, 256),
 	sessions: Int32Type,
+	session_resumes_total: z.number().int().min(0).max(Number.MAX_SAFE_INTEGER),
+	websocket_dispatches_total: z.number().int().min(0).max(Number.MAX_SAFE_INTEGER),
+	websocket_dispatch_drops_total: z.number().int().min(0).max(Number.MAX_SAFE_INTEGER),
 	guilds: Int32Type,
 	presences: Int32Type,
 	calls: Int32Type,
@@ -1145,6 +1156,9 @@ export const NodeStatsResponse = z.object({
 				node_id: createStringType(1, 256),
 				status: createStringType(1, 256),
 				sessions: Int32Type,
+				session_resumes_total: z.number().int().min(0).max(Number.MAX_SAFE_INTEGER).nullable(),
+				websocket_dispatches_total: z.number().int().min(0).max(Number.MAX_SAFE_INTEGER).nullable(),
+				websocket_dispatch_drops_total: z.number().int().min(0).max(Number.MAX_SAFE_INTEGER).nullable(),
 				guilds: Int32Type,
 				presences: Int32Type,
 				calls: Int32Type,

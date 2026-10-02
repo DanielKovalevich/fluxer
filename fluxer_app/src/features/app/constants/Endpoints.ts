@@ -68,6 +68,10 @@ export const Endpoints = {
 	CHANNEL_MESSAGE_ATTACHMENT: (channelId: string, messageId: string, attachmentId: string) =>
 		`/channels/${channelId}/messages/${messageId}/attachments/${attachmentId}`,
 	CHANNEL_MESSAGE_ACK: (channelId: string, messageId: string) => `/channels/${channelId}/messages/${messageId}/ack`,
+	CHANNEL_MESSAGE_CROSSPOST: (channelId: string, messageId: string) =>
+		`/channels/${channelId}/messages/${messageId}/crosspost`,
+	CHANNEL_MESSAGE_CROSSPOST_SOURCE: (channelId: string, messageId: string) =>
+		`/channels/${channelId}/messages/${messageId}/crosspost-source`,
 	CHANNEL_MESSAGE_REACTION: (channelId: string, messageId: string, emoji: string) =>
 		`/channels/${channelId}/messages/${messageId}/reactions/${emoji}`,
 	CHANNEL_MESSAGE_REACTION_USERS: (channelId: string, messageId: string, emoji: string) =>
@@ -82,6 +86,8 @@ export const Endpoints = {
 	CHANNEL_PINS_ACK: (channelId: string) => `/channels/${channelId}/pins/ack`,
 	CHANNEL_TYPING: (channelId: string) => `/channels/${channelId}/typing`,
 	CHANNEL_WEBHOOKS: (channelId: string) => `/channels/${channelId}/webhooks`,
+	CHANNEL_FOLLOWERS: (channelId: string) => `/channels/${channelId}/followers`,
+	CHANNEL_FOLLOWER_STATS: (channelId: string) => `/channels/${channelId}/follower-stats`,
 	CHANNEL_RTC_REGIONS: (channelId: string) => `/channels/${channelId}/rtc-regions`,
 	CHANNEL_SLOWMODE: (channelId: string) => `/channels/${channelId}/slowmode`,
 	CHANNEL_CALL: (channelId: string) => `/channels/${channelId}/call`,
@@ -182,17 +188,12 @@ export const Endpoints = {
 	USER_MFA_WEBAUTHN_MIGRATION_REGISTRATION_OPTIONS: '/users/@me/mfa/webauthn/migration/registration-options',
 	USER_PASSKEY_BRIDGE: '/users/@me/passkey-bridge',
 	USER_PASSKEY_BRIDGE_REDEEM: (ceremonyId: string) => `/users/@me/passkey-bridge/${ceremonyId}/redeem`,
-	USER_PHONE_SEND_VERIFICATION: '/users/@me/phone/send-verification',
-	USER_PHONE_INBOUND_CHALLENGE: '/users/@me/phone/inbound-challenge',
-	USER_PHONE_VERIFY: '/users/@me/phone/verify',
-	USER_REQUIRED_ACTION_PHONE_GATE_ESCAPE: '/users/@me/required-actions/phone-gate-escape',
 	USER_EMAIL_CHANGE_START: '/users/@me/email-change/start',
 	USER_EMAIL_CHANGE_RESEND_ORIGINAL: '/users/@me/email-change/resend-original',
 	USER_EMAIL_CHANGE_VERIFY_ORIGINAL: '/users/@me/email-change/verify-original',
 	USER_EMAIL_CHANGE_REQUEST_NEW: '/users/@me/email-change/request-new',
 	USER_EMAIL_CHANGE_RESEND_NEW: '/users/@me/email-change/resend-new',
 	USER_EMAIL_CHANGE_VERIFY_NEW: '/users/@me/email-change/verify-new',
-	USER_EMAIL_CHANGE_APPLY: '/users/@me/email-change/apply',
 	USER_EMAIL_CHANGE_BOUNCED_REQUEST_NEW: '/users/@me/email-change/bounced/request-new',
 	USER_EMAIL_CHANGE_BOUNCED_RESEND_NEW: '/users/@me/email-change/bounced/resend-new',
 	USER_EMAIL_CHANGE_BOUNCED_VERIFY_NEW: '/users/@me/email-change/bounced/verify-new',

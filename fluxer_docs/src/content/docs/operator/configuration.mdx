@@ -1242,7 +1242,7 @@ Default `all_lanes`. Which lanes the worker runs. `all_lanes`, `single_lane`, or
 
 #### `FLUXER_API_WORKER_LANE`
 
-No default. Which lane, under `single_lane`. `realtime`, `unfurl`, `lifecycle`, or `batch`. Compose does not forward it.
+No default. Which lane, under `single_lane`. `realtime`, `unfurl`, `lifecycle`, `batch`, or `crosspost`. Compose does not forward it. A deployment that splits the worker by lane needs a `crosspost` worker, or published announcements are never delivered.
 
 #### `FLUXER_API_WORKER_TASK`
 
@@ -1254,7 +1254,7 @@ No default. Whether the cron scheduler runs. Compose sets `true`. Without it no 
 
 #### `FLUXER_API_WORKER_LANE_CONCURRENCY_OVERRIDES`
 
-No default. Per-lane concurrency. JSON object keyed by lane. Each value must be an integer of at least 1 or startup fails. Built-in concurrency is realtime 10, unfurl 20, lifecycle 8, batch 12. Compose forwards it from `.env`.
+No default. Per-lane concurrency. JSON object keyed by lane, `realtime`, `unfurl`, `lifecycle`, `batch`, or `crosspost`. Each value must be an integer of at least 1 or startup fails. Built-in concurrency is realtime 10, unfurl 20, lifecycle 8, batch 12, crosspost 8. Compose forwards it from `.env`.
 
 #### `FLUXER_NODE_EXTRA_CA_CERTS`
 
@@ -1566,7 +1566,7 @@ Defaults to the crate version. The reported build of `admin` and `app-proxy`. `B
 
 ## Content Security Policy
 
-`app-proxy` builds a per-request nonce-based policy for the client HTML and the assets it serves. Each variable appends sources to one directive on top of the built-in ones. All are empty by default, and Compose forwards every one.
+`app-proxy` builds the policy for the client HTML and the assets it serves. The client HTML policy allows each inline script by its SHA-256 hash, so every visitor to a host gets the same document and header. Each variable appends sources to one directive on top of the built-in ones. All are empty by default, and Compose forwards every one.
 
 Every name below goes in `.env`. `app-proxy` reads its environment at container start, so a change takes effect on `docker compose up -d app-proxy`. A `docker compose restart app-proxy` does not apply it.
 

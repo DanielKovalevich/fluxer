@@ -132,6 +132,10 @@ Several source messages append a further recovery sentence with a template value
 
 You don't have access to this resource or feature
 
+### `ACCOUNT_LIMITED`
+
+Your account is limited
+
 ### `ACCOUNT_SUSPENDED_PERMANENTLY`
 
 This account has been permanently suspended
@@ -139,10 +143,6 @@ This account has been permanently suspended
 ### `ACCOUNT_SUSPENDED_TEMPORARILY`
 
 This account has been temporarily suspended
-
-### `ACCOUNT_SUSPICIOUS_ACTIVITY`
-
-Your account is locked due to suspicious activity
 
 ### `ACCOUNT_TOO_NEW_FOR_GUILD`
 
@@ -163,6 +163,10 @@ You've already completed age verification
 ### `ALREADY_FRIENDS`
 
 You're already friends with this user
+
+### `ANNOUNCEMENT_CHANNEL_REQUIRED`
+
+This action is only available in announcement channels
 
 ### `APPLICATION_NOT_OWNED`
 
@@ -288,6 +292,22 @@ Community ownership can't be transferred to a bot
 
 Verification required. Try again
 
+### `CHANNEL_ALREADY_FOLLOWED`
+
+This channel already receives updates from that announcement channel
+
+### `CHANNEL_HAS_FOLLOWED_CHANNELS`
+
+Remove the followed channels posting here before converting it to an announcement channel
+
+### `CHANNEL_TYPE_CONVERSION_NOT_SUPPORTED`
+
+Only text and announcement channels can be converted into each other
+
+### `NEW_CONVERSATIONS_LIMITED`
+
+You can't start new conversations right now. Please try again later
+
 ### `COMMUNICATION_DISABLED`
 
 Communication is disabled
@@ -404,6 +424,14 @@ This feature is temporarily disabled
 
 File size is too large
 
+### `FOLLOW_TARGET_CONTENT_WARNING_REQUIRED`
+
+Updates from a channel with a content warning can only go to a channel with a content warning or an age restriction
+
+### `FOLLOW_TARGET_NOT_AGE_RESTRICTED`
+
+Updates from an age-restricted channel can only go to an age-restricted channel
+
 ### `FORBIDDEN`
 
 Forbidden
@@ -455,10 +483,6 @@ You don't have permission to create communities on this instance
 ### `GUILD_EMAIL_VERIFICATION_REQUIRED`
 
 Email verification is required for this action
-
-### `GUILD_PHONE_VERIFICATION_REQUIRED`
-
-You need to add a phone number to send messages in this community
 
 ### `GUILD_TEMPLATE_INVALID`
 
@@ -536,6 +560,10 @@ Invalid DSA verification code
 
 Invalid flags format
 
+### `INVALID_FOLLOW_TARGET_CHANNEL`
+
+Followed channels can only post into text channels
+
 ### `INVALID_FORM_BODY`
 
 Invalid form body
@@ -560,14 +588,6 @@ Permissions must be a valid integer
 
 Permissions must be non-negative
 
-### `INVALID_PHONE_NUMBER`
-
-Invalid phone number
-
-### `INVALID_PHONE_VERIFICATION_CODE`
-
-Invalid phone verification code
-
 ### `INVALID_REQUEST`
 
 Invalid request
@@ -579,10 +599,6 @@ Invalid stream key format
 ### `INVALID_STREAM_THUMBNAIL_PAYLOAD`
 
 Invalid stream thumbnail payload
-
-### `INVALID_SUSPICIOUS_FLAGS_FORMAT`
-
-Invalid suspicious flags format
 
 ### `INVALID_SYSTEM_FLAG`
 
@@ -704,6 +720,18 @@ You've reached the maximum of {count, plural, one {# webhook} other {# webhooks}
 
 Media metadata error
 
+### `MESSAGE_ALREADY_CROSSPOSTED`
+
+This message has already been published
+
+### `MESSAGE_CROSSPOST_RATE_LIMITED`
+
+This channel has reached its publishing limit
+
+### `MESSAGE_NOT_CROSSPOSTABLE`
+
+This message cannot be published
+
 ### `METHOD_NOT_ALLOWED`
 
 Method not allowed
@@ -784,50 +812,6 @@ NSFW content is age restricted
 
 Passkey authentication failed
 
-### `PHONE_ADD_NOT_ELIGIBLE`
-
-You are not eligible to add a phone number to your account
-
-### `PHONE_ALREADY_USED`
-
-Phone number is already in use
-
-### `PHONE_COUNTRY_NOT_SUPPORTED`
-
-We don't send verification texts to this country. Use a mobile number from another country, or email support@fluxer.app and a person will review your account
-
-### `PHONE_GATE_ESCAPE_UNAVAILABLE`
-
-This account cannot postpone the phone verification check
-
-### `PHONE_INBOUND_VERIFICATION_REQUIRED`
-
-This number is verified by texting us instead of us texting you. Start phone verification again to get the code and the number to text
-
-### `PHONE_LOOKUP_UNAVAILABLE`
-
-Our phone number check is down right now, so we stopped before sending your code. This is on us, not your number. Wait a few minutes and try the same number again
-
-### `PHONE_NUMBER_NOT_IN_SERVICE`
-
-Your carrier says this number isn't in service. Check the number and try again, or email support@fluxer.app if it's correct
-
-### `PHONE_NUMBER_NOT_MOBILE`
-
-This isn't a mobile number, so it can't receive our text. Use a mobile number, or email support@fluxer.app if you think that's wrong
-
-### `PHONE_RATE_LIMIT_EXCEEDED`
-
-Phone rate limit exceeded
-
-### `PHONE_VERIFICATION_NEEDS_REVIEW`
-
-We couldn't verify this number automatically. Email support@fluxer.app and a person will review your account
-
-### `PHONE_VERIFICATION_REQUIRED`
-
-Phone verification is required
-
 ### `PREMIUM_PURCHASE_BLOCKED`
 
 No active subscription
@@ -843,6 +827,10 @@ We couldn't process the request
 ### `PROFILE_EMAIL_VERIFICATION_REQUIRED`
 
 Email verification is required for this action
+
+### `PUBLISHED_MESSAGE_EDIT_RATE_LIMITED`
+
+This published message has reached its editing limit
 
 ### `PURCHASE_EMAIL_VERIFICATION_REQUIRED`
 
@@ -915,10 +903,6 @@ You cannot leave the community for this instance
 ### `SLOWMODE_RATE_LIMITED`
 
 Slowmode rate limited
-
-### `SMS_VERIFICATION_UNAVAILABLE`
-
-Service unavailable
 
 ### `SSO_REQUIRED`
 
@@ -1159,10 +1143,6 @@ Unknown sticker
 ### `UNKNOWN_STORE_PURCHASE`
 
 Unknown store purchase
-
-### `UNKNOWN_SUSPICIOUS_FLAG`
-
-Unknown suspicious flag
 
 ### `UNKNOWN_USER`
 
@@ -1896,10 +1876,6 @@ String length must be between {min} and {max} characters
 ### `PASSWORD_NOT_SET`
 
 Password isn't set
-
-### `PHONE_NUMBER_INVALID_FORMAT`
-
-Phone number must be in E.164 format (for example, +1234567890)
 
 ### `PRECEDING_CHANNEL_MUST_SHARE_PARENT`
 

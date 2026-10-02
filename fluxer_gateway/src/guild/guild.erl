@@ -49,18 +49,24 @@ init(GuildState) ->
 
 -spec handle_call(term(), gen_server:from(), guild_state()) -> call_reply().
 handle_call(Msg, From, State) ->
+    ok = guild_mailbox_age:note(),
     Result = handle_call_internal(Msg, From, State),
     ok = publish_read_model(Result, State),
     Result.
 
 -spec handle_cast(term(), guild_state()) -> cast_reply().
 handle_cast(Msg, State) ->
+    ok = guild_mailbox_age:note(),
     Result = handle_cast_internal(Msg, State),
     ok = publish_read_model(Result, State),
     Result.
 
 -spec handle_info(term(), guild_state()) -> info_reply().
+handle_info({guild_mailbox_age, Seq}, State) when is_integer(Seq), Seq >= 0 ->
+    ok = guild_mailbox_age:handle_mark(Seq),
+    {noreply, State};
 handle_info(Msg, State) ->
+    ok = guild_mailbox_age:note(),
     Result = handle_info_internal(Msg, State),
     ok = publish_read_model(Result, State),
     Result.
@@ -188,6 +194,10 @@ handle_cast_internal(
     {session_connect_worker_done, SessionId, Attempt, Result0, Computed}, State
 ) ->
     handle_session_connect_worker_done_cast(SessionId, Attempt, Result0, Computed, State);
+handle_cast_internal({session_connect_worker_batch_done, Results}, State) when
+    is_list(Results)
+->
+    {noreply, guild_connect_async:finalize_session_connect_batch(Results, State)};
 handle_cast_internal({set_session_active, SessionId}, State) ->
     handle_set_session_active_cast(SessionId, State);
 handle_cast_internal({set_session_passive, SessionId}, State) ->
