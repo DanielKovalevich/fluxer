@@ -7,7 +7,7 @@ export const ERROR_I18N_MESSAGES = {
 	'account.email_verification_required': 'Email verification is required for this action.',
 	'account.guild_verification_required': 'Community verification is required.',
 	'account.ip_authorization_required': 'IP authorization is required.',
-	'account.limited': 'Your account is limited. Check your email for how to lift it.',
+	'account.limited': 'Messaging is paused on your account. Check your email for a quick step to continue.',
 	'account.sensitive_content_filter_age_restricted':
 		"This sensitive content filter isn't available for your age group.",
 	'account.session_timeout': 'Session timed out. Refresh the page and log in again.',
@@ -44,7 +44,6 @@ export const ERROR_I18N_MESSAGES = {
 	'admin_and_system.test_harness_disabled': 'Test harness is disabled.',
 	'admin_and_system.test_harness_forbidden': 'Test harness is forbidden.',
 	'admin_and_system.update_failed': "We couldn't update the resource. Please try again.",
-	'admin_and_system.user_must_be_bot_for_system_user': 'User must be a bot to be marked as a system user.',
 	'age_verification.already_verified': "You've already completed age verification.",
 	'attachments_and_uploads.attachment_fields_required':
 		'`attachment_id`, `channel_id`, `message_id`, and `expires_at` are required.',
@@ -447,7 +446,7 @@ export const ERROR_I18N_MESSAGES = {
 	'permissions.global_ip_banned':
 		'Your IP address {ipAddress} has been permanently blocked from the Fluxer API by platform administrators. If you believe this is a mistake, contact support@fluxer.app to appeal. Include this IP address in your appeal.',
 	'permissions.global_ip_temporarily_banned':
-		'Your IP address {ipAddress} has been temporarily blocked from the Fluxer API for 24 hours because of abusive or unusual access patterns. We usually do not provide appeals for temporary API bans. Change IP addresses or wait for the ban to expire, and review the Fluxer API access patterns coming from your client.',
+		'Your IP address {ipAddress} has been temporarily blocked from the Fluxer API. The block lifts on its own when it expires. If you think this is a mistake, contact support@fluxer.com and include this IP address.',
 	'permissions.missing_access': "You don't have access to this resource or feature.",
 	'permissions.missing_permissions': "You don't have the permissions required to perform this action.",
 	'permissions.user_banned_from_guild': 'This user is banned from this community.',

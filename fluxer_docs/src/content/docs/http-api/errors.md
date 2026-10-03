@@ -26,8 +26,8 @@ The error code determines which supplementary members a failure has, and most co
 
 - `ip_address` is the normalised client address.
 - `appeal_email` is the address an appeal is sent to.
-- `appeals_supported` is `true` only for the permanent ban.
-- `ban_kind` is `permanent` or `temporary_24h`.
+- `appeals_supported` is `true` for both kinds of ban.
+- `ban_kind` is `permanent` or `temporary_24h`. `temporary_24h` covers every ban that records an expiry, whatever its length.
 - `expires_at` is an ISO 8601 timestamp when the ban records an expiry, and `null` otherwise, including on every permanent ban.
 
 ## Validation failure codes
@@ -134,7 +134,7 @@ You don't have access to this resource or feature
 
 ### `ACCOUNT_LIMITED`
 
-Your account is limited
+Messaging is paused on your account
 
 ### `ACCOUNT_SUSPENDED_PERMANENTLY`
 
@@ -462,7 +462,7 @@ Your IP address {ipAddress} has been permanently blocked from the Fluxer API by 
 
 ### `GLOBAL_IP_TEMPORARILY_BANNED`
 
-Your IP address {ipAddress} has been temporarily blocked from the Fluxer API for 24 hours because of abusive or unusual access patterns
+Your IP address {ipAddress} has been temporarily blocked from the Fluxer API
 
 ### `GONE`
 
@@ -2044,10 +2044,6 @@ This user doesn't have an email address
 ### `USER_IS_NOT_BANNED`
 
 This user isn't banned
-
-### `USER_MUST_BE_A_BOT_TO_BE_MARKED_AS_A_SYSTEM_USER`
-
-User must be a bot to be marked as a system user
 
 ### `USER_NOT_IN_CHANNEL`
 

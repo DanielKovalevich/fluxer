@@ -255,7 +255,28 @@ pub enum FlashLevel {
 pub struct BanCheckResult {
     pub banned: bool,
     #[serde(default)]
+    pub expires_at: Option<String>,
+    #[serde(default)]
     pub entries: Vec<serde_json::Value>,
+}
+
+#[derive(Clone, Debug, Deserialize, Serialize)]
+pub struct BlocklistEntry {
+    pub value: String,
+    #[serde(default)]
+    pub match_subdomains: Option<bool>,
+    #[serde(default)]
+    pub category: Option<String>,
+    #[serde(default)]
+    pub created_at: Option<String>,
+}
+
+#[derive(Clone, Debug, Deserialize, Serialize)]
+pub struct BlocklistEntryPage {
+    pub items: Vec<BlocklistEntry>,
+    pub has_more: bool,
+    #[serde(default)]
+    pub next_after: Option<String>,
 }
 
 #[derive(Clone, Debug, Deserialize, Serialize)]

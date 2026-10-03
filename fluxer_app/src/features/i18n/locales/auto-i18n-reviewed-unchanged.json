@@ -1414,9 +1414,6 @@
         "msgid": "Accepted"
       },
       {
-        "msgid": "Account limited"
-      },
-      {
         "msgid": "Add a Klipy API key to enable GIF search at runtime."
       },
       {
@@ -1772,6 +1769,9 @@
       },
       {
         "msgid": "Choose the premium model"
+      },
+      {
+        "msgid": "Choose what members must have before they can post or DM community members. Members with roles can bypass these checks. For public spaces, we recommend enabling verification."
       },
       {
         "msgid": "Choose where its published messages should go. You can unfollow any time in Community settings → Webhooks."
@@ -2381,6 +2381,15 @@
       },
       {
         "msgid": "Messages you can bookmark"
+      },
+      {
+        "msgid": "Messaging is paused"
+      },
+      {
+        "msgid": "Messaging is paused on your account. Check your email for a quick step to continue."
+      },
+      {
+        "msgid": "Messaging paused"
       },
       {
         "msgid": "Microphone ({deviceLabel})"
@@ -3704,12 +3713,6 @@
       },
       {
         "msgid": "YouTube enrichment"
-      },
-      {
-        "msgid": "Your account is limited"
-      },
-      {
-        "msgid": "Your account is limited. Check your email for how to lift it."
       },
       {
         "msgid": "Your account will no longer be protected by two-factor authentication when you sign in with your password. You'll also lose elevated permissions in servers that require two-factor authentication."

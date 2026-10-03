@@ -7,7 +7,7 @@ import * as NavigationCommands from '@app/features/navigation/commands/Navigatio
 import {failureCode, failureMessage} from '@app/features/platform/utils/ResponseInspection';
 import * as ModalCommands from '@app/features/ui/commands/ModalCommands';
 import {modal} from '@app/features/ui/commands/ModalCommands';
-import {showAccountLimitedModal} from '@app/features/user/utils/AccountLimitUtils';
+import {blockIfAccountLimited, showAccountLimitedModal} from '@app/features/user/utils/AccountLimitUtils';
 import {APIErrorCodes} from '@fluxer/constants/src/ApiErrorCodes';
 import {msg} from '@lingui/core/macro';
 
@@ -112,10 +112,18 @@ function showJoinGuildErrorModal(error: unknown): void {
 	);
 }
 
-export async function joinDiscoveryGuild(guildId: string): Promise<boolean> {
+export async function joinDiscoveryGuild(
+	guildId: string,
+	target?: {channelId: string; messageId?: string},
+): Promise<boolean> {
+	if (blockIfAccountLimited()) return false;
 	try {
 		await DiscoveryCommands.joinGuild(guildId);
-		NavigationCommands.selectGuild(guildId);
+		if (target) {
+			NavigationCommands.selectChannel(guildId, target.channelId, target.messageId);
+		} else {
+			NavigationCommands.selectGuild(guildId);
+		}
 		return true;
 	} catch (error) {
 		showJoinGuildErrorModal(error);

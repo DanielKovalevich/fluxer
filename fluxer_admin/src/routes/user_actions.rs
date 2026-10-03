@@ -178,22 +178,6 @@ pub async fn dispatch(
                 "Failed to clear user fields",
             )
         }
-        "set_bot_status" => {
-            let val = form.bool_value("bot");
-            DispatchOutcome::from_result(
-                client.set_bot_status(user_id, val).await,
-                "Bot status updated successfully",
-                "Failed to update bot status",
-            )
-        }
-        "set_system_status" => {
-            let val = form.bool_value("system");
-            DispatchOutcome::from_result(
-                client.set_system_status(user_id, val).await,
-                "System status updated successfully",
-                "Failed to update system status",
-            )
-        }
         "change_username" => {
             let Some(username) = get("username") else {
                 return DispatchOutcome::error("Username is required");
@@ -259,8 +243,11 @@ pub async fn dispatch(
             let Some(ip) = get("ip") else {
                 return DispatchOutcome::error("IP address is required");
             };
+            let Ok(duration) = form.parse_value::<u32>("duration_hours") else {
+                return DispatchOutcome::error("Invalid ban duration");
+            };
             DispatchOutcome::from_result(
-                client.ban_ip(&ip, None).await,
+                client.ban_ip(&ip, duration.unwrap_or(0), None).await,
                 "IP banned successfully",
                 "Failed to ban IP",
             )
