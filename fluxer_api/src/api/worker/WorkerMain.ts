@@ -26,6 +26,7 @@ import {
 	shutdownVoiceResources,
 } from '@app/api/middleware/ServiceRegistry';
 import {
+	getAdminArchiveService,
 	getAdminRepository,
 	getCacheService,
 	getInstanceConfigRepository,
@@ -55,6 +56,7 @@ import {BACKGROUND_READ_TIMEOUT_MS, initCassandra, shutdownCassandra} from '@pkg
 import {JetStreamConnectionManager} from '@pkgs/nats/src/JetStreamConnectionManager';
 import {getDefaultPostgresClient, initPostgres, shutdownPostgres} from '@pkgs/postgres/src/Client';
 import type {WorkerTaskHandler} from '@pkgs/worker/src/contracts/WorkerTask';
+import {ms} from 'itty-time';
 
 function registerCronJobs(cron: CronScheduler, jobsStreamMaxAgeMs: number): void {
 	cron.upsert('processAssetDeletionQueue', 'processAssetDeletionQueue', {}, '0 */5 * * * *', {ledger: false});
@@ -282,9 +284,23 @@ export async function startWorkerMain(): Promise<void> {
 		});
 		startSharedListWatch(jsConnectionManager.getJetStreamClient());
 		if (activeWorkerLanes.some((lane) => lane.name === 'lifecycle')) {
+			const apiContext = createApiContext();
 			startAccountActionConsumer({
 				js: jsConnectionManager.getJetStreamClient(),
-				state: accountStateDepsFromContext(createApiContext(), getAdminRepository()),
+				state: accountStateDepsFromContext(
+					apiContext,
+					getAdminRepository(),
+					{
+						userCacheService: dependencies.userCacheService,
+						guildRepository: dependencies.guildRepository,
+					},
+					{
+						archives: getAdminArchiveService(),
+						messageDeletionQueue: dependencies.bulkMessageDeletionQueueService,
+						messageDeletionDelayMs: Config.automatedMessageDeletionDelayDays * ms('1 day'),
+					},
+					dependencies.channelRepository,
+				),
 			});
 			Logger.info('Account action consumer started');
 		}
