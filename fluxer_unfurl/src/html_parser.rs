@@ -26,6 +26,8 @@ pub struct OgMetadata {
     pub image_width: Option<u32>,
     pub image_height: Option<u32>,
     pub video_primary: Option<String>,
+    pub video_width: Option<u32>,
+    pub video_height: Option<u32>,
     pub audio: Option<String>,
     pub site_name: Option<String>,
     pub og_type: Option<String>,
@@ -120,6 +122,8 @@ pub fn parse_opengraph(html: &str) -> OgMetadata {
         image_width: meta.first("og:image:width").and_then(|v| v.parse().ok()),
         image_height: meta.first("og:image:height").and_then(|v| v.parse().ok()),
         video_primary,
+        video_width: meta.first("og:video:width").and_then(|v| v.parse().ok()),
+        video_height: meta.first("og:video:height").and_then(|v| v.parse().ok()),
         audio: meta
             .first("og:audio")
             .or_else(|| meta.first("og:audio:url")),
