@@ -78,6 +78,10 @@ COPY fluxer_app/src/ ./fluxer_app/src/
 ENV BUILD_VERSION=${BUILD_VERSION} \
 	PUBLIC_ASSET_BASE_URL=${PUBLIC_ASSET_BASE_URL}
 
+# The frozen, filtered install above supplies the frontend dependencies.
+# Build scripts must not re-resolve this partial workspace (desktop is absent).
+ENV PNPM_CONFIG_VERIFY_DEPS_BEFORE_RUN=false
+
 RUN --mount=type=cache,target=/usr/local/cargo/registry \
 	--mount=type=cache,target=/usr/local/cargo/git \
 	cd fluxer_app && pnpm build
