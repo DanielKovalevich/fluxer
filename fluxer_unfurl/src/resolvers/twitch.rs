@@ -51,7 +51,7 @@ async fn resolve_twitch(ctx: &ResolveContext<'_>, client_id: &str, max_quality: 
     let mut embed = MessageEmbed::new("rich");
     embed.url = Some(ctx.original_url.to_string());
     embed.color = Some(TWITCH_COLOR);
-    embed.provider = Some(EmbedProvider { name: Some("Twitch".to_owned()), url: Some("https://www.twitch.tv".to_owned()) });
+    embed.provider = Some(EmbedProvider { name: "Twitch".to_owned(), url: Some("https://www.twitch.tv".to_owned()) });
     embed.title = page.as_ref().and_then(|page| page.og.title.as_deref())
         .map(|value| text_limits::truncate(value.trim(), text_limits::TITLE_MAX));
     embed.description = page.as_ref().and_then(|page| page.og.description.as_deref())

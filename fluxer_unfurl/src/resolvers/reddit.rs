@@ -91,7 +91,7 @@ async fn resolve_reddit(
     let mut embed = MessageEmbed::new("rich");
     embed.url = Some(ctx.original_url.to_string());
     embed.color = Some(REDDIT_COLOR);
-    embed.provider = Some(EmbedProvider { name: Some("Reddit".to_owned()), url: Some("https://www.reddit.com".to_owned()) });
+    embed.provider = Some(EmbedProvider { name: "Reddit".to_owned(), url: Some("https://www.reddit.com".to_owned()) });
     embed.title = page.og.title.as_deref().or(page.twitter.title.as_deref())
         .map(|value| text_limits::truncate(value.trim(), text_limits::TITLE_MAX));
     embed.description = page.og.description.as_deref().or(page.twitter.description.as_deref())

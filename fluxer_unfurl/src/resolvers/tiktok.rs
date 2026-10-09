@@ -88,7 +88,7 @@ async fn resolve_tiktok(ctx: &ResolveContext<'_>, direct_base: &Url, gallery_bas
     embed.url = Some(ctx.original_url.to_string());
     embed.title = title;
     embed.author = author;
-    embed.provider = Some(EmbedProvider { name: Some("TikTok".to_owned()), url: Some("https://www.tiktok.com".to_owned()) });
+    embed.provider = Some(EmbedProvider { name: "TikTok".to_owned(), url: Some("https://www.tiktok.com".to_owned()) });
     embed.video = video;
 
     let image_url = metadata.and_then(first_image).or_else(|| gallery.as_ref().and_then(first_image));

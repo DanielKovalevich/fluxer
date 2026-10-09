@@ -34,6 +34,8 @@ pub struct OgMetadata {
 #[derive(Debug, Default, Clone)]
 pub struct TwitterCardMetadata {
     pub classifying_card: Option<String>,
+    pub title: Option<String>,
+    pub description: Option<String>,
     pub player: Option<String>,
 }
 
@@ -156,6 +158,8 @@ pub fn parse_twitter_card(html: &str) -> TwitterCardMetadata {
             .all("twitter:card")
             .find(|value| CLASSIFYING_CARDS.contains(value))
             .map(ToOwned::to_owned),
+        title: meta.first("twitter:title"),
+        description: meta.first("twitter:description"),
         player: meta.first("twitter:player"),
     }
 }
@@ -512,10 +516,14 @@ mod tests {
     fn twitter_card_parsing() {
         let h = r#"<head>
             <meta name="twitter:card" content="summary_large_image">
+            <meta name="twitter:title" content="Title">
+            <meta name="twitter:description" content="Desc">
             <meta name="twitter:player" content="https://p.com/embed">
         </head>"#;
         let tc = parse_twitter_card(h);
         assert_eq!(tc.classifying_card.as_deref(), Some("summary_large_image"));
+        assert_eq!(tc.title.as_deref(), Some("Title"));
+        assert_eq!(tc.description.as_deref(), Some("Desc"));
         assert_eq!(tc.player.as_deref(), Some("https://p.com/embed"));
     }
 

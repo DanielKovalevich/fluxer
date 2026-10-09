@@ -130,7 +130,7 @@ async fn resolve_instagram(ctx: &ResolveContext<'_>, fixers: &[Url]) -> anyhow::
     let mut embed = MessageEmbed::new("rich");
     embed.url = Some(ctx.original_url.to_string());
     embed.color = Some(INSTAGRAM_COLOR);
-    embed.provider = Some(EmbedProvider { name: Some("Instagram".to_owned()), url: Some("https://www.instagram.com".to_owned()) });
+    embed.provider = Some(EmbedProvider { name: "Instagram".to_owned(), url: Some("https://www.instagram.com".to_owned()) });
     embed.author = author_name.map(|name| EmbedAuthor { name: text_limits::truncate(&name, text_limits::AUTHOR_NAME_MAX), ..Default::default() });
     embed.description = description.map(|value| text_limits::truncate(&value, text_limits::DESCRIPTION_MAX));
     embed.video = video;
@@ -283,5 +283,37 @@ mod tests {
 
         assert!(is_post_not_found(&unavailable));
         assert!(!is_post_not_found(&available));
+    }
+
+    fn page(html: &str) -> SocialPage {
+        SocialPage {
+            final_url: Url::parse("https://www.uuinstagram.com/reel/example/").unwrap(),
+            content_type: Some("text/html".to_owned()),
+            og: crate::html_parser::parse_opengraph(html),
+            twitter: crate::html_parser::parse_twitter_card(html),
+        }
+    }
+
+    #[test]
+    fn prefers_twitter_author_over_open_graph_title() {
+        let metadata = page(r#"<head>
+            <meta property="og:title" content="Creator on Instagram: A caption">
+            <meta name="twitter:title" content="@creator">
+            <meta name="twitter:description" content="A caption">
+        </head>"#);
+
+        assert_eq!(author_name(&metadata).as_deref(), Some("@creator"));
+        assert_eq!(metadata.twitter.description.as_deref(), Some("A caption"));
+    }
+
+    #[test]
+    fn detects_twitter_placeholder_when_open_graph_metadata_is_present() {
+        let metadata = page(r#"<head>
+            <meta property="og:title" content="Instagram">
+            <meta property="og:description" content="Watch reels on Instagram">
+            <meta name="twitter:description" content="Post not found">
+        </head>"#);
+
+        assert!(is_post_not_found(&metadata));
     }
 }
