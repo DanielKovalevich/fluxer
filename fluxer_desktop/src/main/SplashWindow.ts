@@ -22,11 +22,14 @@ export const SPLASH_READY_WATCHDOG_MS = 3000;
 export const SPLASH_CLOSE_DELAY_MS = 100;
 
 export const DESKTOP_SPLASH_STATE_CHANNEL = 'desktop-splash:state';
+export const DESKTOP_SPLASH_REVEALED_CHANNEL = 'desktop-splash:revealed';
 export const DESKTOP_SPLASH_READY_CHANNEL = 'desktop-splash:ready';
 export const DESKTOP_SPLASH_RETRY_NOW_CHANNEL = 'desktop-splash:retry-now';
 export const DESKTOP_SPLASH_QUIT_CHANNEL = 'desktop-splash:quit';
 export const DESKTOP_SPLASH_OPEN_DOWNLOAD_CHANNEL = 'desktop-splash:open-download';
 export const DESKTOP_SPLASH_NETWORK_ONLINE_CHANNEL = 'desktop-splash:network-online';
+export const DESKTOP_SPLASH_OPEN_LOGS_CHANNEL = 'desktop-splash:open-logs';
+export const DESKTOP_SPLASH_COPY_DIAGNOSTICS_CHANNEL = 'desktop-splash:copy-diagnostics';
 
 export const SplashLayout = Object.freeze({
 	SPLASH: 'splash',
@@ -41,6 +44,7 @@ export const SplashStatus = Object.freeze({
 	INSTALLING_UPDATES: 'installing-updates',
 	VERIFYING: 'verifying',
 	UPDATE_FAILURE: 'update-failure',
+	DOWNLOAD_STALLED: 'download-stalled',
 	SHELL_UPDATE_DOWNLOADING: 'shell-update-downloading',
 	SHELL_UPDATE_RESTARTING: 'shell-update-restarting',
 	BLOCKED_UPDATE_REQUIRED: 'blocked-update-required',
@@ -91,6 +95,9 @@ export interface SplashState {
 	readonly total?: number | null;
 	readonly progress?: number | null;
 	readonly seconds?: number | null;
+	readonly receivedBytes?: number | null;
+	readonly totalBytes?: number | null;
+	readonly bytesPerSecond?: number | null;
 	readonly action?: SplashActionDescriptor | null;
 	readonly message?: string | null;
 	readonly versionLabel?: string | null;
@@ -105,6 +112,9 @@ export interface SerializedSplashState {
 	readonly total: number | null;
 	readonly progress: number | null;
 	readonly seconds: number | null;
+	readonly receivedBytes: number | null;
+	readonly totalBytes: number | null;
+	readonly bytesPerSecond: number | null;
 	readonly action: SplashActionDescriptor | null;
 	readonly message: string | null;
 	readonly versionLabel: string | null;
@@ -123,6 +133,8 @@ const retryListeners = new Set<SplashListener>();
 const quitListeners = new Set<SplashListener>();
 const networkOnlineListeners = new Set<SplashListener>();
 const openDownloadListeners = new Set<SplashDownloadListener>();
+const openLogsListeners = new Set<SplashListener>();
+const copyDiagnosticsListeners = new Set<SplashListener>();
 
 let splashWindow: BrowserWindow | null = null;
 let splashIpcRegistered = false;
@@ -131,6 +143,9 @@ let affordanceLatched = false;
 let lastSerializedState: SerializedSplashState | null = null;
 let readyWatchdog: NodeJS.Timeout | null = null;
 let themeSourceBeforeSplash: typeof nativeTheme.themeSource | null = null;
+let darkThemePendingShow = false;
+let splashHeldHidden = false;
+let splashDocumentReady = false;
 
 function toSplashCount(value: number | null | undefined): number | null {
 	if (typeof value !== 'number' || !Number.isFinite(value)) return null;
@@ -196,6 +211,9 @@ export function serializeSplashState(state: SplashState): SerializedSplashState 
 		total: toSplashCount(state.total),
 		progress: toSplashProgress(state.progress),
 		seconds: toSplashCount(state.seconds),
+		receivedBytes: toSplashCount(state.receivedBytes),
+		totalBytes: toSplashCount(state.totalBytes),
+		bytesPerSecond: toSplashCount(state.bytesPerSecond),
 		action: toSplashAction(state.action),
 		message: toSplashText(state.message, SPLASH_MESSAGE_MAX_LENGTH),
 		versionLabel: toSplashText(state.versionLabel, SPLASH_VERSION_LABEL_MAX_LENGTH),
@@ -259,11 +277,13 @@ function showSplashWindow(reason: 'ready' | 'watchdog'): void {
 		clearTimeout(readyWatchdog);
 		readyWatchdog = null;
 	}
+	if (splashHeldHidden) return;
 	const window = splashWindow;
 	if (window == null || window.isDestroyed() || window.isVisible()) return;
 	if (reason === 'watchdog') {
 		logger.warn('The splash preload never reported ready, showing the window anyway');
 	}
+	applySplashTheme();
 	window.showInactive();
 }
 
@@ -272,6 +292,7 @@ function registerSplashIpc(): void {
 	splashIpcRegistered = true;
 	ipcMain.on(DESKTOP_SPLASH_READY_CHANNEL, (event) => {
 		if (!isSplashSender(event)) return;
+		splashDocumentReady = true;
 		showSplashWindow('ready');
 		if (lastSerializedState != null) {
 			event.sender.send(DESKTOP_SPLASH_STATE_CHANNEL, lastSerializedState);
@@ -294,6 +315,14 @@ function registerSplashIpc(): void {
 		if (!isSplashSender(event)) return;
 		emitSplashDownloadListeners(toSplashDownloadValue(value));
 	});
+	ipcMain.on(DESKTOP_SPLASH_OPEN_LOGS_CHANNEL, (event) => {
+		if (!isSplashSender(event)) return;
+		emitSplashListeners(openLogsListeners);
+	});
+	ipcMain.on(DESKTOP_SPLASH_COPY_DIAGNOSTICS_CHANNEL, (event) => {
+		if (!isSplashSender(event)) return;
+		emitSplashListeners(copyDiagnosticsListeners);
+	});
 }
 
 function registerSplashDiagnostics(window: BrowserWindow): void {
@@ -312,11 +341,42 @@ function registerSplashDiagnostics(window: BrowserWindow): void {
 	});
 }
 
-export function openSplashWindow(): BrowserWindow {
-	if (splashWindow != null && !splashWindow.isDestroyed()) return splashWindow;
+export function openSplashWindow(options: {readonly darkThemeOnShow?: boolean} = {}): BrowserWindow {
+	const existing = splashWindow;
+	if (existing != null && !existing.isDestroyed()) {
+		if (splashHeldHidden) {
+			splashHeldHidden = false;
+			existing.setSkipTaskbar(false);
+			if (splashDocumentReady) showSplashWindow('ready');
+		}
+		return existing;
+	}
+	return createSplashWindow(options.darkThemeOnShow === true, false);
+}
+
+export function preloadSplashWindow(): void {
+	if (splashWindow != null && !splashWindow.isDestroyed()) return;
+	createSplashWindow(true, true);
+}
+
+export function revealPreloadedSplashWindow(): BrowserWindow | null {
+	const window = splashWindow;
+	if (!splashHeldHidden || !splashDocumentReady || window == null || window.isDestroyed()) return null;
+	splashHeldHidden = false;
+	window.setSkipTaskbar(false);
+	window.webContents.send(DESKTOP_SPLASH_REVEALED_CHANNEL);
+	applySplashTheme();
+	window.show();
+	window.focus();
+	return window;
+}
+
+function createSplashWindow(darkThemeOnShow: boolean, heldHidden: boolean): BrowserWindow {
 	registerSplashIpc();
-	if (themeSourceBeforeSplash == null) themeSourceBeforeSplash = nativeTheme.themeSource;
-	nativeTheme.themeSource = 'dark';
+	darkThemePendingShow = true;
+	splashHeldHidden = heldHidden;
+	splashDocumentReady = false;
+	if (!darkThemeOnShow) applySplashTheme();
 	const window = new BrowserWindow({
 		width: SPLASH_WINDOW_WIDTH,
 		height: getSplashWindowHeight(process.platform),
@@ -346,19 +406,26 @@ export function openSplashWindow(): BrowserWindow {
 	window.on('closed', () => {
 		if (splashWindow === window) {
 			splashWindow = null;
+			splashHeldHidden = false;
+			splashDocumentReady = false;
 		}
 		restoreThemeSource();
 		if (!shouldQuitOnSplashClosed(process.platform, launchLatched)) return;
 		logger.info('The splash window closed before launch, quitting');
 		app.quit();
 	});
-	readyWatchdog = setTimeout(() => {
-		readyWatchdog = null;
-		showSplashWindow('watchdog');
-	}, SPLASH_READY_WATCHDOG_MS);
-	readyWatchdog.unref();
-	const documentUrl = pathToFileURL(getDesktopDistributionPath('splash', 'index.html')).href;
-	window.loadURL(documentUrl).catch((error) => {
+	if (heldHidden) {
+		window.setSkipTaskbar(true);
+	} else {
+		readyWatchdog = setTimeout(() => {
+			readyWatchdog = null;
+			showSplashWindow('watchdog');
+		}, SPLASH_READY_WATCHDOG_MS);
+		readyWatchdog.unref();
+	}
+	const documentUrl = pathToFileURL(getDesktopDistributionPath('splash', 'index.html'));
+	if (heldHidden) documentUrl.searchParams.set('held', '1');
+	window.loadURL(documentUrl.href).catch((error) => {
 		logger.error('Failed to load the splash document', error);
 	});
 	return window;
@@ -370,11 +437,20 @@ export function focusSplashWindow(): void {
 	if (window.isMinimized()) {
 		window.restore();
 	}
+	applySplashTheme();
 	window.show();
 	window.focus();
 }
 
+function applySplashTheme(): void {
+	if (!darkThemePendingShow) return;
+	darkThemePendingShow = false;
+	if (themeSourceBeforeSplash == null) themeSourceBeforeSplash = nativeTheme.themeSource;
+	nativeTheme.themeSource = 'dark';
+}
+
 function restoreThemeSource(): void {
+	darkThemePendingShow = false;
 	if (themeSourceBeforeSplash == null) return;
 	nativeTheme.themeSource = themeSourceBeforeSplash;
 	themeSourceBeforeSplash = null;
@@ -383,6 +459,8 @@ function restoreThemeSource(): void {
 export function closeSplashWindow(): void {
 	const window = splashWindow;
 	splashWindow = null;
+	splashHeldHidden = false;
+	splashDocumentReady = false;
 	restoreThemeSource();
 	lastSerializedState = null;
 	affordanceLatched = false;
@@ -391,6 +469,8 @@ export function closeSplashWindow(): void {
 	quitListeners.clear();
 	networkOnlineListeners.clear();
 	openDownloadListeners.clear();
+	openLogsListeners.clear();
+	copyDiagnosticsListeners.clear();
 	if (readyWatchdog != null) {
 		clearTimeout(readyWatchdog);
 		readyWatchdog = null;
@@ -449,4 +529,12 @@ export function onSplashNetworkOnline(listener: SplashListener): () => void {
 
 export function onSplashOpenDownload(listener: SplashDownloadListener): () => void {
 	return addSplashListener(openDownloadListeners, listener);
+}
+
+export function onSplashOpenLogs(listener: SplashListener): () => void {
+	return addSplashListener(openLogsListeners, listener);
+}
+
+export function onSplashCopyDiagnostics(listener: SplashListener): () => void {
+	return addSplashListener(copyDiagnosticsListeners, listener);
 }

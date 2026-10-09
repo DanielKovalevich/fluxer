@@ -257,7 +257,7 @@ async function fetchFirstPngBlob(urls: Array<string>): Promise<Blob> {
 	let lastError: unknown = null;
 	for (const url of urls) {
 		try {
-			const response = await fetch(url);
+			const response = await fetch(wrapDesktopLocalResourceURL(url));
 			if (!response.ok) {
 				throw new Error(`Unexpected response status ${response.status} for ${url}`);
 			}
@@ -331,10 +331,9 @@ export const mediaMenuItemIds = {
 	openLink: 'media-open-link',
 	favorite: 'media-favorite',
 	editAltText: 'media-edit-alt-text',
-	copyAttachmentId: 'media-copy-attachment-id',
 } as const;
 
-export interface MediaMenuState {
+interface MediaMenuState {
 	isFavorited: boolean;
 	copyLabel: string;
 	downloadLabel: string;

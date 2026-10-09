@@ -56,6 +56,43 @@ export function wrapDesktopLocalResourceURLForInstance(value: string, instanceKe
 	return buildDesktopLocalResourceProxyURL(target, instanceKey);
 }
 
+export function resolveDesktopDisplayResourceURL(value: string): string {
+	if (!isDesktopLocalAppDocument()) return value;
+	const target = parseDisplayTarget(value);
+	if (target == null) return value;
+	if (isDirectlyDisplayableTarget(target)) return target.toString();
+	return wrapResolvedDesktopLocalResourceURL(target.toString(), false);
+}
+
+export function resolveDesktopDisplayResourceURLForInstance(value: string, instanceKey: string): string {
+	if (!isDesktopLocalAppDocument()) return value;
+	const target = parseDisplayTarget(value);
+	if (target != null && isDirectlyDisplayableTarget(target)) return target.toString();
+	return wrapDesktopLocalResourceURLForInstance(value, instanceKey);
+}
+
+export function resolveDesktopCrossOriginMediaURL(value: string | undefined): string | undefined {
+	if (value == null || value.length === 0) return value;
+	return wrapDesktopLocalResourceURL(value);
+}
+
+function parseDisplayTarget(value: string): URL | null {
+	try {
+		return new URL(parseDesktopLocalResourceProxyTarget(value));
+	} catch {
+		return null;
+	}
+}
+
+function isDirectlyDisplayableTarget(target: URL): boolean {
+	if (target.protocol === 'https:') return true;
+	return target.protocol === 'http:' && isDocumentAllowedCleartextHost(target.hostname);
+}
+
+function isDocumentAllowedCleartextHost(hostname: string): boolean {
+	return hostname === 'localhost' || hostname.endsWith('.localhost') || hostname === '127.0.0.1';
+}
+
 export function updateDesktopLocalResourceURLTarget(value: string, updateTarget: (target: URL) => boolean): string {
 	const targetValue = parseDesktopLocalResourceProxyTarget(value);
 	let target: URL;

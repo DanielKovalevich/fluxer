@@ -24,7 +24,7 @@ const API_SETTINGS_NOT_FORWARDED: Record<string, string> = {
 	FLUXER_API_AUTOMATED_MESSAGE_DELETION_DELAY_DAYS: 'automated account actions run only on the hosted service',
 	...Object.fromEntries(
 		['MONTHLY', 'YEARLY', 'GIFT_1_MONTH', 'GIFT_1_YEAR'].flatMap((slot) =>
-			['USD', 'EUR', 'BRL', 'DKK', 'INR', 'NOK', 'PLN', 'SEK', 'TRY'].map((currency) => [
+			['USD', 'EUR', 'BRL', 'DKK', 'INR', 'ISK', 'NOK', 'PLN', 'SEK', 'TRY'].map((currency) => [
 				`FLUXER_STRIPE_PRICE_${slot}_${currency}`,
 				'FLUXER_STRIPE_PRICES or the dashboard sets prices',
 			]),
@@ -95,5 +95,13 @@ describe('the shipped compose stack forwards settings from .env', () => {
 			.filter(({service, key, name}) => name !== inputName(service, key))
 			.map(({service, key, name}) => `${service}.${key} reads ${name}`);
 		expect(renamed).toEqual([]);
+	});
+
+	test.each([
+		'FLUXER_REPORT_RETENTION_DAYS',
+		'FLUXER_RESOLVED_REPORT_RETENTION_DAYS',
+		'FLUXER_REPORT_RETENTION_DRY_RUN',
+	])('the worker is handed %s and gets no value when .env leaves it out', (name) => {
+		expect(serviceEnvironment('worker')[name]).toBe(`\${${name}:-}`);
 	});
 });

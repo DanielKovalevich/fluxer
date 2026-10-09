@@ -8,7 +8,7 @@ export type APIWorkerMode = 'all_lanes' | 'single_lane' | 'single_task';
 export type APIWorkerLaneName = 'realtime' | 'unfurl' | 'lifecycle' | 'batch' | 'crosspost';
 export type PushProviderEnvironment = 'production' | 'development';
 
-export interface PushProviderAppConfig {
+interface PushProviderAppConfig {
 	appId: string;
 	topic?: string;
 	environment?: PushProviderEnvironment;
@@ -46,7 +46,7 @@ interface APIGeoipS3Config {
 	s3Key: string;
 }
 
-export type APIGeoipConfig = APIGeoipFilesystemConfig | APIGeoipS3Config;
+type APIGeoipConfig = APIGeoipFilesystemConfig | APIGeoipS3Config;
 
 export interface APIConfig {
 	nodeEnv: 'development' | 'production';
@@ -203,6 +203,7 @@ export interface APIConfig {
 			monthlyBrl?: string;
 			monthlyDkk?: string;
 			monthlyInr?: string;
+			monthlyIsk?: string;
 			monthlyNok?: string;
 			monthlyPln?: string;
 			monthlySek?: string;
@@ -212,6 +213,7 @@ export interface APIConfig {
 			yearlyBrl?: string;
 			yearlyDkk?: string;
 			yearlyInr?: string;
+			yearlyIsk?: string;
 			yearlyNok?: string;
 			yearlyPln?: string;
 			yearlySek?: string;
@@ -224,6 +226,8 @@ export interface APIConfig {
 			gift1YearDkk?: string;
 			gift1MonthNok?: string;
 			gift1YearNok?: string;
+			gift1MonthIsk?: string;
+			gift1YearIsk?: string;
 			gift1MonthBrl?: string;
 			gift1MonthInr?: string;
 			gift1MonthPln?: string;
@@ -308,6 +312,11 @@ export interface APIConfig {
 	presignedHarvestDownloadsEnabled: boolean;
 	attachmentDecayEnabled: boolean;
 	deletionGracePeriodHours: number;
+	reportRetention: {
+		days: number;
+		resolvedDays: number | null;
+		dryRun: boolean;
+	};
 	inactivityDeletionThresholdDays?: number;
 	push: {
 		publicVapidKey?: string;
@@ -358,13 +367,6 @@ export interface APIConfig {
 			batch?: number;
 			crosspost?: number;
 		};
-	};
-	ncmec: {
-		enabled: boolean;
-		baseUrl?: string;
-		username?: string;
-		password?: string;
-		reporterEmail?: string;
 	};
 }
 

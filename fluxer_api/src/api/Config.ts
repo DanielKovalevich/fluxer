@@ -330,6 +330,7 @@ export function buildAPIConfigFromMaster(master: MasterConfig): APIConfig {
 						monthlyBrl: master.integrations.stripe.prices.monthly_brl,
 						monthlyDkk: master.integrations.stripe.prices.monthly_dkk,
 						monthlyInr: master.integrations.stripe.prices.monthly_inr,
+						monthlyIsk: master.integrations.stripe.prices.monthly_isk,
 						monthlyNok: master.integrations.stripe.prices.monthly_nok,
 						monthlyPln: master.integrations.stripe.prices.monthly_pln,
 						monthlySek: master.integrations.stripe.prices.monthly_sek,
@@ -339,6 +340,7 @@ export function buildAPIConfigFromMaster(master: MasterConfig): APIConfig {
 						yearlyBrl: master.integrations.stripe.prices.yearly_brl,
 						yearlyDkk: master.integrations.stripe.prices.yearly_dkk,
 						yearlyInr: master.integrations.stripe.prices.yearly_inr,
+						yearlyIsk: master.integrations.stripe.prices.yearly_isk,
 						yearlyNok: master.integrations.stripe.prices.yearly_nok,
 						yearlyPln: master.integrations.stripe.prices.yearly_pln,
 						yearlySek: master.integrations.stripe.prices.yearly_sek,
@@ -351,6 +353,8 @@ export function buildAPIConfigFromMaster(master: MasterConfig): APIConfig {
 						gift1YearDkk: master.integrations.stripe.prices.gift_1_year_dkk,
 						gift1MonthNok: master.integrations.stripe.prices.gift_1_month_nok,
 						gift1YearNok: master.integrations.stripe.prices.gift_1_year_nok,
+						gift1MonthIsk: master.integrations.stripe.prices.gift_1_month_isk,
+						gift1YearIsk: master.integrations.stripe.prices.gift_1_year_isk,
 						gift1MonthBrl: master.integrations.stripe.prices.gift_1_month_brl,
 						gift1MonthInr: master.integrations.stripe.prices.gift_1_month_inr,
 						gift1MonthPln: master.integrations.stripe.prices.gift_1_month_pln,
@@ -378,13 +382,6 @@ export function buildAPIConfigFromMaster(master: MasterConfig): APIConfig {
 			host: master.integrations.clamav.host,
 			port: master.integrations.clamav.port,
 			failOpen: master.integrations.clamav.fail_open,
-		},
-		ncmec: {
-			enabled: master.integrations.ncmec.enabled,
-			baseUrl: master.integrations.ncmec.base_url,
-			username: master.integrations.ncmec.username,
-			password: master.integrations.ncmec.password,
-			reporterEmail: master.integrations.ncmec.reporter_email ?? '',
 		},
 		admin: {
 			oauthClientSecret: master.services.admin.oauth_client_secret,
@@ -451,6 +448,11 @@ export function buildAPIConfigFromMaster(master: MasterConfig): APIConfig {
 		attachmentDecayEnabled: master.attachment_decay_enabled,
 		deletionGracePeriodHours: master.dev.test_mode_enabled ? 0.01 : master.deletion_grace_period_hours,
 		inactivityDeletionThresholdDays: master.inactivity_deletion_threshold_days,
+		reportRetention: {
+			days: master.report_retention.days,
+			resolvedDays: master.report_retention.resolved_days,
+			dryRun: master.report_retention.dry_run,
+		},
 		push: {
 			publicVapidKey: master.auth.vapid.public_key,
 			apns: {

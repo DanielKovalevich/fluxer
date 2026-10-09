@@ -41,6 +41,9 @@ function loadAppImageUpdate(env = {}, overrides = {}, requireImpl = require) {
 		require: requireImpl,
 		console,
 		Buffer,
+		AbortController,
+		setTimeout,
+		clearTimeout,
 		fetch,
 		Error,
 		Number,
@@ -223,6 +226,7 @@ describe('AppImageUpdate in-place replacement', () => {
 
 		const progress = [];
 		const staged = await appImageUpdate.stageAppImageUpdate({
+			fetchImpl: fetch,
 			target: resolved.target,
 			url: `${baseUrl}/appimage`,
 			expectedSha256: NEW_SHA256,
@@ -249,6 +253,7 @@ describe('AppImageUpdate in-place replacement', () => {
 		const resolved = appImageUpdate.resolveAppImageTarget();
 
 		const staged = await appImageUpdate.stageAppImageUpdate({
+			fetchImpl: fetch,
 			target: resolved.target,
 			url: `${baseUrl}/appimage`,
 			expectedSha256: NEW_SHA256,
@@ -259,6 +264,29 @@ describe('AppImageUpdate in-place replacement', () => {
 		assert.deepEqual(stagingLeftovers(install.applications), []);
 	});
 
+	test('a download that stops sending data fails instead of hanging and leaves nothing staged', async () => {
+		const install = createInstall();
+		const appImageUpdate = loadAppImageUpdate({APPIMAGE: install.installedPath});
+		const resolved = appImageUpdate.resolveAppImageTarget();
+		const silent = new ReadableStream({
+			start(controller) {
+				controller.enqueue(NEW_BYTES.subarray(0, 4));
+			},
+		});
+
+		await assert.rejects(
+			appImageUpdate.stageAppImageUpdate({
+				fetchImpl: async () => new Response(silent, {headers: {'content-length': String(NEW_BYTES.length)}}),
+				target: resolved.target,
+				url: 'https://pkgs.invalid/appimage',
+				expectedSha256: NEW_SHA256,
+				stallMs: 30,
+			}),
+			/sent no data for 30 ms/,
+		);
+		assert.deepEqual(stagingLeftovers(install.applications), []);
+	});
+
 	test('refuses to swap when the download does not match the published checksum', async () => {
 		const install = createInstall();
 		const appImageUpdate = loadAppImageUpdate({APPIMAGE: install.installedPath});
@@ -266,6 +294,7 @@ describe('AppImageUpdate in-place replacement', () => {
 
 		await assert.rejects(
 			appImageUpdate.stageAppImageUpdate({
+				fetchImpl: fetch,
 				target: resolved.target,
 				url: `${baseUrl}/corrupt`,
 				expectedSha256: NEW_SHA256,
@@ -289,6 +318,7 @@ describe('AppImageUpdate in-place replacement', () => {
 
 		await assert.rejects(
 			appImageUpdate.stageAppImageUpdate({
+				fetchImpl: fetch,
 				target: resolved.target,
 				url: `${baseUrl}/appimage`,
 				expectedSha256: '',
@@ -307,6 +337,7 @@ describe('AppImageUpdate in-place replacement', () => {
 
 		await assert.rejects(
 			appImageUpdate.stageAppImageUpdate({
+				fetchImpl: fetch,
 				target: resolved.target,
 				url: `${baseUrl}/nothing-here`,
 				expectedSha256: NEW_SHA256,
@@ -346,6 +377,7 @@ describe('AppImageUpdate in-place replacement', () => {
 		const resolved = appImageUpdate.resolveAppImageTarget();
 
 		const staged = await appImageUpdate.stageAppImageUpdate({
+			fetchImpl: fetch,
 			target: resolved.target,
 			url: `${baseUrl}/appimage`,
 			expectedSha256: NEW_SHA256,
@@ -387,6 +419,7 @@ describe('AppImageUpdate in-place replacement', () => {
 
 		await assert.rejects(
 			appImageUpdate.stageAppImageUpdate({
+				fetchImpl: fetch,
 				target: resolved.target,
 				url: `${baseUrl}/appimage`,
 				expectedSha256: NEW_SHA256,
@@ -428,6 +461,7 @@ describe('AppImageUpdate in-place replacement', () => {
 		const resolved = appImageUpdate.resolveAppImageTarget();
 
 		const staged = await appImageUpdate.stageAppImageUpdate({
+			fetchImpl: fetch,
 			target: resolved.target,
 			url: `${baseUrl}/appimage`,
 			expectedSha256: NEW_SHA256,
@@ -465,6 +499,7 @@ describe('AppImageUpdate in-place replacement', () => {
 
 		await assert.rejects(
 			appImageUpdate.stageAppImageUpdate({
+				fetchImpl: fetch,
 				target: resolved.target,
 				url: `${baseUrl}/appimage`,
 				expectedSha256: NEW_SHA256,
@@ -597,6 +632,7 @@ describe('AppImageUpdate in-place replacement', () => {
 		const appImageUpdate = loadAppImageUpdate({APPIMAGE: install.installedPath});
 		const resolved = appImageUpdate.resolveAppImageTarget();
 		const staged = await appImageUpdate.stageAppImageUpdate({
+			fetchImpl: fetch,
 			target: resolved.target,
 			url: `${baseUrl}/appimage`,
 			expectedSha256: NEW_SHA256,
@@ -619,6 +655,7 @@ describe('AppImageUpdate abandoned staging cleanup', () => {
 		const appImageUpdate = loadAppImageUpdate({APPIMAGE: install.installedPath});
 		const resolved = appImageUpdate.resolveAppImageTarget();
 		const abandoned = await appImageUpdate.stageAppImageUpdate({
+			fetchImpl: fetch,
 			target: resolved.target,
 			url: `${baseUrl}/appimage`,
 			expectedSha256: NEW_SHA256,
@@ -641,6 +678,7 @@ describe('AppImageUpdate abandoned staging cleanup', () => {
 		const resolved = appImageUpdate.resolveAppImageTarget();
 		const sibling = appImageUpdate.resolveAppImageTarget(siblingPath);
 		const siblingStaged = await appImageUpdate.stageAppImageUpdate({
+			fetchImpl: fetch,
 			target: sibling.target,
 			url: `${baseUrl}/appimage`,
 			expectedSha256: NEW_SHA256,
