@@ -6,7 +6,7 @@ use super::ResolveContext;
 use crate::charset;
 use crate::html_parser::{self, OgMetadata, TwitterCardMetadata};
 use crate::http_fetch;
-use crate::media_proxy::{embed_media_flags, MediaProxyClient};
+use crate::media_proxy::MediaProxyClient;
 use crate::resolvers::media::media_kind_from_content_type;
 use crate::types::EmbedMedia;
 use crate::direct_media::MediaKind;
@@ -122,16 +122,8 @@ pub async fn resolve_media_result(
         anyhow::bail!("social media had unexpected content type: {}", meta.content_type);
     }
     Ok(EmbedMedia {
-        url: Some(url.to_owned()),
         proxy_url: ctx.media_proxy.external_proxy_url(url),
-        content_type: Some(meta.content_type.clone()),
-        content_hash: Some(meta.content_hash.clone()),
-        width: meta.width,
-        height: meta.height,
-        placeholder: meta.placeholder.clone(),
-        duration: meta.duration.map(|duration| duration as u32),
-        flags: embed_media_flags(&meta),
-        ..Default::default()
+        ..meta.to_embed_media(url)
     })
 }
 
