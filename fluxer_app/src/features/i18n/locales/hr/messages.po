@@ -1802,6 +1802,16 @@ msgstr "{PRODUCT_NAME} se mora ponovno pokrenuti kako bi promjena naslovne trake
 msgid "{PRODUCT_NAME} needs to restart to disable Chromium's hardware acceleration. Use this only if you're troubleshooting graphics glitches or high GPU usage."
 msgstr "{PRODUCT_NAME} se mora ponovno pokrenuti kako bi se onemogućilo hardversko ubrzanje Chromiuma. Koristite ovo samo ako rješavate probleme s grafičkim smetnjama ili visokom upotrebom GPU-a."
 
+#. Desktop updater modal body for a Flatpak install when a newer desktop version exists. The version placeholder is the new app version and productName is the app name.
+#: src/features/updater/commands/UpdaterModalCommands.tsx
+msgid "{productName} {version} is available. Update it from your software center."
+msgstr "Dostupna je nova verzija {productName} {version}. Ažurirajte je iz svog centra za softver."
+
+#. Desktop updater modal body for a Linux install managed by a package manager, such as a deb, rpm or AUR package, when a newer desktop version exists. The version placeholder is the new app version and productName is the app name.
+#: src/features/updater/commands/UpdaterModalCommands.tsx
+msgid "{productName} {version} is available. Update it with your package manager, or download the new version."
+msgstr "Dostupna je verzija {version} za {productName}. Ažurirajte je pomoću upravitelja paketa ili preuzmite novu verziju."
+
 #. Accessible label for the Fluxer application icon.
 #: src/features/ui/components/icons/FluxerIconMark.tsx
 msgid "{productName} application icon"
@@ -1911,6 +1921,16 @@ msgstr "{productName} se preselio na {host}. Instalirajte novu aplikaciju i već
 msgid "{productName} has moved to {host}. Open it in your browser to install the new app."
 msgstr "{productName} se preselio na {host}. Otvorite ga u pregledniku kako biste instalirali novu aplikaciju."
 
+#. Intro in the modal that explains how to install the app from its new domain. productName is the app name. host is the new domain, for example fluxer.com.
+#: src/features/app/domain_migration/DomainMovedStepsModal.tsx
+msgid "{productName} is now at {host}. Install it from there, then sign in with this app."
+msgstr "{productName} je sada na adresi {host}. Instalirajte ga od tamo, a zatim se prijavite ovom aplikacijom."
+
+#. Intro in the modal that explains how to install the app from its new domain when the account already moved. productName is the app name. host is the new domain, for example fluxer.com.
+#: src/features/app/domain_migration/DomainMovedStepsModal.tsx
+msgid "{productName} is now at {host}. Install it from there."
+msgstr "{productName} je sada na adresi {host}. Instalirajte ga od tamo."
+
 #. Profile membership label showing when the user account was created.
 #: src/features/user/components/popouts/UserProfileShared.tsx
 msgid "{productName} member since"
@@ -1950,16 +1970,6 @@ msgstr "Aplikacija {productName} treba pristup mikrofonu za prikaz vaših uređa
 #: src/features/permissions/system/components/MediaPermissionBlockedModal.tsx
 msgid "{productName} needs screen recording access. Allow screen recording in your operating system privacy settings and restart the app."
 msgstr "Aplikaciji {productName} potreban je pristup snimanju zaslona. Dopustite snimanje zaslona u postavkama privatnosti operativnog sustava i ponovno pokrenite aplikaciju."
-
-#. Intro in the modal that explains how to install the app from its new domain. productName is the app name. host is the new domain, for example fluxer.com.
-#: src/features/app/domain_migration/DomainMovedStepsModal.tsx
-msgid "{productName} now lives at {host}. Install it from there, then sign in with this app."
-msgstr "{productName} se sada nalazi na adresi {host}. Instalirajte ga odande, a zatim se prijavite ovom aplikacijom."
-
-#. Intro in the modal that explains how to install the app from its new domain when the account already moved. productName is the app name. host is the new domain, for example fluxer.com.
-#: src/features/app/domain_migration/DomainMovedStepsModal.tsx
-msgid "{productName} now lives at {host}. Install it from there."
-msgstr "{productName} se sada nalazi na adresi {host}. Instalirajte ga odande."
 
 #. Short badge title in the user profile badges popout. Preserve {productName}; it is inserted by code. English locales use Title Case for official badge titles; other locales should use natural local capitalization.
 #: src/features/user/components/popouts/UserProfileBadges.tsx
@@ -2668,11 +2678,6 @@ msgstr "Koristan bot koji radi nevjerojatne stvari!"
 #: src/features/search/utils/SearchUtils.ts
 msgid "a hostname, e.g. {exampleDomain}"
 msgstr "naziv hosta, npr. {exampleDomain}"
-
-#. Linux desktop updater modal body shown before version details and package format selector. productName is the app name.
-#: src/features/updater/commands/UpdaterModalCommands.tsx
-msgid "A Linux desktop update is available. Choose the package format for this system and {productName} will save it locally."
-msgstr "Dostupno je ažuriranje aplikacije za Linux. Odaberite format paketa za ovaj sustav i {productName} će ga spremiti lokalno."
 
 #. Plutonium subscription card line offering a move to a lower price. {listPriceEffectiveDate} is a date already formatted and localized by code; never write a date into the translation.
 #: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx
@@ -6365,7 +6370,7 @@ msgstr "Poziv dostupan"
 msgid "Call confirmation"
 msgstr "Potvrda poziva"
 
-#. Overlay text shown in the in-app call area while the call view lives in a separate popped-out window.
+#. Overlay text shown in the in-app call area while the call view is in a separate popped-out window.
 #: src/features/voice/components/popout/PoppedOutOverlay.tsx
 msgid "Call is popped out"
 msgstr "Poziv je u zasebnom prozoru"
@@ -11427,11 +11432,6 @@ msgstr "Bez zvuka"
 msgid "Deafened by moderators"
 msgstr "Moderatori su vam isključili zvuk"
 
-#. Option in the Linux package format dropdown of the desktop updater modal. Keep the format token "DEB" verbatim and translate only the word "package".
-#: src/features/updater/commands/UpdaterModalCommands.tsx
-msgid "DEB package"
-msgstr "DEB paket"
-
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Short label in the settings dialog mobile settings view.
 #: src/features/app/components/dialogs/components/MobileSettingsView.tsx
@@ -11545,6 +11545,10 @@ msgstr "Zadane postavke obavijesti"
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/sections/DefaultNotificationsSection.tsx
 msgid "Default notifications"
 msgstr "Zadane obavijesti"
+
+#: src/features/voice/components/StreamSettingsMenuContent.tsx
+msgid "Default output device"
+msgstr "Zadani izlazni uređaj"
 
 #. Label of the forum setting that picks the reaction button shown on every post.
 #: src/features/forum/utils/ForumMessageDescriptors.ts
@@ -12095,20 +12099,10 @@ msgstr "Blokirane su obavijesti na radnoj površini. Možete ih omogućiti kasni
 msgid "Desktop startup"
 msgstr "Pokretanje na računalu"
 
-#. Tooltip on the updater icon for a Linux desktop update that requires choosing a package format.
-#: src/features/channel/components/channel_header_components/UpdaterIcon.tsx
-msgid "Desktop update {version} available. Choose a Linux package."
-msgstr "Dostupno je ažuriranje za stolno računalo {version}. Odaberite Linux paket."
-
 #. Modal title shown when a new desktop app update can be downloaded.
 #: src/features/updater/commands/UpdaterModalCommands.tsx
 msgid "Desktop update available"
 msgstr "Dostupno je ažuriranje za stolno računalo"
-
-#. Tooltip on the updater icon for a Linux desktop update that requires choosing a package format and no version is known.
-#: src/features/channel/components/channel_header_components/UpdaterIcon.tsx
-msgid "Desktop update available. Choose a Linux package."
-msgstr "Dostupno je ažuriranje za stolno računalo. Odaberite Linux paket."
 
 #. Desktop updater modal body. The version placeholder is the target app version; productName is the app name.
 #: src/features/updater/commands/UpdaterModalCommands.tsx
@@ -12229,6 +12223,10 @@ msgstr "Samo zvuk uređaja"
 #: src/features/user/components/modals/tabs/DevicesTab.tsx
 msgid "Device details"
 msgstr "Detalji uređaja"
+
+#: src/features/voice/components/StreamSettingsMenuContent.tsx
+msgid "Device not connected"
+msgstr "Uređaj nije povezan"
 
 #. Toast shown after a saved login session was signed out.
 #: src/features/auth/components/modals/DeviceRevokeModal.tsx
@@ -13048,11 +13046,6 @@ msgstr "Preuzmi instalacijski program"
 #: src/features/ui/action_menu/items/MediaMenuData.tsx
 msgid "Download media"
 msgstr "Preuzmi medij"
-
-#. Button label that downloads a selected Linux desktop update package.
-#: src/features/updater/commands/UpdaterModalCommands.tsx
-msgid "Download package"
-msgstr "Preuzmi paket"
 
 #. Button that downloads the account recovery kit as a PDF file.
 #: src/features/auth/components/modals/RecoveryKitModal.tsx
@@ -14361,6 +14354,11 @@ msgstr "Unesite svoje ime"
 msgid "Enter your password."
 msgstr "Unesite svoju lozinku."
 
+#. Setup wizard title for the step that asks the operator for the setup token of a new instance.
+#: src/features/app/components/setup/SetupWizardSteps.tsx
+msgid "Enter your setup token"
+msgstr "Unesite svoj token za postavljanje"
+
 #: src/features/auth/components/pages/RecoverAccountPage.tsx
 msgid "Enter your username and the recovery key from your recovery kit, then choose a new password."
 msgstr "Unesite svoje korisničko ime i ključ za oporavak iz svog kompleta za oporavak, a zatim odaberite novu lozinku."
@@ -14386,6 +14384,7 @@ msgid "Entire system"
 msgstr "Cijeli sustav"
 
 #: src/features/voice/components/AudioSourcePickerLinux.tsx
+#: src/features/voice/components/StreamSettingsMenuContent.tsx
 msgid "Entire system audio"
 msgstr "Zvuk cijelog sustava"
 
@@ -15611,6 +15610,10 @@ msgstr "Pratim"
 #: src/features/user/components/modals/tabs/notifications_tab/NotificationsTabSounds.tsx
 msgid "Following master • {effectiveValue}"
 msgstr "Prati glavnu glasnoću • {effectiveValue}"
+
+#: src/features/voice/components/StreamSettingsMenuContent.tsx
+msgid "Follows your Windows sound settings"
+msgstr "Prati postavke zvuka vašeg Windowsa"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/section_registry/AppearanceSections.ts
@@ -18275,11 +18278,6 @@ msgstr "Instalirajte ga iz izbornika preglednika."
 msgid "Install the new app"
 msgstr "Instaliraj novu aplikaciju"
 
-#. Label for the installed desktop version in the Linux update modal.
-#: src/features/updater/commands/UpdaterModalCommands.tsx
-msgid "Installed"
-msgstr "Instalirano"
-
 #. Desktop updater modal body. The currentVersion placeholder is the installed app version.
 #: src/features/updater/commands/UpdaterModalCommands.tsx
 msgid "Installed version: {currentVersion}."
@@ -19448,7 +19446,7 @@ msgstr "Stara cijena"
 msgid "Let /tts read your message aloud. Disabling the setting keeps those commands as regular text."
 msgstr "Neka /tts pročita vašu poruku naglas. Onemogućavanjem ove postavke te se naredbe zadržavaju kao običan tekst."
 
-#. Toggle label in the community privacy modal: allow DMs from bots that live in this community.
+#. Toggle label in the community privacy modal: allow DMs from bots that are in this community.
 #: src/features/guild/components/modals/GuildPrivacySettingsModal.tsx
 msgid "Let bots in this community DM you"
 msgstr "Dopusti botovima u ovoj zajednici da vam šalju izravne poruke"
@@ -19788,11 +19786,6 @@ msgstr "Linux aplikacija"
 #: src/features/voice/utils/VoiceMessageDescriptors.ts
 msgid "Linux default"
 msgstr "Linux – zadani uređaj"
-
-#. Select label for choosing the Linux desktop package format to download.
-#: src/features/updater/commands/UpdaterModalCommands.tsx
-msgid "Linux package"
-msgstr "Linux paket"
 
 #. Forum layout name shown inside an activity log row.
 #. Forum layout option that shows posts as rows.
@@ -20540,6 +20533,10 @@ msgstr "Maksimalna zaštita za prostore prikladne za obitelj"
 #: src/features/user/components/settings_utils/search_index/VoiceVideoIndex.ts
 msgid "May cause compatibility issues for viewers. We’re working on improving this."
 msgstr "Može uzrokovati probleme s kompatibilnošću za gledatelje. Radimo na poboljšanju ovoga."
+
+#: src/features/voice/components/StreamSettingsMenuContent.tsx
+msgid "May include call audio from mixer apps"
+msgstr "Može uključivati zvuk poziva iz aplikacija miksera"
 
 #. Short label in the max favorite memes modal.
 #: src/features/app/components/alerts/MaxFavoriteMemesModal.tsx
@@ -22425,11 +22422,6 @@ msgstr "Nove niti se više neće prikazivati na popisu kanala nakon ovog razdobl
 msgid "New users can't join right now. You can still create an account or sign in, then try this link again later."
 msgstr "Novi se korisnici trenutačno ne mogu pridružiti. I dalje možete stvoriti račun ili se prijaviti pa kasnije ponovno pokušati s ovom poveznicom."
 
-#. Fallback version label when the available desktop version is unknown.
-#: src/features/updater/commands/UpdaterModalCommands.tsx
-msgid "New version"
-msgstr "Nova verzija"
-
 #. US state name, shown next to the country name in the mature content gate.
 #: src/features/user/utils/UserGeo.ts
 msgctxt "us-state"
@@ -24137,6 +24129,8 @@ msgid "Open settings"
 msgstr "Otvori postavke"
 
 #. Button label that opens the software center via appstream protocol.
+#. Native desktop dialog button on a Flatpak install that opens the software center page for the desktop app.
+#: src/features/platform/utils/DesktopLocaleBridge.ts
 #: src/features/updater/commands/UpdaterModalCommands.tsx
 msgid "Open software center"
 msgstr "Otvori centar za softver"
@@ -25279,8 +25273,8 @@ msgstr "Plan"
 
 #. Text on the card in settings that links to the Plutonium page.
 #: src/features/premium/components/plutonium_page/PlutoniumPageLinkCard.tsx
-msgid "Plans, perks, gifts and your subscription all live on one page."
-msgstr "Planovi, pogodnosti, pokloni i vaša pretplata nalaze se na jednoj stranici."
+msgid "Plans, perks, gifts and your subscription are all on one page."
+msgstr "Planovi, pogodnosti, pokloni i vaša pretplata – sve je na jednoj stranici."
 
 #: src/features/auth/flow/HandoffApprovalFlow.tsx
 msgid "Platform"
@@ -25331,6 +25325,11 @@ msgstr "Reproduciraj."
 #: src/features/user/components/settings_utils/section_registry/NotificationsSections.ts
 msgid "Playback"
 msgstr "Reprodukcija"
+
+#. Submenu label in the stream settings menu of a Windows screen share. Picks which playback devices the shared desktop audio comes from.
+#: src/features/voice/components/StreamSettingsMenuContent.tsx
+msgid "Playback devices"
+msgstr "Reprodukcija zvuka"
 
 #. Section / menu header above the playback rate options in the media player.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
@@ -25403,7 +25402,7 @@ msgstr "Izdvoji korisnika"
 msgid "Pop out video"
 msgstr "Izdvoji videozapis"
 
-#. Overlay text shown on a voice participant tile while it lives in a separate popped-out window.
+#. Overlay text shown on a voice participant tile while it is in a separate popped-out window.
 #: src/features/voice/components/popout/PoppedOutOverlay.tsx
 msgid "Popped out"
 msgstr "Izdvojeno"
@@ -28459,11 +28458,6 @@ msgstr "Okrugli potvrdni okvir"
 msgid "Rows per page"
 msgstr "Redaka po stranici"
 
-#. Option in the Linux package format dropdown of the desktop updater modal. Keep the format token "RPM" verbatim and translate only the word "package".
-#: src/features/updater/commands/UpdaterModalCommands.tsx
-msgid "RPM package"
-msgstr "RPM paket"
-
 #. Settings search entry description. One-line summary of what the settings search entry controls.
 #: src/features/user/components/settings_utils/search_index/DesktopSettingsIndex.ts
 msgid "Run {productName} automatically when your computer starts"
@@ -30119,6 +30113,11 @@ msgstr "Postavke."
 #: src/features/auth/components/modals/MfaTotpEnableModal.tsx
 msgid "Setup key"
 msgstr "Ključ za postavljanje"
+
+#. Label for the setup token input in the setup wizard.
+#: src/features/app/components/setup/SetupWizardSteps.tsx
+msgid "Setup token"
+msgstr "Token za postavljanje"
 
 #. Label in the channel and chat typing users.
 #: src/features/typing/utils/TypingTierText.ts
@@ -33110,11 +33109,6 @@ msgstr "Dodirnite Dijeli, a zatim Dodaj na početni zaslon."
 msgid "Tap to add a note"
 msgstr "Dodirnite za dodavanje bilješke"
 
-#. Option in the Linux package format dropdown of the desktop updater modal. Keep the format token "tar.gz" verbatim and translate only the word "archive".
-#: src/features/updater/commands/UpdaterModalCommands.tsx
-msgid "tar.gz archive"
-msgstr "tar.gz arhiva"
-
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts
 msgid "Taskbar badge"
@@ -33428,6 +33422,11 @@ msgstr "Oznaka #0000 rezervirana je za pretplatnike na Visionary. Visionary viš
 msgid "The API is on a different origin than this page, so setup requests are sent without your session. Check the public origin and port this instance is configured with, then reload."
 msgstr "API se nalazi na drugom izvoru (origin) nego ova stranica, pa se zahtjevi za postavljanje šalju bez vaše sesije. Provjerite javni izvor i priključak za koje je ova instanca konfigurirana, a zatim ponovno učitajte stranicu."
 
+#. Help text under the setup token input in the setup wizard. FLUXER_SETUP_TOKEN is an environment variable name and must not be translated.
+#: src/features/app/components/setup/SetupWizardSteps.tsx
+msgid "The API wrote the token to its log the first time it started. If you set FLUXER_SETUP_TOKEN, use that value."
+msgstr "API je token zapisao u svoj zapisnik pri prvom pokretanju. Ako ste postavili FLUXER_SETUP_TOKEN, upotrijebite tu vrijednost."
+
 #: src/features/app/components/ErrorFallback.tsx
 msgid "The app crashed"
 msgstr "Aplikacija se srušila"
@@ -33497,11 +33496,6 @@ msgstr "Veza se nadograđuje na TLS samo ako je poslužitelj ponudi."
 #: src/features/updater/commands/UpdaterModalCommands.tsx
 msgid "The desktop update could not be downloaded. Try again from the update button when your connection is stable."
 msgstr "Ažuriranje za stolno računalo nije preuzeto. Pokušajte ponovno pomoću gumba za ažuriranje kada vaša veza bude stabilna."
-
-#. Help text below the Linux package format selector in the desktop updater modal.
-#: src/features/updater/commands/UpdaterModalCommands.tsx
-msgid "The downloaded file is saved to your computer. Install it with your normal package manager."
-msgstr "Preuzeta datoteka sprema se na vaše računalo. Instalirajte je pomoću uobičajenog upravitelja paketa."
 
 #. Activity log detail line under a deleted emoji, shown only when someone other than the person who deleted it had uploaded it. {user} is the user who uploaded the emoji, shown as a clickable user chip.
 #: src/features/guild/utils/guild_tabs/audit_log/AuditLogExpressionMessageMessages.ts
@@ -33684,6 +33678,11 @@ msgstr "Sustav je dodijelio ulogu {role} korisniku {target}"
 #: src/features/guild/utils/guild_tabs/audit_log/AuditLogMemberMessages.ts
 msgid "The system removed the role {role} from {target}"
 msgstr "Sustav je uklonio ulogu {role} korisniku {target}"
+
+#. Setup wizard body explaining why the operator has to enter the setup token.
+#: src/features/app/components/setup/SetupWizardSteps.tsx
+msgid "The token proves that you run this instance. Only the person who has it can create the admin account."
+msgstr "Token dokazuje da pokrećete ovu instancu. Samo osoba koja ga posjeduje može stvoriti administratorski račun."
 
 #. Native desktop dialog body under the headline saying the update did not finish. The buttons are Try again, Download and Later.
 #: src/features/platform/utils/DesktopLocaleBridge.ts
@@ -33902,6 +33901,11 @@ msgstr "Treća strana"
 #: src/features/relationship/components/alerts/RelationshipErrorModalUtils.tsx
 msgid "This account can't be blocked."
 msgstr "Ovaj se račun ne može blokirati."
+
+#. Error shown in the setup wizard when the signed-in account lacks admin access to the unconfigured instance. A sign out button follows.
+#: src/features/app/components/setup/SelfHostedSetupWizardGate.tsx
+msgid "This account is not an admin of this instance. Sign in with an admin account to finish setup."
+msgstr "Ovaj račun nije administrator ove instance. Prijavite se s administratorskim računom da biste dovršili postavljanje."
 
 #. Error in the browser when the chosen account belongs to a different server than the app that asked to sign in. accountHost and requestHost are server addresses. productName is the app name, such as Fluxer.
 #: src/features/auth/flow/auth_login_core/useDesktopHandoffFlow.ts
@@ -36523,10 +36527,20 @@ msgstr "Do 4K pri 60 FPS"
 msgid "Up to 720p at 30 FPS"
 msgstr "Do 720p pri 30 FPS"
 
+#. Native desktop dialog body under the headline announcing a new version, shown on a Flatpak install. {appName} is the desktop app name (typically Fluxer).
+#: src/features/platform/utils/DesktopLocaleBridge.ts
+msgid "Update {appName} from your software center."
+msgstr "Ažuriraj {appName} iz svog centra za softver."
+
 #. Tray menu item shown only while a desktop update is waiting. Clicking it installs the update. {appName} is the desktop app name (typically Fluxer).
 #: src/features/platform/utils/DesktopLocaleBridge.ts
 msgid "Update {appName} now"
 msgstr "Ažuriraj {appName} sada"
+
+#. Native desktop dialog body under the headline announcing a new version, shown on a Linux install managed by a package manager such as a deb, rpm or AUR package. {appName} is the desktop app name (typically Fluxer).
+#: src/features/platform/utils/DesktopLocaleBridge.ts
+msgid "Update {appName} with your package manager, or download the new version."
+msgstr "Ažurirajte {appName} pomoću upravitelja paketa ili preuzmite novu verziju."
 
 #. Linux settings text when the installed desktop app is too old for system-wide shortcuts. {productName} is the app name.
 #: src/features/user/components/modals/tabs/components/SystemShortcutsSection.tsx
@@ -37333,11 +37347,6 @@ msgstr "Korisničko ime mora imati barem 1 znak"
 #: src/features/user/components/modals/tabs/applications_tab/application_detail/BotProfileSection.tsx
 msgid "Username must be at most 32 characters"
 msgstr "Korisničko ime mora imati najviše 32 znaka"
-
-#. Warning shown in the setup wizard when the username sign-in option is selected. Keep it short and plain.
-#: src/features/app/components/setup/SetupWizardSteps.tsx
-msgid "Username sign-in is still rolling out to the mobile apps. Full support on every platform is coming soon."
-msgstr "Prijava korisničkim imenom još uvijek se uvodi u mobilne aplikacije. Puna podrška na svim platformama stiže uskoro."
 
 #. Heading above the choice of how usernames are tagged in the setup wizard.
 #: src/features/app/components/setup/SetupWizardSteps.tsx
@@ -40570,6 +40579,11 @@ msgstr "Vaša će se pretplata prebaciti na mjesečnu naplatu pri sljedećoj obn
 #: src/features/app/components/dialogs/components/plutonium/hooks/useSubscriptionActions.ts
 msgid "Your subscription will switch to yearly billing at the next renewal."
 msgstr "Vaša pretplata prebacit će se na godišnju naplatu pri sljedećoj obnovi."
+
+#. Inline informational note in the screen share picker on Linux systems where no hardware video encoder is available, for example NVIDIA-only machines. Not an error.
+#: src/features/voice/components/modals/screen_share_picker_modal/SoftwareEncodeNotice.tsx
+msgid "Your system has no hardware video encoder that {productName} can use, so screen sharing uses software encoding."
+msgstr "Vaš sustav nema hardverski video enkoder koji {productName} može koristiti, stoga dijeljenje zaslona koristi softversko kodiranje."
 
 #. Body of the error modal shown when a theme CSS exceeds the maximum shareable size.
 #: src/features/theme/components/modals/ShareThemeModal.tsx

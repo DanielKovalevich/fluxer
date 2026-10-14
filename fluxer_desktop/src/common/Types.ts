@@ -27,6 +27,7 @@ import type {
 	NativeAudioAvailability,
 	NativeAudioEndMessage,
 	NativeAudioFrameMessage,
+	NativeAudioPlaybackDevice,
 	NativeAudioStartOptions,
 	NativeAudioStartResult,
 	NativeScreenCaptureLifecycleMessage,
@@ -42,7 +43,6 @@ import type {
 	ThemeLocalFileReference,
 	TrayPresenceStatus,
 	TrayRuntimeStatePayload,
-	UpdaterDownloadOption,
 	VirtmicBackend,
 	VirtmicNode,
 	VoiceBackgroundMediaCacheRequest,
@@ -115,7 +115,6 @@ export type UpdaterEvent =
 			context: UpdaterContext;
 			version: string | null;
 			downloadUrl?: string;
-			downloadOptions?: Array<UpdaterDownloadOption>;
 	  }
 	| {
 			type: 'not-available';
@@ -129,7 +128,7 @@ export type UpdaterEvent =
 	| {
 			type: 'unsupported';
 			context: UpdaterContext;
-			reason: 'platform' | 'unpackaged' | 'managed-package';
+			reason: 'platform' | 'unpackaged';
 			downloadUrl?: string;
 	  };
 
@@ -185,6 +184,8 @@ export interface NativeAudioApi {
 	resolveAudioRootPidForSource: (sourceId: string) => Promise<number | null>;
 	start: (options: NativeAudioStartOptions) => Promise<NativeAudioStartResult>;
 	setRule: (captureId: string, linuxRule: NonNullable<NativeAudioStartOptions['linuxRule']>) => Promise<boolean>;
+	listPlaybackDevices: () => Promise<Array<NativeAudioPlaybackDevice>>;
+	setWinEndpoints: (captureId: string, endpoints: Array<string>) => Promise<boolean>;
 	stop: (captureId: string) => Promise<void>;
 	onFrame: (callback: (message: NativeAudioFrameMessage) => void) => () => void;
 	onEnd: (callback: (message: NativeAudioEndMessage) => void) => () => void;

@@ -11,6 +11,7 @@ import {
 	REGISTRATION_PENDING_APPROVAL_TRAIT,
 	REGISTRATION_REJECTED_TRAIT,
 } from '@app/api/instance/InstanceConfigRepository';
+import {clearUsedSetupToken} from '@app/api/instance/SetupToken';
 import {deriveSsoRedirectUri, normalizeAndValidateSsoConfig} from '@app/api/instance/SsoConfigValidation';
 import {requireAdminACL} from '@app/api/middleware/AdminMiddleware';
 import {RateLimitMiddleware} from '@app/api/middleware/RateLimitMiddleware';
@@ -33,6 +34,7 @@ import {
 	InstanceEmailSmtpTestRequest,
 	InstanceEmailSmtpTestResponse,
 	PendingRegistrationActionRequest,
+	PendingRegistrationListResponse,
 	RegistrationUrlIdParam,
 } from '@fluxer/schema/src/domains/admin/AdminSchemas';
 import {DomainMigrationConfigSchema} from '@fluxer/schema/src/domains/admin/DomainMigrationSchemas';
@@ -44,7 +46,6 @@ import {ExperimentDeliveryConfigSchema} from '@fluxer/schema/src/domains/experim
 import type {InstanceBranding} from '@fluxer/schema/src/domains/instance/InstanceSchemas';
 import {SmtpEmailProvider} from '@pkgs/email/src/SmtpEmailProvider';
 import type {Context} from 'hono';
-import {createMiddleware} from 'hono/factory';
 
 const INSTANCE_BRANDING_ENTITY_ID = 0n;
 const ATTACHMENT_EXPIRY_RULE_FIELDS = [
@@ -98,7 +99,6 @@ async function buildInstanceConfigResponse(): Promise<InstanceConfigResponse> {
 		experimentDelivery,
 		registrationConfig,
 		registrationUrls,
-		pendingRegistrations,
 	] = await Promise.all([
 		instanceConfigRepository.getSsoConfig(),
 		instanceConfigRepository.getGatewayRolloutConfig(),
@@ -109,7 +109,6 @@ async function buildInstanceConfigResponse(): Promise<InstanceConfigResponse> {
 		instanceConfigRepository.getExperimentDeliveryConfig(),
 		instanceConfigRepository.getRegistrationConfig(),
 		instanceConfigRepository.getRegistrationUrlsForAdmin(),
-		instanceConfigRepository.getPendingRegistrations(),
 	]);
 	const [appPublic, policy, resolvedServices, integrations, media, billing, accountIdentity, accountIdentityLocked] =
 		await Promise.all([
@@ -148,7 +147,6 @@ async function buildInstanceConfigResponse(): Promise<InstanceConfigResponse> {
 		registration: {
 			...registrationConfig,
 			urls: registrationUrls,
-			pending_registrations: pendingRegistrations,
 		},
 		self_hosted: Config.instance.selfHosted,
 		account_identity: {
@@ -185,49 +183,6 @@ async function buildInstanceConfigResponse(): Promise<InstanceConfigResponse> {
 function buildAdminIssuedRegistrationUrl(code: string): string {
 	const baseUrl = Config.endpoints.webApp.replace(/\/$/, '');
 	return `${baseUrl}/register?registration_url=${encodeURIComponent(code)}`;
-}
-
-function requireSetupSessionOrAdminACL(requiredACL: string) {
-	const requireAcl = requireAdminACL(requiredACL);
-	return createMiddleware<HonoEnv>(async (ctx, next) => {
-		const user = ctx.get('user');
-		const tokenType = ctx.get('authTokenType');
-		if (user && tokenType === 'session') {
-			const appPublic = await getInstanceConfigRepository().getAppPublicConfig();
-			if (!appPublic.setup.configured) {
-				ctx.set('adminUserId', user.id);
-				ctx.set('adminUserAcls', user.acls);
-				await next();
-				return;
-			}
-		}
-		return requireAcl(ctx, next);
-	});
-}
-
-function hasAdminAuthenticationACL(acls: ReadonlySet<string>): boolean {
-	return acls.has(AdminACLs.AUTHENTICATE) || acls.has(AdminACLs.WILDCARD);
-}
-
-function completesInitialSetup(data: InstanceConfigUpdateRequest, setupConfigured: boolean): boolean {
-	return (
-		!setupConfigured &&
-		data.app_public?.setup != null &&
-		readOptionalField(data.app_public.setup, 'configured') === true
-	);
-}
-
-async function grantSetupCompleterAdminACL(ctx: Context<HonoEnv>): Promise<boolean> {
-	const user = ctx.get('user');
-	if (!user || ctx.get('authTokenType') !== 'session' || hasAdminAuthenticationACL(user.acls)) {
-		return false;
-	}
-	const nextACLs = new Set(user.acls);
-	nextACLs.add(AdminACLs.WILDCARD);
-	const updatedUser = await ctx.get('userRepository').patchUpsert(user.id, {acls: nextACLs}, user.toRow());
-	ctx.set('user', updatedUser);
-	ctx.set('adminUserAcls', updatedUser.acls);
-	return true;
 }
 
 function relayConsentStamp(
@@ -346,7 +301,7 @@ export function InstanceConfigAdminController(app: HonoApp) {
 	app.get(
 		'/admin/instance/config',
 		RateLimitMiddleware(RateLimitConfigs.ADMIN_LOOKUP),
-		requireSetupSessionOrAdminACL(AdminACLs.INSTANCE_CONFIG_VIEW),
+		requireAdminACL(AdminACLs.INSTANCE_CONFIG_VIEW),
 		OpenAPI({
 			operationId: 'get_admin_instance_config',
 			summary: 'Get instance configuration',
@@ -363,10 +318,7 @@ export function InstanceConfigAdminController(app: HonoApp) {
 				targetType: 'instance_config',
 				targetId: 0n,
 				action: AdminAuditReadActions.GET_INSTANCE_CONFIG,
-				metadata: {
-					registration_url_count: response.registration.urls.length,
-					pending_registration_count: response.registration.pending_registrations.length,
-				},
+				metadata: {registration_url_count: response.registration.urls.length},
 			});
 			return ctx.json(response);
 		},
@@ -374,7 +326,7 @@ export function InstanceConfigAdminController(app: HonoApp) {
 	app.patch(
 		'/admin/instance/config',
 		RateLimitMiddleware(RateLimitConfigs.ADMIN_USER_MODIFY),
-		requireSetupSessionOrAdminACL(AdminACLs.INSTANCE_CONFIG_UPDATE),
+		requireAdminACL(AdminACLs.INSTANCE_CONFIG_UPDATE),
 		Validator('json', InstanceConfigUpdateRequest),
 		OpenAPI({
 			operationId: 'update_admin_instance_config',
@@ -390,11 +342,6 @@ export function InstanceConfigAdminController(app: HonoApp) {
 			const data = ctx.req.valid('json');
 			assertSelfHostedBillingSections(data);
 			await assertBillingCompatibleWithPremiumMode(data);
-			const appPublicBeforeUpdate = completesInitialSetup(data, false)
-				? await instanceConfigRepository.getAppPublicConfig()
-				: null;
-			const shouldGrantSetupCompleterAdmin =
-				appPublicBeforeUpdate !== null && completesInitialSetup(data, appPublicBeforeUpdate.setup.configured);
 			if (data.gateway_rollout) {
 				const patch = data.gateway_rollout;
 				const landed = await instanceConfigRepository.updateGatewayRolloutConfig((current) =>
@@ -628,16 +575,14 @@ export function InstanceConfigAdminController(app: HonoApp) {
 				);
 			}
 			if (data.app_public?.setup) {
+				const configured = readOptionalField(data.app_public.setup, 'configured');
 				await instanceConfigRepository.setAppPublicConfig({
-					setup: omitUndefinedFields({
-						configured: readOptionalField(data.app_public.setup, 'configured'),
-					}),
+					setup: omitUndefinedFields({configured}),
 				});
-			}
-			let grantedSetupCompleterAdmin = false;
-			if (shouldGrantSetupCompleterAdmin) {
-				grantedSetupCompleterAdmin = await grantSetupCompleterAdminACL(ctx);
-				await instanceConfigRepository.markAdminBootstrapped();
+				if (configured === true) {
+					await instanceConfigRepository.claimAdminBootstrap();
+					await clearUsedSetupToken(instanceConfigRepository);
+				}
 			}
 			await recordAdminWrite(ctx, {
 				targetType: 'instance_config',
@@ -645,7 +590,6 @@ export function InstanceConfigAdminController(app: HonoApp) {
 				action: 'update_instance_config',
 				metadata: {
 					sections: listSuppliedSections(data),
-					granted_acls: grantedSetupCompleterAdmin ? AdminACLs.WILDCARD : undefined,
 				},
 			});
 			return ctx.json(await buildInstanceConfigResponse());
@@ -654,7 +598,7 @@ export function InstanceConfigAdminController(app: HonoApp) {
 	app.post(
 		'/admin/instance/config/branding-assets',
 		RateLimitMiddleware(RateLimitConfigs.ADMIN_USER_MODIFY),
-		requireSetupSessionOrAdminACL(AdminACLs.INSTANCE_CONFIG_UPDATE),
+		requireAdminACL(AdminACLs.INSTANCE_CONFIG_UPDATE),
 		Validator('json', BrandingAssetUploadRequest),
 		OpenAPI({
 			operationId: 'create_admin_instance_branding_asset',
@@ -690,7 +634,7 @@ export function InstanceConfigAdminController(app: HonoApp) {
 	app.post(
 		'/admin/instance/config/smtp-tests',
 		RateLimitMiddleware(RateLimitConfigs.ADMIN_USER_MODIFY),
-		requireSetupSessionOrAdminACL(AdminACLs.INSTANCE_CONFIG_UPDATE),
+		requireAdminACL(AdminACLs.INSTANCE_CONFIG_UPDATE),
 		Validator('json', InstanceEmailSmtpTestRequest),
 		OpenAPI({
 			operationId: 'create_admin_instance_smtp_test',
@@ -789,18 +733,43 @@ export function InstanceConfigAdminController(app: HonoApp) {
 			return ctx.json(await buildInstanceConfigResponse());
 		},
 	);
+	app.get(
+		'/admin/instance/pending-registrations',
+		RateLimitMiddleware(RateLimitConfigs.ADMIN_LOOKUP),
+		requireAdminACL(AdminACLs.REGISTRATION_REVIEW),
+		OpenAPI({
+			operationId: 'list_admin_pending_registrations',
+			summary: 'List pending registrations',
+			description:
+				'Lists every registration waiting for manual review, oldest first. Requires REGISTRATION_REVIEW permission.',
+			responseSchema: PendingRegistrationListResponse,
+			statusCode: 200,
+			security: 'adminApiKey',
+			tags: 'Admin',
+		}),
+		async (ctx) => {
+			const pendingRegistrations = await instanceConfigRepository.getPendingRegistrations();
+			await recordAdminRead(ctx, {
+				targetType: 'instance_config',
+				targetId: 0n,
+				action: AdminAuditReadActions.LIST_PENDING_REGISTRATIONS,
+				metadata: {pending_registration_count: pendingRegistrations.length},
+			});
+			return ctx.json({pending_registrations: pendingRegistrations});
+		},
+	);
 	app.patch(
 		'/admin/instance/pending-registrations/:user_id',
 		RateLimitMiddleware(RateLimitConfigs.ADMIN_USER_MODIFY),
-		requireAdminACL(AdminACLs.INSTANCE_CONFIG_UPDATE),
+		requireAdminACL(AdminACLs.REGISTRATION_REVIEW),
 		Validator('param', UserIdParam),
 		Validator('json', PendingRegistrationActionRequest),
 		OpenAPI({
 			operationId: 'update_admin_pending_registration',
 			summary: 'Approve or reject a pending registration',
 			description:
-				'Decides a registration waiting for manual review. Approving removes its pending registration trait, rejecting also prevents the account from logging in. Requires INSTANCE_CONFIG_UPDATE permission.',
-			responseSchema: InstanceConfigResponse,
+				'Decides a registration waiting for manual review and returns the registrations still waiting. Approving removes its pending registration trait, rejecting also prevents the account from logging in. Requires REGISTRATION_REVIEW permission.',
+			responseSchema: PendingRegistrationListResponse,
 			statusCode: 200,
 			security: 'adminApiKey',
 			tags: 'Admin',
@@ -810,7 +779,7 @@ export function InstanceConfigAdminController(app: HonoApp) {
 			const decision = ctx.req.valid('json').status === 'approved' ? 'approve' : 'reject';
 			await updatePendingRegistrationUser(ctx, userId, decision);
 			await instanceConfigRepository.removePendingRegistration(userId);
-			return ctx.json(await buildInstanceConfigResponse());
+			return ctx.json({pending_registrations: await instanceConfigRepository.getPendingRegistrations()});
 		},
 	);
 }

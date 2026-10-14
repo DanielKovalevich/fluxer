@@ -28,8 +28,6 @@ No Admin operation declares an OAuth2 scope, an MFA requirement, or a sudo requi
 
 An Admin API key authenticates as the account that created it, and Fluxer reads it only on a path below `/v1/admin`. A request presenting a key on any other path is treated as a request with no credential. Fluxer authorises a key-authenticated request twice. The key's own ACL set must satisfy the operation, and unless the owning account holds `*` that account must itself hold one of the ACLs the operation names. When an ACL is removed from a key, or from the account that owns the key, the key no longer passes a check for that ACL on its next request. The key does not need to be rotated.
 
-Initial setup is the single exception. While `app_public.setup.configured` is false, a session credential reaches the [instance configuration](/admin-api/instance/) operations without holding any ACL. The session that switches setup to configured is granted `*` immediately. After `app_public.setup.configured` becomes true, those operations require an accepted credential and the ACLs they name.
-
 Admin authorisation runs before request validation on every operation except [Queue bulk job](/admin-api/bulk-jobs/#queue-bulk-job), whose body is validated first because its ACL is selected from that body. An account lacking the required ACL is therefore refused with 403 even when its query string or body is also malformed.
 
 ## ACL evaluation
@@ -289,6 +287,7 @@ An entry with one of these actions has `access` set to `read`.
 | list_guild_memory_stats | Guild memory statistics were listed |
 | list_guild_stickers | The stickers of a guild were listed |
 | list_guild_threads | The threads of a guild were listed |
+| list_pending_registrations | Pending registrations were read |
 | list_report_reasons | The report reason catalogue was listed |
 | list_user_applications | The applications an account owns were read |
 | list_user_change_log | The contact change log of an account was read |
@@ -571,7 +570,7 @@ The registry is returned in this order by [List ACLs](#list-acls). A value outsi
 | guild:update:name<sup>5</sup> | Updates a guild name |
 | guild:update:settings<sup>5</sup> | Updates general guild settings and clears guild fields |
 | guild:update:vanity<sup>5</sup> | Updates a guild custom invite code |
-| instance:config:update | Updates [instance](/admin-api/instance/) configuration, branding assets, SMTP tests, registration URLs, and pending registrations |
+| instance:config:update | Updates [instance](/admin-api/instance/) configuration, branding assets, SMTP tests, and registration URLs |
 | instance:config:view | Reads instance configuration |
 | instance:limit_config:update | Replaces the instance-wide limit configuration |
 | instance:limit_config:view | Reads the instance-wide limit configuration |
@@ -579,6 +578,7 @@ The registry is returned in this order by [List ACLs](#list-acls). A value outsi
 | message:delete | Deletes one message |
 | message:lookup | Reads, browses, and searches [messages](/admin-api/messages/) through the Admin API |
 | message:shred | Queues an explicit message shred job and reads its state |
+| registration:review | Reads and decides [pending registrations](/admin-api/instance/#list-pending-registrations) |
 | report:delete | Deletes a [report](/admin-api/reports/#delete-report) with its stored evidence |
 | report:resolve | Updates and resolves [reports](/admin-api/reports/), and places legal holds on them |
 | report:view | Reads and searches reports |

@@ -274,7 +274,7 @@ const ACCEPTED_TABLE_FINDINGS = new Map<string, Readonly<Partial<Record<TableRul
 	['admin-api/instance.mdx', {'table-identifier': 8}],
 	['admin-api/messages.mdx', {'table-identifier': 1}],
 	['admin-api/reports.mdx', {'table-fit': 1, 'table-identifier': 3}],
-	['admin-api/users.mdx', {'table-identifier': 3}],
+	['admin-api/users.mdx', {'table-identifier': 4}],
 	['admin-api/voice.mdx', {'table-identifier': 3}],
 	['gateway/event-filtering.md', {'table-cell': 2}],
 	['gateway/events.md', {'table-identifier': 1}],
@@ -320,6 +320,7 @@ const ACCEPTED_TABLE_FINDINGS = new Map<string, Readonly<Partial<Record<TableRul
 	['http-api/webhooks.mdx', {'table-identifier': 1, 'table-parallel': 1}],
 	['media-proxy/responses-and-limits.md', {'table-cell': 2}],
 	['media-proxy/routes.mdx', {'table-cell': 1}],
+	['operator/kubernetes.mdx', {'table-identifier': 1}],
 	['voice/index.md', {'table-parallel': 1}],
 ]);
 

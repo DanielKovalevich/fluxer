@@ -1802,6 +1802,16 @@ msgstr "{PRODUCT_NAME} deve riavviarsi affinché la modifica della barra del tit
 msgid "{PRODUCT_NAME} needs to restart to disable Chromium's hardware acceleration. Use this only if you're troubleshooting graphics glitches or high GPU usage."
 msgstr "{PRODUCT_NAME} deve riavviarsi per disabilitare l'accelerazione hardware di Chromium. Usalo solo se stai risolvendo problemi grafici o un elevato utilizzo della GPU."
 
+#. Desktop updater modal body for a Flatpak install when a newer desktop version exists. The version placeholder is the new app version and productName is the app name.
+#: src/features/updater/commands/UpdaterModalCommands.tsx
+msgid "{productName} {version} is available. Update it from your software center."
+msgstr "È disponibile {productName} {version}. Aggiornalo dal tuo software center."
+
+#. Desktop updater modal body for a Linux install managed by a package manager, such as a deb, rpm or AUR package, when a newer desktop version exists. The version placeholder is the new app version and productName is the app name.
+#: src/features/updater/commands/UpdaterModalCommands.tsx
+msgid "{productName} {version} is available. Update it with your package manager, or download the new version."
+msgstr "È disponibile {productName} {version}. Aggiornalo con il tuo gestore di pacchetti o scarica la nuova versione."
+
 #. Accessible label for the Fluxer application icon.
 #: src/features/ui/components/icons/FluxerIconMark.tsx
 msgid "{productName} application icon"
@@ -1911,6 +1921,16 @@ msgstr "{productName} si è spostato su {host}. Installa la nuova app e sarai gi
 msgid "{productName} has moved to {host}. Open it in your browser to install the new app."
 msgstr "{productName} si è spostato su {host}. Aprilo nel browser per installare la nuova app."
 
+#. Intro in the modal that explains how to install the app from its new domain. productName is the app name. host is the new domain, for example fluxer.com.
+#: src/features/app/domain_migration/DomainMovedStepsModal.tsx
+msgid "{productName} is now at {host}. Install it from there, then sign in with this app."
+msgstr "{productName} è ora su {host}. Installalo da lì, quindi accedi con questa app."
+
+#. Intro in the modal that explains how to install the app from its new domain when the account already moved. productName is the app name. host is the new domain, for example fluxer.com.
+#: src/features/app/domain_migration/DomainMovedStepsModal.tsx
+msgid "{productName} is now at {host}. Install it from there."
+msgstr "{productName} è ora su {host}. Installalo da lì."
+
 #. Profile membership label showing when the user account was created.
 #: src/features/user/components/popouts/UserProfileShared.tsx
 msgid "{productName} member since"
@@ -1950,16 +1970,6 @@ msgstr "{productName} ha bisogno dell'accesso al microfono per elencare i tuoi d
 #: src/features/permissions/system/components/MediaPermissionBlockedModal.tsx
 msgid "{productName} needs screen recording access. Allow screen recording in your operating system privacy settings and restart the app."
 msgstr "{productName} necessita dell'accesso alla registrazione dello schermo. Abilita la registrazione dello schermo nelle impostazioni sulla privacy del tuo sistema operativo e riavvia l'app."
-
-#. Intro in the modal that explains how to install the app from its new domain. productName is the app name. host is the new domain, for example fluxer.com.
-#: src/features/app/domain_migration/DomainMovedStepsModal.tsx
-msgid "{productName} now lives at {host}. Install it from there, then sign in with this app."
-msgstr "{productName} ora si trova su {host}. Installalo da lì, quindi accedi con questa app."
-
-#. Intro in the modal that explains how to install the app from its new domain when the account already moved. productName is the app name. host is the new domain, for example fluxer.com.
-#: src/features/app/domain_migration/DomainMovedStepsModal.tsx
-msgid "{productName} now lives at {host}. Install it from there."
-msgstr "{productName} ora si trova su {host}. Installalo da lì."
 
 #. Short badge title in the user profile badges popout. Preserve {productName}; it is inserted by code. English locales use Title Case for official badge titles; other locales should use natural local capitalization.
 #: src/features/user/components/popouts/UserProfileBadges.tsx
@@ -2668,11 +2678,6 @@ msgstr "Un bot utile che fa cose straordinarie!"
 #: src/features/search/utils/SearchUtils.ts
 msgid "a hostname, e.g. {exampleDomain}"
 msgstr "un nome host, ad es. {exampleDomain}"
-
-#. Linux desktop updater modal body shown before version details and package format selector. productName is the app name.
-#: src/features/updater/commands/UpdaterModalCommands.tsx
-msgid "A Linux desktop update is available. Choose the package format for this system and {productName} will save it locally."
-msgstr "È disponibile un aggiornamento dell’app desktop per Linux. Scegli il formato del pacchetto per questo sistema e {productName} lo salverà localmente."
 
 #. Plutonium subscription card line offering a move to a lower price. {listPriceEffectiveDate} is a date already formatted and localized by code; never write a date into the translation.
 #: src/features/app/components/dialogs/components/plutonium/SubscriptionCard.tsx
@@ -6365,7 +6370,7 @@ msgstr "Chiamata disponibile"
 msgid "Call confirmation"
 msgstr "Conferma chiamata"
 
-#. Overlay text shown in the in-app call area while the call view lives in a separate popped-out window.
+#. Overlay text shown in the in-app call area while the call view is in a separate popped-out window.
 #: src/features/voice/components/popout/PoppedOutOverlay.tsx
 msgid "Call is popped out"
 msgstr "La chiamata è in una finestra separata"
@@ -11427,11 +11432,6 @@ msgstr "Audio disattivato"
 msgid "Deafened by moderators"
 msgstr "Audio disattivato dai moderatori"
 
-#. Option in the Linux package format dropdown of the desktop updater modal. Keep the format token "DEB" verbatim and translate only the word "package".
-#: src/features/updater/commands/UpdaterModalCommands.tsx
-msgid "DEB package"
-msgstr "Pacchetto DEB"
-
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #. Short label in the settings dialog mobile settings view.
 #: src/features/app/components/dialogs/components/MobileSettingsView.tsx
@@ -11545,6 +11545,10 @@ msgstr "Impostazioni predefinite delle notifiche"
 #: src/features/guild/components/modals/guild_tabs/guild_overview_tab/sections/DefaultNotificationsSection.tsx
 msgid "Default notifications"
 msgstr "Notifiche predefinite"
+
+#: src/features/voice/components/StreamSettingsMenuContent.tsx
+msgid "Default output device"
+msgstr "Dispositivo di output predefinito"
 
 #. Label of the forum setting that picks the reaction button shown on every post.
 #: src/features/forum/utils/ForumMessageDescriptors.ts
@@ -12095,20 +12099,10 @@ msgstr "Le notifiche desktop sono state bloccate. Puoi riattivarle in seguito ne
 msgid "Desktop startup"
 msgstr "Avvio su desktop"
 
-#. Tooltip on the updater icon for a Linux desktop update that requires choosing a package format.
-#: src/features/channel/components/channel_header_components/UpdaterIcon.tsx
-msgid "Desktop update {version} available. Choose a Linux package."
-msgstr "Aggiornamento desktop {version} disponibile. Scegli un pacchetto Linux."
-
 #. Modal title shown when a new desktop app update can be downloaded.
 #: src/features/updater/commands/UpdaterModalCommands.tsx
 msgid "Desktop update available"
 msgstr "Aggiornamento desktop disponibile"
-
-#. Tooltip on the updater icon for a Linux desktop update that requires choosing a package format and no version is known.
-#: src/features/channel/components/channel_header_components/UpdaterIcon.tsx
-msgid "Desktop update available. Choose a Linux package."
-msgstr "Aggiornamento desktop disponibile. Scegli un pacchetto Linux."
 
 #. Desktop updater modal body. The version placeholder is the target app version; productName is the app name.
 #: src/features/updater/commands/UpdaterModalCommands.tsx
@@ -12229,6 +12223,10 @@ msgstr "Solo audio del dispositivo"
 #: src/features/user/components/modals/tabs/DevicesTab.tsx
 msgid "Device details"
 msgstr "Dettagli del dispositivo"
+
+#: src/features/voice/components/StreamSettingsMenuContent.tsx
+msgid "Device not connected"
+msgstr "Dispositivo non connesso"
 
 #. Toast shown after a saved login session was signed out.
 #: src/features/auth/components/modals/DeviceRevokeModal.tsx
@@ -13048,11 +13046,6 @@ msgstr "Scarica programma di installazione"
 #: src/features/ui/action_menu/items/MediaMenuData.tsx
 msgid "Download media"
 msgstr "Scarica media"
-
-#. Button label that downloads a selected Linux desktop update package.
-#: src/features/updater/commands/UpdaterModalCommands.tsx
-msgid "Download package"
-msgstr "Scarica pacchetto"
 
 #. Button that downloads the account recovery kit as a PDF file.
 #: src/features/auth/components/modals/RecoveryKitModal.tsx
@@ -14361,6 +14354,11 @@ msgstr "Inserisci il tuo nome"
 msgid "Enter your password."
 msgstr "Inserisci la tua password."
 
+#. Setup wizard title for the step that asks the operator for the setup token of a new instance.
+#: src/features/app/components/setup/SetupWizardSteps.tsx
+msgid "Enter your setup token"
+msgstr "Inserisci il tuo token di configurazione"
+
 #: src/features/auth/components/pages/RecoverAccountPage.tsx
 msgid "Enter your username and the recovery key from your recovery kit, then choose a new password."
 msgstr "Inserisci il tuo nome utente e la chiave di recupero dal tuo kit di recupero, quindi scegli una nuova password."
@@ -14386,6 +14384,7 @@ msgid "Entire system"
 msgstr "Intero sistema"
 
 #: src/features/voice/components/AudioSourcePickerLinux.tsx
+#: src/features/voice/components/StreamSettingsMenuContent.tsx
 msgid "Entire system audio"
 msgstr "Audio dell’intero sistema"
 
@@ -15611,6 +15610,10 @@ msgstr "Seguendo"
 #: src/features/user/components/modals/tabs/notifications_tab/NotificationsTabSounds.tsx
 msgid "Following master • {effectiveValue}"
 msgstr "Segue il volume principale • {effectiveValue}"
+
+#: src/features/voice/components/StreamSettingsMenuContent.tsx
+msgid "Follows your Windows sound settings"
+msgstr "Segui le impostazioni audio di Windows"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/section_registry/AppearanceSections.ts
@@ -18275,11 +18278,6 @@ msgstr "Installalo dal menu del tuo browser."
 msgid "Install the new app"
 msgstr "Installa la nuova app"
 
-#. Label for the installed desktop version in the Linux update modal.
-#: src/features/updater/commands/UpdaterModalCommands.tsx
-msgid "Installed"
-msgstr "Installata"
-
 #. Desktop updater modal body. The currentVersion placeholder is the installed app version.
 #: src/features/updater/commands/UpdaterModalCommands.tsx
 msgid "Installed version: {currentVersion}."
@@ -19448,7 +19446,7 @@ msgstr "Tariffa precedente"
 msgid "Let /tts read your message aloud. Disabling the setting keeps those commands as regular text."
 msgstr "Fai leggere il tuo messaggio ad alta voce da /tts. Disattivando l'impostazione, questi comandi rimarranno come testo normale."
 
-#. Toggle label in the community privacy modal: allow DMs from bots that live in this community.
+#. Toggle label in the community privacy modal: allow DMs from bots that are in this community.
 #: src/features/guild/components/modals/GuildPrivacySettingsModal.tsx
 msgid "Let bots in this community DM you"
 msgstr "Consenti ai bot di questa community di inviarti messaggi diretti"
@@ -19788,11 +19786,6 @@ msgstr "App Linux"
 #: src/features/voice/utils/VoiceMessageDescriptors.ts
 msgid "Linux default"
 msgstr "Linux (predefinito)"
-
-#. Select label for choosing the Linux desktop package format to download.
-#: src/features/updater/commands/UpdaterModalCommands.tsx
-msgid "Linux package"
-msgstr "Pacchetto Linux"
 
 #. Forum layout name shown inside an activity log row.
 #. Forum layout option that shows posts as rows.
@@ -20540,6 +20533,10 @@ msgstr "Massima protezione per gli spazi adatti alle famiglie"
 #: src/features/user/components/settings_utils/search_index/VoiceVideoIndex.ts
 msgid "May cause compatibility issues for viewers. We’re working on improving this."
 msgstr "Potrebbe causare problemi di compatibilità per gli spettatori. Stiamo lavorando per migliorare la situazione."
+
+#: src/features/voice/components/StreamSettingsMenuContent.tsx
+msgid "May include call audio from mixer apps"
+msgstr "Può includere l'audio della chiamata dalle app di mixer"
 
 #. Short label in the max favorite memes modal.
 #: src/features/app/components/alerts/MaxFavoriteMemesModal.tsx
@@ -22425,11 +22422,6 @@ msgstr "I nuovi thread smetteranno di essere visualizzati nell'elenco dei canali
 msgid "New users can't join right now. You can still create an account or sign in, then try this link again later."
 msgstr "I nuovi utenti non possono entrare nella community in questo momento. Puoi comunque creare un account o accedere, poi riprovare questo link più tardi."
 
-#. Fallback version label when the available desktop version is unknown.
-#: src/features/updater/commands/UpdaterModalCommands.tsx
-msgid "New version"
-msgstr "Nuova versione"
-
 #. US state name, shown next to the country name in the mature content gate.
 #: src/features/user/utils/UserGeo.ts
 msgctxt "us-state"
@@ -24137,6 +24129,8 @@ msgid "Open settings"
 msgstr "Apri impostazioni"
 
 #. Button label that opens the software center via appstream protocol.
+#. Native desktop dialog button on a Flatpak install that opens the software center page for the desktop app.
+#: src/features/platform/utils/DesktopLocaleBridge.ts
 #: src/features/updater/commands/UpdaterModalCommands.tsx
 msgid "Open software center"
 msgstr "Apri il centro software"
@@ -25279,8 +25273,8 @@ msgstr "Piano"
 
 #. Text on the card in settings that links to the Plutonium page.
 #: src/features/premium/components/plutonium_page/PlutoniumPageLinkCard.tsx
-msgid "Plans, perks, gifts and your subscription all live on one page."
-msgstr "Piani, vantaggi, regali e il tuo abbonamento si trovano tutti in un'unica pagina."
+msgid "Plans, perks, gifts and your subscription are all on one page."
+msgstr "Piani, vantaggi, regali e il tuo abbonamento sono tutti in un'unica pagina."
 
 #: src/features/auth/flow/HandoffApprovalFlow.tsx
 msgid "Platform"
@@ -25331,6 +25325,11 @@ msgstr "Riproduci."
 #: src/features/user/components/settings_utils/section_registry/NotificationsSections.ts
 msgid "Playback"
 msgstr "Riproduzione"
+
+#. Submenu label in the stream settings menu of a Windows screen share. Picks which playback devices the shared desktop audio comes from.
+#: src/features/voice/components/StreamSettingsMenuContent.tsx
+msgid "Playback devices"
+msgstr "Dispositivi di riproduzione"
 
 #. Section / menu header above the playback rate options in the media player.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
@@ -25403,7 +25402,7 @@ msgstr "Apri l’utente in una finestra separata"
 msgid "Pop out video"
 msgstr "Apri il video in una finestra separata"
 
-#. Overlay text shown on a voice participant tile while it lives in a separate popped-out window.
+#. Overlay text shown on a voice participant tile while it is in a separate popped-out window.
 #: src/features/voice/components/popout/PoppedOutOverlay.tsx
 msgid "Popped out"
 msgstr "In finestra separata"
@@ -28459,11 +28458,6 @@ msgstr "Casella di spunta rotonda"
 msgid "Rows per page"
 msgstr "Righe per pagina"
 
-#. Option in the Linux package format dropdown of the desktop updater modal. Keep the format token "RPM" verbatim and translate only the word "package".
-#: src/features/updater/commands/UpdaterModalCommands.tsx
-msgid "RPM package"
-msgstr "Pacchetto RPM"
-
 #. Settings search entry description. One-line summary of what the settings search entry controls.
 #: src/features/user/components/settings_utils/search_index/DesktopSettingsIndex.ts
 msgid "Run {productName} automatically when your computer starts"
@@ -30119,6 +30113,11 @@ msgstr "Impostazioni."
 #: src/features/auth/components/modals/MfaTotpEnableModal.tsx
 msgid "Setup key"
 msgstr "Chiave di configurazione"
+
+#. Label for the setup token input in the setup wizard.
+#: src/features/app/components/setup/SetupWizardSteps.tsx
+msgid "Setup token"
+msgstr "Token di configurazione"
 
 #. Label in the channel and chat typing users.
 #: src/features/typing/utils/TypingTierText.ts
@@ -33110,11 +33109,6 @@ msgstr "Tocca Condividi, quindi Aggiungi alla schermata Home."
 msgid "Tap to add a note"
 msgstr "Tocca per aggiungere una nota"
 
-#. Option in the Linux package format dropdown of the desktop updater modal. Keep the format token "tar.gz" verbatim and translate only the word "archive".
-#: src/features/updater/commands/UpdaterModalCommands.tsx
-msgid "tar.gz archive"
-msgstr "Archivio tar.gz"
-
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/section_registry/SharedDescriptors.ts
 msgid "Taskbar badge"
@@ -33428,6 +33422,11 @@ msgstr "Il tag #0000 è riservato agli abbonati Visionary. Visionary non è più
 msgid "The API is on a different origin than this page, so setup requests are sent without your session. Check the public origin and port this instance is configured with, then reload."
 msgstr "L'API si trova su un'origine diversa da questa pagina, quindi le richieste di configurazione vengono inviate senza la tua sessione. Controlla l'origine pubblica e la porta con cui è configurata questa istanza, quindi ricarica."
 
+#. Help text under the setup token input in the setup wizard. FLUXER_SETUP_TOKEN is an environment variable name and must not be translated.
+#: src/features/app/components/setup/SetupWizardSteps.tsx
+msgid "The API wrote the token to its log the first time it started. If you set FLUXER_SETUP_TOKEN, use that value."
+msgstr "L'API ha scritto il token nel suo log la prima volta che è stata avviata. Se hai impostato FLUXER_SETUP_TOKEN, usa quel valore."
+
 #: src/features/app/components/ErrorFallback.tsx
 msgid "The app crashed"
 msgstr "L'app si è bloccata"
@@ -33497,11 +33496,6 @@ msgstr "La connessione viene aggiornata a TLS solo se il server lo offre."
 #: src/features/updater/commands/UpdaterModalCommands.tsx
 msgid "The desktop update could not be downloaded. Try again from the update button when your connection is stable."
 msgstr "Non è stato possibile scaricare l'aggiornamento desktop. Riprova dal pulsante di aggiornamento quando la tua connessione sarà stabile."
-
-#. Help text below the Linux package format selector in the desktop updater modal.
-#: src/features/updater/commands/UpdaterModalCommands.tsx
-msgid "The downloaded file is saved to your computer. Install it with your normal package manager."
-msgstr "Il file scaricato viene salvato sul tuo computer. Installalo con il tuo normale gestore di pacchetti."
 
 #. Activity log detail line under a deleted emoji, shown only when someone other than the person who deleted it had uploaded it. {user} is the user who uploaded the emoji, shown as a clickable user chip.
 #: src/features/guild/utils/guild_tabs/audit_log/AuditLogExpressionMessageMessages.ts
@@ -33684,6 +33678,11 @@ msgstr "Il sistema ha assegnato il ruolo {role} a {target}"
 #: src/features/guild/utils/guild_tabs/audit_log/AuditLogMemberMessages.ts
 msgid "The system removed the role {role} from {target}"
 msgstr "Il sistema ha rimosso il ruolo {role} da {target}"
+
+#. Setup wizard body explaining why the operator has to enter the setup token.
+#: src/features/app/components/setup/SetupWizardSteps.tsx
+msgid "The token proves that you run this instance. Only the person who has it can create the admin account."
+msgstr "Il token dimostra che gestisci questa istanza. Solo la persona che lo possiede può creare l'account amministratore."
 
 #. Native desktop dialog body under the headline saying the update did not finish. The buttons are Try again, Download and Later.
 #: src/features/platform/utils/DesktopLocaleBridge.ts
@@ -33902,6 +33901,11 @@ msgstr "Terze parti"
 #: src/features/relationship/components/alerts/RelationshipErrorModalUtils.tsx
 msgid "This account can't be blocked."
 msgstr "Questo account non può essere bloccato."
+
+#. Error shown in the setup wizard when the signed-in account lacks admin access to the unconfigured instance. A sign out button follows.
+#: src/features/app/components/setup/SelfHostedSetupWizardGate.tsx
+msgid "This account is not an admin of this instance. Sign in with an admin account to finish setup."
+msgstr "Questo account non è un amministratore di questa istanza. Accedi con un account amministratore per completare la configurazione."
 
 #. Error in the browser when the chosen account belongs to a different server than the app that asked to sign in. accountHost and requestHost are server addresses. productName is the app name, such as Fluxer.
 #: src/features/auth/flow/auth_login_core/useDesktopHandoffFlow.ts
@@ -36523,10 +36527,20 @@ msgstr "Fino a 4K a 60 FPS"
 msgid "Up to 720p at 30 FPS"
 msgstr "Fino a 720p a 30 FPS"
 
+#. Native desktop dialog body under the headline announcing a new version, shown on a Flatpak install. {appName} is the desktop app name (typically Fluxer).
+#: src/features/platform/utils/DesktopLocaleBridge.ts
+msgid "Update {appName} from your software center."
+msgstr "Aggiorna {appName} dal tuo centro software."
+
 #. Tray menu item shown only while a desktop update is waiting. Clicking it installs the update. {appName} is the desktop app name (typically Fluxer).
 #: src/features/platform/utils/DesktopLocaleBridge.ts
 msgid "Update {appName} now"
 msgstr "Aggiorna {appName} ora"
+
+#. Native desktop dialog body under the headline announcing a new version, shown on a Linux install managed by a package manager such as a deb, rpm or AUR package. {appName} is the desktop app name (typically Fluxer).
+#: src/features/platform/utils/DesktopLocaleBridge.ts
+msgid "Update {appName} with your package manager, or download the new version."
+msgstr "Aggiorna {appName} con il tuo gestore di pacchetti o scarica la nuova versione."
 
 #. Linux settings text when the installed desktop app is too old for system-wide shortcuts. {productName} is the app name.
 #: src/features/user/components/modals/tabs/components/SystemShortcutsSection.tsx
@@ -37333,11 +37347,6 @@ msgstr "Il nome utente deve contenere almeno 1 carattere"
 #: src/features/user/components/modals/tabs/applications_tab/application_detail/BotProfileSection.tsx
 msgid "Username must be at most 32 characters"
 msgstr "Il nome utente deve contenere al massimo 32 caratteri"
-
-#. Warning shown in the setup wizard when the username sign-in option is selected. Keep it short and plain.
-#: src/features/app/components/setup/SetupWizardSteps.tsx
-msgid "Username sign-in is still rolling out to the mobile apps. Full support on every platform is coming soon."
-msgstr "La registrazione tramite nome utente è ancora in fase di distribuzione per le app mobile. Il supporto completo su ogni piattaforma arriverà presto."
 
 #. Heading above the choice of how usernames are tagged in the setup wizard.
 #: src/features/app/components/setup/SetupWizardSteps.tsx
@@ -40570,6 +40579,11 @@ msgstr "Il tuo abbonamento passerà alla fatturazione mensile al prossimo rinnov
 #: src/features/app/components/dialogs/components/plutonium/hooks/useSubscriptionActions.ts
 msgid "Your subscription will switch to yearly billing at the next renewal."
 msgstr "Il tuo abbonamento passerà alla fatturazione annuale al prossimo rinnovo."
+
+#. Inline informational note in the screen share picker on Linux systems where no hardware video encoder is available, for example NVIDIA-only machines. Not an error.
+#: src/features/voice/components/modals/screen_share_picker_modal/SoftwareEncodeNotice.tsx
+msgid "Your system has no hardware video encoder that {productName} can use, so screen sharing uses software encoding."
+msgstr "Il tuo sistema non dispone di un codificatore video hardware che {productName} possa utilizzare, pertanto la condivisione dello schermo utilizza la codifica software."
 
 #. Body of the error modal shown when a theme CSS exceeds the maximum shareable size.
 #: src/features/theme/components/modals/ShareThemeModal.tsx
