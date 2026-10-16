@@ -127,6 +127,9 @@ function createUpdater(store, modules, options = {}) {
 		hasOfflineRenderer: options.bundledRendererVersion != null,
 		bundledRendererVersion: options.bundledRendererVersion ?? null,
 		forceStartupUpdate: options.forceStartupUpdate ?? false,
+		startupUpdateRequested: options.startupUpdateRequested ?? false,
+		moduleUpdatesDisabled: options.moduleUpdatesDisabled ?? false,
+		updateOnDemand: options.updateOnDemand ?? false,
 		selfUpdateShellFirst: options.selfUpdateShellFirst,
 		onState: options.onState,
 		fetch: async (url, init) => {
@@ -503,6 +506,178 @@ describe('ModuleUpdater.run', () => {
 			['fluxer_renderer', null],
 		);
 		assert.equal(updater.getLastState().detail, 'Not enough disk space to install the update');
+	});
+});
+
+describe('ModuleUpdater with module updates disabled', () => {
+	test('launches the verified set without fetching even when the manifest demands a shell update', async () => {
+		const userDataPath = createUserData();
+		const store = await openStore(userDataPath);
+		installModuleOnDisk(getModuleStoreRoot(userDataPath), 'fluxer_renderer', RENDERER_SHA, [['index.js', 'renderer']]);
+		await store.commit({fluxer_renderer: RENDERER_SHA});
+		assert.equal((await createUpdater(store, {fluxer_renderer: RENDERER_SHA}).updater.run()).status, 'launching');
+		const statuses = [];
+		let shellUpdates = 0;
+		const {updater, requests, sleeps} = createUpdater(
+			store,
+			{fluxer_renderer: NEXT_RENDERER_SHA},
+			{
+				shellLatest: '2026.824.0',
+				shellMinimum: '2026.824.0',
+				forceStartupUpdate: true,
+				moduleUpdatesDisabled: true,
+				onState: (state) => statuses.push(state.status),
+				selfUpdateShellFirst: async () => {
+					shellUpdates += 1;
+					return {reason: 'no-update'};
+				},
+			},
+		);
+
+		const outcome = await updater.run();
+
+		assert.equal(outcome.status, 'unreachable-launch');
+		assert.deepEqual(outcome.committed, {fluxer_renderer: RENDERER_SHA});
+		assert.deepEqual(requests, []);
+		assert.deepEqual(sleeps, []);
+		assert.equal(shellUpdates, 0);
+		assert.deepEqual(statuses, ['unreachable-launch']);
+		assert.equal(outcome.launchAttempt.committed.fluxer_renderer, RENDERER_SHA);
+	});
+
+	test('launches the bundled renderer on a fresh store without fetching', async () => {
+		const store = await openStore(createUserData());
+		const {updater, requests} = createUpdater(
+			store,
+			{fluxer_renderer: NEXT_RENDERER_SHA},
+			{bundledRendererVersion: SHELL_VERSION, moduleUpdatesDisabled: true},
+		);
+
+		const outcome = await updater.run();
+
+		assert.equal(outcome.status, 'unreachable-launch');
+		assert.deepEqual(outcome.committed, {});
+		assert.deepEqual(requests, []);
+	});
+
+	test('blocks at once on the unreachable splash without fetching when nothing is installed', async () => {
+		const store = await openStore(createUserData());
+		const {updater, requests, sleeps} = createUpdater(
+			store,
+			{fluxer_renderer: RENDERER_SHA},
+			{moduleUpdatesDisabled: true},
+		);
+
+		const outcome = await updater.run();
+
+		assert.equal(outcome.status, 'blocked-update-required');
+		assert.equal(outcome.reason, 'nothing-installed');
+		assert.equal(outcome.updateServerUnreachable, true);
+		assert.deepEqual(requests, []);
+		assert.deepEqual(sleeps, []);
+	});
+
+	test('ignores an explicit update request', async () => {
+		const userDataPath = createUserData();
+		const store = await openStore(userDataPath);
+		installModuleOnDisk(getModuleStoreRoot(userDataPath), 'fluxer_renderer', RENDERER_SHA, [['index.js', 'renderer']]);
+		await store.commit({fluxer_renderer: RENDERER_SHA});
+		assert.equal((await createUpdater(store, {fluxer_renderer: RENDERER_SHA}).updater.run()).status, 'launching');
+		const {updater, requests} = createUpdater(
+			store,
+			{fluxer_renderer: NEXT_RENDERER_SHA},
+			{moduleUpdatesDisabled: true, startupUpdateRequested: true},
+		);
+
+		const outcome = await updater.run();
+
+		assert.equal(outcome.status, 'unreachable-launch');
+		assert.deepEqual(outcome.committed, {fluxer_renderer: RENDERER_SHA});
+		assert.deepEqual(requests, []);
+	});
+});
+
+describe('ModuleUpdater with updates on demand', () => {
+	async function storeOnRenderer() {
+		const userDataPath = createUserData();
+		const storeRoot = getModuleStoreRoot(userDataPath);
+		const store = await openStore(userDataPath);
+		installModuleOnDisk(storeRoot, 'fluxer_renderer', RENDERER_SHA, [['index.js', 'renderer']]);
+		await store.commit({fluxer_renderer: RENDERER_SHA});
+		return {store, storeRoot};
+	}
+
+	test('launches the verified set without fetching when an automatic check left an update waiting', async () => {
+		const {store} = await storeOnRenderer();
+		assert.equal((await createUpdater(store, {fluxer_renderer: RENDERER_SHA}).updater.run()).status, 'launching');
+		const statuses = [];
+		let shellUpdates = 0;
+		const {updater, requests, sleeps} = createUpdater(
+			store,
+			{fluxer_renderer: NEXT_RENDERER_SHA},
+			{
+				shellLatest: '2026.824.0',
+				forceStartupUpdate: true,
+				updateOnDemand: true,
+				onState: (state) => statuses.push(state.status),
+				selfUpdateShellFirst: async () => {
+					shellUpdates += 1;
+					return {reason: 'no-update'};
+				},
+			},
+		);
+
+		const outcome = await updater.run();
+
+		assert.equal(outcome.status, 'unreachable-launch');
+		assert.deepEqual(outcome.committed, {fluxer_renderer: RENDERER_SHA});
+		assert.deepEqual(requests, []);
+		assert.deepEqual(sleeps, []);
+		assert.equal(shellUpdates, 0);
+		assert.deepEqual(statuses, ['launching']);
+	});
+
+	test('installs the update the user asked for before launch', async () => {
+		const {store, storeRoot} = await storeOnRenderer();
+		installModuleOnDisk(storeRoot, 'fluxer_renderer', NEXT_RENDERER_SHA, [['index.js', 'renderer-two']]);
+		seedCachedPackage(store, NEXT_RENDERER_SHA);
+		const steps = [];
+		const {updater, requests} = createUpdater(
+			recordInstalls(store, steps),
+			{fluxer_renderer: NEXT_RENDERER_SHA},
+			{
+				shellLatest: '2026.824.1',
+				updateOnDemand: true,
+				startupUpdateRequested: true,
+				selfUpdateShellFirst: async (latestVersion) => {
+					steps.push(`shell ${latestVersion}`);
+					return {reason: 'install-failed'};
+				},
+			},
+		);
+
+		const outcome = await updater.run();
+
+		assert.equal(outcome.status, 'launching');
+		assert.deepEqual(outcome.committed, {fluxer_renderer: NEXT_RENDERER_SHA});
+		assert.deepEqual(steps, ['shell 2026.824.1', 'fluxer_renderer']);
+		assert.ok(requests.some((url) => String(url).endsWith('/modules.json')));
+	});
+
+	test('goes to the update server when nothing can launch', async () => {
+		const store = await openStore(createUserData());
+		const {updater, requests} = createUpdater(
+			store,
+			{fluxer_renderer: RENDERER_SHA},
+			{updateOnDemand: true, respond: missingPackages()},
+		);
+
+		const outcome = await updater.run();
+
+		assert.equal(outcome.status, 'blocked-update-required');
+		assert.equal(outcome.reason, 'required-module-unavailable');
+		assert.equal(outcome.updateServerUnreachable, false);
+		assert.ok(requests.some((url) => String(url).endsWith('/modules.json')));
 	});
 });
 

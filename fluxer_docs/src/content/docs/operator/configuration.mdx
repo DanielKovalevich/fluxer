@@ -790,7 +790,7 @@ While email is on, registration checks the address domain. It has to publish an 
 
 #### `FLUXER_EMAIL_FROM_NAME`
 
-`.env.example` empty. The sender name. Default empty. An empty value sends mail under the instance product name, which is the name saved in the admin dashboard or else `FLUXER_APP_PRODUCT_NAME`, and a rename in the dashboard applies to the next email. A set value always wins.
+`.env.example` empty. The sender name. Default empty. An empty value sends mail under the instance product name, which is the name saved in the admin dashboard or else `FLUXER_APP_PRODUCT_NAME`, with the [self-hosted host name rule](#instance-identity-and-branding) applied, and a rename in the dashboard applies to the next email. A set value always wins.
 
 #### `FLUXER_EMAIL_REPLY_TO_EMAIL`
 
@@ -1063,15 +1063,11 @@ With feeds off, Fluxer checks none of this data. The first worker start with fee
 
 #### `FLUXER_REPORT_RETENTION_DAYS`
 
-Default `365`. Read by `worker`. The daily [report retention](/admin-api/reports/#report-retention) job deletes each report this many days after it was filed, pending or resolved, with its evidence copies and search entry, unless a legal hold is in place. Integer 1 to 36500, checked at startup.
-
-#### `FLUXER_RESOLVED_REPORT_RETENTION_DAYS`
-
-Default unset, which leaves resolved reports to `FLUXER_REPORT_RETENTION_DAYS`. Read by `worker`. When set, a resolved report is deleted this many days after it was resolved, if that comes before the end of its retention period. Pending reports are not affected, and a legal hold still keeps a report. Integer 1 to 36500, checked at startup.
+Default `365`. Read by `worker`. The daily [report retention](/admin-api/reports/#report-retention) job deletes each resolved report this many days after it was resolved, with its evidence copies and search entry. Pending reports are kept until they are resolved. A legal hold, a `child_safety` category or a linked enforcement decision can keep a report longer. Integer 1 to 36500, checked at startup.
 
 #### `FLUXER_REPORT_RETENTION_DRY_RUN`
 
-Default `false`. Read by `worker`. With `true`, each run only counts what it would delete and deletes nothing. `true` or `false`, checked at startup. Deleted evidence cannot be restored. Check the counts in the `Processed report retention` log line before the first real run.
+Default `false`. Read by `worker`. With `true`, each run only counts what it would delete or clear and changes nothing. `true` or `false`, checked at startup. Deleted evidence cannot be restored. Check the counts in the `Processed report retention` log line before the first real run.
 
 #### `FLUXER_BREACHED_PASSWORD_CHECK_ENABLED`
 
@@ -1150,11 +1146,11 @@ Set by Docker. Node identity in metrics and logs.
 
 #### `FLUXER_ENV`
 
-Default `development`. The runtime mode. `development`, `production`, or `test`. Compose pins `production`, which gates Postgres validation and the admin cookie flags. On a self-hosted instance, `production` also enforces the [setup token](#setup-token).
+Default `production` when `FLUXER_SELF_HOSTED` is `true`, otherwise `development`. The runtime mode. `development`, `production`, or `test`. Compose pins `production`, which gates Postgres validation and the admin cookie flags. On a self-hosted instance, `production` also enforces the [setup token](#setup-token).
 
 #### `FLUXER_SELF_HOSTED`
 
-Default `false`. The self-host switch. Compose sets `true`. It relaxes the production Postgres SSL requirement, seeds the limit tier, gates registration, donation and discovery controllers, keeps premium billing off until it is set up as [Payments](#payments) describes, turns blocklist feeds off, and keeps hosted-only artwork from `fluxer.app` out of the app, webhook avatars and link embeds.
+Default `false`. The self-host switch. Compose sets `true`. It relaxes the production Postgres SSL requirement, seeds the limit tier, gates registration, donation and discovery controllers, keeps premium billing off until it is set up as [Payments](#payments) describes, turns blocklist feeds off, keeps an account closed for a broken rule for at least 14 days instead of 74 because there is no appeal route, and keeps hosted-only artwork from `fluxer.app` out of the app, webhook avatars and link embeds.
 
 ## Feature flags and development switches
 
@@ -1259,6 +1255,8 @@ A brand asset on another origin than the instance needs no CSP setting. `app-pro
 #### `FLUXER_APP_PRODUCT_NAME`
 
 Default `Fluxer`. The product name clients display and the API writes in its emails and report flows.
+
+On a self-hosted instance, a name that is empty or `Fluxer` is replaced by the host name of the web app endpoint in everything the server writes: emails and their sender name, system messages and the name of the system user, report flows, enforcement notices, IP block errors, the name of the built-in admin application and donation checkout. Clients keep showing the saved name, except on the network blocked screen, which takes the name from the error. Set a name of your own to use it everywhere.
 
 #### `FLUXER_APP_ICON_URL`
 
@@ -1790,7 +1788,7 @@ The admin dashboard at `FLUXER_ADMIN_BASE_PATH` stores these in the database. Th
 
 #### Instance Config, Public App Identity
 
-Product name, client-visible brand assets, the terms, privacy, and community guidelines links, and the setup state in the instance discovery document. No environment variable sets a legal link. On a self-hosted instance, the enforcement emails list only the terms and guidelines links set here, and the clients and report flows show no guidelines link until one is set. Its emails and its IP block errors name no contact address. They tell the reader to contact the administrators of the instance, and no setting adds an address. The emails, the report flows, the IP block errors, the title of an APNs alert that has none, and the built-in admin application use the product name set here, and a rename applies without a restart.
+Product name, client-visible brand assets, the terms, privacy, and community guidelines links, and the setup state in the instance discovery document. No environment variable sets a legal link. On a self-hosted instance, enforcement notices link a rule to the terms or guidelines page set here, without an anchor, and show the rule title alone when no page is set. The clients and report flows show no guidelines link until one is set. Self-hosted emails, enforcement notices and IP block errors name no contact address and no appeal route, and no setting adds one. The emails, the report flows, the IP block errors, the title of an APNs alert that has none, and the built-in admin application use the product name set here, with the [self-hosted host name rule](#instance-identity-and-branding), and a rename applies without a restart.
 
 #### Instance Config, Registration Controls
 

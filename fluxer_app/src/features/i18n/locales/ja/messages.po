@@ -1802,6 +1802,14 @@ msgstr "タイトルバーの変更を反映するには、{PRODUCT_NAME}を再�
 msgid "{PRODUCT_NAME} needs to restart to disable Chromium's hardware acceleration. Use this only if you're troubleshooting graphics glitches or high GPU usage."
 msgstr "Chromiumのハードウェアアクセラレーションを無効にするには、{PRODUCT_NAME}を再起動する必要があります。この設定は、グラフィックの不具合やGPU使用率の高さをトラブルシューティングする場合にのみ使用してください。"
 
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedDesktopControls.tsx
+msgid "{PRODUCT_NAME} needs to restart to install updates automatically again."
+msgstr "{PRODUCT_NAME} で自動的にアップデートを再度インストールするには、再起動が必要です。"
+
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedDesktopControls.tsx
+msgid "{PRODUCT_NAME} needs to restart to stop updating while starting. When an update is available, you can install it from the app whenever you like."
+msgstr "{PRODUCT_NAME} を再起動すると、起動中のアップデートが停止します。アップデートが利用可能な場合は、いつでもアプリからインストールできます。"
+
 #. Desktop updater modal body for a Flatpak install when a newer desktop version exists. The version placeholder is the new app version and productName is the app name.
 #: src/features/updater/commands/UpdaterModalCommands.tsx
 msgid "{productName} {version} is available. Update it from your software center."
@@ -1821,6 +1829,16 @@ msgstr "{productName}アプリのアイコン"
 #: src/features/user/components/modals/tabs/notifications_tab/PushSettings.tsx
 msgid "{productName} avoids sending push notifications to your mobile devices when you are at your computer. Choose how long you need to be inactive on desktop before you receive push notifications."
 msgstr "{productName}は、パソコンを使用中はモバイルデバイスにプッシュ通知を送信しません。デスクトップでどのくらい非アクティブな状態が続いたらプッシュ通知を受け取るかを選択してください。"
+
+#. First sentence of the network blocked screen when a rule is shown. productName is the app name. Must read the same as the error message for this block.
+#: src/features/auth/AuthMessageDescriptors.ts
+msgid "{productName} blocked access from this network because of activity that broke its rules."
+msgstr "{productName}は、ルールに違反する活動があったため、このネットワークからのアクセスをブロックしました。"
+
+#. First sentence of the network blocked screen when no rule is shown. productName is the app name. Must read the same as the error message for this block.
+#: src/features/auth/AuthMessageDescriptors.ts
+msgid "{productName} blocked access from this network."
+msgstr "{productName}は、このネットワークからのアクセスをブロックしました。"
 
 #. Short badge title in the user profile badges popout. Preserve {productName}; it is inserted by code. English locales use Title Case for official badge titles; other locales should use natural local capitalization.
 #: src/features/user/components/popouts/UserProfileBadges.tsx
@@ -2026,6 +2044,11 @@ msgstr "{productName}ビジョナリー"
 msgid "{productName} Visionary since {premiumSinceFormatted}"
 msgstr "{productName}ビジョナリー（{premiumSinceFormatted}から）"
 
+#. Settings search entry description. One-line summary of what the settings search entry controls.
+#: src/features/user/components/settings_utils/search_index/DesktopSettingsIndex.ts
+msgid "{productName} won't update while starting. When an update is available, you can install it from the app whenever you like. Takes effect the next time {productName} starts."
+msgstr "{productName}は起動中はアップデートされません。アップデートが利用可能な場合は、いつでもアプリからインストールできます。次回 {productName} を起動したときに適用されます。"
+
 #. Accessible label for the application wordmark.
 #: src/features/ui/components/icons/FluxerWordmark.tsx
 msgid "{productName} wordmark"
@@ -2129,6 +2152,11 @@ msgstr "{streamerDisplayName}さんの画面"
 msgid "{tenSeconds} seconds"
 msgstr "{tenSeconds}秒"
 
+#. Template preview summary listing how many text channels, forum channels, voice channels, categories, and roles will be imported. Used when the template has at least one forum or media channel.
+#: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx
+msgid "{textChannelCount, plural, one {# text channel} other {# text channels}}, {forumChannelCount, plural, one {# forum channel} other {# forum channels}}, {voiceChannelCount, plural, one {# voice channel} other {# voice channels}}, {categoryCount, plural, one {# category} other {# categories}}, {roleCount, plural, one {# role} other {# roles}}"
+msgstr "{textChannelCount, plural, one {# テキストチャンネル} other {# テキストチャンネル}}、{forumChannelCount, plural, one {# フォーラムチャンネル} other {# フォーラムチャンネル}}、{voiceChannelCount, plural, one {# ボイスチャンネル} other {# ボイスチャンネル}}、{categoryCount, plural, one {# カテゴリ} other {# カテゴリ}}、{roleCount, plural, one {# ロール} other {# ロール}}"
+
 #. Template preview summary listing how many text channels, voice channels, categories, and roles will be imported.
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx
 msgid "{textChannelCount, plural, one {# text channel} other {# text channels}}, {voiceChannelCount, plural, one {# voice channel} other {# voice channels}}, {categoryCount, plural, one {# category} other {# categories}}, {roleCount, plural, one {# role} other {# roles}}"
@@ -2138,6 +2166,11 @@ msgstr "{textChannelCount, plural, other {#個のテキストチャンネル}}�
 #: src/features/theme/state/ThemeLibrary.ts
 msgid "{themeName} Copy"
 msgstr "{themeName}のコピー"
+
+#. Error in the import-template form when the third-party platform named by {theOtherPlatform} temporarily refused the desktop app template lookup because of too many requests.
+#: src/features/guild/components/modals/add_guild_modal/shared.ts
+msgid "{theOtherPlatform} is limiting template lookups right now. Try again in a moment."
+msgstr "{theOtherPlatform} は現在、テンプレートの検索を制限しています。しばらくしてからもう一度お試しください。"
 
 #. Time window preset label shown as a standalone duration in option lists. The number is interpolated.
 #: src/features/app/config/TimeWindowPresets.ts
@@ -2866,14 +2899,29 @@ msgstr "アカウントとプレミアムのオーバーライド"
 msgid "Account and security details are hidden"
 msgstr "アカウントとセキュリティの詳細は非表示です"
 
+#. Title of the sign-in screen for an account suspended with no end date.
+#: src/features/auth/flow/AccountRestrictionScreen.tsx
+msgid "Account banned"
+msgstr "アカウントは永久停止されています"
+
 #. Short label in the authentication claim account modal. Keep the tone plain and specific.
 #: src/features/auth/components/modals/ClaimAccountModal.tsx
 msgid "Account claimed successfully"
 msgstr "アカウントを登録しました"
 
+#. Title of the sign-in screen for an account the team closed and will delete.
+#: src/features/auth/flow/AccountRestrictionScreen.tsx
+msgid "Account closed"
+msgstr "アカウントは閉鎖されています"
+
 #: src/features/connection/components/pages/ConnectionCallbackPage.tsx
 msgid "Account connected"
 msgstr "アカウントを接続しました"
+
+#. One line of the support email written for the user. createdAt is the account creation time as an ISO 8601 UTC timestamp.
+#: src/features/user/utils/MessagingPausedHelpEmail.ts
+msgid "Account created: {createdAt}"
+msgstr "アカウント作成日時: {createdAt}"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/section_registry/PrivacySafetySections.ts
@@ -2885,6 +2933,11 @@ msgstr "アカウントデータ"
 msgid "Account details unavailable"
 msgstr "アカウント情報がありません"
 
+#. One line of the support email written for the user. accountId is the numeric account ID.
+#: src/features/user/utils/MessagingPausedHelpEmail.ts
+msgid "Account ID: {accountId}"
+msgstr "アカウントID: {accountId}"
+
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/section_registry/AccountSecuritySections.ts
 msgid "Account removal"
@@ -2894,6 +2947,11 @@ msgstr "アカウント削除"
 #: src/features/channel/components/channel_header_components/developer_tools/AccountPremiumMenu.tsx
 msgid "Account state"
 msgstr "アカウントの状態"
+
+#. Title of the sign-in screen for an account suspended until a set date.
+#: src/features/auth/flow/AccountRestrictionScreen.tsx
+msgid "Account suspended"
+msgstr "アカウントは一時停止されています"
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
 #: src/features/channel/components/channel_header_components/developer_tools/OptionPresets.ts
@@ -9601,6 +9659,11 @@ msgstr "コードをコピー"
 msgid "Copy community ID"
 msgstr "コミュニティIDをコピー"
 
+#. Button in the help dialog opened from "My text didn't go through". Copies the account details for a support email to the clipboard.
+#: src/features/user/components/modals/MessagingPausedHelpModal.tsx
+msgid "Copy details"
+msgstr "詳細をコピー"
+
 #. Developer-mode voice menu action that copies the unique identifier of a voice device or connection.
 #: src/features/ui/action_menu/items/voice_participant_menu_data/shared.ts
 msgid "Copy device ID"
@@ -10204,6 +10267,11 @@ msgstr "設定を読み込めませんでした"
 msgid "Couldn't load the report form."
 msgstr "報告フォームを読み込めませんでした。"
 
+#. Instructions in the desktop app import-template flow shown when looking up the template directly failed, so the user has to fetch the JSON in a browser and paste it instead. "JSON" must not be translated.
+#: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx
+msgid "Couldn't load the template automatically. Open the link below in your browser, then copy the entire JSON response and paste it into the box."
+msgstr "テンプレートを自動で読み込めませんでした。下のリンクをブラウザで開き、JSON全体をコピーしてボックスに貼り付けてください。"
+
 #: src/features/user/components/modals/tabs/applications_tab/ApplicationDetail.tsx
 msgid "Couldn't load this application"
 msgstr "このアプリを読み込めませんでした"
@@ -10536,6 +10604,16 @@ msgstr "カウントダウンタイマー"
 #: src/features/moderation/components/report/ReportStepDetails.tsx
 msgid "Country of residence"
 msgstr "居住国"
+
+#. Field label in the help dialog opened from "My text didn't go through". The user types the country they are in so support can help.
+#: src/features/user/components/modals/MessagingPausedHelpModal.tsx
+msgid "Country you're in"
+msgstr "現在いる国"
+
+#. One line of the support email written for the user. country is the country the user typed.
+#: src/features/user/utils/MessagingPausedHelpEmail.ts
+msgid "Country: {country}"
+msgstr "国: {country}"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts
@@ -11488,6 +11566,11 @@ msgstr "このインスタンスのユーザーにプレミアム制限をどの
 msgid "Decide whether replies @mention you by default"
 msgstr "返信でデフォルトであなたに@メンションを付けるかどうかを設定します"
 
+#. Reference line on the account restriction screen. People quote this ID when they appeal.
+#: src/features/auth/flow/AccountRestrictionScreen.tsx
+msgid "Decision ID: {decisionId}"
+msgstr "決定ID: {decisionId}"
+
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #: src/features/input/state/input_keybind/shared.ts
 msgid "Decline the incoming call"
@@ -12387,6 +12470,16 @@ msgstr "アプリ全体のアニメーションと画面遷移を無効にしま
 msgid "Disable animations and transitions. Currently controlled by your system setting."
 msgstr "アニメーションと画面遷移を無効にします。現在はシステム設定によって制御されています。"
 
+#. Settings search entry label. Names the settings search entry in the settings UI.
+#: src/features/user/utils/UserMessageDescriptors.ts
+msgid "Disable automatic updates"
+msgstr "自動アップデートを無効にする"
+
+#. Confirmation prompt in advanced settings.
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedDesktopControls.tsx
+msgid "Disable automatic updates?"
+msgstr "自動更新を無効にしますか？"
+
 #: src/features/channel/components/channel_header_components/developer_tools/AccountPremiumMenu.tsx
 msgid "Disable backend premium perks"
 msgstr "バックエンドのプレミアム特典を無効にする"
@@ -13160,6 +13253,11 @@ msgstr "グループアイコンをドラッグして位置を調整し、スク
 msgid "Drag to reposition your invite background and use the scroll wheel or pinch to zoom. The recommended minimum size is {minimumWidth}×{minimumHeight} pixels (16:9)."
 msgstr "招待背景をドラッグして位置を調整し、スクロールホイールまたはピンチでズームします。推奨される最小サイズは{minimumWidth}×{minimumHeight}ピクセル（16:9）です。"
 
+#. Desktop setting description under the dark taskbar badge toggle on Windows.
+#: src/features/user/components/modals/tabs/DesktopSettingsTab.tsx
+msgid "Draw the unread badge on the {productName} taskbar button in dark gray instead of red."
+msgstr "{productName} のタスクバーボタンの未読バッジを赤ではなくダークグレーで表示します。"
+
 #. Description text in the theme studio assets section.
 #: src/features/theme_studio/sections/AssetsSection.tsx
 msgid "Drop images, fonts, or other files here to use them inside your custom CSS."
@@ -13565,6 +13663,11 @@ msgstr "{windowEndsOn}まで払い戻しの対象となります。これによ�
 msgid "Email"
 msgstr "メールアドレス"
 
+#. Body of the help dialog opened from "My text didn't go through" while messaging is paused on the account. supportEmail is the support email address. Keep it short, calm and neutral.
+#: src/features/user/components/modals/MessagingPausedHelpModal.tsx
+msgid "Email {supportEmail} and a person will check your account. You can also reply to the email we sent you."
+msgstr "{supportEmail} までメールでご連絡ください。担当者がアカウントを確認します。お送りしたメールに返信していただくこともできます。"
+
 #. Short label in the inputs tab. Keep it concise.
 #. Short label in the moderation report step email. Keep it concise. Keep the tone plain and specific.
 #: src/features/moderation/components/report/ReportStepEmail.tsx
@@ -13591,6 +13694,11 @@ msgstr "メール配信"
 #: src/features/moderation/components/report/ReportStepUnavailable.tsx
 msgid "Email reports aren't available here"
 msgstr "ここではメールによる報告はご利用いただけません"
+
+#. Primary button in the help dialog opened from "My text didn't go through". Opens a new email to support with the account details filled in.
+#: src/features/user/components/modals/MessagingPausedHelpModal.tsx
+msgid "Email support"
+msgstr "サポートにメール"
 
 #. Developer control label for the email-verification banner.
 #: src/features/devtools/components/NagbarControls.ts
@@ -13840,6 +13948,11 @@ msgstr "添付ファイルの有効期限を有効にする"
 #: src/features/voice/components/modals/AudioPlaybackPermissionModal.tsx
 msgid "Enable audio"
 msgstr "音声の再生を許可"
+
+#. Confirmation prompt in advanced settings.
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedDesktopControls.tsx
+msgid "Enable automatic updates?"
+msgstr "自動アップデートを有効にしますか？"
 
 #: src/features/user/components/modals/tabs/component_gallery_tab/index.tsx
 msgid "Enable beta feature"
@@ -17461,10 +17574,20 @@ msgstr "メンバーの最近のメッセージ履歴をどれだけ削除する
 msgid "How this works"
 msgstr "仕組み"
 
+#. Heading on the account restriction screen above the appeal instructions.
+#: src/features/auth/flow/AccountRestrictionScreen.tsx
+msgid "How to appeal"
+msgstr "異議申し立ての方法"
+
 #. Heading above the recovery steps in the printed or downloaded recovery kit.
 #: src/features/auth/components/modals/RecoveryKitModal.tsx
 msgid "How to recover your account"
 msgstr "アカウントを復元する方法"
+
+#. Heading on the account restriction screen above how the case reached the team and who decided it.
+#: src/features/auth/flow/AccountRestrictionScreen.tsx
+msgid "How we decided"
+msgstr "判断の経緯"
 
 #. Accessible label in the language and locale names. Keep it concise.
 #: src/features/user/utils/LocaleUtils.ts
@@ -17659,6 +17782,31 @@ msgstr "このユーザー名を保存すると、{PREMIUM_PRODUCT_NAME}の有�
 #: src/features/user/components/modals/FluxerTagChangeModal.tsx
 msgid "If you save this username, your tag will reroll randomly when your {PREMIUM_PRODUCT_NAME} expires, unless it renews."
 msgstr "このユーザー名を保存すると、{PREMIUM_PRODUCT_NAME}の有効期限が切れた際にタグがランダムに再抽選されます（更新されない場合）。"
+
+#. Paragraph on the network blocked screen for people who share a network with others. Must read the same as the error message for this block.
+#: src/features/auth/AuthMessageDescriptors.ts
+msgid "If you share this network, for example at school, at work, on public Wi-Fi, through your mobile carrier or a VPN, this block may have nothing to do with you. The quickest fix is to switch networks, for example to mobile data instead of Wi-Fi, or to turn your VPN on or off."
+msgstr "学校、職場、公共Wi-Fi、モバイルキャリア、VPNなどでこのネットワークを他の人と共有している場合、このブロックはあなたとは関係ないかもしれません。いちばん早い解決策は、Wi-Fiからモバイルデータに切り替えるなどしてネットワークを変えるか、VPNをオンまたはオフにすることです。"
+
+#. Line on the network blocked screen. The link is the contact email address and ip is the blocked IP address.
+#: src/features/auth/flow/AccountRestrictionScreen.tsx
+msgid "If you think this block is a mistake, email <0>{email}</0> and include your IP address, {ip}."
+msgstr "このブロックが誤りだと思われる場合は、IPアドレス（{ip}）を記載して<0>{email}</0>までメールでご連絡ください。"
+
+#. Appeal line for a restriction from before the team recorded decisions, with no appeal deadline. The link is the appeals email address.
+#: src/features/auth/flow/AccountRestrictionScreen.tsx
+msgid "If you think we got this wrong, email <0>{email}</0> and include your username."
+msgstr "この判断が誤りだと思われる場合は、ユーザー名を記載して<0>{email}</0>までメールでご連絡ください。"
+
+#. Appeal line for an account with no email address. The link is the appeals email address and deadline is a date.
+#: src/features/auth/flow/AccountRestrictionScreen.tsx
+msgid "If you think we got this wrong, email <0>{email}</0> by {deadline}. Include the decision ID and your username. Appeals are free, and a person reviews each one."
+msgstr "この判断が誤りだと思われる場合は、{deadline}までに<0>{email}</0>へメールでご連絡ください。決定IDとユーザー名を記載してください。異議申し立ては無料で、一件ずつ担当者が審査します。"
+
+#. Appeal line on the account restriction screen. The link is the appeals email address and deadline is a date.
+#: src/features/auth/flow/AccountRestrictionScreen.tsx
+msgid "If you think we got this wrong, email <0>{email}</0> by {deadline}. Write from the email address on your account if you can, and include the decision ID. Appeals are free, and a person reviews each one."
+msgstr "この判断が誤りだと思われる場合は、{deadline}までに<0>{email}</0>へメールでご連絡ください。可能であればアカウントに登録したメールアドレスから送信し、決定IDを記載してください。異議申し立ては無料で、一件ずつ担当者が審査します。"
 
 #: src/features/auth/components/modals/AccountDeleteModal.tsx
 msgid "If you want to export your data or delete your messages first, please visit {privacyDashboardPath} before proceeding."
@@ -17966,10 +18114,6 @@ msgstr "チャンネル内"
 #: src/features/user/components/modals/tabs/chat_settings_tab/DisplayTab.tsx
 msgid "In channels I moderate"
 msgstr "管理しているチャンネル"
-
-#: src/features/channel/components/ChannelWelcomeSection.tsx
-msgid "In the beginning, there was nothing. Then, there was {channelDisplayName}. And it was good."
-msgstr "はじめは何もありませんでした。そこに「{channelDisplayName}」が誕生し、すべてが始まりました。"
 
 #: src/features/user/components/profile/VoiceActivityCard.tsx
 msgid "In voice"
@@ -22061,6 +22205,11 @@ msgstr "マイ画像検索"
 msgid "My search engine"
 msgstr "マイ検索エンジン"
 
+#. Button shown while messaging is paused on the current account, and the title of the help dialog it opens. The email describing the quick step asks the user to send a text message from their phone. This is for users who could not send that text, and also for users who sent it and nothing happened. The translation should cover both. Also used as the subject of the support email.
+#: src/features/user/utils/MessagingPausedHelpEmail.ts
+msgid "My text didn't go through"
+msgstr "SMSが届きませんでした"
+
 #. Short label in the add custom search engine modal. Keep it concise.
 #: src/features/user/components/modals/tabs/chat_settings_tab/AddCustomSearchEngineModal.tsx
 msgid "My translator"
@@ -22222,6 +22371,11 @@ msgstr "オランダ"
 #: src/features/voice/components/voice_connection_status/shared.ts
 msgid "Network"
 msgstr "ネットワーク"
+
+#. Title of the screen and dialog shown when the instance blocks the network a request came from.
+#: src/features/auth/AuthMessageDescriptors.ts
+msgid "Network blocked"
+msgstr "ネットワークがブロックされています"
 
 #. Error message in the devices tab.
 #: src/features/user/components/modals/tabs/DevicesTab.tsx
@@ -23289,6 +23443,11 @@ msgstr "メモ"
 #: src/features/user/components/modals/NoteEditSheet.tsx
 msgid "Note (only visible to you)"
 msgstr "メモ（自分のみ表示）"
+
+#. Line on the account restriction screen with a note the team wrote to the account holder.
+#: src/features/auth/flow/AccountRestrictionScreen.tsx
+msgid "Note from our team: {statement}"
+msgstr "チームからのコメント: {statement}"
 
 #. Notification level option. Suppresses all pushes for the channel or community. Paired with "All messages" and "Only mentions".
 #: src/features/i18n/utils/CommonMessageDescriptors.ts
@@ -26878,8 +27037,8 @@ msgstr "エンジン変更を適用するには再読み込みしてください
 
 #. Description text in the text to speech.
 #: src/features/user/components/modals/tabs/notifications_tab/TextToSpeech.tsx
-msgid "Remain silent unless someone runs /tts manually."
-msgstr "誰かが手動で /tts を実行しない限り、読み上げません。"
+msgid "Remain silent unless someone runs /tts in the channel you're viewing."
+msgstr "表示中のチャンネルで誰かが `/tts` を実行した場合にのみ、発言します。"
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #: src/features/user/components/settings_utils/search_index/DesktopSettingsIndex.ts
@@ -28457,6 +28616,16 @@ msgstr "丸型チェックボックス"
 #: src/features/channel/components/guild_members_page/MembersTableFooter.tsx
 msgid "Rows per page"
 msgstr "ページあたりの行数"
+
+#. Names the rule behind a restriction when the instance publishes no link for it. title is the rule title.
+#: src/features/auth/flow/AccountRestrictionScreen.tsx
+msgid "Rule: {title}"
+msgstr "ルール: {title}"
+
+#. Names the rule behind a restriction, with the rule title linked to the rule. title is the rule title.
+#: src/features/auth/flow/AccountRestrictionScreen.tsx
+msgid "Rule: <0>{title}</0>"
+msgstr "ルール: <0>{title}</0>"
 
 #. Settings search entry description. One-line summary of what the settings search entry controls.
 #: src/features/user/components/settings_utils/search_index/DesktopSettingsIndex.ts
@@ -30755,6 +30924,11 @@ msgstr "システムトレイにアイコンを表示"
 #: src/features/user/components/settings_utils/search_index/AdvancedSettingsIndex.ts
 msgid "Show text in Fluxer Sans, the previous default font, instead of the Windows system font"
 msgstr "Windowsのシステムフォントではなく、以前のデフォルトフォントであるFluxer Sansでテキストを表示する"
+
+#. Desktop setting description under the colored tray icon toggle on Windows and Linux.
+#: src/features/user/components/modals/tabs/DesktopSettingsTab.tsx
+msgid "Show the full-color {productName} icon instead of a monochrome one that matches your taskbar."
+msgstr "タスクバーに合わせたモノクロではなく、フルカラーの{productName}アイコンを表示します。"
 
 #. Switch label in the role editor (hoist toggle). When on, members with this role appear in their own member-list section.
 #: src/features/guild/components/modals/guild_tabs/guild_roles_tab/RoleEditor.tsx
@@ -33445,6 +33619,11 @@ msgstr "そのBANは{date}にすでに期限切れになっていました"
 msgid "The ban was scheduled to expire on {date}"
 msgstr "そのBANは{date}に終了する予定でした"
 
+#. Line on the network blocked screen for a block with an end. date is a date and time.
+#: src/features/auth/flow/AccountRestrictionScreen.tsx
+msgid "The block ends on {date}."
+msgstr "ブロックは{date}に解除されます。"
+
 #: src/features/auth/components/pages/oauth_authorize_page/OAuthSuccessState.tsx
 msgid "The bot has been added to <0>{destinationName}</0>."
 msgstr "ボットが<0>{destinationName}</0>に追加されました。"
@@ -33896,6 +34075,11 @@ msgstr "3番目の選択肢"
 #: src/features/user/components/settings_utils/search_index/AuthorizedAppsIndex.ts
 msgid "Third party"
 msgstr "サードパーティ"
+
+#. Error in the import-template form when the desktop app loaded the template from the third-party platform named by {theOtherPlatform} but its contents were not in the expected shape.
+#: src/features/guild/components/modals/add_guild_modal/shared.ts
+msgid "This {theOtherPlatform} template couldn't be read. It may use a format Fluxer doesn't support yet."
+msgstr "この {theOtherPlatform} テンプレートは読み込めませんでした。Fluxer がまだサポートしていない形式を使用している可能性があります。"
 
 #. Body of the block-user error modal when the target is a system account that cannot be blocked.
 #: src/features/relationship/components/alerts/RelationshipErrorModalUtils.tsx
@@ -34385,6 +34569,10 @@ msgstr "これは最初のオプションの説明です"
 #: src/features/user/components/modals/tabs/component_gallery_tab/index.tsx
 msgid "This is the second option description"
 msgstr "これは2番目のオプションの説明です"
+
+#: src/features/channel/components/ChannelWelcomeSection.tsx
+msgid "This is the start of {channelDisplayName}."
+msgstr "{channelDisplayName} の始まりです。"
 
 #: src/features/user/components/modals/tabs/component_gallery_tab/index.tsx
 msgid "This is the third option description"
@@ -36613,6 +36801,11 @@ msgstr "ポリシーを更新しました"
 msgid "Updated saved media"
 msgstr "保存済みメディアを更新しました"
 
+#. Settings search synonym. Used to match this term when the user types it in the settings search bar.
+#: src/features/user/components/settings_utils/search_index/DesktopSettingsIndex.ts
+msgid "Updates"
+msgstr "アップデート"
+
 #. Heading of the dialog shown after the user follows an announcement channel.
 #: src/features/channel/components/modals/ChannelFollowSuccessModal.tsx
 msgid "Updates are on their way!"
@@ -36979,6 +37172,11 @@ msgstr "チャンネルのデフォルトを使用"
 msgid "Use coal theme (pitch-black surfaces)"
 msgstr "石炭テーマを使用（完全な黒）"
 
+#. Desktop setting toggle label on Windows and Linux. Switches the system tray icon from monochrome to the full-color app icon.
+#: src/features/user/components/modals/tabs/DesktopSettingsTab.tsx
+msgid "Use colored tray icon"
+msgstr "カラーのトレイアイコンを使用"
+
 #. Plutonium page comparison row label for global emojis and stickers.
 #: src/features/premium/components/plutonium_page/PlutoniumPageMessages.ts
 msgid "Use custom emojis and stickers in any community"
@@ -36988,6 +37186,11 @@ msgstr "コミュニティでカスタム絵文字やスタンプを使おう"
 #: src/features/user/utils/UserMessageDescriptors.ts
 msgid "Use custom image"
 msgstr "カスタム画像を使用"
+
+#. Desktop setting toggle label on Windows. Switches the unread badge drawn over the taskbar button from red to dark gray.
+#: src/features/user/components/modals/tabs/DesktopSettingsTab.tsx
+msgid "Use dark taskbar badge"
+msgstr "タスクバーのバッジをダークグレーにする"
 
 #. Short label in the theme tab content. Keep it concise.
 #: src/features/user/components/modals/tabs/appearance_tab/theme/ThemeTabContent.tsx
@@ -37357,6 +37560,11 @@ msgstr "ユーザー名タグ"
 #: src/features/user/components/modals/FluxerTagChangeModal.tsx
 msgid "Username updated"
 msgstr "ユーザー名を更新しました"
+
+#. One line of the support email written for the user. username is the account username with its tag.
+#: src/features/user/utils/MessagingPausedHelpEmail.ts
+msgid "Username: {username}"
+msgstr "ユーザー名: {username}"
 
 #. Summary value on the setup wizard finish step when people sign in with a username.
 #: src/features/app/components/setup/SetupWizardSteps.tsx
@@ -38482,6 +38690,11 @@ msgstr "このアカウントには、払い戻しできる最近の購入が見
 msgid "We couldn't find an active subscription on this account. Refresh and try again."
 msgstr "このアカウントで有効なサブスクリプションが見つかりませんでした。更新してもう一度お試しください。"
 
+#. Error in the import-template form when the desktop app looked up the template and the third-party platform named by {theOtherPlatform} said it does not exist or has expired.
+#: src/features/guild/components/modals/add_guild_modal/shared.ts
+msgid "We couldn't find that {theOtherPlatform} template. Check the link and try again."
+msgstr "その {theOtherPlatform} テンプレートが見つかりませんでした。リンクを確認して、もう一度お試しください。"
+
 #. Error message in the message forward failed modal.
 #: src/features/messaging/components/modals/ForwardModal.tsx
 msgid "We couldn't forward the message at this time."
@@ -38832,6 +39045,11 @@ msgctxt "us-state"
 msgid "West Virginia"
 msgstr "ウェストバージニア州"
 
+#. Heading on the account restriction screen above what the team did and what it means.
+#: src/features/auth/flow/AccountRestrictionScreen.tsx
+msgid "What happened"
+msgstr "措置の内容"
+
 #. Display-name field placeholder in account registration forms.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts
 msgid "What should people call you?"
@@ -38994,6 +39212,11 @@ msgstr "入力中"
 #: src/features/messaging/components/alerts/TooManyAttachmentsModal.tsx
 msgid "Whoa, this is heavy"
 msgstr "ちょっと多すぎます"
+
+#. Heading on the account restriction screen above the rule that was broken and the findings.
+#: src/features/auth/flow/AccountRestrictionScreen.tsx
+msgid "Why"
+msgstr "理由"
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
 #: src/features/channel/components/channel_header_components/developer_tools/DeveloperOptionLabels.ts

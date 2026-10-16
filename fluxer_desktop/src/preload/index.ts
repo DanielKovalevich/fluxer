@@ -45,6 +45,7 @@ import type {
 	NotificationOptions,
 	NotificationResult,
 	SetDesktopTroubleshootingDisableHardwareAccelerationOptions,
+	SetDesktopTroubleshootingDisableModuleUpdatesOptions,
 	SpellcheckBundledDictionary,
 	SpellcheckResolvedEngineInfo,
 	SpellcheckState,
@@ -65,6 +66,7 @@ import {createFirstContentPaintSignal} from '@electron/preload/FirstContentPaint
 import {applyLegacyRawLocalStorage} from '@electron/preload/LegacyRawStorageSeed';
 import {createLocalAppPreloadAPI} from '@electron/preload/LocalAppPreload';
 import {createNativeGatewayPreloadAPI} from '@electron/preload/NativeGatewayPreload';
+import {createOtherPlatformTemplatePreloadAPI} from '@electron/preload/OtherPlatformTemplatePreload';
 import type {DesktopCapabilityManifest} from '@fluxer/desktop_ipc/src/CapabilityManifest';
 import {DESKTOP_CAPABILITY_MANIFEST_CHANNEL} from '@fluxer/desktop_ipc/src/CapabilityManifest';
 import {DESKTOP_LAST_ROUTE_CHANNEL} from '@fluxer/desktop_ipc/src/LastRouteContract';
@@ -403,6 +405,7 @@ const api: ElectronAPI = {
 	...createLocalAppPreloadAPI(ipcRenderer),
 	...createBrowserHandoffPreloadAPI(ipcRenderer),
 	...createNativeGatewayPreloadAPI(ipcRenderer),
+	...createOtherPlatformTemplatePreloadAPI(ipcRenderer),
 	reportLastRoute: (routePath: string): void => {
 		ipcRenderer.send(DESKTOP_LAST_ROUTE_CHANNEL, routePath);
 	},
@@ -441,6 +444,10 @@ const api: ElectronAPI = {
 		options: SetDesktopTroubleshootingDisableHardwareAccelerationOptions,
 	): Promise<DesktopTroubleshootingSettings> =>
 		ipcRenderer.invoke('desktop-troubleshooting-set-disable-hardware-acceleration', options),
+	setDesktopDisableModuleUpdates: (
+		options: SetDesktopTroubleshootingDisableModuleUpdatesOptions,
+	): Promise<DesktopTroubleshootingSettings> =>
+		ipcRenderer.invoke('desktop-troubleshooting-set-disable-module-updates', options),
 	onUpdaterEvent: (callback: (event: UpdaterEvent) => void): (() => void) => {
 		const handler = (_event: Electron.IpcRendererEvent, data: UpdaterEvent) => callback(data);
 		ipcRenderer.on('updater-event', handler);
@@ -584,6 +591,9 @@ const api: ElectronAPI = {
 	},
 	setBadgeCount: (count: number): void => {
 		ipcRenderer.send('set-badge-count', count);
+	},
+	setUnreadBadge: (badge: number): void => {
+		ipcRenderer.send('set-unread-badge', badge);
 	},
 	setNativeLocale: (locale: string, strings: Record<string, string>): void => {
 		ipcRenderer.send('native-locale-set', {locale, strings});

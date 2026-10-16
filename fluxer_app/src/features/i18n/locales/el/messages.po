@@ -1802,6 +1802,14 @@ msgstr "Το {PRODUCT_NAME} πρέπει να επανεκκινηθεί για 
 msgid "{PRODUCT_NAME} needs to restart to disable Chromium's hardware acceleration. Use this only if you're troubleshooting graphics glitches or high GPU usage."
 msgstr "Το {PRODUCT_NAME} πρέπει να επανεκκινηθεί για να απενεργοποιηθεί η επιτάχυνση υλικού του Chromium. Χρησιμοποιήστε το μόνο αν αντιμετωπίζετε προβλήματα γραφικών ή υψηλή χρήση GPU."
 
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedDesktopControls.tsx
+msgid "{PRODUCT_NAME} needs to restart to install updates automatically again."
+msgstr "Το {PRODUCT_NAME} πρέπει να επανεκκινήσει για να εγκαταστήσει ξανά αυτόματα τις ενημερώσεις."
+
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedDesktopControls.tsx
+msgid "{PRODUCT_NAME} needs to restart to stop updating while starting. When an update is available, you can install it from the app whenever you like."
+msgstr "Το {PRODUCT_NAME} πρέπει να επανεκκινηθεί για να σταματήσει η ενημέρωση κατά την εκκίνηση. Όταν είναι διαθέσιμη μια ενημέρωση, μπορείτε να την εγκαταστήσετε από την εφαρμογή όποτε θέλετε."
+
 #. Desktop updater modal body for a Flatpak install when a newer desktop version exists. The version placeholder is the new app version and productName is the app name.
 #: src/features/updater/commands/UpdaterModalCommands.tsx
 msgid "{productName} {version} is available. Update it from your software center."
@@ -1821,6 +1829,16 @@ msgstr "Εικονίδιο εφαρμογής {productName}"
 #: src/features/user/components/modals/tabs/notifications_tab/PushSettings.tsx
 msgid "{productName} avoids sending push notifications to your mobile devices when you are at your computer. Choose how long you need to be inactive on desktop before you receive push notifications."
 msgstr "Το {productName} αποφεύγει την αποστολή ειδοποιήσεων push στις κινητές σας συσκευές όταν βρίσκεστε στον υπολογιστή σας. Επιλέξτε πόση ώρα πρέπει να μείνετε ανενεργοί στον υπολογιστή πριν λάβετε ειδοποιήσεις push."
+
+#. First sentence of the network blocked screen when a rule is shown. productName is the app name. Must read the same as the error message for this block.
+#: src/features/auth/AuthMessageDescriptors.ts
+msgid "{productName} blocked access from this network because of activity that broke its rules."
+msgstr "Το {productName} απέκλεισε την πρόσβαση από αυτό το δίκτυο λόγω δραστηριότητας που παραβίασε τους κανόνες του."
+
+#. First sentence of the network blocked screen when no rule is shown. productName is the app name. Must read the same as the error message for this block.
+#: src/features/auth/AuthMessageDescriptors.ts
+msgid "{productName} blocked access from this network."
+msgstr "Το {productName} απέκλεισε την πρόσβαση από αυτό το δίκτυο."
 
 #. Short badge title in the user profile badges popout. Preserve {productName}; it is inserted by code. English locales use Title Case for official badge titles; other locales should use natural local capitalization.
 #: src/features/user/components/popouts/UserProfileBadges.tsx
@@ -2026,6 +2044,11 @@ msgstr "{productName} Visionary"
 msgid "{productName} Visionary since {premiumSinceFormatted}"
 msgstr "{productName} Visionary από {premiumSinceFormatted}"
 
+#. Settings search entry description. One-line summary of what the settings search entry controls.
+#: src/features/user/components/settings_utils/search_index/DesktopSettingsIndex.ts
+msgid "{productName} won't update while starting. When an update is available, you can install it from the app whenever you like. Takes effect the next time {productName} starts."
+msgstr "Το {productName} δεν θα ενημερωθεί κατά την εκκίνηση. Όταν είναι διαθέσιμη μια ενημέρωση, μπορείτε να την εγκαταστήσετε από την εφαρμογή όποτε θέλετε. Ισχύει την επόμενη φορά που θα ξεκινήσει το {productName}."
+
 #. Accessible label for the application wordmark.
 #: src/features/ui/components/icons/FluxerWordmark.tsx
 msgid "{productName} wordmark"
@@ -2129,6 +2152,11 @@ msgstr "Οθόνη του/της {streamerDisplayName}"
 msgid "{tenSeconds} seconds"
 msgstr "{tenSeconds} δευτερόλεπτα"
 
+#. Template preview summary listing how many text channels, forum channels, voice channels, categories, and roles will be imported. Used when the template has at least one forum or media channel.
+#: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx
+msgid "{textChannelCount, plural, one {# text channel} other {# text channels}}, {forumChannelCount, plural, one {# forum channel} other {# forum channels}}, {voiceChannelCount, plural, one {# voice channel} other {# voice channels}}, {categoryCount, plural, one {# category} other {# categories}}, {roleCount, plural, one {# role} other {# roles}}"
+msgstr "{textChannelCount, plural, one {# κανάλι κειμένου} other {# κανάλια κειμένου}}, {forumChannelCount, plural, one {# κανάλι φόρουμ} other {# κανάλια φόρουμ}}, {voiceChannelCount, plural, one {# κανάλι φωνής} other {# κανάλια φωνής}}, {categoryCount, plural, one {# κατηγορία} other {# κατηγορίες}}, {roleCount, plural, one {# ρόλος} other {# ρόλοι}}"
+
 #. Template preview summary listing how many text channels, voice channels, categories, and roles will be imported.
 #: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx
 msgid "{textChannelCount, plural, one {# text channel} other {# text channels}}, {voiceChannelCount, plural, one {# voice channel} other {# voice channels}}, {categoryCount, plural, one {# category} other {# categories}}, {roleCount, plural, one {# role} other {# roles}}"
@@ -2138,6 +2166,11 @@ msgstr "{textChannelCount, plural, one {# κανάλι κειμένου} other {
 #: src/features/theme/state/ThemeLibrary.ts
 msgid "{themeName} Copy"
 msgstr "{themeName} αντίγραφο"
+
+#. Error in the import-template form when the third-party platform named by {theOtherPlatform} temporarily refused the desktop app template lookup because of too many requests.
+#: src/features/guild/components/modals/add_guild_modal/shared.ts
+msgid "{theOtherPlatform} is limiting template lookups right now. Try again in a moment."
+msgstr "Το {theOtherPlatform} περιορίζει προσωρινά τις αναζητήσεις προτύπων. Δοκιμάστε ξανά σε λίγο."
 
 #. Time window preset label shown as a standalone duration in option lists. The number is interpolated.
 #: src/features/app/config/TimeWindowPresets.ts
@@ -2866,14 +2899,29 @@ msgstr "Παρακάμψεις λογαριασμού και premium"
 msgid "Account and security details are hidden"
 msgstr "Οι λεπτομέρειες λογαριασμού και ασφαλείας είναι κρυφές"
 
+#. Title of the sign-in screen for an account suspended with no end date.
+#: src/features/auth/flow/AccountRestrictionScreen.tsx
+msgid "Account banned"
+msgstr "Ο λογαριασμός ανεστάλη οριστικά"
+
 #. Short label in the authentication claim account modal. Keep the tone plain and specific.
 #: src/features/auth/components/modals/ClaimAccountModal.tsx
 msgid "Account claimed successfully"
 msgstr "Ο λογαριασμός διεκδικήθηκε με επιτυχία"
 
+#. Title of the sign-in screen for an account the team closed and will delete.
+#: src/features/auth/flow/AccountRestrictionScreen.tsx
+msgid "Account closed"
+msgstr "Ο λογαριασμός έκλεισε"
+
 #: src/features/connection/components/pages/ConnectionCallbackPage.tsx
 msgid "Account connected"
 msgstr "Ο λογαριασμός συνδέθηκε"
+
+#. One line of the support email written for the user. createdAt is the account creation time as an ISO 8601 UTC timestamp.
+#: src/features/user/utils/MessagingPausedHelpEmail.ts
+msgid "Account created: {createdAt}"
+msgstr "Δημιουργία λογαριασμού: {createdAt}"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/section_registry/PrivacySafetySections.ts
@@ -2885,6 +2933,11 @@ msgstr "Δεδομένα λογαριασμού"
 msgid "Account details unavailable"
 msgstr "Οι λεπτομέρειες του λογαριασμού δεν είναι διαθέσιμες"
 
+#. One line of the support email written for the user. accountId is the numeric account ID.
+#: src/features/user/utils/MessagingPausedHelpEmail.ts
+msgid "Account ID: {accountId}"
+msgstr "ID λογαριασμού: {accountId}"
+
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/section_registry/AccountSecuritySections.ts
 msgid "Account removal"
@@ -2894,6 +2947,11 @@ msgstr "Διαγραφή λογαριασμού"
 #: src/features/channel/components/channel_header_components/developer_tools/AccountPremiumMenu.tsx
 msgid "Account state"
 msgstr "Κατάσταση λογαριασμού"
+
+#. Title of the sign-in screen for an account suspended until a set date.
+#: src/features/auth/flow/AccountRestrictionScreen.tsx
+msgid "Account suspended"
+msgstr "Ο λογαριασμός ανεστάλη"
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
 #: src/features/channel/components/channel_header_components/developer_tools/OptionPresets.ts
@@ -9601,6 +9659,11 @@ msgstr "Αντιγραφή κωδικού"
 msgid "Copy community ID"
 msgstr "Αντιγραφή αναγνωριστικού κοινότητας"
 
+#. Button in the help dialog opened from "My text didn't go through". Copies the account details for a support email to the clipboard.
+#: src/features/user/components/modals/MessagingPausedHelpModal.tsx
+msgid "Copy details"
+msgstr "Αντιγραφή στοιχείων"
+
 #. Developer-mode voice menu action that copies the unique identifier of a voice device or connection.
 #: src/features/ui/action_menu/items/voice_participant_menu_data/shared.ts
 msgid "Copy device ID"
@@ -10204,6 +10267,11 @@ msgstr "Αδυναμία φόρτωσης ρυθμίσεων"
 msgid "Couldn't load the report form."
 msgstr "Δεν ήταν δυνατή η φόρτωση της φόρμας αναφοράς."
 
+#. Instructions in the desktop app import-template flow shown when looking up the template directly failed, so the user has to fetch the JSON in a browser and paste it instead. "JSON" must not be translated.
+#: src/features/guild/components/modals/add_guild_modal/TemplateImportForm.tsx
+msgid "Couldn't load the template automatically. Open the link below in your browser, then copy the entire JSON response and paste it into the box."
+msgstr "Δεν ήταν δυνατή η αυτόματη φόρτωση του προτύπου. Ανοίξτε τον παρακάτω σύνδεσμο στο πρόγραμμα περιήγησής σας, αντιγράψτε ολόκληρη την απόκριση JSON και επικολλήστε την στο πλαίσιο."
+
 #: src/features/user/components/modals/tabs/applications_tab/ApplicationDetail.tsx
 msgid "Couldn't load this application"
 msgstr "Δεν ήταν δυνατή η φόρτωση αυτής της εφαρμογής"
@@ -10536,6 +10604,16 @@ msgstr "Χρονόμετρο αντίστροφης μέτρησης"
 #: src/features/moderation/components/report/ReportStepDetails.tsx
 msgid "Country of residence"
 msgstr "Χώρα διαμονής"
+
+#. Field label in the help dialog opened from "My text didn't go through". The user types the country they are in so support can help.
+#: src/features/user/components/modals/MessagingPausedHelpModal.tsx
+msgid "Country you're in"
+msgstr "Χώρα όπου βρίσκεστε"
+
+#. One line of the support email written for the user. country is the country the user typed.
+#: src/features/user/utils/MessagingPausedHelpEmail.ts
+msgid "Country: {country}"
+msgstr "Χώρα: {country}"
 
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/user/components/settings_utils/search_index/MyProfileIndex.ts
@@ -11488,6 +11566,11 @@ msgstr "Αποφασίστε πώς τα premium όρια θα ισχύουν γ
 msgid "Decide whether replies @mention you by default"
 msgstr "Αποφασίστε αν οι απαντήσεις θα σας αναφέρουν (@mention) από προεπιλογή"
 
+#. Reference line on the account restriction screen. People quote this ID when they appeal.
+#: src/features/auth/flow/AccountRestrictionScreen.tsx
+msgid "Decision ID: {decisionId}"
+msgstr "Αναγνωριστικό απόφασης: {decisionId}"
+
 #. Keyboard shortcut action label shown in the shortcuts list and keybind editor. Keep short, sentence case.
 #: src/features/input/state/input_keybind/shared.ts
 msgid "Decline the incoming call"
@@ -12387,6 +12470,16 @@ msgstr "Απενεργοποίηση κινήσεων και μεταβάσεω�
 msgid "Disable animations and transitions. Currently controlled by your system setting."
 msgstr "Απενεργοποίηση κινήσεων και μεταβάσεων. Ελέγχεται αυτήν τη στιγμή από τη ρύθμιση του συστήματός σας."
 
+#. Settings search entry label. Names the settings search entry in the settings UI.
+#: src/features/user/utils/UserMessageDescriptors.ts
+msgid "Disable automatic updates"
+msgstr "Απενεργοποίηση αυτόματων ενημερώσεων"
+
+#. Confirmation prompt in advanced settings.
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedDesktopControls.tsx
+msgid "Disable automatic updates?"
+msgstr "Απενεργοποίηση αυτόματων ενημερώσεων;"
+
 #: src/features/channel/components/channel_header_components/developer_tools/AccountPremiumMenu.tsx
 msgid "Disable backend premium perks"
 msgstr "Απενεργοποίηση premium παροχών του backend"
@@ -13160,6 +13253,11 @@ msgstr "Σύρετε για να αλλάξετε τη θέση του εικο�
 msgid "Drag to reposition your invite background and use the scroll wheel or pinch to zoom. The recommended minimum size is {minimumWidth}×{minimumHeight} pixels (16:9)."
 msgstr "Σύρετε για να αλλάξετε τη θέση της εικόνας φόντου της πρόσκλησής σας και χρησιμοποιήστε τον τροχό κύλισης ή τσιμπήστε για μεγέθυνση. Το προτεινόμενο ελάχιστο μέγεθος είναι {minimumWidth}×{minimumHeight} pixel (16:9)."
 
+#. Desktop setting description under the dark taskbar badge toggle on Windows.
+#: src/features/user/components/modals/tabs/DesktopSettingsTab.tsx
+msgid "Draw the unread badge on the {productName} taskbar button in dark gray instead of red."
+msgstr "Σχεδίασε την ένδειξη μη αναγνωσμένων μηνυμάτων στο κουμπί της γραμμής εργασιών του {productName} σε σκούρο γκρι αντί για κόκκινο."
+
 #. Description text in the theme studio assets section.
 #: src/features/theme_studio/sections/AssetsSection.tsx
 msgid "Drop images, fonts, or other files here to use them inside your custom CSS."
@@ -13565,6 +13663,11 @@ msgstr "Δικαιούστε επιστροφή χρημάτων έως {windowE
 msgid "Email"
 msgstr "Email"
 
+#. Body of the help dialog opened from "My text didn't go through" while messaging is paused on the account. supportEmail is the support email address. Keep it short, calm and neutral.
+#: src/features/user/components/modals/MessagingPausedHelpModal.tsx
+msgid "Email {supportEmail} and a person will check your account. You can also reply to the email we sent you."
+msgstr "Στείλτε email στο {supportEmail} και ένα άτομο της ομάδας μας θα ελέγξει τον λογαριασμό σας. Μπορείτε επίσης να απαντήσετε στο email που σας στείλαμε."
+
 #. Short label in the inputs tab. Keep it concise.
 #. Short label in the moderation report step email. Keep it concise. Keep the tone plain and specific.
 #: src/features/moderation/components/report/ReportStepEmail.tsx
@@ -13591,6 +13694,11 @@ msgstr "Παράδοση email"
 #: src/features/moderation/components/report/ReportStepUnavailable.tsx
 msgid "Email reports aren't available here"
 msgstr "Οι αναφορές μέσω email δεν είναι διαθέσιμες εδώ"
+
+#. Primary button in the help dialog opened from "My text didn't go through". Opens a new email to support with the account details filled in.
+#: src/features/user/components/modals/MessagingPausedHelpModal.tsx
+msgid "Email support"
+msgstr "Email στην υποστήριξη"
 
 #. Developer control label for the email-verification banner.
 #: src/features/devtools/components/NagbarControls.ts
@@ -13840,6 +13948,11 @@ msgstr "Ενεργοποίηση λήξης συνημμένων"
 #: src/features/voice/components/modals/AudioPlaybackPermissionModal.tsx
 msgid "Enable audio"
 msgstr "Ενεργοποίηση ήχου"
+
+#. Confirmation prompt in advanced settings.
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedDesktopControls.tsx
+msgid "Enable automatic updates?"
+msgstr "Ενεργοποίηση αυτόματων ενημερώσεων;"
 
 #: src/features/user/components/modals/tabs/component_gallery_tab/index.tsx
 msgid "Enable beta feature"
@@ -17461,10 +17574,20 @@ msgstr "Πόσο από το πρόσφατο ιστορικό μηνυμάτω�
 msgid "How this works"
 msgstr "Πώς λειτουργεί"
 
+#. Heading on the account restriction screen above the appeal instructions.
+#: src/features/auth/flow/AccountRestrictionScreen.tsx
+msgid "How to appeal"
+msgstr "Πώς να κάνεις ένσταση"
+
 #. Heading above the recovery steps in the printed or downloaded recovery kit.
 #: src/features/auth/components/modals/RecoveryKitModal.tsx
 msgid "How to recover your account"
 msgstr "Πώς να ανακτήσετε τον λογαριασμό σας"
+
+#. Heading on the account restriction screen above how the case reached the team and who decided it.
+#: src/features/auth/flow/AccountRestrictionScreen.tsx
+msgid "How we decided"
+msgstr "Πώς αποφασίσαμε"
 
 #. Accessible label in the language and locale names. Keep it concise.
 #: src/features/user/utils/LocaleUtils.ts
@@ -17659,6 +17782,31 @@ msgstr "Αν αποθηκεύσετε αυτό το όνομα χρήστη, η 
 #: src/features/user/components/modals/FluxerTagChangeModal.tsx
 msgid "If you save this username, your tag will reroll randomly when your {PREMIUM_PRODUCT_NAME} expires, unless it renews."
 msgstr "Αν αποθηκεύσετε αυτό το όνομα χρήστη, η ετικέτα σας θα αλλάξει τυχαία όταν λήξει το {PREMIUM_PRODUCT_NAME}, εκτός αν ανανεωθεί."
+
+#. Paragraph on the network blocked screen for people who share a network with others. Must read the same as the error message for this block.
+#: src/features/auth/AuthMessageDescriptors.ts
+msgid "If you share this network, for example at school, at work, on public Wi-Fi, through your mobile carrier or a VPN, this block may have nothing to do with you. The quickest fix is to switch networks, for example to mobile data instead of Wi-Fi, or to turn your VPN on or off."
+msgstr "Αν μοιράζεσαι αυτό το δίκτυο με άλλους, για παράδειγμα στο σχολείο, στη δουλειά, σε δημόσιο Wi-Fi, μέσω της εταιρείας κινητής τηλεφωνίας σου ή μέσω VPN, ο αποκλεισμός μπορεί να μην έχει καμία σχέση με εσένα. Η πιο γρήγορη λύση είναι να αλλάξεις δίκτυο, για παράδειγμα να χρησιμοποιήσεις δεδομένα κινητής αντί για Wi-Fi, ή να ενεργοποιήσεις ή να απενεργοποιήσεις το VPN σου."
+
+#. Line on the network blocked screen. The link is the contact email address and ip is the blocked IP address.
+#: src/features/auth/flow/AccountRestrictionScreen.tsx
+msgid "If you think this block is a mistake, email <0>{email}</0> and include your IP address, {ip}."
+msgstr "Αν πιστεύεις ότι ο αποκλεισμός είναι λάθος, στείλε email στο <0>{email}</0> και ανάφερε τη διεύθυνση IP σου, {ip}."
+
+#. Appeal line for a restriction from before the team recorded decisions, with no appeal deadline. The link is the appeals email address.
+#: src/features/auth/flow/AccountRestrictionScreen.tsx
+msgid "If you think we got this wrong, email <0>{email}</0> and include your username."
+msgstr "Αν πιστεύεις ότι κάναμε λάθος, στείλε email στο <0>{email}</0> και ανάφερε το όνομα χρήστη σου."
+
+#. Appeal line for an account with no email address. The link is the appeals email address and deadline is a date.
+#: src/features/auth/flow/AccountRestrictionScreen.tsx
+msgid "If you think we got this wrong, email <0>{email}</0> by {deadline}. Include the decision ID and your username. Appeals are free, and a person reviews each one."
+msgstr "Αν πιστεύεις ότι κάναμε λάθος, στείλε email στο <0>{email}</0> έως τις {deadline}. Ανάφερε το αναγνωριστικό της απόφασης και το όνομα χρήστη σου. Οι ενστάσεις είναι δωρεάν και κάθε μία την εξετάζει ένας άνθρωπος."
+
+#. Appeal line on the account restriction screen. The link is the appeals email address and deadline is a date.
+#: src/features/auth/flow/AccountRestrictionScreen.tsx
+msgid "If you think we got this wrong, email <0>{email}</0> by {deadline}. Write from the email address on your account if you can, and include the decision ID. Appeals are free, and a person reviews each one."
+msgstr "Αν πιστεύεις ότι κάναμε λάθος, στείλε email στο <0>{email}</0> έως τις {deadline}. Αν μπορείς, γράψε από τη διεύθυνση email του λογαριασμού σου και ανάφερε το αναγνωριστικό της απόφασης. Οι ενστάσεις είναι δωρεάν και κάθε μία την εξετάζει ένας άνθρωπος."
 
 #: src/features/auth/components/modals/AccountDeleteModal.tsx
 msgid "If you want to export your data or delete your messages first, please visit {privacyDashboardPath} before proceeding."
@@ -17966,10 +18114,6 @@ msgstr "Στο κανάλι"
 #: src/features/user/components/modals/tabs/chat_settings_tab/DisplayTab.tsx
 msgid "In channels I moderate"
 msgstr "Στα κανάλια που συντονίζω"
-
-#: src/features/channel/components/ChannelWelcomeSection.tsx
-msgid "In the beginning, there was nothing. Then, there was {channelDisplayName}. And it was good."
-msgstr "Στην αρχή δεν υπήρχε τίποτα. Μετά ήρθε το {channelDisplayName}. Και ήταν καλό."
 
 #: src/features/user/components/profile/VoiceActivityCard.tsx
 msgid "In voice"
@@ -22061,6 +22205,11 @@ msgstr "Η αντίστροφη αναζήτηση εικόνων μου"
 msgid "My search engine"
 msgstr "Η μηχανή αναζήτησής μου"
 
+#. Button shown while messaging is paused on the current account, and the title of the help dialog it opens. The email describing the quick step asks the user to send a text message from their phone. This is for users who could not send that text, and also for users who sent it and nothing happened. The translation should cover both. Also used as the subject of the support email.
+#: src/features/user/utils/MessagingPausedHelpEmail.ts
+msgid "My text didn't go through"
+msgstr "Το SMS μου δεν έφτασε"
+
 #. Short label in the add custom search engine modal. Keep it concise.
 #: src/features/user/components/modals/tabs/chat_settings_tab/AddCustomSearchEngineModal.tsx
 msgid "My translator"
@@ -22222,6 +22371,11 @@ msgstr "Ολλανδία"
 #: src/features/voice/components/voice_connection_status/shared.ts
 msgid "Network"
 msgstr "Δίκτυο"
+
+#. Title of the screen and dialog shown when the instance blocks the network a request came from.
+#: src/features/auth/AuthMessageDescriptors.ts
+msgid "Network blocked"
+msgstr "Το δίκτυο αποκλείστηκε"
 
 #. Error message in the devices tab.
 #: src/features/user/components/modals/tabs/DevicesTab.tsx
@@ -23289,6 +23443,11 @@ msgstr "Σημείωση"
 #: src/features/user/components/modals/NoteEditSheet.tsx
 msgid "Note (only visible to you)"
 msgstr "Σημείωση (ορατή μόνο σε εσάς)"
+
+#. Line on the account restriction screen with a note the team wrote to the account holder.
+#: src/features/auth/flow/AccountRestrictionScreen.tsx
+msgid "Note from our team: {statement}"
+msgstr "Σημείωση από την ομάδα μας: {statement}"
 
 #. Notification level option. Suppresses all pushes for the channel or community. Paired with "All messages" and "Only mentions".
 #: src/features/i18n/utils/CommonMessageDescriptors.ts
@@ -26878,8 +27037,8 @@ msgstr "Επανεκκίνηση για εφαρμογή της αλλαγής �
 
 #. Description text in the text to speech.
 #: src/features/user/components/modals/tabs/notifications_tab/TextToSpeech.tsx
-msgid "Remain silent unless someone runs /tts manually."
-msgstr "Να παραμένει σιωπηλό, εκτός αν κάποιος εκτελέσει το /tts χειροκίνητα."
+msgid "Remain silent unless someone runs /tts in the channel you're viewing."
+msgstr "Παραμείνετε σιωπηλοί, εκτός αν κάποιος πληκτρολογήσει /tts στο κανάλι που βλέπετε."
 
 #. Settings search entry label. Names the settings search entry in the settings UI.
 #: src/features/user/components/settings_utils/search_index/DesktopSettingsIndex.ts
@@ -28457,6 +28616,16 @@ msgstr "Στρογγυλό πλαίσιο επιλογής"
 #: src/features/channel/components/guild_members_page/MembersTableFooter.tsx
 msgid "Rows per page"
 msgstr "Σειρές ανά σελίδα"
+
+#. Names the rule behind a restriction when the instance publishes no link for it. title is the rule title.
+#: src/features/auth/flow/AccountRestrictionScreen.tsx
+msgid "Rule: {title}"
+msgstr "Κανόνας: {title}"
+
+#. Names the rule behind a restriction, with the rule title linked to the rule. title is the rule title.
+#: src/features/auth/flow/AccountRestrictionScreen.tsx
+msgid "Rule: <0>{title}</0>"
+msgstr "Κανόνας: <0>{title}</0>"
 
 #. Settings search entry description. One-line summary of what the settings search entry controls.
 #: src/features/user/components/settings_utils/search_index/DesktopSettingsIndex.ts
@@ -30755,6 +30924,11 @@ msgstr "Εμφάνιση εικονιδίου στην περιοχή ειδοπ
 #: src/features/user/components/settings_utils/search_index/AdvancedSettingsIndex.ts
 msgid "Show text in Fluxer Sans, the previous default font, instead of the Windows system font"
 msgstr "Εμφάνιση κειμένου με γραμματοσειρά Fluxer Sans, την προηγούμενη προεπιλεγμένη γραμματοσειρά, αντί για τη γραμματοσειρά συστήματος των Windows"
+
+#. Desktop setting description under the colored tray icon toggle on Windows and Linux.
+#: src/features/user/components/modals/tabs/DesktopSettingsTab.tsx
+msgid "Show the full-color {productName} icon instead of a monochrome one that matches your taskbar."
+msgstr "Εμφάνιση του εικονιδίου {productName} με πλήρη χρώματα αντί για μονόχρωμο που ταιριάζει με τη γραμμή εργασιών σας."
 
 #. Switch label in the role editor (hoist toggle). When on, members with this role appear in their own member-list section.
 #: src/features/guild/components/modals/guild_tabs/guild_roles_tab/RoleEditor.tsx
@@ -33445,6 +33619,11 @@ msgstr "Ο αποκλεισμός είχε ήδη λήξει στις {date}"
 msgid "The ban was scheduled to expire on {date}"
 msgstr "Ο αποκλεισμός επρόκειτο να λήξει στις {date}"
 
+#. Line on the network blocked screen for a block with an end. date is a date and time.
+#: src/features/auth/flow/AccountRestrictionScreen.tsx
+msgid "The block ends on {date}."
+msgstr "Ο αποκλεισμός λήγει στις {date}."
+
 #: src/features/auth/components/pages/oauth_authorize_page/OAuthSuccessState.tsx
 msgid "The bot has been added to <0>{destinationName}</0>."
 msgstr "Το bot προστέθηκε στο <0>{destinationName}</0>."
@@ -33896,6 +34075,11 @@ msgstr "Τρίτη επιλογή"
 #: src/features/user/components/settings_utils/search_index/AuthorizedAppsIndex.ts
 msgid "Third party"
 msgstr "Τρίτα μέρη"
+
+#. Error in the import-template form when the desktop app loaded the template from the third-party platform named by {theOtherPlatform} but its contents were not in the expected shape.
+#: src/features/guild/components/modals/add_guild_modal/shared.ts
+msgid "This {theOtherPlatform} template couldn't be read. It may use a format Fluxer doesn't support yet."
+msgstr "Αυτό το πρότυπο από το {theOtherPlatform} δεν διαβάστηκε. Μπορεί να χρησιμοποιεί μια μορφή που το Fluxer δεν υποστηρίζει ακόμη."
 
 #. Body of the block-user error modal when the target is a system account that cannot be blocked.
 #: src/features/relationship/components/alerts/RelationshipErrorModalUtils.tsx
@@ -34385,6 +34569,10 @@ msgstr "Αυτή είναι η περιγραφή της πρώτης επιλο
 #: src/features/user/components/modals/tabs/component_gallery_tab/index.tsx
 msgid "This is the second option description"
 msgstr "Αυτή είναι η περιγραφή της δεύτερης επιλογής"
+
+#: src/features/channel/components/ChannelWelcomeSection.tsx
+msgid "This is the start of {channelDisplayName}."
+msgstr "Αυτή είναι η αρχή του {channelDisplayName}."
 
 #: src/features/user/components/modals/tabs/component_gallery_tab/index.tsx
 msgid "This is the third option description"
@@ -36613,6 +36801,11 @@ msgstr "Ενημερωμένες πολιτικές"
 msgid "Updated saved media"
 msgstr "Ενημερώθηκαν τα αποθηκευμένα πολυμέσα"
 
+#. Settings search synonym. Used to match this term when the user types it in the settings search bar.
+#: src/features/user/components/settings_utils/search_index/DesktopSettingsIndex.ts
+msgid "Updates"
+msgstr "Ενημερώσεις"
+
 #. Heading of the dialog shown after the user follows an announcement channel.
 #: src/features/channel/components/modals/ChannelFollowSuccessModal.tsx
 msgid "Updates are on their way!"
@@ -36979,6 +37172,11 @@ msgstr "Χρήση προεπιλογής καναλιού"
 msgid "Use coal theme (pitch-black surfaces)"
 msgstr "Χρήση θέματος Coal (κατάμαυρες επιφάνειες)"
 
+#. Desktop setting toggle label on Windows and Linux. Switches the system tray icon from monochrome to the full-color app icon.
+#: src/features/user/components/modals/tabs/DesktopSettingsTab.tsx
+msgid "Use colored tray icon"
+msgstr "Χρησιμοποιήστε έγχρωμο εικονίδιο στη γραμμή εργασιών"
+
 #. Plutonium page comparison row label for global emojis and stickers.
 #: src/features/premium/components/plutonium_page/PlutoniumPageMessages.ts
 msgid "Use custom emojis and stickers in any community"
@@ -36988,6 +37186,11 @@ msgstr "Χρησιμοποιήστε προσαρμοσμένα emoji και α�
 #: src/features/user/utils/UserMessageDescriptors.ts
 msgid "Use custom image"
 msgstr "Χρήση προσαρμοσμένης εικόνας"
+
+#. Desktop setting toggle label on Windows. Switches the unread badge drawn over the taskbar button from red to dark gray.
+#: src/features/user/components/modals/tabs/DesktopSettingsTab.tsx
+msgid "Use dark taskbar badge"
+msgstr "Χρησιμοποίησε σκούρο σήμα γραμμής εργασιών"
 
 #. Short label in the theme tab content. Keep it concise.
 #: src/features/user/components/modals/tabs/appearance_tab/theme/ThemeTabContent.tsx
@@ -37357,6 +37560,11 @@ msgstr "Ετικέτες ονόματος χρήστη"
 #: src/features/user/components/modals/FluxerTagChangeModal.tsx
 msgid "Username updated"
 msgstr "Το όνομα χρήστη ενημερώθηκε"
+
+#. One line of the support email written for the user. username is the account username with its tag.
+#: src/features/user/utils/MessagingPausedHelpEmail.ts
+msgid "Username: {username}"
+msgstr "Όνομα χρήστη: {username}"
 
 #. Summary value on the setup wizard finish step when people sign in with a username.
 #: src/features/app/components/setup/SetupWizardSteps.tsx
@@ -38482,6 +38690,11 @@ msgstr "Δεν μπορέσαμε να βρούμε μια πρόσφατη αγ
 msgid "We couldn't find an active subscription on this account. Refresh and try again."
 msgstr "Δεν βρέθηκε ενεργή συνδρομή σε αυτόν τον λογαριασμό. Ανανεώστε και δοκιμάστε ξανά."
 
+#. Error in the import-template form when the desktop app looked up the template and the third-party platform named by {theOtherPlatform} said it does not exist or has expired.
+#: src/features/guild/components/modals/add_guild_modal/shared.ts
+msgid "We couldn't find that {theOtherPlatform} template. Check the link and try again."
+msgstr "Δεν μπορέσαμε να βρούμε αυτό το πρότυπο {theOtherPlatform}. Ελέγξτε τον σύνδεσμο και δοκιμάστε ξανά."
+
 #. Error message in the message forward failed modal.
 #: src/features/messaging/components/modals/ForwardModal.tsx
 msgid "We couldn't forward the message at this time."
@@ -38832,6 +39045,11 @@ msgctxt "us-state"
 msgid "West Virginia"
 msgstr "Δυτική Βιρτζίνια"
 
+#. Heading on the account restriction screen above what the team did and what it means.
+#: src/features/auth/flow/AccountRestrictionScreen.tsx
+msgid "What happened"
+msgstr "Τι συνέβη"
+
 #. Display-name field placeholder in account registration forms.
 #: src/features/i18n/utils/CommonMessageDescriptors.ts
 msgid "What should people call you?"
@@ -38994,6 +39212,11 @@ msgstr "Ποιος πληκτρολογεί"
 #: src/features/messaging/components/alerts/TooManyAttachmentsModal.tsx
 msgid "Whoa, this is heavy"
 msgstr "Πω πω, βαρύ πράγμα"
+
+#. Heading on the account restriction screen above the rule that was broken and the findings.
+#: src/features/auth/flow/AccountRestrictionScreen.tsx
+msgid "Why"
+msgstr "Γιατί"
 
 #. Developer tools debug menu label. Internal-only surface for developers; translators may keep this terse.
 #: src/features/channel/components/channel_header_components/developer_tools/DeveloperOptionLabels.ts

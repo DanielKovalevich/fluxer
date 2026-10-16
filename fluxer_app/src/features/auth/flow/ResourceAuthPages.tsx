@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+import {Routes} from '@app/app/Routes';
 import type {RuntimeConfigSnapshot} from '@app/features/app/state/InstanceSnapshotStore';
 import {usesUsernameSignIn} from '@app/features/app/utils/AccountIdentityFeatures';
 import * as AuthenticationCommands from '@app/features/auth/commands/AuthenticationCommands';
@@ -16,6 +17,7 @@ import {AuthRuntimeTargetResetAction} from '@app/features/auth/flow/AuthRuntimeT
 import {AuthSsoPanel, resolveAuthPanelSso} from '@app/features/auth/flow/AuthSsoPanel';
 import {isHandoffRequest} from '@app/features/auth/flow/auth_login_core/useDesktopHandoffFlow';
 import {DesktopDeepLinkPrompt} from '@app/features/auth/flow/DesktopDeepLinkPrompt';
+import {linkRegisterFields, readRegistrationUrlCode} from '@app/features/auth/flow/RegisterFormFields';
 import {useAuthPresentation} from '@app/features/auth/flow/useAuthPresentation';
 import {AuthCardVariant} from '@app/features/auth/state/AuthLayoutContext';
 import {useAuthRuntimeTarget} from '@app/features/auth/state/AuthRuntimeTarget';
@@ -141,7 +143,7 @@ const ResourceAuthContent = observer(function ResourceAuthContent<T>({
 					showTitle={false}
 					title={null}
 					onBackActionChange={null}
-					completeLoginRedirectPath={null}
+					completeLoginRedirectPath={Routes.ME}
 					forceCredentials={false}
 					startWithAddAccount={false}
 					runtimeTarget={runtimeTarget}
@@ -187,16 +189,7 @@ const ResourceAuthContent = observer(function ResourceAuthContent<T>({
 				/>
 			) : (
 				<AuthRegisterFormCore
-					fields={
-						usernameSignIn
-							? {
-									showPassword: true,
-									showPasswordConfirmation: true,
-									showUsernameValidation: true,
-									requireUsername: true,
-								}
-							: {showUsername: false}
-					}
+					fields={linkRegisterFields(runtimeSnapshot, readRegistrationUrlCode(params))}
 					submitLabel={config.submitLabel}
 					redirectPath={config.registerRedirectPath(id, safeRedirect)}
 					offerRecoveryKit={usernameSignIn}
