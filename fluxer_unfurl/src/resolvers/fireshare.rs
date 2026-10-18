@@ -3,9 +3,15 @@
 use super::social::{self, SocialPage};
 use super::{ResolveContext, Resolver, ResolverResult};
 use crate::types::{EmbedMedia, MessageEmbed};
+use reqwest::header::{CONTENT_LENGTH, CONTENT_TYPE};
 use std::future::Future;
 use std::pin::Pin;
+use std::time::Duration;
 use url::Url;
+
+const TRANSCODE_PROBE_TIMEOUT: Duration = Duration::from_secs(3);
+// Keep the selected transcode within the media proxy's playback limit.
+const MAX_PLAYBACK_BYTES: u64 = 500 * 1024 * 1024;
 
 pub struct FireshareResolver {
     hosts: Vec<String>,
@@ -34,13 +40,48 @@ impl Resolver for FireshareResolver {
                 return Ok(ResolverResult { embeds: vec![] });
             };
             let page = social::fetch_page(ctx, &url).await?;
-            // Like a provider iframe, playback belongs to Fireshare. Public watch
-            // metadata is enough to show the player; do not download a video or
-            // wait for transcodes through the media proxy before creating it.
+            let Some(mut embed) = player_embed(&page, &ctx.original_url) else {
+                return Ok(ResolverResult { embeds: vec![] });
+            };
+            // Stock clients play the URL through the media proxy. Prefer an
+            // existing 720p copy without downloading media or waiting for a
+            // transcode to finish; retain Original if the probe fails.
+            if let Some(video) = embed.video.as_mut() {
+                prefer_720p(&ctx.http_client, video).await;
+            }
             Ok(ResolverResult {
-                embeds: player_embed(&page, &ctx.original_url).into_iter().collect(),
+                embeds: vec![embed],
             })
         })
+    }
+}
+
+async fn prefer_720p(client: &reqwest::Client, video: &mut EmbedMedia) {
+    // Called only after player_embed validates public, same-origin metadata.
+    // Reuse the external client's pinned public DNS and no-redirect policy.
+    let Some(mut candidate) = video.url.as_deref().and_then(|value| Url::parse(value).ok()) else {
+        return;
+    };
+    let Some(id) = candidate.path().strip_prefix("/_content/video/")
+        .and_then(|filename| filename.rsplit_once('.').map(|(id, _)| id.to_owned())) else {
+        return;
+    };
+    candidate.set_path(&format!("/_content/derived/{id}/{id}-720p.mp4"));
+    candidate.set_query(None);
+    candidate.set_fragment(None);
+
+    let Ok(response) = client.head(candidate.clone()).timeout(TRANSCODE_PROBE_TIMEOUT).send().await else {
+        return;
+    };
+    let is_mp4 = response.headers().get(CONTENT_TYPE)
+        .and_then(|value| value.to_str().ok())
+        .is_some_and(|value| value.split(';').next().unwrap_or_default().trim().eq_ignore_ascii_case("video/mp4"));
+    let playable_size = response.headers().get(CONTENT_LENGTH).is_none_or(|value| {
+        value.to_str().ok().and_then(|value| value.parse::<u64>().ok())
+            .is_some_and(|length| length > 0 && length <= MAX_PLAYBACK_BYTES)
+    });
+    if response.status() == reqwest::StatusCode::OK && is_mp4 && playable_size {
+        video.url = Some(candidate.to_string());
     }
 }
 
@@ -135,6 +176,69 @@ fn video_only_embed(source: &Url, video: EmbedMedia) -> MessageEmbed {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use tokio::io::{AsyncReadExt, AsyncWriteExt};
+
+    async fn probe_720p_response(response: &str) -> EmbedMedia {
+        let listener = tokio::net::TcpListener::bind("127.0.0.1:0").await.unwrap();
+        let source = Url::parse(&format!("http://{}/w/abc", listener.local_addr().unwrap())).unwrap();
+        let response = response.to_owned();
+        let server = tokio::spawn(async move {
+            let (mut socket, _) = listener.accept().await.unwrap();
+            let mut request = Vec::new();
+            while !request.ends_with(b"\r\n\r\n") {
+                let byte = socket.read_u8().await.unwrap();
+                request.push(byte);
+                assert!(request.len() < 8192);
+            }
+            assert!(String::from_utf8(request).unwrap()
+                .starts_with("HEAD /_content/derived/abc/abc-720p.mp4 HTTP/1.1\r\n"));
+            socket.write_all(response.as_bytes()).await.unwrap();
+        });
+        let client = reqwest::Client::builder()
+            .no_proxy()
+            .redirect(reqwest::redirect::Policy::none())
+            .build().unwrap();
+        let mut public = page(r#"<meta property="og:video" content="/_content/video/abc.mp4"><meta property="og:video:width" content="3440"><meta property="og:video:height" content="1440">"#);
+        public.final_url = source.clone();
+        let mut video = player_embed(&public, &source).unwrap().video.unwrap();
+        prefer_720p(&client, &mut video).await;
+        tokio::time::timeout(Duration::from_secs(5), server).await.unwrap().unwrap();
+        video
+    }
+
+    #[tokio::test]
+    async fn prefers_existing_720p_with_a_head_request_and_preserves_aspect_ratio() {
+        // No video body is served: selection must use only the response headers.
+        let video = probe_720p_response("HTTP/1.1 200 OK\r\nContent-Type: video/mp4\r\nContent-Length: 162132905\r\nConnection: close\r\n\r\n").await;
+        assert!(video.url.unwrap().ends_with("/_content/derived/abc/abc-720p.mp4"));
+        assert_eq!((video.width, video.height), (Some(3440), Some(1440)));
+    }
+
+    #[tokio::test]
+    async fn retains_original_when_720p_is_missing_redirected_not_video_empty_or_too_large() {
+        for response in [
+            "HTTP/1.1 404 Not Found\r\nContent-Type: video/mp4\r\nContent-Length: 10\r\n\r\n",
+            "HTTP/1.1 503 Unavailable\r\nContent-Type: video/mp4\r\nContent-Length: 10\r\n\r\n",
+            "HTTP/1.1 302 Found\r\nLocation: https://other.example/video.mp4\r\nContent-Length: 0\r\n\r\n",
+            "HTTP/1.1 200 OK\r\nContent-Type: text/html\r\nContent-Length: 10\r\n\r\n",
+            "HTTP/1.1 200 OK\r\nContent-Type: video/mp4\r\nContent-Length: 0\r\n\r\n",
+            "HTTP/1.1 200 OK\r\nContent-Type: video/mp4\r\nContent-Length: 524288001\r\n\r\n",
+        ] {
+            let video = probe_720p_response(response).await;
+            assert!(video.url.unwrap().ends_with("/_content/video/abc.mp4"), "{response}");
+        }
+    }
+
+    #[tokio::test]
+    async fn retains_original_when_transcode_probe_cannot_connect() {
+        let listener = tokio::net::TcpListener::bind("127.0.0.1:0").await.unwrap();
+        let original = format!("http://{}/_content/video/abc.mp4", listener.local_addr().unwrap());
+        drop(listener);
+        let mut video = EmbedMedia { url: Some(original.clone()), ..Default::default() };
+        let client = reqwest::Client::builder().no_proxy().build().unwrap();
+        prefer_720p(&client, &mut video).await;
+        assert_eq!(video.url.as_deref(), Some(original.as_str()));
+    }
 
     #[test]
     fn matches_only_configured_hosts_and_watch_links() {
