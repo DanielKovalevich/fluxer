@@ -10451,7 +10451,7 @@ msgid "Couldn't send the friend request. Try again."
 msgstr "Nu s-a putut trimite cererea de prietenie. Încearcă din nou."
 
 #. Title of the error modal shown when sending the verification email fails unexpectedly.
-#: src/features/app/components/dialogs/components/EmailVerificationAlert.tsx
+#: src/features/auth/hooks/useVerifyEmailAction.tsx
 msgid "Couldn't send the verification email"
 msgstr "Nu s-a putut trimite e-mailul de verificare"
 
@@ -13050,10 +13050,22 @@ msgstr "Gata"
 msgid "Double-click"
 msgstr "Dublu clic"
 
+#. Settings search entry label. Names the settings search entry in the settings UI.
+#. Short label for an advanced preference that edits your own message or replies to someone else's when you double-click it.
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx
+#: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts
+msgid "Double-click a message to edit or reply"
+msgstr "Dublu clic pe un mesaj pentru a-l edita sau a răspunde"
+
 #. Empty / hint text on the screen-share hover card explaining how to start watching a remote stream.
 #: src/features/voice/components/StreamWatchHoverCard.tsx
 msgid "Double-click someone to watch their stream."
 msgstr "Fă dublu clic pe cineva pentru a-i urmări transmisiunea."
+
+#. Settings search entry description. One-line summary of what the settings search entry controls.
+#: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts
+msgid "Double-click your own message to edit it, or someone else's message to reply to it"
+msgstr "Dă dublu clic pe propriul mesaj pentru a-l edita sau pe mesajul altcuiva pentru a-i răspunde"
 
 #. Button that downloads account backup codes as a text file.
 #. Generic action label that downloads an attachment / file.
@@ -24437,6 +24449,11 @@ msgstr "Am redeschis firul"
 msgid "Opens in a new tab"
 msgstr "Se deschide într-o filă nouă"
 
+#. Screen-reader-only hint on a settings menu entry that opens a web page in the browser instead of a settings page.
+#: src/features/i18n/utils/CommonMessageDescriptors.ts
+msgid "Opens in your browser"
+msgstr "Se deschide în browserul tău"
+
 #. Screen-reader-only hint for the Members entry in community settings. The entry receives keyboard focus without automatically opening.
 #: src/features/app/components/dialogs/components/DesktopGuildSettingsView.tsx
 msgid "Opens the Members page. Press Space or Enter to open."
@@ -26461,6 +26478,11 @@ msgstr "CSS rapid înlocuit din {fileName}."
 msgid "Quick reactions"
 msgstr "Reacții rapide"
 
+#. Settings search synonym. Used to match this term when the user types it in the settings search bar.
+#: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts
+msgid "Quick reply"
+msgstr "Răspuns rapid"
+
 #. Accessible label for the desktop quick switcher modal.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/channel/components/direct_message/DirectMessageList.tsx
@@ -27888,8 +27910,10 @@ msgstr "Retrimite ({secondsRemaining}s)"
 msgid "Resend code"
 msgstr "Retrimite codul"
 
+#. Button label that sends another verification email after one was already sent. Keep it concise.
 #: src/features/app/components/dialogs/components/EmailVerificationAlert.tsx
 #: src/features/auth/flow/IpAuthorizationScreen.tsx
+#: src/features/auth/hooks/useVerifyEmailAction.tsx
 msgid "Resend email"
 msgstr "Retrimite e-mailul"
 
@@ -29917,6 +29941,11 @@ msgstr "Trimite mesaje TTS"
 msgid "Send verification code"
 msgstr "Trimite codul de verificare"
 
+#. Button label on prompts that ask the user to verify their email, such as the add friend form. Sends a verification email right away. Keep it concise.
+#: src/features/auth/hooks/useVerifyEmailAction.tsx
+msgid "Send verification email"
+msgstr "Trimite email de verificare"
+
 #. Accessible label and tooltip for the send button after recording a voice message.
 #. Keyboard shortcut action label that opens the desktop voice message composer.
 #. Plus menu item that opens the desktop voice message composer to record and send a voice clip.
@@ -31673,7 +31702,7 @@ msgid "Something went wrong while saving this setting. Please try again in a mom
 msgstr "A apărut o eroare la salvarea acestei setări. Te rugăm să încerci din nou mai târziu."
 
 #. Body of the error modal shown when sending the verification email fails unexpectedly.
-#: src/features/app/components/dialogs/components/EmailVerificationAlert.tsx
+#: src/features/auth/hooks/useVerifyEmailAction.tsx
 msgid "Something went wrong while sending your verification email. Please try again in a moment."
 msgstr "A apărut o eroare la trimiterea e-mailului de verificare. Te rugăm să încerci din nou mai târziu."
 
@@ -32711,6 +32740,11 @@ msgstr "Submeniu"
 #: src/features/guild/components/modals/guild_tabs/GuildDiscoveryTab.tsx
 msgid "Submit application"
 msgstr "Trimite cererea"
+
+#. Settings menu entry that opens the feedback website, where people suggest features and report problems.
+#: src/features/i18n/utils/CommonMessageDescriptors.ts
+msgid "Submit feedback"
+msgstr "Trimite feedback"
 
 #: src/features/user/components/modals/tabs/component_gallery_tab/ComponentGalleryTabButtonsTab.tsx
 msgid "Submitting"
@@ -37722,8 +37756,8 @@ msgstr "Cod de verificare"
 msgid "Verification code sent"
 msgstr "Codul de verificare a fost trimis"
 
-#. Toast confirmation in the email verification alert after a verification email has been sent.
-#: src/features/app/components/dialogs/components/EmailVerificationAlert.tsx
+#. Toast confirmation shown after a verification email has been sent.
+#: src/features/auth/hooks/useVerifyEmailAction.tsx
 msgid "Verification email sent. Check your inbox."
 msgstr "E-mailul de verificare a fost trimis. Verifică-ți căsuța de e-mail."
 
@@ -39075,6 +39109,11 @@ msgstr "Ce partajezi nu se actualizează"
 msgid "What's happening?"
 msgstr "Ce se întâmplă?"
 
+#. Settings menu entry that opens the latest patch notes for the app on the website.
+#: src/features/i18n/utils/CommonMessageDescriptors.ts
+msgid "What's new"
+msgstr "Ce e nou"
+
 #. DSA report page: title of the reason step while its questions load or when they could not be loaded.
 #: src/features/moderation/components/report/ReportStepReason.tsx
 msgid "What's the reason for your report?"
@@ -40149,7 +40188,7 @@ msgstr "Editezi mesajele prea repede"
 #. Title of the error modal shown when resending a verification email is rate-limited.
 #. Title of the error modal shown when sharing or sending a theme link is rate limited.
 #: src/features/app/components/alerts/CommonErrorModalDescriptors.ts
-#: src/features/app/components/dialogs/components/EmailVerificationAlert.tsx
+#: src/features/auth/hooks/useVerifyEmailAction.tsx
 #: src/features/discovery/commands/DiscoveryJoinCommands.tsx
 #: src/features/emoji/components/emojis/EmojiListItem.tsx
 #: src/features/theme/components/modals/ShareThemeModal.tsx
@@ -40313,7 +40352,7 @@ msgid "You've received a gift"
 msgstr "Ai primit un cadou"
 
 #. Body of the error modal shown when resending a verification email is rate-limited.
-#: src/features/app/components/dialogs/components/EmailVerificationAlert.tsx
+#: src/features/auth/hooks/useVerifyEmailAction.tsx
 msgid "You've requested too many verification emails. Please wait a moment and try again."
 msgstr "Ai solicitat prea multe e-mailuri de verificare. Așteaptă un moment și încearcă din nou."
 

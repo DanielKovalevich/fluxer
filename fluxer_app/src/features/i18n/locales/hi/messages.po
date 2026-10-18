@@ -10451,7 +10451,7 @@ msgid "Couldn't send the friend request. Try again."
 msgstr "फ्रेंड रिक्वेस्ट नहीं भेजी जा सकी। फिर से कोशिश करें।"
 
 #. Title of the error modal shown when sending the verification email fails unexpectedly.
-#: src/features/app/components/dialogs/components/EmailVerificationAlert.tsx
+#: src/features/auth/hooks/useVerifyEmailAction.tsx
 msgid "Couldn't send the verification email"
 msgstr "पुष्टि करने वाला ईमेल भेजा नहीं जा सका"
 
@@ -13050,10 +13050,22 @@ msgstr "हो गया"
 msgid "Double-click"
 msgstr "डबल-क्लिक"
 
+#. Settings search entry label. Names the settings search entry in the settings UI.
+#. Short label for an advanced preference that edits your own message or replies to someone else's when you double-click it.
+#: src/features/user/components/modals/tabs/advanced_settings_tab/AdvancedChatControls.tsx
+#: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts
+msgid "Double-click a message to edit or reply"
+msgstr "संदेश को संपादित करने या जवाब देने के लिए डबल-क्लिक करें"
+
 #. Empty / hint text on the screen-share hover card explaining how to start watching a remote stream.
 #: src/features/voice/components/StreamWatchHoverCard.tsx
 msgid "Double-click someone to watch their stream."
 msgstr "किसी की स्ट्रीम देखने के लिए उस पर डबल-क्लिक करें।"
+
+#. Settings search entry description. One-line summary of what the settings search entry controls.
+#: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts
+msgid "Double-click your own message to edit it, or someone else's message to reply to it"
+msgstr "अपने संदेश पर डबल-क्लिक करके उसे संपादित करें, या किसी और के संदेश पर डबल-क्लिक करके जवाब दें"
 
 #. Button that downloads account backup codes as a text file.
 #. Generic action label that downloads an attachment / file.
@@ -24437,6 +24449,11 @@ msgstr "थ्रेड को फिर से खोला गया"
 msgid "Opens in a new tab"
 msgstr "एक नए टैब में खुलता है"
 
+#. Screen-reader-only hint on a settings menu entry that opens a web page in the browser instead of a settings page.
+#: src/features/i18n/utils/CommonMessageDescriptors.ts
+msgid "Opens in your browser"
+msgstr "आपके ब्राउज़र में खुलेगा"
+
 #. Screen-reader-only hint for the Members entry in community settings. The entry receives keyboard focus without automatically opening.
 #: src/features/app/components/dialogs/components/DesktopGuildSettingsView.tsx
 msgid "Opens the Members page. Press Space or Enter to open."
@@ -26461,6 +26478,11 @@ msgstr "क्विक CSS को {fileName} से बदल दिया ग�
 msgid "Quick reactions"
 msgstr "क्विक रिएक्शन"
 
+#. Settings search synonym. Used to match this term when the user types it in the settings search bar.
+#: src/features/user/components/settings_utils/search_index/ChatSettingsIndex.ts
+msgid "Quick reply"
+msgstr "त्वरित उत्तर"
+
 #. Accessible label for the desktop quick switcher modal.
 #. Settings search synonym. Used to match this term when the user types it in the settings search bar.
 #: src/features/channel/components/direct_message/DirectMessageList.tsx
@@ -27888,8 +27910,10 @@ msgstr "फिर से भेजें ({secondsRemaining}से)"
 msgid "Resend code"
 msgstr "कोड फिर से भेजें"
 
+#. Button label that sends another verification email after one was already sent. Keep it concise.
 #: src/features/app/components/dialogs/components/EmailVerificationAlert.tsx
 #: src/features/auth/flow/IpAuthorizationScreen.tsx
+#: src/features/auth/hooks/useVerifyEmailAction.tsx
 msgid "Resend email"
 msgstr "ईमेल फिर से भेजें"
 
@@ -29917,6 +29941,11 @@ msgstr "TTS मैसेज भेजें"
 msgid "Send verification code"
 msgstr "वेरिफ़िकेशन कोड भेजें"
 
+#. Button label on prompts that ask the user to verify their email, such as the add friend form. Sends a verification email right away. Keep it concise.
+#: src/features/auth/hooks/useVerifyEmailAction.tsx
+msgid "Send verification email"
+msgstr "सत्यापन ईमेल भेजें"
+
 #. Accessible label and tooltip for the send button after recording a voice message.
 #. Keyboard shortcut action label that opens the desktop voice message composer.
 #. Plus menu item that opens the desktop voice message composer to record and send a voice clip.
@@ -31673,7 +31702,7 @@ msgid "Something went wrong while saving this setting. Please try again in a mom
 msgstr "इस सेटिंग को सेव करते समय कुछ गड़बड़ हो गई। कृपया कुछ देर बाद फिर से कोशिश करें।"
 
 #. Body of the error modal shown when sending the verification email fails unexpectedly.
-#: src/features/app/components/dialogs/components/EmailVerificationAlert.tsx
+#: src/features/auth/hooks/useVerifyEmailAction.tsx
 msgid "Something went wrong while sending your verification email. Please try again in a moment."
 msgstr "आपका वेरिफ़िकेशन ईमेल भेजने में कुछ गड़बड़ हो गई। कृपया कुछ देर बाद फिर से कोशिश करें।"
 
@@ -32711,6 +32740,11 @@ msgstr "सबमेनू"
 #: src/features/guild/components/modals/guild_tabs/GuildDiscoveryTab.tsx
 msgid "Submit application"
 msgstr "आवेदन जमा करें"
+
+#. Settings menu entry that opens the feedback website, where people suggest features and report problems.
+#: src/features/i18n/utils/CommonMessageDescriptors.ts
+msgid "Submit feedback"
+msgstr "फ़ीडबैक सबमिट करें"
 
 #: src/features/user/components/modals/tabs/component_gallery_tab/ComponentGalleryTabButtonsTab.tsx
 msgid "Submitting"
@@ -37722,8 +37756,8 @@ msgstr "वेरिफ़िकेशन कोड"
 msgid "Verification code sent"
 msgstr "वेरिफ़िकेशन कोड भेजा गया"
 
-#. Toast confirmation in the email verification alert after a verification email has been sent.
-#: src/features/app/components/dialogs/components/EmailVerificationAlert.tsx
+#. Toast confirmation shown after a verification email has been sent.
+#: src/features/auth/hooks/useVerifyEmailAction.tsx
 msgid "Verification email sent. Check your inbox."
 msgstr "वेरिफ़िकेशन ईमेल भेजा गया है। अपना इनबॉक्स देखें।"
 
@@ -39075,6 +39109,11 @@ msgstr "आप जो शेयर कर रहे हैं वह अपड�
 msgid "What's happening?"
 msgstr "क्या चल रहा है?"
 
+#. Settings menu entry that opens the latest patch notes for the app on the website.
+#: src/features/i18n/utils/CommonMessageDescriptors.ts
+msgid "What's new"
+msgstr "नया क्या है"
+
 #. DSA report page: title of the reason step while its questions load or when they could not be loaded.
 #: src/features/moderation/components/report/ReportStepReason.tsx
 msgid "What's the reason for your report?"
@@ -40149,7 +40188,7 @@ msgstr "आप बहुत तेज़ी से मैसेज एडिट 
 #. Title of the error modal shown when resending a verification email is rate-limited.
 #. Title of the error modal shown when sharing or sending a theme link is rate limited.
 #: src/features/app/components/alerts/CommonErrorModalDescriptors.ts
-#: src/features/app/components/dialogs/components/EmailVerificationAlert.tsx
+#: src/features/auth/hooks/useVerifyEmailAction.tsx
 #: src/features/discovery/commands/DiscoveryJoinCommands.tsx
 #: src/features/emoji/components/emojis/EmojiListItem.tsx
 #: src/features/theme/components/modals/ShareThemeModal.tsx
@@ -40313,7 +40352,7 @@ msgid "You've received a gift"
 msgstr "आपको एक उपहार मिला है"
 
 #. Body of the error modal shown when resending a verification email is rate-limited.
-#: src/features/app/components/dialogs/components/EmailVerificationAlert.tsx
+#: src/features/auth/hooks/useVerifyEmailAction.tsx
 msgid "You've requested too many verification emails. Please wait a moment and try again."
 msgstr "आपने बहुत ज़्यादा वेरिफ़िकेशन ईमेल का अनुरोध किया है। कृपया कुछ देर इंतज़ार करें और फिर से कोशिश करें।"
 

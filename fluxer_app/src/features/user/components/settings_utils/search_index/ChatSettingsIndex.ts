@@ -10,6 +10,7 @@ import {
 	ANIMATIONS_DESCRIPTOR,
 	COLON_AUTOCOMPLETE_DESCRIPTOR,
 	COMPOSER_BUTTONS_DESCRIPTOR,
+	DOUBLE_CLICK_DESCRIPTOR,
 	EMOTICONS_DESCRIPTOR,
 	EXPRESSION_AUTOCOMPLETE_DESCRIPTOR,
 	INBOX_DESCRIPTOR,
@@ -414,6 +415,19 @@ const CHOOSE_HOW_CHAT_MOVES_AFTER_YOU_SEND_A_MESSAGE_DESCRIPTOR = msg({
 	comment: 'Settings search entry description. One-line summary of what the settings search entry controls.',
 });
 
+const DOUBLE_CLICK_MESSAGE_ACTIONS_DESCRIPTOR = msg({
+	message: 'Double-click a message to edit or reply',
+	comment: 'Settings search entry label. Names the settings search entry in the settings UI.',
+});
+const DOUBLE_CLICK_EDITS_OR_REPLIES_DESCRIPTOR = msg({
+	message: "Double-click your own message to edit it, or someone else's message to reply to it",
+	comment: 'Settings search entry description. One-line summary of what the settings search entry controls.',
+});
+const QUICK_REPLY_DESCRIPTOR = msg({
+	message: 'Quick reply',
+	comment: 'Settings search synonym. Used to match this term when the user types it in the settings search bar.',
+});
+
 const MARK_ALL_AS_READ_DESCRIPTOR = msg({
 	message: 'Mark all as read',
 	comment: 'Settings search synonym. Used to match this term when the user types it in the settings search bar.',
@@ -707,6 +721,16 @@ export const chatSettingsIndex: Array<SearchableSettingDescriptor> = [
 		description: MARK_ALL_UNREAD_INBOX_CHANNELS_AS_READ_IMMEDIATELY_DESCRIPTOR,
 		audience: 'advanced',
 		tags: ['chat', 'notifications'],
+	},
+	{
+		id: 'chat-settings-double-click-message-actions',
+		tabType: 'chat_settings',
+		sectionId: 'input',
+		label: DOUBLE_CLICK_MESSAGE_ACTIONS_DESCRIPTOR,
+		keywords: [DOUBLE_CLICK_DESCRIPTOR, QUICK_REPLY_DESCRIPTOR, MESSAGE_EDITING_DESCRIPTOR],
+		description: DOUBLE_CLICK_EDITS_OR_REPLIES_DESCRIPTOR,
+		audience: 'advanced',
+		tags: ['chat'],
 	},
 	{
 		id: 'chat-settings-hide-muted-channels',

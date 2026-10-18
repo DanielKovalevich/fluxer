@@ -327,6 +327,71 @@ function validateReplyToEmail(value: string): void {
 	}
 }
 
+const EMAIL_DOMAIN_PATTERN =
+	/^(?=.{1,253}$)(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?$/u;
+const DEFAULT_SMTP_PORT = 587;
+const SMTP_HEADER_NAME_PATTERN = /^[\x21-\x39\x3b-\x7e]+$/u;
+const SMTP_HEADER_VALUE_PATTERN = /^[\x20-\x7e\t]*$/u;
+const SMTP_HEADER_MAX_LINE_LENGTH = 998;
+const CORE_SMTP_HEADER_NAMES = new Set([
+	'from',
+	'to',
+	'cc',
+	'bcc',
+	'subject',
+	'reply-to',
+	'message-id',
+	'date',
+	'content-type',
+	'mime-version',
+]);
+
+function validateSmtpHeaders(headers: unknown, envName: string): void {
+	if (headers === undefined) return;
+	if (!isConfigObject(headers)) throw new Error(`${envName} must be a JSON object of header names to strings`);
+	for (const [name, value] of Object.entries(headers)) {
+		if (!SMTP_HEADER_NAME_PATTERN.test(name)) {
+			throw new Error(`${envName} header name ${JSON.stringify(name)} is not a valid header field name`);
+		}
+		if (CORE_SMTP_HEADER_NAMES.has(name.toLowerCase())) {
+			throw new Error(`${envName} must not set the ${name} header`);
+		}
+		if (typeof value !== 'string') throw new Error(`${envName} value of ${name} must be a string`);
+		if (!SMTP_HEADER_VALUE_PATTERN.test(value)) {
+			throw new Error(`${envName} value of ${name} must be printable ASCII without line breaks`);
+		}
+		if (name.length + 2 + value.length > SMTP_HEADER_MAX_LINE_LENGTH) {
+			throw new Error(`${envName} header ${name} must fit on one ${SMTP_HEADER_MAX_LINE_LENGTH} character line`);
+		}
+	}
+}
+
+function normalizeEmailFallbackConfig(config: MasterConfig): void {
+	const email = config.integrations.email;
+	if (!email.fallback) return;
+	const {domains, smtp}: Partial<NonNullable<typeof email.fallback>> = email.fallback;
+	const missing = (envName: string) => new Error(`${envName} is required when an email fallback provider is set`);
+	if (!domains?.length) throw missing('FLUXER_EMAIL_FALLBACK_DOMAINS');
+	if (!smtp?.host?.trim()) throw missing('FLUXER_EMAIL_FALLBACK_SMTP_HOST');
+	if (!smtp.username?.trim()) throw missing('FLUXER_EMAIL_FALLBACK_SMTP_USERNAME');
+	if (!smtp.password?.trim()) throw missing('FLUXER_EMAIL_FALLBACK_SMTP_PASSWORD');
+	const port: unknown = smtp.port ?? DEFAULT_SMTP_PORT;
+	assertIntegerInRange(port, 'FLUXER_EMAIL_FALLBACK_SMTP_PORT', 1, 65_535);
+	validateSmtpHeaders(smtp.headers, 'FLUXER_EMAIL_FALLBACK_SMTP_HEADERS');
+	const normalizedDomains = domains.map((domain) => domain.trim().toLowerCase());
+	if (normalizedDomains.includes('*') && new Set(normalizedDomains).size > 1) {
+		throw new Error('FLUXER_EMAIL_FALLBACK_DOMAINS must be either * or a list of domains');
+	}
+	for (const domain of normalizedDomains) {
+		if (domain !== '*' && !EMAIL_DOMAIN_PATTERN.test(domain)) {
+			throw new Error(
+				`FLUXER_EMAIL_FALLBACK_DOMAINS entry ${JSON.stringify(domain)} must be a domain such as gmail.com`,
+			);
+		}
+	}
+	email.fallback = {domains: [...new Set(normalizedDomains)], smtp: {...smtp, port}};
+}
+
 function validateUploadRelaySecret(value: string): void {
 	const trimmed = value.trim();
 	if (trimmed.length === 0) {
@@ -626,6 +691,7 @@ function normalizeConfig(config: MasterConfig): MasterConfig {
 	validateCachePurgeConfig(config);
 	validateStoreBillingConfig(config);
 	validateReplyToEmail(config.integrations.email.reply_to_email);
+	normalizeEmailFallbackConfig(config);
 	normalizeAppOriginAliases(config);
 	assertIntegerInRange(config.services.api.max_inflight_requests, 'FLUXER_API_MAX_INFLIGHT_REQUESTS', 1, 100_000);
 	assertIntegerInRange(
