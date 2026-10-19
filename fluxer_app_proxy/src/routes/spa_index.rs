@@ -226,6 +226,7 @@ async fn serve_spa_index(state: &AppState, headers: &HeaderMap, request_path: &s
     let csp = state.csp.spa_headers(
         &inline_script_hashes(&html),
         &state.branding.image_origins(),
+        &state.branding.instance_sources(),
     );
     build_spa_response(html.into_boxed_str(), &csp, should_bust_dev_assets)
 }
@@ -1050,6 +1051,7 @@ mod tests {
             icon_url: Some(Arc::from("https://example.test/icon.png")),
             favicon_url: Some(Arc::from("https://example.test/favicon.png")),
             theme_color: Some(Arc::from("#7b2ce4")),
+            ..BrandingSnapshot::default()
         }
     }
 
@@ -1344,6 +1346,7 @@ mod tests {
             http_client: reqwest::Client::new(),
             spa_index_source,
             local_asset_prefixes: None,
+            bundled_app_assets: false,
             budgets,
             local_files,
         }
