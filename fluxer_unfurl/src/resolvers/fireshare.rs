@@ -12,6 +12,7 @@ use url::Url;
 const TRANSCODE_PROBE_TIMEOUT: Duration = Duration::from_secs(3);
 // Keep the selected transcode within the media proxy's playback limit.
 const MAX_PLAYBACK_BYTES: u64 = 500 * 1024 * 1024;
+const FIRESHARE_COLOR: u32 = 0xFF7B00;
 
 pub struct FireshareResolver {
     hosts: Vec<String>,
@@ -145,7 +146,7 @@ fn player_embed(page: &SocialPage, source: &Url) -> Option<MessageEmbed> {
     let dimensions = page.og.video_width.zip(page.og.video_height)
         .filter(|(width, height)| *width > 0 && *height > 0)
         .unwrap_or((1280, 720));
-    Some(video_only_embed(source, EmbedMedia {
+    Some(rich_video_embed(source, EmbedMedia {
         url: Some(video_url),
         width: Some(dimensions.0),
         height: Some(dimensions.1),
@@ -153,7 +154,7 @@ fn player_embed(page: &SocialPage, source: &Url) -> Option<MessageEmbed> {
     }))
 }
 
-fn video_only_embed(source: &Url, video: EmbedMedia) -> MessageEmbed {
+fn rich_video_embed(source: &Url, video: EmbedMedia) -> MessageEmbed {
     let mut watch = source.clone();
     let upgraded_media = video
         .url
@@ -167,8 +168,12 @@ fn video_only_embed(source: &Url, video: EmbedMedia) -> MessageEmbed {
     if upgraded_media {
         watch.set_scheme("https").expect("HTTP URL can upgrade to HTTPS");
     }
-    let mut embed = MessageEmbed::new("video");
+    // Rich metadata keeps the native card frame and a visible watch-page link
+    // around the same inline video used by official web and desktop clients.
+    let mut embed = MessageEmbed::new("rich");
     embed.url = Some(watch.to_string());
+    embed.title = Some("Open in Fireshare".to_owned());
+    embed.color = Some(FIRESHARE_COLOR);
     embed.video = Some(video);
     embed
 }
@@ -362,14 +367,23 @@ mod tests {
     }
 
     #[test]
-    fn produces_only_video_without_rich_card_metadata() {
-        let source = Url::parse("https://clips.dkzver.com/w/abc").unwrap();
-        let video = EmbedMedia { url: Some("https://clips.dkzver.com/_content/video/abc.mp4".to_owned()), ..Default::default() };
-        let embed = video_only_embed(&source, video);
-        let json = serde_json::to_value(&embed).unwrap();
-        assert_eq!(json["type"], "video");
+    fn produces_a_linked_rich_card_with_proxied_inline_video() {
+        let source = Url::parse("https://clips.dkzver.com/watch/abc?start=12#video").unwrap();
+        let public = page(r#"<meta property="og:video" content="/_content/video/abc.mp4"><meta property="og:video:width" content="3440"><meta property="og:video:height" content="1440">"#);
+        let embed = player_embed(&public, &source).unwrap();
+        let proxy = crate::media_proxy::MediaProxyClient::new_with_public_endpoint(
+            "http://media-proxy:8080/", "test-secret", Some("https://media.example.test/"), reqwest::Client::new(),
+        );
+        let embeds = crate::embed_normalizer::normalize_embeds(vec![embed], &proxy);
+        let json = serde_json::to_value(&embeds[0]).unwrap();
+        assert_eq!(json["type"], "rich");
         assert_eq!(json["url"], source.as_str());
-        assert_eq!(json.as_object().unwrap().len(), 3);
-        assert!(json.get("video").is_some());
+        assert_eq!(json["title"], "Open in Fireshare");
+        assert_eq!(json["color"], FIRESHARE_COLOR);
+        assert_eq!(json["video"]["url"], "https://clips.dkzver.com/_content/video/abc.mp4");
+        assert_eq!(json["video"]["width"], 3440);
+        assert_eq!(json["video"]["height"], 1440);
+        assert!(json["video"]["proxy_url"].as_str().unwrap().starts_with("https://media.example.test/external/"));
+        assert!(json.get("html").is_none());
     }
 }
